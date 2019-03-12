@@ -48,6 +48,7 @@ def test_end_to_end():
         response = requests.get(base_url)
         assert response.status_code == 200
         assert response.text == "Hello World"
+        assert False
         print(response)
 
     # Run tests

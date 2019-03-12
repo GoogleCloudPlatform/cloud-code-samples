@@ -1,0 +1,29 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "podSelector": {
+        "tier": "frontend"
+      },
+      "type": "cloudcode",
+      "request": "attach",
+      "localRoot": "${workspaceFolder}/src",
+      "language": "Python",
+      "remoteRoot": "/app",
+      "name": "bookshelf frontend",
+      "debugPort": 3000
+    },
+    {
+      "podSelector": {
+        "tier": "worker"
+      },
+      "type": "cloudcode",
+      "request": "attach",
+      "localRoot": "${workspaceFolder}/src",
+      "language": "Python",
+      "remoteRoot": "/app",
+      "name": "bookshelf worker",
+      "debugPort": 3000
+    }
+  ]
+}

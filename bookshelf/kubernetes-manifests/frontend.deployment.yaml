@@ -1,0 +1,26 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: bookshelf-frontend
+  labels:
+    app: bookshelf
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: bookshelf
+        tier: frontend
+    spec:
+      containers:
+      - name: bookshelf-app
+        image: gcr.io/sanche-testing-project/kubecode/bookshelf
+        imagePullPolicy: Always
+        env:
+        - name: PROCESSES
+          value: bookshelf
+        - name: PROJECT_ID
+          value: sanche-testing-project
+        ports:
+        - name: http-server
+          containerPort: 8080

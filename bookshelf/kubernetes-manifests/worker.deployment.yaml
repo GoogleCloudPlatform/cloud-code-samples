@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: bookshelf-worker
+  labels:
+    app: bookshelf
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: bookshelf
+        tier: worker
+    spec:
+      containers:
+      - name: bookshelf-app
+        image: gcr.io/sanche-testing-project/kubecode/bookshelf
+        imagePullPolicy: Always
+        env:
+        - name: PROCESSES
+          value: worker
+        - name: PROJECT_ID
+          value: sanche-testing-project

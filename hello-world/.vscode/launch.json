@@ -1,0 +1,17 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "podSelector": {
+        "app": "hello-world"
+      },
+      "type": "cloudcode",
+      "request": "attach",
+      "localRoot": "${workspaceFolder}/src",
+      "language": "Python",
+      "remoteRoot": "/app",
+      "name": "hello-world",
+      "debugPort": 3000
+    }
+  ]
+}

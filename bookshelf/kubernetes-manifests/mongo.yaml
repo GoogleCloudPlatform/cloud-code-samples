@@ -1,0 +1,38 @@
+kind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  name: mongo
+  labels:
+    app: bookshelf
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: bookshelf
+        tier: db
+    spec:
+      containers:
+        - name: mongo
+          image: mongo
+          ports:
+            - containerPort: 27017
+          env:
+          - name: MONGO_INITDB_ROOT_USERNAME
+            value: root
+          - name: MONGO_INITDB_ROOT_PASSWORD
+            value: example
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: bookshelf
+  name: mongo-service
+spec:
+  ports:
+    - port: 27017
+      targetPort: 27017
+  selector:
+    app: bookshelf
+    tier: db

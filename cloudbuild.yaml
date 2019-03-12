@@ -6,7 +6,7 @@ steps:
   args: ['build', '-t', 'gcr.io/$PROJECT_ID/$REPO_NAME/hello-world', '.']
   dir: 'cloudcode/hello-world/src'
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['run', '--name', 'hello-world-test', '-d', '-p', '5561:5000', 'gcr.io/$PROJECT_ID/$REPO_NAME/hello-world']
+  args: ['run', '--name', 'hello-world-test', '--network', 'cloudbuild', '-p', '5561:5000', '-d', 'gcr.io/$PROJECT_ID/$REPO_NAME/hello-world']
 - name: 'qnib/pytest'
   entrypoint: 'bash'
   args:

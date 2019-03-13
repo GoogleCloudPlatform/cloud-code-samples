@@ -21,6 +21,10 @@ spec:
           value: bookshelf
         - name: PROJECT_ID
           value: sanche-testing-project
+        - name: DEBUG_PORT
+          value: '3000'
+        - name: SERVER_PORT
+          value: '8080'
         ports:
         - name: http-server
           containerPort: 8080

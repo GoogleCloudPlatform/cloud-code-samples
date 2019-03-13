@@ -15,6 +15,7 @@
 import bookshelf
 import config
 import ptvsd
+import os
 
 # Note: debug=True is enabled here to help with troubleshooting. You should
 # remove this in production.
@@ -29,11 +30,13 @@ app = bookshelf.create_app(config, debug=False)
 with app.app_context():
     books_queue = bookshelf.tasks.get_books_queue()
 
-# Set up debugger. Remove the below line for production
-ptvsd.enable_attach(address=('0.0.0.0', 3000))
+# Set up debugger. Remove for production
+debug_port = os.getenv('DEBUG_PORT', None)
+if debug_port is not None:
+    ptvsd.enable_attach(address=('0.0.0.0', debug_port))
 
 # This is only used when running locally. When running live, gunicorn runs
 # the application.
 if __name__ == '__main__':
-
-    app.run(debug=False, port=8080, host='0.0.0.0')
+    server_port = os.getenv('SERVER_PORT', 8080)
+    app.run(debug=False, port=server_port, host='0.0.0.0')

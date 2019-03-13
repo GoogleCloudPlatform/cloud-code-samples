@@ -3,7 +3,7 @@ steps:
   args: ['build', '-t', 'hello-world', '.']
   dir: 'cloudcode/hello-world/src'
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['run', '--name', 'hello-world-test', '--network', 'cloudbuild', '-p', '5562:5000', '-d', 'hello-world']
+  args: ['run', '--name', 'hello-world-test', '--network', 'cloudbuild', '-p', '5000', '-d', 'hello-world']
 - name: 'qnib/pytest'
   entrypoint: 'bash'
   args:
@@ -13,4 +13,4 @@ steps:
     cd cloudcode/hello-world/tests
     pytest -s ./
   env:
-      - 'E2E_URL=http://169.254.0.1:5562'
+      - 'E2E_URL=http://hello-world-test:5000'

@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 
+import os
 from flask import Flask
 import ptvsd
 
@@ -27,7 +28,10 @@ def hello():
     return message
 
 if __name__ == '__main__':
-    # Enable debugger. Remove the below line for production
-    ptvsd.enable_attach(address=('0.0.0.0', 3000))
+    debug_port = os.getenv('DEBUG_PORT', None)
+    server_port = os.getenv('SERVER_PORT', 8080)
 
-    app.run(debug=False, host='0.0.0.0')
+    if debug_port is not None:
+        ptvsd.enable_attach(address=('0.0.0.0', debug_port))
+
+    app.run(debug=False, port=server_port, host='0.0.0.0')

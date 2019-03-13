@@ -10,4 +10,4 @@ spec:
   - 
     name: http
     port: 80
-    targetPort: 5000
+    targetPort: 8080

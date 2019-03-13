@@ -46,6 +46,13 @@
             "command": "kubectl",
             "args": ["logs", "-l", "tier=db"],
             "problemMatcher": []
+        },
+        {
+            "label": "Pylint",
+            "type": "shell",
+            "command": "python",
+            "args": ["-m", "pylint", "src/bookshelf"],
+            "problemMatcher": []
         }
     ]
 }

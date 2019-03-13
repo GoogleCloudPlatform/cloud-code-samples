@@ -1,12 +1,9 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/$PROJECT_ID/$REPO_NAME/bookshelf', '.']
-  dir: 'cloudcode/bookshelf/src'
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/$PROJECT_ID/$REPO_NAME/hello-world', '.']
+  args: ['build', '-t', 'hello-world', '.']
   dir: 'cloudcode/hello-world/src'
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['run', '--name', 'hello-world-test', '--network', 'cloudbuild', '-p', '5561:5000', '-d', 'gcr.io/$PROJECT_ID/$REPO_NAME/hello-world']
+  args: ['run', '--name', 'hello-world-test', '--network', 'cloudbuild', '-p', '5562:5000', '-d', 'hello-world']
 - name: 'qnib/pytest'
   entrypoint: 'bash'
   args:
@@ -14,6 +11,6 @@ steps:
   - |
     pip install -r requirements.txt
     cd cloudcode/hello-world/tests
-    pytest ./
+    pytest -s ./
   env:
-      - 'E2E_URL=hello-world-test:5561'
+      - 'E2E_URL=http://169.254.0.1:5562'

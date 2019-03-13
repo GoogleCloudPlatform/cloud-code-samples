@@ -42,14 +42,13 @@ def test_end_to_end():
 
     # Use retry because it will take some indeterminate time for the pub/sub
     # message to be processed.
-    @retry(wait_exponential_multiplier=5000, stop_max_attempt_number=12)
+    @retry(wait_exponential_multiplier=2000, stop_max_attempt_number=3)
     def test_request():
         # Check that the book's information was updated.
+        print("connecting to {}...".format(base_url))
         response = requests.get(base_url)
         assert response.status_code == 200
         assert response.text == "Hello World"
-        assert False
-        print(response)
 
     # Run tests
     try:

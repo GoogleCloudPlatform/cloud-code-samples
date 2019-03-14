@@ -4,6 +4,7 @@ metadata:
   name: bookshelf-frontend
   labels:
     app: bookshelf
+    tier: frontend
 spec:
   replicas: 1
   template:
@@ -25,6 +26,18 @@ spec:
           value: '3000'
         - name: SERVER_PORT
           value: '8080'
+        - name: MONGO_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: mongo-secret
+              key: username
+        - name: MONGO_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mongo-secret
+              key: password
+        - name: MONGO_URI
+          value: 'mongodb://$MONGO_USERNAME:$MONGO_PASSWORD@mongo-service:27017/admin'
         ports:
         - name: http-server
           containerPort: 8080

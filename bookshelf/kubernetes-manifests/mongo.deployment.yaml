@@ -4,6 +4,7 @@ metadata:
   name: mongo
   labels:
     app: bookshelf
+    tier: db
 spec:
   replicas: 1
   template:
@@ -19,20 +20,12 @@ spec:
             - containerPort: 27017
           env:
           - name: MONGO_INITDB_ROOT_USERNAME
-            value: root
+            valueFrom:
+              secretKeyRef:
+                name: mongo-secret
+                key: username
           - name: MONGO_INITDB_ROOT_PASSWORD
-            value: example
----
-apiVersion: v1
-kind: Service
-metadata:
-  labels:
-    app: bookshelf
-  name: mongo-service
-spec:
-  ports:
-    - port: 27017
-      targetPort: 27017
-  selector:
-    app: bookshelf
-    tier: db
+            valueFrom:
+              secretKeyRef:
+                name: mongo-secret
+                key: password

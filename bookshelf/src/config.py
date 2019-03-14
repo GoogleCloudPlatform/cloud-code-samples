@@ -30,4 +30,4 @@ PROJECT_ID = os.environ['PROJECT_ID']
 # Mongo configuration
 # If using mongolab, the connection URI is available from the mongolab control
 # panel. If self-hosting on compute engine, replace the values below.
-MONGO_URI = 'mongodb://root:example@mongo-service:27017/admin'
+MONGO_URI = os.environ['MONGO_URI']

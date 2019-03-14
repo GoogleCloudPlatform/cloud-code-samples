@@ -4,6 +4,7 @@ metadata:
   name: bookshelf-worker
   labels:
     app: bookshelf
+    tier: worker
 spec:
   replicas: 1
   template:
@@ -21,3 +22,17 @@ spec:
           value: worker
         - name: PROJECT_ID
           value: sanche-testing-project
+        - name: DEBUG_PORT
+          value: '3000'
+        - name: MONGO_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: mongo-secret
+              key: username
+        - name: MONGO_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mongo-secret
+              key: password
+        - name: MONGO_URI
+          value: 'mongodb://$MONGO_USERNAME:$MONGO_PASSWORD@mongo-service:27017/admin'

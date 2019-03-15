@@ -37,5 +37,5 @@ spec:
             secretKeyRef:
               name: mongo-secret
               key: password
-        - name: MONGO_URI
-          value: 'mongodb://$MONGO_USERNAME:$MONGO_PASSWORD@mongo-service:27017/admin'
+        - name: MONGO_HOST
+          value: 'mongo-service'

@@ -22,8 +22,8 @@ spec:
           value: bookshelf
         - name: PROJECT_ID
           valueFrom:
-            secretKeyRef:
-              name: gcp-project-secret
+            configMapKeyRef:
+              name: gcp-project-config
               key: project-id
         - name: DEBUG_PORT
           value: '3000'

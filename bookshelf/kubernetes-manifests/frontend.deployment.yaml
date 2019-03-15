@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: bookshelf-frontend
@@ -7,6 +7,10 @@ metadata:
     tier: frontend
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: bookshelf
+      tier: frontend
   template:
     metadata:
       labels:
@@ -14,7 +18,7 @@ spec:
         tier: frontend
     spec:
       containers:
-      - name: bookshelf-app
+      - name: frontend
         image: bookshelf
         imagePullPolicy: Always
         env:
@@ -26,9 +30,9 @@ spec:
               name: gcp-project-config
               key: project-id
         - name: DEBUG_PORT
-          value: '3000'
-        - name: SERVER_PORT
-          value: '8080'
+          value: "3000"
+        - name: PORT
+          value: "8080"
         - name: MONGO_USERNAME
           valueFrom:
             secretKeyRef:
@@ -40,7 +44,7 @@ spec:
               name: mongo-secret
               key: password
         - name: MONGO_HOST
-          value: 'mongo-service'
+          value: "mongo-service"
         ports:
         - name: http-server
           containerPort: 8080

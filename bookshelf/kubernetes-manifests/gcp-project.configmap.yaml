@@ -7,4 +7,4 @@ metadata:
   name: gcp-project-config
 data:
   # enter your project id here
-  project-id: your-project-id
+  project-id: sanche-testing-project

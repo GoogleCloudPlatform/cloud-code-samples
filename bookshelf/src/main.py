@@ -38,5 +38,5 @@ if debug_port is not None:
 # This is only used when running locally. When running live, gunicorn runs
 # the application.
 if __name__ == '__main__':
-    server_port = os.getenv('SERVER_PORT', 8080)
+    server_port = os.getenv('PORT', 8080)
     app.run(debug=False, port=server_port, host='0.0.0.0')

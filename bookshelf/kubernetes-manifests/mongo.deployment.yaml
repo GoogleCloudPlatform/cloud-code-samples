@@ -1,5 +1,5 @@
 kind: Deployment
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 metadata:
   name: mongo
   labels:
@@ -7,6 +7,10 @@ metadata:
     tier: db
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: bookshelf
+      tier: db
   template:
     metadata:
       labels:
@@ -14,7 +18,7 @@ spec:
         tier: db
     spec:
       containers:
-        - name: mongo
+        - name: database
           image: mongo:4.1
           ports:
             - containerPort: 27017

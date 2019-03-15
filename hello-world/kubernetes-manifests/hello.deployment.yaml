@@ -1,21 +1,24 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: hello-world
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: hello-world
   template:
     metadata:
       labels:
         app: hello-world
     spec:
       containers:
-      - name: hello-world
+      - name: server
         image: hello-world
         env:
         - name: DEBUG_PORT
-          value: '3000'
-        - name: SERVER_PORT
-          value: '8080'
+          value: "3000"
+        - name: PORT
+          value: "8080"
         ports:
-        - containerPort: 8080         
+        - containerPort: 8080

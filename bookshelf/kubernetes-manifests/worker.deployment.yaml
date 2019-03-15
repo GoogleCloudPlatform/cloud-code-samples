@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: bookshelf-worker
@@ -7,6 +7,10 @@ metadata:
     tier: worker
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: bookshelf
+      tier: worker
   template:
     metadata:
       labels:
@@ -14,7 +18,7 @@ spec:
         tier: worker
     spec:
       containers:
-      - name: bookshelf-app
+      - name: worker
         image: bookshelf
         imagePullPolicy: Always
         env:
@@ -26,7 +30,7 @@ spec:
               name: gcp-project-config
               key: project-id
         - name: DEBUG_PORT
-          value: '3000'
+          value: "3000"
         - name: MONGO_USERNAME
           valueFrom:
             secretKeyRef:
@@ -38,4 +42,4 @@ spec:
               name: mongo-secret
               key: password
         - name: MONGO_HOST
-          value: 'mongo-service'
+          value: "mongo-service"

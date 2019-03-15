@@ -14,21 +14,22 @@
     "tasks": [
         {
             "group": "build",
-            "label": "Build using local Docker",
+            "label": "Build and run using local Docker",
             "type": "shell",
-            "command": "bash",
-            "args": ["-c", "skaffold run -p local"],
+            "command": "skaffold",
+            "args": ["run", "-p", "local", "--default-repo=gcr.io/sanche-testing-project/kubecode"],
             "problemMatcher": []
         },
         {
-            "label": "Deploy to Kubernetes cluster",
+            "group": "build",
+            "label": "Build and run using Google Cloud Build",
             "type": "shell",
-            "command": "bash",
-            "args": ["-c", "skaffold run"],
+            "command": "skaffold",
+            "args": ["run", "-p", "staging", "--default-repo=gcr.io/sanche-testing-project/kubecode"],
             "problemMatcher": []
         },
         {
-            "label": "View Logs",
+            "label": "View logs",
             "type": "shell",
             "command": "kubectl",
             "args": ["logs", "-l", "app=hello-world"],

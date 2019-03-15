@@ -1,3 +1,5 @@
+// extensions.json will trigger an installation prompt for the Cloud Code 
+// extension when this folder is opened in Visual Studio Code
 {
     "_comment": "config that will trigger suggesting kubecode extension",
     "recommendations": [

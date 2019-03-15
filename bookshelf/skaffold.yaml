@@ -6,7 +6,7 @@ build:
   # defines where to find the code at build time and where to push the resulting image
   artifacts:
     - context: src
-      image: gcr.io/sanche-testing-project/kubecode/bookshelf
+      image: bookshelf
   local:
     push: true
     useDockerCLI: true

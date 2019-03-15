@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: bookshelf-app
-        image: gcr.io/sanche-testing-project/kubecode/bookshelf
+        image: bookshelf
         imagePullPolicy: Always
         env:
         - name: PROCESSES

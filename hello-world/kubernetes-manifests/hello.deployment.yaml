@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: hello-world
-        image: gcr.io/sanche-testing-project/kubecode/hello-world
+        image: hello-world
         env:
         - name: DEBUG_PORT
           value: '3000'

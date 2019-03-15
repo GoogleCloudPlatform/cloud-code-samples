@@ -126,7 +126,7 @@ As an alternative to using the Cloud Code extension, the application can be depl
 [Skaffold](https://github.com/GoogleContainerTools/skaffold) is a command line tool that can be used to build, push, and deploy your container images as you work
 
 ```
-skaffold run
+skaffold run --default-repo=gcr.io/your-project-id-here/cloudcode
 ```
 
 ### Using kubectl

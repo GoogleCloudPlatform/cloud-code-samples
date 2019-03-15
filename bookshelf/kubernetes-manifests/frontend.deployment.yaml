@@ -21,7 +21,10 @@ spec:
         - name: PROCESSES
           value: bookshelf
         - name: PROJECT_ID
-          value: sanche-testing-project
+          valueFrom:
+            secretKeyRef:
+              name: gcp-project-secret
+              key: project-id
         - name: DEBUG_PORT
           value: '3000'
         - name: SERVER_PORT

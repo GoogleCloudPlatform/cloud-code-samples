@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: hello-world
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: hello-world
+    spec:
+      containers:
+      - name: server
+        image: hello-world
+        ports:
+        - containerPort: 8080
+        env:
+        - name: DEBUG_PORT
+          value: "3000"
+        - name: PORT
+          value: "8080"

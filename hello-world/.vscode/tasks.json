@@ -14,7 +14,7 @@
             "command": "skaffold",
             "args": [
                 "build",
-                "-p=local"
+                "-p=no-push"
             ],
             "problemMatcher": [],
         },

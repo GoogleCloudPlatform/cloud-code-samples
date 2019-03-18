@@ -14,16 +14,16 @@ RUN go mod download
 COPY . ./
 
 # Compile and install the application.
-RUN go install -v
+RUN go install -v ./cmd/hello-world
 
 # Document the exposed port numbers.
 EXPOSE 8080
 EXPOSE 3000
 
-# Run the headless debugging Delve server with the program at /go/bin/hello-world.
-CMD ["dlv", "debug", "--api-version=2", "--headless", "--listen=:3000", "--log"]
+# Run the headless debugging Delve server in the current Go package.
+ENTRYPOINT ["dlv", "debug", "./cmd/hello-world",  "--api-version=2", "--headless", "--listen=:3000", "--log"]
 
 # Comment out the line above and uncomment the one below to run the program
 # WITHOUT the debugging server. Please note that when running "dlv debug", the
 # application won't start until a debugger attaches to the application.
-# CMD ["/go/bin/hello-world"]
+# ENTRYPOINT ["/go/bin/hello-world"]

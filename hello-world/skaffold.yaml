@@ -4,14 +4,14 @@ build:
   tagPolicy:
     sha256: {}
   artifacts:
-    - context: cmd/hello-world
+    - context: .
       image: hello-world
 deploy:
   kubectl:
     manifests:
       - kubernetes-manifests/**
 profiles:
-  - name: local
+  - name: no-push # do not push the images, only build
     build:
       local:
         push: false

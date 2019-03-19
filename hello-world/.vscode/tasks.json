@@ -28,7 +28,7 @@
             "problemMatcher": [],
         },
         {
-            "label": "View logs on Kubernetes",
+            "label": "View application logs on Kubernetes",
             "type": "process",
             "command": "kubectl",
             "args": [

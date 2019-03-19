@@ -3,7 +3,6 @@
 {
     "_comment": "config that will trigger suggesting kubecode extension",
     "recommendations": [
-        "google.kubecode-gke",
-        "google.kubecode-kubernetes"
+        "googlecloudtools.cloudcode"
     ]
 }

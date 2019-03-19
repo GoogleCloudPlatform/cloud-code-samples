@@ -1,14 +1,15 @@
 # Use base golang image from Docker Hub
 FROM golang:1.12
 
+# Download the dlv (delve) debugger for go (you can comment this out if unused)
+RUN go get -u github.com/go-delve/delve/cmd/dlv
+
 WORKDIR /src/hello-world
 
 # Install dependencies in go.mod and go.sum
 COPY go.mod go.sum ./
 RUN go mod download
 
-# Download the dlv (delve) debugger for go (you can comment this out if unused)
-RUN go get -u -v github.com/go-delve/delve/cmd/dlv
 
 # Copy rest of the application source code
 COPY . ./

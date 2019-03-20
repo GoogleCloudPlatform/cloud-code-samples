@@ -13,8 +13,8 @@ RUN go mod download
 # Copy rest of the application source code
 COPY . ./
 
-# Compile the application to /backend.
-RUN go build -o /backend -v .
+# Compile the application to /app/backend.
+RUN go build -o /app/backend -v .
 
 # If you want to use the debugger, you need to modify the entrypoint to the
 # container and point it to the "dlv debug" comand:
@@ -26,4 +26,4 @@ ENTRYPOINT ["dlv", "debug", ".",  "--api-version=2", "--headless", "--listen=:30
 # If you want to run WITHOUT the debugging server:
 #   * COMMENT OUT the previous ENTRYPOINT statements,
 #   * UNCOMMENT the following ENTRYPOINT statement.
-# ENTRYPOINT ["/backend"]
+# ENTRYPOINT ["/app/backend"]

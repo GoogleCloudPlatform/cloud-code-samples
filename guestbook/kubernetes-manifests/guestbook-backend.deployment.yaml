@@ -1,0 +1,26 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: guestbook-backend
+  labels:
+    app: guestbook
+    tier: backend
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: guestbook
+        tier: backend
+    spec:
+      containers:
+      - name: backend
+        image: guestbook-backend
+        ports:
+        - name: http-server
+          containerPort: 8080
+        - name: debug
+          containerPort: 3000
+        env:
+        - name: PORT
+          value: "8080"

@@ -1,0 +1,52 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "go",
+      "request": "launch",
+      "name": "Launch locally (frontend)",
+      "mode": "auto",
+      "program": "${workspaceFolder}/src/frontend",
+      "env": {
+        "PORT": "5000",
+        "GUESTBOOK_API_ADDR": "localhost:5001"
+      }
+    },
+    {
+      "type": "go",
+      "request": "launch",
+      "name": "Launch locally (backend)",
+      "mode": "auto",
+      "program": "${workspaceFolder}/src/backend",
+      "env": {
+        "PORT": "5001",
+      }
+    },
+    {
+      "type": "cloudcode",
+      "request": "attach",
+      "name": "Debug on Kubernetes (frontend)",
+      "language": "Go",
+      "debugPort": 3000,
+      "localRoot": "${workspaceFolder}/src/frontend",
+      "remoteRoot": "/src/frontend",
+      "podSelector": {
+        "app": "guestbook",
+        "tier": "frontend"
+      }
+    },
+    {
+      "type": "cloudcode",
+      "request": "attach",
+      "name": "Debug on Kubernetes (backend)",
+      "language": "Go",
+      "debugPort": 3000,
+      "localRoot": "${workspaceFolder}/src/backend",
+      "remoteRoot": "/src/backend",
+      "podSelector": {
+        "app": "guestbook",
+        "tier": "backend"
+      }
+    }
+  ]
+}

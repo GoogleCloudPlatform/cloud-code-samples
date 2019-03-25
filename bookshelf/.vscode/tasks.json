@@ -13,43 +13,6 @@
     },
     "tasks": [
         {
-            "group": "build",
-            "label": "Build and run using local Docker",
-            "type": "shell",
-            "command": "skaffold",
-            "args": ["run", "-p", "local", "--default-repo=gcr.io/sanche-testing-project/kubecode"],
-            "problemMatcher": []
-        },
-        {
-            "group": "build",
-            "label": "Build and run using Google Cloud Build",
-            "type": "shell",
-            "command": "skaffold",
-            "args": ["run", "-p", "staging", "--default-repo=gcr.io/sanche-testing-project/kubecode"],
-            "problemMatcher": []
-        },
-        {
-            "label": "View frontend logs",
-            "type": "shell",
-            "command": "kubectl",
-            "args": ["logs", "-l", "tier=frontend"],
-            "problemMatcher": []
-        },
-        {
-            "label": "View worker logs",
-            "type": "shell",
-            "command": "kubectl",
-            "args": ["logs", "-l", "tier=worker"],
-            "problemMatcher": []
-        },
-        {
-            "label": "View database logs",
-            "type": "shell",
-            "command": "kubectl",
-            "args": ["logs", "-l", "tier=db"],
-            "problemMatcher": []
-        },
-        {
             "label": "Pylint",
             "type": "shell",
             "command": "python",

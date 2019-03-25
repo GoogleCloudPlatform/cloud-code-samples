@@ -1,0 +1,36 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": true,
+        "clear": false
+    },
+    "tasks": [
+        {
+            "group": "build",
+            "label": "Build using local Docker",
+            "type": "shell",
+            "command": "bash",
+            "args": ["-c", "skaffold run -p local"],
+        },
+        {
+
+            "group": "build",
+            "label": "Build using Google Cloud Build",
+            "type": "shell",
+            "command": "bash",
+            "args": ["-c", "skaffold run -p staging"],
+        },
+        {
+            "label": "Deploy to Google Kubernetes Engine",
+            "type": "shell",
+            "command": "bash",
+            "args": ["-c", "skaffold run"],
+        },
+    ]
+}

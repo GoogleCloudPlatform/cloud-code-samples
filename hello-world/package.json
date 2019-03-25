@@ -1,0 +1,21 @@
+{
+  "name": "hello-node",
+  "version": "0.0.1",
+  "description": "sample",
+  "main": "app.js",
+  "scripts": {
+    "start": "node --inspect=9229 src/app.js ",
+    "test": "mocha src/app.test.js --exit"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
+    "mocha": "^5.2.0",
+    "request": "^2.88.0"
+  }
+}

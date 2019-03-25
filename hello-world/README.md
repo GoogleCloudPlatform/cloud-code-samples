@@ -46,9 +46,9 @@ Instructions for manually installing the extension and prerequisites can be
   - `hello.deployment.yaml`: Kubernetes manifest for the Hello World Deployment
   - `hello.service.yaml`: Kubernetes manifest for the Hello World LoadBalancer Service
 - src
-  - `app.py`: Python code with the web server logic
+  - `app.js`: Node code with the web server logic
   - `Dockerfile`: used to build the container image for our program
-  - `requirements.txt`: describe the required Python dependencies
+  - `package.json`: describe the required Node dependencies
 - `skaffold.yaml`: config file for [Skaffold](https://github.com/GoogleContainerTools/skaffold), which is used by Cloud Code to build and deploy images
 
 ## Using CloudCode
@@ -76,7 +76,7 @@ When you enable continuous deployment, Cloud Code will watch your code for any c
 - Select "hello-world" as the application to deploy
 - Select "local" to build containers using your local Docker, or "staging" to build using [Google Cloud Build](https://cloud.google.com/cloud-build/)
 - An output window will appear showing the results of your deployment
-- Now, update the message returned by the server in app.py and save the file. Cloud Code will notice the change and automatically push and deploy a new version of your application automatically
+- Now, update the message returned by the server in app.js and save the file. Cloud Code will notice the change and automatically push and deploy a new version of your application automatically
 
 ### View Container Logs
 - Open the [Command Palette](https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette)

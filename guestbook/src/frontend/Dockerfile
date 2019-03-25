@@ -22,9 +22,9 @@ RUN go build -o /app/frontend -v .
 #   * COMMENT OUT the last ENTRYPOINT statement
 # Start the "dlv debug" server on port 3000 of the container. (Note the process
 # will NOT start until the debugger is attached.)
-# ENTRYPOINT ["dlv", "debug", ".",  "--api-version=2", "--headless", "--listen=:3000", "--log"]
+ENTRYPOINT ["dlv", "debug", ".",  "--api-version=2", "--headless", "--listen=:3000", "--log"]
 
 # If you want to run WITHOUT the debugging server:
 #   * COMMENT OUT the previous ENTRYPOINT statements,
 #   * UNCOMMENT the following ENTRYPOINT statement.
-ENTRYPOINT ["/app/frontend"]
+# ENTRYPOINT ["/app/frontend"]

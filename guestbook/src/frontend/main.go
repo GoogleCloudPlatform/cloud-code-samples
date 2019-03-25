@@ -57,7 +57,10 @@ type frontendServer struct {
 func (f *frontendServer) homeHandler(w http.ResponseWriter, r *http.Request) {
 	log.Printf("received request: %s %s", r.Method, r.URL.Path)
 	if r.Method != http.MethodGet {
-		http.Error(w, "only GET requests are supported", http.StatusMethodNotAllowed)
+		http.Error(w, fmt.Sprintf("only GET requests are supported (got %s)", r.Method), http.StatusMethodNotAllowed)
+		return
+	} else if r.URL.Path != "/" {
+		http.Error(w, "page not found", http.StatusNotFound)
 		return
 	}
 

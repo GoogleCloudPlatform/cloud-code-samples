@@ -15,7 +15,7 @@ limitations under the License.
 """
 
 import os
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, redirect, url_for, request
 import ptvsd
 
 # pylint: disable=C0103
@@ -29,7 +29,16 @@ def main():
 
 @app.route('/post', methods=['POST'])
 def post():
+    errorText = saveMessage(request.form['name'], request.form['message'])
     return redirect(url_for('main'))
+
+def saveMessage(author, message):
+    if author == "":
+        return "Please enter your name"
+    elif message == "":
+        return "Please enter a message"
+    print("message: {} author: {}".format(message, author))
+    return None
 
 
 if __name__ == '__main__':

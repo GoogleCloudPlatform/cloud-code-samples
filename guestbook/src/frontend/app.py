@@ -22,9 +22,10 @@ import ptvsd
 app = Flask(__name__)
 
 @app.route('/')
-def hello():
+def main():
     """Return a friendly HTTP greeting."""
-    return render_template('home.tpl')
+    error_text = None
+    return render_template('home.tpl', error=error_text)
 
 if __name__ == '__main__':
     debug_port = os.getenv('DEBUG_PORT', None)

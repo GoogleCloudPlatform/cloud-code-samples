@@ -17,7 +17,7 @@
 
         {% if error %}
         <div class="alert alert-danger" role="alert">
-            <strong>ERROR:</strong> 
+            <strong>ERROR:</strong> {{ error }}
         </div>
         {% endif %}
 

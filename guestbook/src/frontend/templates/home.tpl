@@ -1,4 +1,3 @@
-{{ define "home" }}
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,11 +15,11 @@
             </a>
         </h1>
 
-        {{ with .error }}
+        {% if error %}
         <div class="alert alert-danger" role="alert">
-            <strong>ERROR:</strong> {{.}}
+            <strong>ERROR:</strong> 
         </div>
-        {{ end }}
+        {% endif %}
 
         <form class="form-inline" method="POST" action="/post">
             <label class="sr-only" for="name">Name</label>
@@ -39,19 +38,6 @@
             </div>
             <button type="submit" class="btn btn-primary mb-2">Post to Guestbook</button>
         </form>
-
-        {{ range .messages }}
-        <div class="card my-3">
-            <div class="card-body">
-                <h5 class="card-title">{{.Author}}</h5>
-                <h6 class="card-subtitle mb-2 text-muted">{{.Date}}</h6>
-                <p class="card-text">
-                    {{.Message}}
-                </p>
-            </div>
-        </div>
-        {{ end }}
     </div>
 </body>
 </html>
-{{ end }}

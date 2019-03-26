@@ -15,7 +15,7 @@ limitations under the License.
 """
 
 import os
-from flask import Flask
+from flask import Flask, render_template
 import ptvsd
 
 # pylint: disable=C0103
@@ -24,8 +24,7 @@ app = Flask(__name__)
 @app.route('/')
 def hello():
     """Return a friendly HTTP greeting."""
-    message = "Hello World"
-    return message
+    return render_template('home.tpl')
 
 if __name__ == '__main__':
     debug_port = os.getenv('DEBUG_PORT', None)

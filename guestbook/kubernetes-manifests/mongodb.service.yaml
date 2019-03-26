@@ -1,0 +1,15 @@
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: guestbook-mongodb
+  labels:
+    app: guestbook
+    tier: db
+spec:
+  ports:
+    - port: 27017
+      targetPort: 27017
+  selector:
+    app: guestbook
+    tier: db

@@ -36,13 +36,14 @@ type guestbookEntry struct {
 	Date    time.Time `json:"date"`
 }
 
-// main starts a frontend server and connects to the backend
+// main starts a frontend server and connects to the backend.
 func main() {
 	backendAddr := os.Getenv("GUESTBOOK_API_ADDR")
 	if backendAddr == "" {
 		log.Fatal("GUESTBOOK_API_ADDR environment variable not specified")
 	}
 
+	// $PORT environment variable is provided in the Kubernetes deployment.
 	port := os.Getenv("PORT")
 	if port == "" {
 		log.Fatal("PORT environment variable not specified")

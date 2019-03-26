@@ -31,9 +31,8 @@ func main() {
 		addr = ":" + p
 	}
 
-	http.HandleFunc("/", home)
-
 	log.Printf("server starting to listen on %s", addr)
+	http.HandleFunc("/", home)
 	if err := http.ListenAndServe(addr, nil); err != nil {
 		log.Fatalf("server listen error: %+v", err)
 	}

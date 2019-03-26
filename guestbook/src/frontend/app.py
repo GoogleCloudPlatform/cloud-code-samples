@@ -15,7 +15,7 @@ limitations under the License.
 """
 
 import os
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, url_for
 import ptvsd
 
 # pylint: disable=C0103
@@ -23,10 +23,14 @@ app = Flask(__name__)
 
 @app.route('/')
 def main():
-    """Return a friendly HTTP greeting."""
     error_text = None
     messageList = [{"Author": "test", "Message": "test2", "Date":"test3"}]
     return render_template('home.tpl', error=error_text, messages=messageList)
+
+@app.route('/post', methods=['POST'])
+def post():
+    return redirect(url_for('main'))
+
 
 if __name__ == '__main__':
     debug_port = os.getenv('DEBUG_PORT', None)

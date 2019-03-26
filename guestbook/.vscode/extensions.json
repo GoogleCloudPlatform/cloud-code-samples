@@ -1,6 +1,5 @@
 {
     "recommendations": [
-        "google.kubecode-kubernetes",
-        "google.kubecode-gke"
+        "googlecloudtools.cloudcode",
     ]
 }

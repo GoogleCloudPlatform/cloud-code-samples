@@ -28,7 +28,7 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/readpref"
 )
 
-// guestbookEntry represents the message object returned in the API
+// guestbookEntry represents the message object returned in the API.
 type guestbookEntry struct {
 	Author  string    `json:"author" bson:"author"`
 	Message string    `json:"message" bson:"message"`
@@ -44,10 +44,12 @@ type guestbookServer struct {
 func main() {
 	ctx := context.Background()
 
+	// PORT environment variable is set in guestbook-backend.deployment.yaml.
 	port := os.Getenv("PORT")
 	if port == "" {
 		log.Fatal("PORT environment variable not specified")
 	}
+	// GUESTBOOK_DB_ADDR environment variable is set in guestbook-backend.deployment.yaml.
 	dbAddr := os.Getenv("GUESTBOOK_DB_ADDR")
 	if dbAddr == "" {
 		log.Fatal("GUESTBOOK_DB_ADDR environment variable not specified")

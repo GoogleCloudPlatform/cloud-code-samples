@@ -15,39 +15,66 @@
 package main
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
 	"os"
 	"time"
+
+	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo/options"
+	"go.mongodb.org/mongo-driver/mongo/readpref"
 )
 
 // guestbookEntry represents the message object returned in the API
 type guestbookEntry struct {
-	Author  string    `json:"author"`
-	Message string    `json:"message"`
-	Date    time.Time `json:"date"`
+	Author  string    `json:"author" bson:"author"`
+	Message string    `json:"message" bson:"message"`
+	Date    time.Time `json:"date" bson:"date"`
+}
+
+type guestbookServer struct {
+	db database
 }
 
 // main starts a server listening on $PORT responding to requests "GET
 // /messages" and "POST /messages" with a JSON API.
 func main() {
+	ctx := context.Background()
+
 	port := os.Getenv("PORT")
 	if port == "" {
 		log.Fatal("PORT environment variable not specified")
 	}
+	dbAddr := os.Getenv("GUESTBOOK_DB_ADDR")
+	if dbAddr == "" {
+		log.Fatal("GUESTBOOK_DB_ADDR environment variable not specified")
+	}
 
-	gs := &guestbookServer{db: new(inMemoryDatabase)}
+	mongoURI := "mongodb://" + dbAddr
+	connCtx, cancel := context.WithTimeout(ctx, time.Second*10)
+	defer cancel()
+	dbConn, err := mongo.Connect(connCtx, options.Client().ApplyURI(mongoURI))
+	if err != nil {
+		log.Fatalf("failed to initialize connection to mongodb: %+v", err)
+	}
+	if err := dbConn.Ping(connCtx, readpref.Primary()); err != nil {
+		log.Fatalf("ping to mongodb failed: %+v", err)
+	}
+
+	gs := &guestbookServer{
+		db: &mongodb{
+			conn: dbConn,
+		},
+	}
+
 	http.HandleFunc("/messages", gs.handler)
 	log.Printf("backend server listening on port %s", port)
 	if err := http.ListenAndServe(":"+port, nil); err != nil {
 		log.Fatal(err)
 	}
-}
-
-type guestbookServer struct {
-	db database
 }
 
 // handler routes the request to the GET or POST handler.
@@ -70,7 +97,7 @@ func (s *guestbookServer) getMessagesHandler(w http.ResponseWriter, r *http.Requ
 		return
 	}
 	if err := json.NewEncoder(w).Encode(entries); err != nil {
-		log.Println("WARNING: failed to encode json into response: %+v", err)
+		log.Printf("WARNING: failed to encode json into response: %+v", err)
 	} else {
 		log.Printf("%d entries returned", len(entries))
 	}
@@ -78,6 +105,7 @@ func (s *guestbookServer) getMessagesHandler(w http.ResponseWriter, r *http.Requ
 
 func (s *guestbookServer) postMessageHandler(w http.ResponseWriter, r *http.Request) {
 	defer r.Body.Close()
+
 	var v guestbookEntry
 	if err := json.NewDecoder(r.Body).Decode(&v); err != nil {
 		http.Error(w, fmt.Sprintf("failed to decode request body into json: %+v", err), http.StatusBadRequest)

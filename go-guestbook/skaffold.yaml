@@ -1,18 +1,23 @@
-apiVersion: skaffold/v1beta2
+apiVersion: skaffold/v1beta7
 kind: Config
 build:
   artifacts:
-  - image: guestbook-backend
-    context: src/backend
-  - image: guestbook-frontend
-    context: src/frontend
+    - image: guestbook-backend
+      context: src/backend
+    - image: guestbook-frontend
+      context: src/frontend
   tagPolicy:
     sha256: {}
+  local:
+    useBuildkit: false
+    useDockerCLI: false
 deploy:
   kubectl:
     manifests:
-    - ./kubernetes-manifests/**.yaml
+      - kubernetes-manifests/**
 profiles:
-- name: cloudbuild
-  build:
-    googleCloudBuild: {}
+  - build:
+      googleCloudBuild:
+        projectId: ahmetb-samples-playground
+    deploy: {}
+    name: cloudbuild

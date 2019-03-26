@@ -40,21 +40,15 @@
             <button type="submit" class="btn btn-primary mb-2">Post to Guestbook</button>
         </form>
 
-        {{ with .messages }}
-            {{ range . }}
-            <div class="card my-3">
-                <div class="card-body">
-                    <h5 class="card-title">{{.Author}}</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">{{.Date}}</h6>
-                    <p class="card-text">
-                        {{.Message}}
-                    </p>
-                </div>
+        {{ range .messages }}
+        <div class="card my-3">
+            <div class="card-body">
+                <h5 class="card-title">{{.Author}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{.Date}}</h6>
+                <p class="card-text">
+                    {{.Message}}
+                </p>
             </div>
-            {{ end }}
-        {{ else }}
-        <div class="alert alert-info" role="alert">
-            The guestbook has no message. Use the form above to add one!
         </div>
         {{ end }}
     </div>

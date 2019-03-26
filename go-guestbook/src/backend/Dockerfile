@@ -14,7 +14,7 @@ RUN go mod download
 COPY . ./
 
 # Compile the application to /app/backend.
-RUN go build -o /app/backend -v .
+RUN go build -o /app/backend .
 
 # If you want to use the debugger, you need to modify the entrypoint to the
 # container and point it to the "dlv debug" comand:

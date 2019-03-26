@@ -21,7 +21,7 @@ import (
 	"os"
 )
 
-const defaultAddr = "127.0.0.1:8080"
+const defaultAddr = ":8080"
 
 // main starts an http server on the $PORT environment variable.
 func main() {

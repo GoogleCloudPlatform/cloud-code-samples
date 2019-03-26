@@ -1,15 +1,15 @@
 # This Service manifest defines:
-# - a load balancer for pods matching label "app: hello-world"
+# - a load balancer for pods matching label "app: go-hello-world"
 # - exposing the application to the public Internet (type:LoadBalancer)
 # - routes port 80 of the load balancer to the port 8080 of the Pods.
 apiVersion: v1
 kind: Service
 metadata:
-  name: hello-world-external
+  name: go-hello-world-external
 spec:
   type: LoadBalancer
   selector:
-    app: hello-world
+    app: go-hello-world
   ports:
   - name: http
     port: 80

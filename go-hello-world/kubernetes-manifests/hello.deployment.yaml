@@ -1,25 +1,26 @@
 # This Deployment manifest defines:
-# - single-replica deployment of the container image, with label "app:hello-world"
+# - single-replica deployment of the container image, with label "app: go-hello-world"
 # - Pod exposes port 8080
-# - specify environment variables PORT and DEBUG_PORT to the container process
-apiVersion: extensions/v1beta1
+# - specify PORT environment variable to the container process
+apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: hello-world
+  name: go-hello-world
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: go-hello-world
   template:
     metadata:
       labels:
-        app: hello-world
+        app: go-hello-world
     spec:
       containers:
       - name: server
-        image: hello-world
+        image: go-hello-world
         ports:
         - containerPort: 8080
         env:
         - name: PORT
           value: "8080"
-        - name: DEBUG_PORT
-          value: "3000"

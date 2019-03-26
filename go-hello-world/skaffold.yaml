@@ -11,7 +11,6 @@ deploy:
     manifests:
       - kubernetes-manifests/**
 profiles:
-  - name: no-push # do not push the images, only build
+  - name: cloudbuild
     build:
-      local:
-        push: false
+      googleCloudBuild: {}

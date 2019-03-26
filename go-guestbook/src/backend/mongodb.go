@@ -68,23 +68,3 @@ func (m *mongodb) addEntry(e guestbookEntry) error {
 	}
 	return nil
 }
-
-var (
-	mockEntries = []guestbookEntry{
-		{
-			Author:  "Alice",
-			Message: "I just came across your website and it's dope!",
-			Date:    time.Now().Add(-time.Minute * 4),
-		},
-		{
-			Author:  "Jeff",
-			Message: "Hello, I really love your website!",
-			Date:    time.Now().Add(-time.Hour * 2),
-		},
-		{
-			Author:  "Ali",
-			Message: "Your website rocks, I'd like to have a website just like yours.",
-			Date:    time.Now().Add(-time.Hour * 10),
-		},
-	}
-)

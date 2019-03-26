@@ -27,9 +27,12 @@ import (
 	"time"
 )
 
-var tpl *template.Template
+var (
+	// tpl stores the parsed frontend html template
+	tpl *template.Template
+)
 
-// guestbookEntry represents the message object returned frmo the backend API.
+// guestbookEntry represents the message object returned from the backend API.
 type guestbookEntry struct {
 	Author  string    `json:"author"`
 	Message string    `json:"message"`
@@ -38,12 +41,13 @@ type guestbookEntry struct {
 
 // main starts a frontend server and connects to the backend.
 func main() {
+	// GUESTBOOK_API_ADDR environment variable is provided in guestbook-frontend.deployment.yaml.
 	backendAddr := os.Getenv("GUESTBOOK_API_ADDR")
 	if backendAddr == "" {
 		log.Fatal("GUESTBOOK_API_ADDR environment variable not specified")
 	}
 
-	// $PORT environment variable is provided in the Kubernetes deployment.
+	// PORT environment variable is provided in guestbook-frontend.deployment.yaml.
 	port := os.Getenv("PORT")
 	if port == "" {
 		log.Fatal("PORT environment variable not specified")
@@ -69,6 +73,7 @@ type frontendServer struct {
 	backendAddr string
 }
 
+// homeHandler handles GET requests to /.
 func (f *frontendServer) homeHandler(w http.ResponseWriter, r *http.Request) {
 	log.Printf("received request: %s %s", r.Method, r.URL.Path)
 	if r.Method != http.MethodGet {
@@ -79,7 +84,7 @@ func (f *frontendServer) homeHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	log.Printf("querying backend api for entries")
+	log.Printf("querying backend for entries")
 	resp, err := http.Get(fmt.Sprintf("http://%s/messages", f.backendAddr))
 	if err != nil {
 		http.Error(w, fmt.Sprintf("querying backend failed: %+v", err), http.StatusInternalServerError)
@@ -93,7 +98,7 @@ func (f *frontendServer) homeHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	log.Printf("parsing api response into json")
+	log.Printf("parsing backend response into json")
 	var v []guestbookEntry
 	if err := json.Unmarshal(body, &v); err != nil {
 		log.Printf("WARNING: failed to decode json from the api: %+v input=%q", err, string(body))
@@ -111,6 +116,7 @@ func (f *frontendServer) homeHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// postHandler handles POST requests to /messages.
 func (f *frontendServer) postHandler(w http.ResponseWriter, r *http.Request) {
 	log.Printf("received request: %s %s", r.Method, r.URL.Path)
 	if r.Method != http.MethodPost {
@@ -131,6 +137,7 @@ func (f *frontendServer) postHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// saveMessage makes a request to the backend to persist the message.
 func (f *frontendServer) saveMessage(author, message string) error {
 	if author == "" {
 		return errors.New("Please enter your name.")
@@ -150,9 +157,9 @@ func (f *frontendServer) saveMessage(author, message string) error {
 	resp, err := http.Post(fmt.Sprintf("http://%s/messages", f.backendAddr),
 		"application/json", bytes.NewReader(body))
 	if err != nil {
-		return fmt.Errorf("api returned failure: %+v", err)
+		return fmt.Errorf("backend returned failure: %+v", err)
 	} else if resp.StatusCode != http.StatusOK {
-		return fmt.Errorf("unexpected status code from api: %d %v", resp.StatusCode, resp.Status)
+		return fmt.Errorf("unexpected status code from backend: %d %v", resp.StatusCode, resp.Status)
 	}
 	defer resp.Body.Close()
 	return nil

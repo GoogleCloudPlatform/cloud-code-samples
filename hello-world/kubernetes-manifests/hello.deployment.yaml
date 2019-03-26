@@ -1,18 +1,21 @@
 # Syntax reference https://kubernetes.io/docs/concepts/configuration/overview/
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1 
 kind: Deployment
 metadata:
-  name: hello-world
+  name: node-hello-world
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: node-hello-world
   template:
     metadata:
       labels:
-        app: hello-world
+        app: node-hello-world
     spec:
       containers:
         - name: server
-          image: hello-world
+          image: node-hello-world
           ports:
             - containerPort: 8080
           env:

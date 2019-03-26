@@ -15,9 +15,10 @@ limitations under the License.
 """
 
 import os
-from flask import Flask
+from flask import Flask, jsonify
 import ptvsd
 from flask_pymongo import PyMongo
+import json
 
 # pylint: disable=C0103
 app = Flask(__name__)
@@ -27,27 +28,27 @@ app.config["MONGO_URI"] = 'mongodb://{}:{}@{}:27017/admin'.format(  os.environ.g
                                                                     os.environ.get('MONGO_PORT', '27017'))
 mongo = PyMongo(app)
 
-@app.route('/')
-def hello():
-    """Return a friendly HTTP greeting."""
-    message = "Hello World"
-    return message
+@app.route('/messages', methods=['GET'])
+def get_messages():
+    message_list = list(mongo.db.messages.find())
+    for m in message_list:
+        # make json serializable
+        m['_id'] = str(m['_id'])
+    return jsonify(message_list)
 
-def getMessages():
-    message_list = mongo.db.messages.find()
-    return list(message_list)
 
-def addMessage(data):
+def add_message(data):
     result = mongo.db.messages.insert_one(data)
     return result.inserted_id
 
 
-def get_mocks():
+def populate_db():
     message_list = [
         {"Author": "test", "Message": "test2", "Date":"test3"},
         {"Author": "Dan", "Message": "Gr8", "Date":"Mar 12"}
         ]
-    return message_list
+    for m in message_list:
+        add_message(m)
 
 if __name__ == '__main__':
     debug_port = os.getenv('DEBUG_PORT', None)

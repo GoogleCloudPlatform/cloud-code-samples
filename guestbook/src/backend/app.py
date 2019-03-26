@@ -17,15 +17,37 @@ limitations under the License.
 import os
 from flask import Flask
 import ptvsd
+from flask_pymongo import PyMongo
 
 # pylint: disable=C0103
 app = Flask(__name__)
+app.config["MONGO_URI"] = 'mongodb://{}:{}@{}:27017/admin'.format(  os.environ.get('MONGO_USERNAME', 'root'), 
+                                                                    os.environ.get('MONGO_PASSWORD', 'password'), 
+                                                                    os.environ.get('MONGO_HOST', 'localhost'), 
+                                                                    os.environ.get('MONGO_PORT', '27017'))
+mongo = PyMongo(app)
 
 @app.route('/')
 def hello():
     """Return a friendly HTTP greeting."""
     message = "Hello World"
     return message
+
+def getMessages():
+    message_list = mongo.db.messages.find()
+    return list(message_list)
+
+def addMessage(data):
+    result = mongo.db.messages.insert_one(data)
+    return result.inserted_id
+
+
+def get_mocks():
+    message_list = [
+        {"Author": "test", "Message": "test2", "Date":"test3"},
+        {"Author": "Dan", "Message": "Gr8", "Date":"Mar 12"}
+        ]
+    return message_list
 
 if __name__ == '__main__':
     debug_port = os.getenv('DEBUG_PORT', None)

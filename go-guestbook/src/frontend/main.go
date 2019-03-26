@@ -53,7 +53,9 @@ func main() {
 		log.Fatal("PORT environment variable not specified")
 	}
 
-	t, err := template.New("").ParseGlob("templates/*.tpl")
+	t, err := template.New("").Funcs(map[string]interface{}{
+		"since": sinceDate,
+	}).ParseGlob("templates/*.tpl")
 	if err != nil {
 		log.Fatalf("could not parse templates: %+v", err)
 	}
@@ -165,3 +167,6 @@ func (f *frontendServer) saveMessage(author, message string) error {
 	defer resp.Body.Close()
 	return nil
 }
+
+// sinceDate is used in the html template to display human-friendly dates.
+func sinceDate(t time.Time) string { return time.Since(t).Truncate(time.Second).String() }

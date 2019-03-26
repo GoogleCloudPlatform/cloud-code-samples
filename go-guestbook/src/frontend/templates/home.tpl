@@ -37,8 +37,8 @@
         {{ range .messages }}
         <div class="card my-3">
             <div class="card-body">
-                <h5 class="card-title">{{.Author}}</h5>
-                <h6 class="card-subtitle mb-2 text-muted">{{.Date}}</h6>
+                <strong class="card-title">{{.Author}}</strong>
+                <span class="card-subtitle mb-2 text-muted">({{ since .Date }} ago)</span>
                 <p class="card-text">
                     {{.Message}}
                 </p>

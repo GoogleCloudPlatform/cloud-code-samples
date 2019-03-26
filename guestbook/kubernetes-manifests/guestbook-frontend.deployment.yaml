@@ -38,5 +38,7 @@ spec:
         env:
         - name: PORT
           value: "8080"
+        - name: DEBUG_PORT
+          value: "3000"
         - name: GUESTBOOK_API_ADDR
           value: guestbook-backend:8080

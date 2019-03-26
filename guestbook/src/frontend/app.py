@@ -15,7 +15,7 @@ limitations under the License.
 """
 
 import os
-from flask import Flask, render_template, redirect, url_for, request, jsonify
+from flask import Flask, render_template, redirect, url_for, request, jsonify, abort
 import ptvsd
 import requests
 import json
@@ -26,36 +26,16 @@ app = Flask(__name__)
 
 @app.route('/')
 def main():
-    return render_template('home.tpl', messages=get_messages())
+    response = requests.get("http://python-guestbook-backend:8080/messages")
+    message_list = json.loads(response.text)
+    return render_template('home.tpl', messages=message_list)
 
 @app.route('/post', methods=['POST'])
 def post():
-    error_text = saveMessage(request.form['name'], request.form['message'])
-    print(error_text)
-    if error_text is not None:
-        return render_template('home.tpl', error=error_text)
-    else:
-        return redirect(url_for('main'))
+    new_message = {'Author': request.form['name'], 'Message':  request.form['message'], 'Date': time.time()}
+    requests.post("http://python-guestbook-backend:8080/messages",  data=jsonify(new_message).data, headers={'content-type' : 'application/json'})
 
-def saveMessage(author, message):
-    if author == "":
-        return "Please enter your name"
-    elif message == "":
-        return "Please enter a message"
-    data = jsonify({'Author': author, 'Message': message, 'Date':time.time()}).data
-    try:
-        requests.post("http://python-guestbook-backend:8080/messages",  data=data, headers={'content-type' : 'application/json'})
-    except requests.exceptions.RequestException as e:
-        return e.message
-    return None
-
-def get_messages():
-    response = requests.get("http://python-guestbook-backend:8080/messages")
-    #todo: handle errors
-
-    message_list = json.loads(response.text)
-    return message_list
-
+    return redirect(url_for('main'))
 
 if __name__ == '__main__':
     debug_port = os.getenv('DEBUG_PORT', None)

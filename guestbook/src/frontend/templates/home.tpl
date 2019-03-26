@@ -14,27 +14,20 @@
                 My Guestbook
             </a>
         </h1>
-
-        {% if error %}
-        <div class="alert alert-danger" role="alert">
-            <strong>ERROR:</strong> {{ error }}
-        </div>
-        {% endif %}
-
         <form class="form-inline" method="POST" action="/post">
             <label class="sr-only" for="name">Name</label>
             <div class="input-group mb-2 mr-sm-2">
                 <div class="input-group-prepend">
                 <div class="input-group-text">Your Name</div>
                 </div>
-                <input type="text" class="form-control" id="name" name="name" placeholder="">
+                <input type="text" class="form-control" id="name" name="name" placeholder="" required>
             </div>
             <label class="sr-only" for="message">Message</label>
             <div class="input-group mb-2 mr-sm-2">
                 <div class="input-group-prepend">
                 <div class="input-group-text">Message</div>
                 </div>
-                <input type="text" class="form-control" id="message" name="message">
+                <input type="text" class="form-control" id="message" name="message" required>
             </div>
             <button type="submit" class="btn btn-primary mb-2">Post to Guestbook</button>
         </form>

@@ -38,7 +38,6 @@ def get_messages():
 
 @app.route('/messages', methods=['POST'])
 def add_message(): 
-    #todo: error handling
     data = json.loads(request.data)
     result = mongo.db.messages.insert_one(data)
     return result.inserted_id

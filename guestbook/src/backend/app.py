@@ -31,8 +31,8 @@ mongo = PyMongo(app)
 @app.route('/messages', methods=['GET'])
 def get_messages():
     message_list = list(mongo.db.messages.find())
+    # make json serializable
     for m in message_list:
-        # make json serializable
         m['_id'] = str(m['_id'])
     return jsonify(message_list)
 

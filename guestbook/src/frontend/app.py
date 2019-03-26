@@ -26,15 +26,14 @@ app = Flask(__name__)
 
 @app.route('/')
 def main():
-    response = requests.get("http://python-guestbook-backend:8080/messages")
+    response = requests.get("http://python-guestbook-backend:8080/messages", timeout=0.1)
     message_list = json.loads(response.text)
     return render_template('home.tpl', messages=message_list)
 
 @app.route('/post', methods=['POST'])
 def post():
     new_message = {'Author': request.form['name'], 'Message':  request.form['message'], 'Date': time.time()}
-    requests.post("http://python-guestbook-backend:8080/messages",  data=jsonify(new_message).data, headers={'content-type' : 'application/json'})
-
+    requests.post("http://python-guestbook-backend:8080/messages",  data=jsonify(new_message).data, headers={'content-type' : 'application/json'}, timeout=0.1)
     return redirect(url_for('main'))
 
 if __name__ == '__main__':

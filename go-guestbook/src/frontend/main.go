@@ -98,6 +98,11 @@ func (f *frontendServer) homeHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	if resp.StatusCode != http.StatusOK {
+		http.Error(w, fmt.Sprintf("got status code %d from the backend: %s", resp.StatusCode, string(body)), http.StatusInternalServerError)
+		return
+	}
+
 	log.Printf("parsing backend response into json")
 	var v []guestbookEntry
 	if err := json.Unmarshal(body, &v); err != nil {
@@ -125,12 +130,8 @@ func (f *frontendServer) postHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if err := f.saveMessage(r.FormValue("name"), r.FormValue("message")); err != nil {
-		// send error to the template
-		if err := tpl.ExecuteTemplate(w, "home", map[string]interface{}{
-			"error": err,
-		}); err != nil {
-			log.Printf("WARNING: failed to render template: %+v", err)
-		}
+		http.Error(w, fmt.Sprintf("failed to save message: %+v", err), http.StatusBadRequest)
+		return
 	} else {
 		// redirect to homepage
 		http.Redirect(w, r, "/", http.StatusFound)

@@ -35,7 +35,7 @@ func (m *mongodb) entries() ([]guestbookEntry, error) {
 
 	col := m.conn.Database("guestbook").Collection("entries")
 	cur, err := col.Find(ctx, bson.D{}, &options.FindOptions{
-		Sort: map[string]interface{}{"_id": "-1"},
+		Sort: map[string]interface{}{"_id": -1},
 	})
 	if err != nil {
 		return nil, fmt.Errorf("mongodb.Find failed: %+v", err)

@@ -23,14 +23,17 @@ app = Flask(__name__)
 
 @app.route('/')
 def main():
-    error_text = None
-    messageList = [{"Author": "test", "Message": "test2", "Date":"test3"}]
-    return render_template('home.tpl', error=error_text, messages=messageList)
+    message_list = [{"Author": "test", "Message": "test2", "Date":"test3"}]
+    return render_template('home.tpl', messages=message_list)
 
 @app.route('/post', methods=['POST'])
 def post():
-    errorText = saveMessage(request.form['name'], request.form['message'])
-    return redirect(url_for('main'))
+    error_text = saveMessage(request.form['name'], request.form['message'])
+    print(error_text)
+    if error_text is not None:
+        return render_template('home.tpl', error=error_text)
+    else:
+        return redirect(url_for('main'))
 
 def saveMessage(author, message):
     if author == "":

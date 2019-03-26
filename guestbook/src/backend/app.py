@@ -22,7 +22,7 @@ import json
 
 # pylint: disable=C0103
 app = Flask(__name__)
-app.config["MONGO_URI"] = 'mongodb://{}:{}@{}:27017/admin'.format(  os.environ.get('MONGO_USERNAME', 'root'), 
+app.config["MONGO_URI"] = 'mongodb://{}:{}@{}:{}/admin'.format(  os.environ.get('MONGO_USERNAME', 'root'), 
                                                                     os.environ.get('MONGO_PASSWORD', 'password'), 
                                                                     os.environ.get('MONGO_HOST', 'localhost'), 
                                                                     os.environ.get('MONGO_PORT', '27017'))

@@ -6,14 +6,14 @@
   "configurations": [
     {
       "podSelector": {
-        "app": "hello-world"
+        "app": "python-hello-world"
       },
       "type": "cloudcode",
       "request": "attach",
       "localRoot": "${workspaceFolder}/src",
       "language": "Python",
       "remoteRoot": "/app",
-      "name": "hello-world",
+      "name": "Debug on Kubernetes",
       "debugPort": 3000
     }
   ]

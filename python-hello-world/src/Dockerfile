@@ -13,8 +13,5 @@ RUN pip install --trusted-host pypi.python.org -r requirements.txt
 # Install ptvsd for debugging
 RUN pip install ptvsd
 
-# Make port 8080 available to the world outside this container
-EXPOSE 5000
-
 # Run app.py when the container launches
-CMD ["python", "app.py"]
+CMD ["python", "-m", "ptvsd", "--port", "3000", "--host", "0.0.0.0", "app.py"]

@@ -14,4 +14,4 @@ RUN pip install --trusted-host pypi.python.org -r requirements.txt
 RUN pip install ptvsd
 
 # Run app.py when the container launches
-CMD ["python", "-m", "ptvsd", "--port", "3000", "--host", "0.0.0.0", "app.py"]
+CMD ["python", "-m", "ptvsd", "--port", "3000", "--host", "0.0.0.0", "back.py"]

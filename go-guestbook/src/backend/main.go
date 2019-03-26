@@ -72,15 +72,14 @@ func main() {
 		},
 	}
 
-	http.HandleFunc("/messages", gs.handler)
 	log.Printf("backend server listening on port %s", port)
+	http.Handle("/messages", gs)
 	if err := http.ListenAndServe(":"+port, nil); err != nil {
 		log.Fatal(err)
 	}
 }
 
-// handler routes the request to the GET or POST handler.
-func (s *guestbookServer) handler(w http.ResponseWriter, r *http.Request) {
+func (s *guestbookServer) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	log.Printf("received request: method=%s path=%s", r.Method, r.URL.Path)
 	if r.Method == http.MethodGet {
 		s.getMessagesHandler(w, r)

@@ -1,2 +1,0 @@
-bookshelf: python main.py
-worker: psqworker main.books_queue

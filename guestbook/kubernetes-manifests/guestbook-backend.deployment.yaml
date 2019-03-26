@@ -29,7 +29,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: us.gcr.io/sanche-testing-project/python-guestbook-backend
+        image: python-guestbook-backend
         ports:
         - name: http-server
           containerPort: 8080

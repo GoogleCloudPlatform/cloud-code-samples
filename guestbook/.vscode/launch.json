@@ -8,9 +8,9 @@
       "language": "Python",
       "debugPort": 3000,
       "localRoot": "${workspaceFolder}/src/frontend",
-      "remoteRoot": "/src/frontend",
+      "remoteRoot": "/app",
       "podSelector": {
-        "app": "guestbook",
+        "app": "python-guestbook",
         "tier": "frontend"
       }
     },
@@ -21,9 +21,9 @@
       "language": "Python",
       "debugPort": 3000,
       "localRoot": "${workspaceFolder}/src/backend",
-      "remoteRoot": "/src/backend",
+      "remoteRoot": "/app",
       "podSelector": {
-        "app": "guestbook",
+        "app": "python-guestbook",
         "tier": "backend"
       }
     }

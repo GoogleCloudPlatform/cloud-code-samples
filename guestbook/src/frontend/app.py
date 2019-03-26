@@ -23,17 +23,18 @@ import time
 
 # pylint: disable=C0103
 app = Flask(__name__)
+app.config["BACKEND_URI"] = 'http://{}/messages'.format(os.environ.get('GUESTBOOK_API_ADDR', 'localhost:8080'))
 
 @app.route('/')
 def main():
-    response = requests.get("http://python-guestbook-backend:8080/messages", timeout=0.1)
+    response = requests.get(app.config["BACKEND_URI"], timeout=0.1)
     message_list = json.loads(response.text)
     return render_template('home.tpl', messages=message_list)
 
 @app.route('/post', methods=['POST'])
 def post():
     new_message = {'Author': request.form['name'], 'Message':  request.form['message'], 'Date': time.time()}
-    requests.post("http://python-guestbook-backend:8080/messages",  data=jsonify(new_message).data, headers={'content-type' : 'application/json'}, timeout=0.1)
+    requests.post(app.config["BACKEND_URI"],  data=jsonify(new_message).data, headers={'content-type' : 'application/json'}, timeout=0.1)
     return redirect(url_for('main'))
 
 if __name__ == '__main__':

@@ -17,6 +17,8 @@ limitations under the License.
 import os
 from flask import Flask, render_template, redirect, url_for, request
 import ptvsd
+import requests
+import json
 
 # pylint: disable=C0103
 app = Flask(__name__)
@@ -43,10 +45,10 @@ def saveMessage(author, message):
     return None
 
 def get_messages():
-    message_list = [
-        {"Author": "test", "Message": "test2", "Date":"test3"},
-        {"Author": "Dan", "Message": "Gr8", "Date":"Mar 12"}
-        ]
+    response = requests.get("http://python-guestbook-backend:8080/messages")
+    #todo: handle errors
+
+    message_list = json.loads(response.text)
     return message_list
 
 

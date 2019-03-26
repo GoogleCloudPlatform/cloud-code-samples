@@ -1,0 +1,18 @@
+apiVersion: skaffold/v1beta2
+kind: Config
+build:
+  artifacts:
+  - image: us.gcr.io/sanche-testing-project/guestbook/python/backend
+    context: src/backend
+  - image: us.gcr.io/sanche-testing-project/guestbook/python/frontend
+    context: src/frontend
+  tagPolicy:
+    sha256: {}
+deploy:
+  kubectl:
+    manifests:
+    - ./kubernetes-manifests/**.yaml
+profiles:
+- name: cloudbuild
+  build:
+    googleCloudBuild: {}

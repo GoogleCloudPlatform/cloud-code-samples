@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package jetty.jetty;
+package cloudcode.helloworld;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

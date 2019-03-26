@@ -14,24 +14,20 @@
  * limitations under the License.
  */
 
-package jetty.jetty.web;
+package cloudcode.helloworld;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
-import jetty.jetty.service.HelloWorldService;
+@Configuration
+@EnableAutoConfiguration
+@ComponentScan
+public class HelloWorldApplication {
 
-@Controller
-public class HelloWorldController {
-
-	@Autowired
-	private HelloWorldService helloWorldService;
-
-	@RequestMapping("/")
-	@ResponseBody
-	public String helloWorld() {
-		return this.helloWorldService.getHelloMessage();
+	public static void main(String[] args) throws Exception {
+		SpringApplication.run(HelloWorldApplication.class, args);
 	}
+
 }

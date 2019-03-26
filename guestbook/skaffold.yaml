@@ -2,9 +2,9 @@ apiVersion: skaffold/v1beta2
 kind: Config
 build:
   artifacts:
-  - image: us.gcr.io/sanche-testing-project/guestbook/python/backend
+  - image: us.gcr.io/sanche-testing-project/python-guestbook-backend
     context: src/backend
-  - image: us.gcr.io/sanche-testing-project/guestbook/python/frontend
+  - image: us.gcr.io/sanche-testing-project/python-guestbook-frontend
     context: src/frontend
   tagPolicy:
     sha256: {}

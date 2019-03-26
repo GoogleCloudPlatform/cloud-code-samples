@@ -15,21 +15,21 @@
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: guestbook-frontend-python
+  name: python-guestbook-frontend
   labels:
-    app: guestbook-python
+    app: python-guestbook
     tier: frontend
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: guestbook-python
+        app: python-guestbook
         tier: frontend
     spec:
       containers:
       - name: frontend
-        image: us.gcr.io/sanche-testing-project/guestbook/python/frontend
+        image: us.gcr.io/sanche-testing-project/python-guestbook-frontend
         ports:
         - name: http-server
           containerPort: 8080

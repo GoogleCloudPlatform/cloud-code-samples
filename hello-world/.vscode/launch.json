@@ -2,29 +2,17 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "podSelector": {
+                "app": "frontend"
+            },
             "type": "cloudcode",
             "language": "Node",
             "request": "attach",
             "debugPort": 9229,
             "localRoot": "${workspaceFolder}",
             "remoteRoot": "/app",
-            "name": "Attach App on Kubernetes Cluster: NodeJS",
-            "podSelector": {
-                "app": "frontend"
-            }
-        },
-        {
-            "type": "cloudcode",
-            "language": "Node",
-            "request": "launch",
-            "debugPort": 9229,
-            "localRoot": "${workspaceFolder}",
-            "remoteRoot": "/app",
-            "protocol": "auto",
-            "name": "Launch App on Kubernetes Cluster: NodeJS",
-            "podSelector": {
-                "app": "frontend"
-            }
-        },
+            "name": "Debug on Kubernetes",
+
+        }
     ]
 }

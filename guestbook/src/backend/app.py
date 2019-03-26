@@ -15,7 +15,7 @@ limitations under the License.
 """
 
 import os
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 import ptvsd
 from flask_pymongo import PyMongo
 import json
@@ -36,19 +36,12 @@ def get_messages():
         m['_id'] = str(m['_id'])
     return jsonify(message_list)
 
-
-def add_message(data):
+@app.route('/messages', methods=['POST'])
+def add_message(): 
+    #todo: error handling
+    data = json.loads(request.data)
     result = mongo.db.messages.insert_one(data)
     return result.inserted_id
-
-
-def populate_db():
-    message_list = [
-        {"Author": "test", "Message": "test2", "Date":"test3"},
-        {"Author": "Dan", "Message": "Gr8", "Date":"Mar 12"}
-        ]
-    for m in message_list:
-        add_message(m)
 
 if __name__ == '__main__':
     debug_port = os.getenv('DEBUG_PORT', None)

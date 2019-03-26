@@ -15,10 +15,11 @@ limitations under the License.
 """
 
 import os
-from flask import Flask, render_template, redirect, url_for, request
+from flask import Flask, render_template, redirect, url_for, request, jsonify
 import ptvsd
 import requests
 import json
+import time
 
 # pylint: disable=C0103
 app = Flask(__name__)
@@ -41,7 +42,11 @@ def saveMessage(author, message):
         return "Please enter your name"
     elif message == "":
         return "Please enter a message"
-    print("message: {} author: {}".format(message, author))
+    data = jsonify({'Author': author, 'Message': message, 'Date':time.time()}).data
+    try:
+        requests.post("http://python-guestbook-backend:8080/messages",  data=data, headers={'content-type' : 'application/json'})
+    except requests.exceptions.RequestException as e:
+        return e.message
     return None
 
 def get_messages():

@@ -38,6 +38,18 @@
             </div>
             <button type="submit" class="btn btn-primary mb-2">Post to Guestbook</button>
         </form>
+
+        {% for m in messages %}
+        <div class="card my-3">
+            <div class="card-body">
+                <h5 class="card-title">{{m.Author}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{m.Date}}</h6>
+                <p class="card-text">
+                    {{m.Message}}
+                </p>
+            </div>
+        </div>
+        {% endfor %}
     </div>
 </body>
 </html>

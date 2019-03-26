@@ -25,7 +25,8 @@ app = Flask(__name__)
 def main():
     """Return a friendly HTTP greeting."""
     error_text = None
-    return render_template('home.tpl', error=error_text)
+    messageList = [{"Author": "test", "Message": "test2", "Date":"test3"}]
+    return render_template('home.tpl', error=error_text, messages=messageList)
 
 if __name__ == '__main__':
     debug_port = os.getenv('DEBUG_PORT', None)

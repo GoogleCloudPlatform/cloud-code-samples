@@ -16,32 +16,32 @@ steps:
   env:
       - 'E2E_URL=http://hello-world-test:5000'
 ### Bookshelf Tests
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'bookshelf', '.']
-  dir: 'cloudcode/bookshelf/src'
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['run', 
-         '--name', 'mongo-service', 
-         '--network', 'cloudbuild',
-         '-e', 'MONGO_INITDB_ROOT_USERNAME=root', 
-         '-e', 'MONGO_INITDB_ROOT_PASSWORD=example', 
-         '-p', '27017', 
-         '-d', 'mongo' ]
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['run', 
-         '--name', 'bookshelf-test', 
-         '-e', 'PROJECT_ID=${PROJECT_ID}', 
-         '-e', 'PROCESS=bookshelf', 
-         '--network', 'cloudbuild', 
-         '-p', '8080', 
-         '-d', 'bookshelf' ]
-- name: 'qnib/pytest'
-  entrypoint: 'bash'
-  args:
-  - '-c'
-  - |
-    pip install -r requirements.txt
-    cd cloudcode/bookshelf/tests
-    pytest -s ./
-  env:
-      - 'E2E_URL=http://bookshelf-test:8080'
+#- name: 'gcr.io/cloud-builders/docker'
+  #args: ['build', '-t', 'bookshelf', '.']
+  #dir: 'cloudcode/bookshelf/src'
+#- name: 'gcr.io/cloud-builders/docker'
+  #args: ['run', 
+         #'--name', 'mongo-service', 
+         #'--network', 'cloudbuild',
+         #'-e', 'MONGO_INITDB_ROOT_USERNAME=root', 
+         #'-e', 'MONGO_INITDB_ROOT_PASSWORD=example', 
+         #'-p', '27017', 
+         #'-d', 'mongo' ]
+#- name: 'gcr.io/cloud-builders/docker'
+  #args: ['run', 
+         #'--name', 'bookshelf-test', 
+         #'-e', 'PROJECT_ID=${PROJECT_ID}', 
+         #'-e', 'PROCESS=bookshelf', 
+         #'--network', 'cloudbuild', 
+         #'-p', '8080', 
+         #'-d', 'bookshelf' ]
+#- name: 'qnib/pytest'
+  #entrypoint: 'bash'
+  #args:
+  #- '-c'
+  #- |
+    #pip install -r requirements.txt
+    #cd cloudcode/bookshelf/tests
+    #pytest -s ./
+  #env:
+      #- 'E2E_URL=http://bookshelf-test:8080'

@@ -23,8 +23,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def main():
-    message_list = [{"Author": "test", "Message": "test2", "Date":"test3"}]
-    return render_template('home.tpl', messages=message_list)
+    return render_template('home.tpl', messages=get_messages())
 
 @app.route('/post', methods=['POST'])
 def post():
@@ -42,6 +41,13 @@ def saveMessage(author, message):
         return "Please enter a message"
     print("message: {} author: {}".format(message, author))
     return None
+
+def get_messages():
+    message_list = [
+        {"Author": "test", "Message": "test2", "Date":"test3"},
+        {"Author": "Dan", "Message": "Gr8", "Date":"Mar 12"}
+        ]
+    return message_list
 
 
 if __name__ == '__main__':

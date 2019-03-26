@@ -30,11 +30,6 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import static org.junit.Assert.assertEquals;
 
-/**
- * Basic integration tests for demo application.
- * 
- * @author Dave Syer
- */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = HelloWorldApplication.class)
 @WebAppConfiguration
@@ -44,7 +39,7 @@ public class SampleJettyApplicationTests {
 
 	@Value("${local.server.port}")
 	private int port;
-
+// TODO: review test	
 	@Test
 	public void testHome() throws Exception {
 		ResponseEntity<String> entity = new TestRestTemplate().getForEntity(

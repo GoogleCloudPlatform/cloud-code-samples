@@ -14,20 +14,20 @@
                 My Guestbook
             </a>
         </h1>
-        <form class="form-inline" method="POST" action="/post">
+        <form class="form-inline" method="POST" th:action="@{/post}" th:object="${formmessage}">
             <label class="sr-only" for="name">Name</label>
             <div class="input-group mb-2 mr-sm-2">
                 <div class="input-group-prepend">
                 <div class="input-group-text">Your Name</div>
                 </div>
-                <input type="text" class="form-control" id="name" name="name" placeholder="" required>
+                <input type="text" class="form-control" id="author" name="author" placeholder="" required/>
             </div>
             <label class="sr-only" for="message">Message</label>
             <div class="input-group mb-2 mr-sm-2">
                 <div class="input-group-prepend">
                 <div class="input-group-text">Message</div>
                 </div>
-                <input type="text" class="form-control" id="message" name="message" required>
+                <input type="text" class="form-control" id="message" name="message" required/>
             </div>
             <button type="submit" class="btn btn-primary mb-2">Post to Guestbook</button>
         </form>

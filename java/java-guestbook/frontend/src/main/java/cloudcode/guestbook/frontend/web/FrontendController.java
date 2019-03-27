@@ -45,8 +45,9 @@ public class FrontendController {
 
     @RequestMapping(value="/post", method=RequestMethod.POST)
     @ResponseBody
-    public String post(Model model) {
-        return "test";
+    public String post(FormMessage formMessage) {
+        return formMessage.toString();
+        //return "redirect:/";
     }
 
 }

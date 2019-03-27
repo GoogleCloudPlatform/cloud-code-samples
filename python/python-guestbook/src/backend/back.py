@@ -6,6 +6,8 @@ import os
 from flask import Flask, jsonify, request
 import ptvsd
 from flask_pymongo import PyMongo
+from functools import reduce
+import bleach
 
 # pylint: disable=C0103
 app = Flask(__name__)
@@ -29,9 +31,17 @@ def get_messages():
 def add_message():
     """ save a new message on POST request """
     data = json.loads(request.data)
-    #todo: verify data before saving to db
-    result = mongo.db.messages.insert_one(data)
-    return result.inserted_id
+    validKeys = set(['Date', 'Author', 'Message'])
+    isValid = reduce((lambda prevIsValid, thisKey: prevIsValid and 
+                                          thisKey in validKeys and
+                                          isinstance(data[thisKey], str)), data.keys())
+    isValid = isValid and data.keys() == validKeys
+    data = {key: bleach.clean(val) for key, val in data.items()}
+    if isValid:
+        result = mongo.db.messages.insert_one(data)
+        return make_response(jsonify(message='Message created'), status.HTTP_201_CREATED)
+    else:
+        abort(400)
 
 if __name__ == '__main__':
     debug_port = os.getenv('DEBUG_PORT', None)

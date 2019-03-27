@@ -8,7 +8,7 @@
             "label": "Pylint",
             "type": "shell",
             "command": "python",
-            "args": ["-m", "pylint", "src/"],
+            "args": ["-m", "pylint", "src/*/*.py"],
             "problemMatcher": []
         }
     ]

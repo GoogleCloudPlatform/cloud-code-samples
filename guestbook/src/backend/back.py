@@ -1,19 +1,24 @@
+"""
+A sample backend server. Saves and retrieves entries using mongodb
+"""
+import json
 import os
 from flask import Flask, jsonify, request
 import ptvsd
 from flask_pymongo import PyMongo
-import json
 
 # pylint: disable=C0103
 app = Flask(__name__)
-app.config["MONGO_URI"] = 'mongodb://{}:{}@{}:{}/admin'.format(  os.environ.get('MONGO_USERNAME', 'root'), 
-                                                                    os.environ.get('MONGO_PASSWORD', 'password'), 
-                                                                    os.environ.get('MONGO_HOST', 'localhost'), 
-                                                                    os.environ.get('MONGO_PORT', '27017'))
+app.config["MONGO_URI"] = 'mongodb://{}:{}@{}:{}/admin'.format(
+    os.environ.get('MONGO_USERNAME', 'root'),
+    os.environ.get('MONGO_PASSWORD', 'password'),
+    os.environ.get('MONGO_HOST', 'localhost'),
+    os.environ.get('MONGO_PORT', '27017'))
 mongo = PyMongo(app)
 
 @app.route('/messages', methods=['GET'])
 def get_messages():
+    """ retrieve and return the list of messages on GET request """
     message_list = list(mongo.db.messages.find())
     # make json serializable
     for m in message_list:
@@ -21,8 +26,10 @@ def get_messages():
     return jsonify(message_list)
 
 @app.route('/messages', methods=['POST'])
-def add_message(): 
+def add_message():
+    """ save a new message on POST request """
     data = json.loads(request.data)
+    #todo: verify data before saving to db
     result = mongo.db.messages.insert_one(data)
     return result.inserted_id
 

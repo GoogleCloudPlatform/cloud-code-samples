@@ -1,6 +1,10 @@
 package main
 
+import (
+	"context"
+)
+
 type database interface {
-	entries() ([]guestbookEntry, error)
-	addEntry(guestbookEntry) error
+	entries(context.Context) ([]guestbookEntry, error)
+	addEntry(context.Context, guestbookEntry) error
 }

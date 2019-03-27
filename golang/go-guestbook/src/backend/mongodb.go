@@ -12,11 +12,10 @@ import (
 
 type mongodb struct {
 	conn *mongo.Client
-	list []guestbookEntry
 }
 
-func (m *mongodb) entries() ([]guestbookEntry, error) {
-	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+func (m *mongodb) entries(ctx context.Context) ([]guestbookEntry, error) {
+	ctx, cancel := context.WithTimeout(ctx, 10*time.Second)
 	defer cancel()
 
 	col := m.conn.Database("guestbook").Collection("entries")
@@ -32,7 +31,7 @@ func (m *mongodb) entries() ([]guestbookEntry, error) {
 	for cur.Next(ctx) {
 		var v guestbookEntry
 		if err := cur.Decode(&v); err != nil {
-			return nil, fmt.Errorf("decoding mongodb doc failed: %+v", err)
+			return nil, fmt.Errorf("decoding mongodb record failed: %+v", err)
 		}
 		out = append(out, v)
 	}
@@ -42,10 +41,8 @@ func (m *mongodb) entries() ([]guestbookEntry, error) {
 	return out, nil
 }
 
-func (m *mongodb) addEntry(e guestbookEntry) error {
-	m.list = append([]guestbookEntry{e}, m.list...)
-
-	ctx, cancel := context.WithTimeout(context.Background(), time.Second*3)
+func (m *mongodb) addEntry(ctx context.Context, e guestbookEntry) error {
+	ctx, cancel := context.WithTimeout(ctx, time.Second*3)
 	defer cancel()
 
 	col := m.conn.Database("guestbook").Collection("entries")

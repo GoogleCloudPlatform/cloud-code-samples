@@ -8,16 +8,12 @@ build:
       context: src/frontend
   tagPolicy:
     sha256: {}
-  local:
-    useBuildkit: false
-    useDockerCLI: false
 deploy:
   kubectl:
     manifests:
       - kubernetes-manifests/**
 profiles:
-  - build:
-      googleCloudBuild:
-        projectId: YOUR_PROJECT_ID
-    deploy: {}
-    name: cloudbuild
+  - name: cloudbuild
+    build:
+      googleCloudBuild: {}
+

@@ -35,15 +35,19 @@
         </form>
 
         {{ range .messages }}
-        <div class="card my-3">
-            <div class="card-body">
-                <strong class="card-title">{{.Author}}</strong>
-                <span class="card-subtitle mb-2 text-muted">({{ since .Date }} ago)</span>
-                <p class="card-text">
-                    {{.Message}}
-                </p>
+            <div class="card my-3">
+                <div class="card-body">
+                    <strong class="card-title">{{.Author}}</strong>
+                    <span class="card-subtitle mb-2 text-muted">({{ since .Date }} ago)</span>
+                    <p class="card-text">
+                        {{.Message}}
+                    </p>
+                </div>
             </div>
-        </div>
+        {{ else }}
+            <div class="alert alert-info" role="alert">
+                No messages are logged to the guestbook yet.
+            </div>
         {{ end }}
     </div>
 </body>

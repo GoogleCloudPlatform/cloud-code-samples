@@ -77,7 +77,7 @@ func (s *guestbookServer) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *guestbookServer) getMessagesHandler(w http.ResponseWriter, r *http.Request) {
-	entries, err := s.db.entries()
+	entries, err := s.db.entries(r.Context())
 	if err != nil {
 		http.Error(w, fmt.Sprintf("failed to read entries: %+v", err), http.StatusInternalServerError)
 		// TODO return JSON error
@@ -101,14 +101,15 @@ func (s *guestbookServer) postMessageHandler(w http.ResponseWriter, r *http.Requ
 	if v.Author == "" {
 		http.Error(w, "empty 'author' value", http.StatusBadRequest)
 		return
-	} else if v.Message == "" {
+	}
+	if v.Message == "" {
 		http.Error(w, "empty 'message' value", http.StatusBadRequest)
 		return
 	}
 
 	v.Date = time.Now()
 
-	if err := s.db.addEntry(v); err != nil {
+	if err := s.db.addEntry(r.Context(), v); err != nil {
 		http.Error(w, fmt.Sprintf("failed to save entry: %+v", err), http.StatusInternalServerError)
 		return
 	}

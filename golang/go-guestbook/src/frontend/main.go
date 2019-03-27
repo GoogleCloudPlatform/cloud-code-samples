@@ -3,7 +3,6 @@ package main
 import (
 	"bytes"
 	"encoding/json"
-	"errors"
 	"fmt"
 	"html/template"
 	"io/ioutil"
@@ -39,6 +38,7 @@ func main() {
 		log.Fatal("PORT environment variable not specified")
 	}
 
+	// Parse html templates and save them to global variable.
 	t, err := template.New("").Funcs(map[string]interface{}{
 		"since": sinceDate,
 	}).ParseGlob("templates/*.tpl")
@@ -47,10 +47,10 @@ func main() {
 	}
 	tpl = t
 
+	// Register http handlers and start listening on port.
 	fe := &frontendServer{backendAddr: backendAddr}
 	http.HandleFunc("/", fe.homeHandler)
 	http.HandleFunc("/post", fe.postHandler)
-
 	log.Printf("frontend server listening on port %s", port)
 	if err := http.ListenAndServe(":"+port, nil); err != nil {
 		log.Fatalf("server listen error: %+v", err)
@@ -67,7 +67,8 @@ func (f *frontendServer) homeHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodGet {
 		http.Error(w, fmt.Sprintf("only GET requests are supported (got %s)", r.Method), http.StatusMethodNotAllowed)
 		return
-	} else if r.URL.Path != "/" {
+	}
+	if r.URL.Path != "/" {
 		http.Error(w, "page not found", http.StatusNotFound)
 		return
 	}
@@ -117,23 +118,27 @@ func (f *frontendServer) postHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if err := f.saveMessage(r.FormValue("name"), r.FormValue("message")); err != nil {
-		http.Error(w, fmt.Sprintf("failed to save message: %+v", err), http.StatusBadRequest)
+	author := r.FormValue("name")
+	message := r.FormValue("message")
+	if author == "" {
+		http.Error(w, `"name" not specified in the form`, http.StatusBadRequest)
 		return
-	} else {
-		// redirect to homepage
-		http.Redirect(w, r, "/", http.StatusFound)
 	}
+	if message == "" {
+		http.Error(w, `"message" not specified in the form`, http.StatusBadRequest)
+		return
+	}
+
+	if err := f.saveMessage(r.FormValue("name"), r.FormValue("message")); err != nil {
+		http.Error(w, fmt.Sprintf("failed to save message: %+v", err), http.StatusInternalServerError)
+		return
+	}
+
+	http.Redirect(w, r, "/", http.StatusFound) // redirect to homepage
 }
 
 // saveMessage makes a request to the backend to persist the message.
 func (f *frontendServer) saveMessage(author, message string) error {
-	if author == "" {
-		return errors.New("Please enter your name.")
-	} else if message == "" {
-		return errors.New("Please write a message.")
-	}
-
 	entry := guestbookEntry{
 		Author:  author,
 		Message: message,
@@ -143,11 +148,11 @@ func (f *frontendServer) saveMessage(author, message string) error {
 		return fmt.Errorf("failed to serialize message into json: %+v", err)
 	}
 
-	resp, err := http.Post(fmt.Sprintf("http://%s/messages", f.backendAddr),
-		"application/json", bytes.NewReader(body))
+	resp, err := http.Post(fmt.Sprintf("http://%s/messages", f.backendAddr), "application/json", bytes.NewReader(body))
 	if err != nil {
 		return fmt.Errorf("backend returned failure: %+v", err)
-	} else if resp.StatusCode != http.StatusOK {
+	}
+	if resp.StatusCode != http.StatusOK {
 		return fmt.Errorf("unexpected status code from backend: %d %v", resp.StatusCode, resp.Status)
 	}
 	defer resp.Body.Close()

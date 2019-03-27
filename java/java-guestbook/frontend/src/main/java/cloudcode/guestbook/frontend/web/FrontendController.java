@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Arrays;
 import java.util.List;
@@ -25,7 +24,6 @@ public class FrontendController {
     private String backendUri = String.format("http://%s/messages", System.getenv("GUESTBOOK_API_ADDR")); 
 
     @GetMapping("/")
-    @ResponseBody
     public String main(Model model) {
         try {
             URL url = new URL(backendUri);
@@ -34,8 +32,9 @@ public class FrontendController {
             con.setReadTimeout(100);
 
             InputStreamReader reader = new InputStreamReader(con.getInputStream(), "UTF-8");
-            ArrayList<Map<String, String>> map = new Gson().fromJson(reader, new TypeToken<ArrayList<Map<String, String>>>(){}.getType());
-            return map.toString(); //view
+            ArrayList<Map<String, String>> messageList = new Gson().fromJson(reader, new TypeToken<ArrayList<Map<String, String>>>(){}.getType());
+            model.addAttribute("messages", messageList);
+            return "home"; //view
         } catch (IOException e) {
             return "error";
         }

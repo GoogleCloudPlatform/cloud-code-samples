@@ -5,16 +5,30 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "podSelector": {
-        "app": "java-hello-world"
-      },
       "type": "cloudcode",
       "request": "attach",
-      "localRoot": "${workspaceFolder}/src",
+      "name": "Debug on Kubernetes (frontend)",
       "language": "Java",
+      "debugPort": 50005,
+      "localRoot": "${workspaceFolder}/frontend",
       "remoteRoot": "/app",
-      "name": "Debug on Kubernetes",
-      "debugPort": 3000
+      "podSelector": {
+        "app": "java-guestbook",
+        "tier": "frontend"
+      }
+    },
+    {
+      "type": "cloudcode",
+      "request": "attach",
+      "name": "Debug on Kubernetes (backend)",
+      "language": "Java",
+      "debugPort": 50005,
+      "localRoot": "${workspaceFolder}/backend",
+      "remoteRoot": "/app",
+      "podSelector": {
+        "app": "java-guestbook",
+        "tier": "backend"
+      }
     }
   ]
 }

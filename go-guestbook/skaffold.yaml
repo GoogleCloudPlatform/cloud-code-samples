@@ -18,6 +18,6 @@ deploy:
 profiles:
   - build:
       googleCloudBuild:
-        projectId: ahmetb-samples-playground
+        projectId: YOUR_PROJECT_ID
     deploy: {}
     name: cloudbuild

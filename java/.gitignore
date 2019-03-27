@@ -1,0 +1,6 @@
+hello-world/.vscode/settings.json
+*.swp
+target/
+.settings
+.classpath
+.project

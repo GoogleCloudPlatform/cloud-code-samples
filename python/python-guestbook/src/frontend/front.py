@@ -9,7 +9,7 @@ import requests
 import bleach
 try:
     import ptvsd
-except:
+except ImportError:
     pass
 
 # pylint: disable=C0103

@@ -7,12 +7,7 @@ import datetime
 from flask import Flask, render_template, redirect, url_for, request, jsonify
 import requests
 import bleach
-try:
-    import ptvsd
-except ImportError:
-    pass
 
-# pylint: disable=C0103
 app = Flask(__name__)
 app.config["BACKEND_URI"] = 'http://{}/messages'.format(
     os.environ.get('GUESTBOOK_API_ADDR', 'localhost:8080'))

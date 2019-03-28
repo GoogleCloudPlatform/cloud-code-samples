@@ -1,9 +1,5 @@
 import os
 from flask import Flask
-try:
-    import ptvsd
-except ImportError:
-    pass
 
 # pylint: disable=C0103
 app = Flask(__name__)

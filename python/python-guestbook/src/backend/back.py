@@ -7,10 +7,6 @@ from flask import Flask, jsonify, request
 from flask_pymongo import PyMongo
 from functools import reduce
 import bleach
-try:
-    import ptvsd
-except ImportError:
-    pass
 
 # pylint: disable=C0103
 app = Flask(__name__)

@@ -40,4 +40,21 @@ router.post('/post', (req, res, next) => {
   // send the new message to the backend and redirect to the homepage
   console.log(req.params)
   console.log(req.body)
+
+  axios.post(BACKEND_URI, {
+    name: req.body.name,
+    body: req.body.message
+  }).then(response => {
+      console.log('got response: ' + response.data)
+      res.redirect('/')
+  }).catch(error => {
+      console.log('error with promise: ' + error)
+  })
 });
+
+const formatTime = (messages) => {
+  messages.forEach(msg => {
+    const utcTime = msg.timeStamp
+    const date = new Date(utcTime)
+  });
+}

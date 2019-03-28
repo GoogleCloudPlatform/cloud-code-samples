@@ -20,15 +20,17 @@ app.config["MONGO_URI"] = 'mongodb://{}:{}@{}:{}/admin'.format(
     os.environ.get('MONGO_HOST', 'localhost'),
     os.environ.get('MONGO_PORT', '27017'))
 mongo = PyMongo(app)
+valid_keys = set(['Date', 'Author', 'Message'])
 
 @app.route('/messages', methods=['GET'])
 def get_messages():
     """ retrieve and return the list of messages on GET request """
-    message_list = list(mongo.db.messages.find())
-    # make json serializable
-    for m in message_list:
-        m['_id'] = str(m['_id'])
-    return jsonify(message_list)
+    raw_data = list(mongo.db.messages.find())
+    cleaned_list = []
+    for msg in raw_data:
+        cleaned_msg = {k: bleach.clean(msg[k]) for k in msg if k in valid_keys}
+        cleaned_list.append(cleaned_msg)
+    return jsonify(cleaned_list)
 
 @app.route('/messages', methods=['POST'])
 def add_message():

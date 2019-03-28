@@ -31,11 +31,11 @@ router.get('/messages', (req, res) => {
 });
 
 router.post('/messages', (req, res) => {
-    var title = req.body.title;
-    var body = req.body.body;
-    console.log('req title : ' + title)
+    const name = req.body.name;
+    const body = req.body.body;
+    console.log('req title : ' + name)
     console.log('req body: ' + body)
-    var message = new messageModel({ name: title, body: body })
+    const message = new messageModel({ name: name, body: body })
 
     validationError = message.validateSync()
     if (validationError) {

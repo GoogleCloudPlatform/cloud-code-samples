@@ -61,7 +61,7 @@ describe('post messages', function () {
     });
     it('given valid message, should succeed', function(done) {
         chai.request(HOST + PORT)
-            .post('/messages').send({title: 'test title', 'body': 'test body'})
+            .post('/messages').send({name: 'test title', body: 'test body'})
             .end(function(err, res){
                 const result = res.statusCode;
                 expect(result).to.equal(200);

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: node-guestbook-backend
+  labels:
+    app: node-guestbook
+    tier: backend
+spec:
+  type: ClusterIP
+  selector:
+    app: node-guestbook
+    tier: backend
+  ports:
+  - port: 8080
+    targetPort: http-server

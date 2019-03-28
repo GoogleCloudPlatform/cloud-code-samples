@@ -1,0 +1,12 @@
+form.form-inline(action="/post", method="POST")
+    label.sr-only(for="name") Name
+    .input-group.mb-2.mr-sm-2
+        .input-group-prepend
+            .input-group-text Your Name
+        input#name.form-control(type="text", name="name", required="")
+    label.sr-only(for="message") Message
+    .input-group.mb-2.mr-sm-2
+        .input-group-prepend
+            .input-group-text Message
+        input#message.form-control(type="text", name="message", required="")
+    button.btn.btn-primary.mb-2(type="submit") Post to Guestbook

@@ -22,7 +22,5 @@ spec:
         - name: debug
           containerPort: 50005
         env:
-        - name: PORT
-          value: "8080"
         - name: GUESTBOOK_API_ADDR
           value: java-guestbook-backend:8080

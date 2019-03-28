@@ -1,10 +1,10 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "backend",
   "main": "index.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "node --inspect=9229 app.js ",
     "test": "mocha app.test.js --exit"
   },
   "author": "",

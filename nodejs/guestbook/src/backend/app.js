@@ -4,21 +4,21 @@ const app = express()
 const routes = require('./routes')
 const PORT = process.env.PORT || 8080;
 
-// const MONGO_USERNAME = process.env.MONGO_USERNAME || 'root'
-// const MONGO_PASSWORD = process.env.MONGO_PASSWORD || 'password'
-// const MONGO_HOST = process.env.MONGO_HOST || 'localhost'
-// const MONGO_PORT = process.env.MONGO_PORT || '27017'
+const MONGO_USERNAME = process.env.MONGO_USERNAME || 'root'
+const MONGO_PASSWORD = process.env.MONGO_PASSWORD || 'password'
+const MONGO_HOST = process.env.MONGO_HOST || 'localhost'
+const MONGO_PORT = process.env.MONGO_PORT || '27017'
 
-// const MONGO_URI = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOST}:${MONGO_PORT}/admin`
+const MONGO_URI = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOST}:${MONGO_PORT}/admin`
 
-const DB_ADDRESS = process.env.DB_ADDRESS || 'mongodb://localhost:27017/test';
+// const DB_ADDRESS = process.env.DB_ADDRESS || 'mongodb://localhost:27017/test';
 
-mongoose.connect(DB_ADDRESS, {useNewUrlParser: true})
+mongoose.connect(MONGO_URI, {useNewUrlParser: true})
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection err:'));
 db.once('open', function() {
-  console.log('connected to ' + DB_ADDRESS);
+  console.log('connected to ' + MONGO_URI);
 })
 
 app.use('/', routes)

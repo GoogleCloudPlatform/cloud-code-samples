@@ -20,7 +20,7 @@ spec:
         - name: http-server
           containerPort: 8080
         - name: debug
-          containerPort: 3000
+          containerPort: 9229
         env:
         - name: PORT
           value: "8080"

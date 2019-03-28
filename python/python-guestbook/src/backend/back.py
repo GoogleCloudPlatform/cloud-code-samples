@@ -1,14 +1,12 @@
 """
 A sample backend server. Saves and retrieves entries using mongodb
 """
-import json
 import os
 from flask import Flask, jsonify, request
 from flask_pymongo import PyMongo
 from functools import reduce
 import bleach
 
-# pylint: disable=C0103
 app = Flask(__name__)
 app.config["MONGO_URI"] = 'mongodb://{}:{}@{}:{}/admin'.format(
     os.environ.get('MONGO_USERNAME', 'root'),
@@ -34,10 +32,9 @@ def add_message():
     raw_data = request.get_json()
     data = {k: bleach.clean(raw_data[k]) for k in raw_data if k in valid_keys}
     if len(data) == len(valid_keys):
-        result = mongo.db.messages.insert_one(data)
-        return jsonify(message='Message created'), status.HTTP_201_CREATED
-    else:
-        abort(400)
+        mongo.db.messages.insert_one(data)
+        return jsonify(message={'success':True}), 201
+    return jsonify(message={'success':False}), 400
 
 if __name__ == '__main__':
     server_port = os.getenv('PORT', 8080)

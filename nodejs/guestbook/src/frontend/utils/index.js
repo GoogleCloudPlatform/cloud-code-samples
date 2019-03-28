@@ -1,10 +1,25 @@
+const moment = require('moment')
+
+
 const timeAgo = (utcTime, currTime) => {
-    // messages.forEach(msg => {
-    // const utcTime, currTime = msg.timeStamp
-    //   // const date = moment
-    // });
+    const past = moment(utcTime)
+    console.log("past: " + past)
+    const result = past.from(moment(currTime))
+    console.log("result: " + result)
+    return result
+}
+
+
+const formatMessages = (messages) => {
+    const currTime = moment.now()
+    messages.forEach(message => {
+        message.timeAgo= timeAgo(message.timestamp, currTime)
+    });
+    return messages
+    
 }
 
 module.exports = {
-    timeAgo: timeAgo    
+    timeAgo: timeAgo,
+    formatMessages: formatMessages
 }

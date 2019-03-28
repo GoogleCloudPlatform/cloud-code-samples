@@ -5,6 +5,8 @@ const app = express();
 const bodyParser = require('body-parser')
 const axios = require('axios')
 
+const util = require('./utils')
+
 const GUESTBOOK_API_ADDR = process.env.GUESTBOOK_API_ADDR || 'localhost:8080'
 
 const BACKEND_URI = `http://${GUESTBOOK_API_ADDR}/messages`
@@ -30,7 +32,8 @@ router.get("/", (req, res) => {
     axios.get(BACKEND_URI)
       .then(response => {
         console.log('got response: ' + response.data)
-        res.render("home", {messages: response.data})
+        const result = util.formatMessages(response.data)
+        res.render("home", {messages: result})
       }).catch(error => {
         console.log('error with promise: ' + error)
     })

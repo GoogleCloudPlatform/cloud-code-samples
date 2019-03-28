@@ -4,10 +4,13 @@ A sample backend server. Saves and retrieves entries using mongodb
 import json
 import os
 from flask import Flask, jsonify, request
-import ptvsd
 from flask_pymongo import PyMongo
 from functools import reduce
 import bleach
+try:
+    import ptvsd
+except:
+    pass
 
 # pylint: disable=C0103
 app = Flask(__name__)

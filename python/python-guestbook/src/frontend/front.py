@@ -5,9 +5,12 @@ import json
 import os
 import datetime
 from flask import Flask, render_template, redirect, url_for, request, jsonify
-import ptvsd
 import requests
 import bleach
+try:
+    import ptvsd
+except:
+    pass
 
 # pylint: disable=C0103
 app = Flask(__name__)

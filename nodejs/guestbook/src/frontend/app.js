@@ -1,6 +1,6 @@
 const express = require('express')
 const path = require('path');
-
+const moment = require('moment')
 const app = express();
 const bodyParser = require('body-parser')
 const axios = require('axios')
@@ -52,9 +52,5 @@ router.post('/post', (req, res, next) => {
   })
 });
 
-const formatTime = (messages) => {
-  messages.forEach(msg => {
-    const utcTime = msg.timeStamp
-    const date = new Date(utcTime)
-  });
-}
+
+

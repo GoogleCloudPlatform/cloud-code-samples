@@ -5,8 +5,8 @@ build:
     sha256: {}
   # defines where to find the code at build time and where to push the resulting image
   artifacts:
- # - image: java-guestbook-backend
- #   context: src/backend
+  - image: java-guestbook-backend
+    context: backend
   - image: java-guestbook-frontend
     context: frontend
 # defines the Kubernetes manifests to deploy on each run

@@ -1,0 +1,36 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: java-guestbook-backend
+  labels:
+    app: java-guestbook
+    tier: backend
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: java-guestbook
+        tier: backend
+    spec:
+      containers:
+      - name: backend
+        image: java-guestbook-backend
+        ports:
+        - name: http-server
+          containerPort: 8080
+        - name: debug
+          containerPort: 50005
+        env:
+        - name: MONGO_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: mongo-secret
+              key: username
+        - name: MONGO_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mongo-secret
+              key: password
+        - name: MONGO_HOST
+          value: "mongo-service"

@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
 
 router.get('/messages', (req, res) => {
     res.status(200);
-    messageModel.find({}, function (err, messages) {
+    messageModel.find({}, null, {sort: {'_id': -1}}, function (err, messages) {
         if (err) {
             console.err(err)
             res.status(503).json(err)
@@ -32,12 +32,7 @@ router.get('/messages', (req, res) => {
 });
 
 router.post('/messages', (req, res) => {
-    const name = req.body.name;
-    const body = req.body.body;
-    console.log('req title : ' + name)
-    console.log('req body: ' + body)
-    const message = new messageModel({ name: name, body: body })
-
+    const message = createMessage(req)
     validationError = message.validateSync()
     if (validationError) {
         console.log('validation err: ' + validationError)
@@ -56,5 +51,16 @@ router.post('/messages', (req, res) => {
         }
     })
 });
+
+const createMessage = (req) => {
+    const name = req.body.name;
+    const body = req.body.body;
+    console.log('req title : ' + name)
+    console.log('req body: ' + body)
+    const message = new messageModel({ name: name, body: body }) 
+    return message
+};
+
+
 
 module.exports = router;

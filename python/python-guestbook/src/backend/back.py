@@ -35,16 +35,11 @@ def get_messages():
 @app.route('/messages', methods=['POST'])
 def add_message():
     """ save a new message on POST request """
-    data = json.loads(request.data)
-    validKeys = set(['Date', 'Author', 'Message'])
-    isValid = reduce((lambda prevIsValid, thisKey: prevIsValid and 
-                                          thisKey in validKeys and
-                                          isinstance(data[thisKey], str)), data.keys())
-    isValid = isValid and data.keys() == validKeys
-    data = {key: bleach.clean(val) for key, val in data.items()}
-    if isValid:
+    raw_data = request.get_json()
+    data = {k: bleach.clean(raw_data[k]) for k in raw_data if k in valid_keys}
+    if len(data) == len(valid_keys):
         result = mongo.db.messages.insert_one(data)
-        return make_response(jsonify(message='Message created'), status.HTTP_201_CREATED)
+        return jsonify(message='Message created'), status.HTTP_201_CREATED
     else:
         abort(400)
 

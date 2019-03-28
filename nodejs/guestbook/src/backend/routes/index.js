@@ -23,7 +23,7 @@ router.get('/messages', (req, res) => {
             messages.forEach(function (message) {
                 if (message.name && message.body) {
                     console.log(message._id.getTimestamp())
-                    result.push({'name': message.name, 'body': message.body, 'timeStamp': message._id.getTimestamp()})
+                    result.push({'name': message.name, 'body': message.body, 'timestamp': message._id.getTimestamp()})
                 }
             });
             res.json(result);

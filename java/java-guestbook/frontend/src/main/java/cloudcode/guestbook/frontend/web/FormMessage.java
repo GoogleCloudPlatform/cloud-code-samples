@@ -32,7 +32,6 @@ public class FormMessage {
     }
 
     public String toString(){
-        return String.format("\"%s\" - %s (%s)", this.message, this.author, this.date); 
+        return String.format("{\"Author\":\"%s\", \"Message\":\"%s\", \"Date\":\"%s\"}", this.message, this.author, this.date); 
     }
-
 }

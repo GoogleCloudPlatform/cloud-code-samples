@@ -3,7 +3,7 @@ A sample backend server. Saves and retrieves entries using mongodb
 """
 import json
 import os
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, make_response
 import ptvsd
 from flask_pymongo import PyMongo
 from functools import reduce

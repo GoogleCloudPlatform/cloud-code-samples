@@ -44,10 +44,30 @@ public class FrontendController {
     }
 
     @RequestMapping(value="/post", method=RequestMethod.POST)
-    @ResponseBody
     public String post(FormMessage formMessage) {
-        return formMessage.toString();
-        //return "redirect:/";
+        try {
+            URL url = new URL(backendUri);
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestProperty( "Content-Type", "application/json" );
+            con.setRequestMethod("POST");
+            con.setDoOutput(true);
+            con.setReadTimeout(100);
+            con.setDoInput(true);
+
+            OutputStream os = con.getOutputStream();
+            OutputStreamWriter osw = new OutputStreamWriter(os, "UTF-8");  
+            osw.write(formMessage.toString());
+            osw.flush();
+            if (con.getResponseCode() == HttpURLConnection.HTTP_OK){
+                System.out.print(con.getResponseMessage());
+            } else {
+                System.out.print(con.getResponseMessage());
+            }
+            osw.close(); 
+            return "redirect:/";
+        } catch (IOException e) {
+            return "error";
+        }
     }
 
 }

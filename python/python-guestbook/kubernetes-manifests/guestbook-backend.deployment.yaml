@@ -19,8 +19,6 @@ spec:
         ports:
         - name: http-server
           containerPort: 8080
-        - name: debug
-          containerPort: 3000
         env:
         - name: PORT
           value: "8080"

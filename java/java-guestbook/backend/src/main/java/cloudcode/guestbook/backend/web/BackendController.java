@@ -10,10 +10,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-
 import java.util.Map;
 import java.util.ArrayList;
-
+import java.util.List;
 import java.net.*;
 import java.io.*;
 
@@ -32,12 +31,7 @@ public class BackendController {
 
     @GetMapping("/messages")
     @ResponseBody
-    public String main(Model model) throws IOException {
-
-        for (FormMessage message : repository.findAll()) {
-            System.out.println(message.toString());
-            //return  "["+ message.toString()+"]";
-		}
-        return "[]";
+    public List<Map<String, String>> main(Model model) throws IOException {
+        return repository.findAll();
     }
 }

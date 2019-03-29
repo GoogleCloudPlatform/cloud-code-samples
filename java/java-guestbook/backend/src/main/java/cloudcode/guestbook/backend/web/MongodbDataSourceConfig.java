@@ -19,31 +19,14 @@ public class MongodbDataSourceConfig extends AbstractMongoConfiguration {
         return "admin";
     }
 
-    /*
-    @Override
-    @Bean
-    public Mongo mongo() throws Exception {
-
-        ServerAddress serverAddress = new ServerAddress("mongo-service");
-        List<MongoCredential> credentials = new ArrayList<>();
-        credentials.add(MongoCredential.createScramSha1Credential(
-                "root",
-                "admin",
-                "example".toCharArray()
-        ));
-        MongoClientOptions options = new MongoClientOptions.Builder()
-            .build();
-        return new MongoClient(serverAddress, credentials, options);
-    }
-    */
     @Override
     public MongoClient mongoClient() {
-        ServerAddress serverAddress = new ServerAddress("mongo-service");
+        ServerAddress serverAddress = new ServerAddress(System.getenv("MONGO_HOST"));
         List<MongoCredential> credentials = new ArrayList<>();
         credentials.add(MongoCredential.createScramSha1Credential(
-                "root",
+                System.getenv("MONGO_USERNAME"),
                 "admin",
-                "example".toCharArray()
+                System.getenv("MONGO_PASSWORD").toCharArray()
         ));
         return new MongoClient(serverAddress, credentials);
     }

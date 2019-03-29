@@ -9,9 +9,9 @@ const MONGO_PASSWORD = process.env.MONGO_PASSWORD || 'password'
 const MONGO_HOST = process.env.MONGO_HOST || 'localhost'
 const MONGO_PORT = process.env.MONGO_PORT || '27017'
 
-const MONGO_URI = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOST}:${MONGO_PORT}/admin`
+// const MONGO_URI = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOST}:${MONGO_PORT}/admin`
 
-// const DB_ADDRESS = process.env.DB_ADDRESS || 'mongodb://localhost:27017/test';
+const MONGO_URI  = process.env.DB_ADDRESS || 'mongodb://localhost:27017/test';
 
 mongoose.connect(MONGO_URI, {useNewUrlParser: true})
 

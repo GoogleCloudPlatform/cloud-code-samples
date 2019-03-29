@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 
 const router = express.Router();
 
-const messageModel = require('./messages')
+const Message = require('./messages')
 
 router.use(bodyParser.json());
 
@@ -13,54 +13,27 @@ router.get('/', (req, res) => {
 });
 
 router.get('/messages', (req, res) => {
-    res.status(200);
-    messageModel.find({}, null, {sort: {'_id': -1}}, function (err, messages) {
-        if (err) {
-            console.err(err)
-            res.status(503).json(err)
-        } else {
-            const result = []
-            messages.forEach(function (message) {
-                if (message.name && message.body) {
-                    console.log(message._id.getTimestamp())
-                    result.push({'name': message.name, 'body': message.body, 'timestamp': message._id.getTimestamp()})
-                }
-            });
-            res.json(result);
-        }
-    });
+    try {
+        const result = Message.getAll()
+        res.status(200).json(result)
+    } catch (exception) {
+        res.status(503).json(exception)
+    }
 });
 
 router.post('/messages', (req, res) => {
-    const message = createMessage(req)
-    validationError = message.validateSync()
-    if (validationError) {
-        console.log('validation err: ' + validationError)
-        res.status(400).json(validationError)
-        return
-    }
-
-    message.save(function (err, message) {
-        if (err) {
-            console.log('could not save: ' + err)
-            res.send(err)
-            res.status(503)
+    try {
+        const msg = Message.create(({name: req.body.name, body: req.body.body}))
+        res.status(200).json(msg)
+    } catch (err) {
+        if (err.name == "ValidationError") {
+            console.log('validation err: ' + validationError)
+            res.status(400).json(validationError)
         } else {
-            console.log('made msg:' + message)
-            res.status(200).json(message)
+            console.log('could not save: ' + err)
+            res.status(503).json(err)
         }
-    })
+    }
 });
-
-const createMessage = (req) => {
-    const name = req.body.name;
-    const body = req.body.body;
-    console.log('req title : ' + name)
-    console.log('req body: ' + body)
-    const message = new messageModel({ name: name, body: body }) 
-    return message
-};
-
-
 
 module.exports = router;

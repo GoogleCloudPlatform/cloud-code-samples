@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.repository.MongoRepository;
+
 
 import java.util.Map;
 import java.util.ArrayList;
@@ -24,9 +27,17 @@ public class BackendController {
     private String mongoUri = String.format("mongodb://%s:%s@%s:%s/admin", 
         System.getenv("MONGO_USERNAME"), System.getenv("MONGO_PASSWORD"), System.getenv("MONGO_HOST"), System.getenv("MONGO_PORT")); 
 
+    @Autowired
+	private MessageRepository repository;
+
     @GetMapping("/messages")
     @ResponseBody
     public String main(Model model) throws IOException {
+
+        for (FormMessage message : repository.findAll()) {
+            System.out.println(message.toString());
+            //return  "["+ message.toString()+"]";
+		}
         return "[]";
     }
 }

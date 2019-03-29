@@ -56,6 +56,3 @@ router.post('/post', (req, res, next) => {
       console.log('error with promise: ' + error)
   })
 });
-
-
-

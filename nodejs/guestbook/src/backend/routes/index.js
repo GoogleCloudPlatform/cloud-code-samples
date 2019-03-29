@@ -7,11 +7,6 @@ const Message = require('./messages')
 
 router.use(bodyParser.json());
 
-router.get('/', (req, res) => {
-    res.send('get request here');
-    res.status(200);
-});
-
 router.get('/messages', (req, res) => {
     try {
         Message.messageModel.find({}, null, { sort: { '_id': -1 } }, function (err, messages) {

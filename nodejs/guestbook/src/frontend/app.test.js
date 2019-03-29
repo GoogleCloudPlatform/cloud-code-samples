@@ -2,13 +2,6 @@ var expect = require('chai').expect;
 const chai = require('chai');
 const utils = require('./utils')
 
-
-describe('simple', function () {
-    it('should work!', function () {
-        expect(true).to.be.true;
-    });
-});
-
 describe('format time', function() {
     it('given valid utc time, should return correct time ago', function () {
         const utcTime = "2019-03-27T21:46:57.000Z"

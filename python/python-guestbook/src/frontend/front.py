@@ -9,8 +9,7 @@ import requests
 import bleach
 
 app = Flask(__name__)
-app.config["BACKEND_URI"] = 'http://{}/messages'.format(
-    os.environ.get('GUESTBOOK_API_ADDR', 'localhost:8080'))
+app.config["BACKEND_URI"] = 'http://{}/messages'.format(os.environ.get('GUESTBOOK_API_ADDR'))
 
 @app.route('/')
 def main():
@@ -33,6 +32,9 @@ def post():
     return redirect(url_for('main'))
 
 if __name__ == '__main__':
-    server_port = os.getenv('PORT', 8080)
+    for v in ['PORT', 'GUESTBOOK_API_ADDR']:
+        if os.environ.get(v) is None:
+            print("error: {} environment variable not set".format(v))
+            exit(1)
 
-    app.run(debug=False, port=server_port, host='0.0.0.0')
+    app.run(debug=False, port=os.environ.get('PORT'), host='0.0.0.0')

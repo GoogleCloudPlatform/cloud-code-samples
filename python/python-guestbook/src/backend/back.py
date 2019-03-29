@@ -33,6 +33,8 @@ def add_message():
     return jsonify(message={'success':False}), 400
 
 if __name__ == '__main__':
-    server_port = os.getenv('PORT', 8080)
-
-    app.run(debug=False, port=server_port, host='0.0.0.0')
+    for v in ['PORT', 'GUESTBOOK_DB_ADDR']:
+        if os.environ.get(v) is None:
+            print("error: {} environment variable not set".format(v))
+            exit(1)
+    app.run(debug=False, port=os.environ.get('PORT'), host='0.0.0.0')

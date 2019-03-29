@@ -15,7 +15,7 @@ app.config["BACKEND_URI"] = 'http://{}/messages'.format(
 @app.route('/')
 def main():
     """ Retrieve a list of messages from the backend, and use them to render the HTML template """
-    response = requests.get(app.config["BACKEND_URI"], timeout=0.1)
+    response = requests.get(app.config["BACKEND_URI"], timeout=3)
     json_response = json.loads(response.text)
     cleaned_list = [{k: bleach.clean(msg[k]) for k in msg} for msg in json_response]
     return render_template('home.tpl', messages=cleaned_list)
@@ -29,7 +29,7 @@ def post():
     requests.post(url=app.config["BACKEND_URI"],
                   data=jsonify(new_message).data,
                   headers={'content-type': 'application/json'},
-                  timeout=0.1)
+                  timeout=3)
     return redirect(url_for('main'))
 
 if __name__ == '__main__':

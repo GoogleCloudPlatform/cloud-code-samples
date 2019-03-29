@@ -1,21 +1,21 @@
 {
-  "name": "backend",
+  "name": "frontend",
   "version": "1.0.0",
-  "description": "backend",
-  "main": "index.js",
+  "description": "",
+  "main": "app.js",
   "scripts": {
-    "start": "node --inspect=9229 app.js ",
+    "start": "node app.js",
     "test": "mocha app.test.js --exit"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "chai": "^4.2.0",
-    "chai-http": "^4.2.1",
     "express": "^4.16.4",
     "mocha": "^6.0.2",
-    "mongodb": "^3.2.2",
-    "mongoose": "^5.4.20"
+    "moment": "^2.24.0",
+    "pug": "^2.0.3"
   }
 }

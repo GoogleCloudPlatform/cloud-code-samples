@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-
 import java.util.Map;
 import java.util.ArrayList;
 
@@ -27,13 +26,9 @@ public class FrontendController {
 
     @GetMapping("/")
     public String main(Model model) throws IOException {
-        URL url = new URL(backendUri);
-        HttpURLConnection con = (HttpURLConnection) url.openConnection();
-        con.setRequestMethod("GET");
-        con.setReadTimeout(100);
-
-        InputStreamReader reader = new InputStreamReader(con.getInputStream(), "UTF-8");
-        ArrayList<Map<String, String>> messageList = new Gson().fromJson(reader, new TypeToken<ArrayList<Map<String, String>>>(){}.getType());
+        RestTemplate restTemplate = new RestTemplate();
+        String response = restTemplate.getForObject(backendUri, String.class);
+        ArrayList<Map<String, String>> messageList = new Gson().fromJson(response, new TypeToken<ArrayList<Map<String, String>>>(){}.getType());
         model.addAttribute("messages", messageList);
         return "home";
     }

@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "node --inspect=9229 app.js ",
     "test": "mocha app.test.js --exit"
   },
   "author": "",

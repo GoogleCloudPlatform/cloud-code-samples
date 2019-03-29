@@ -89,8 +89,6 @@ h1 a{
     margin:0;
     position: relative;
 
-   
-
 }
 
 @media (min-width: 1200px){
@@ -101,9 +99,9 @@ h1 a{
 
 }
 
-/* @media (max-width: 480px){
+@media (max-width: 480px){
     h1 a{
         font-size:40px;
     }
     header
-} */
+}

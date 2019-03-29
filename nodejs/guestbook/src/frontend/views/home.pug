@@ -7,14 +7,12 @@ html
         link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T', crossorigin='anonymous')
         link(rel='stylesheet', href='css/style.css')
         link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Roboto')
-        link(rel='stylesheet', href='https://afeld.github.io/emoji-css/emoji.css')
     body
         .header
             .container
                 h1 
                     a(href='/') My Guestbook
-                a(href='')
-                    img(src="images/Github_Logo.png", alt="").github
-        .container.posts
+                a(href='#').text-muted View on Github
+        .container.posts.mt-0
             include new.pug
             include list.pug

@@ -16,6 +16,9 @@ import java.io.*;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpEntity;
+import org.springframework.web.client.RestTemplate;
 
 @Controller
 public class FrontendController {
@@ -36,20 +39,18 @@ public class FrontendController {
     }
 
     @RequestMapping(value="/post", method=RequestMethod.POST)
-    public String post(FormMessage formMessage) throws IOException {
-        URL url = new URL(backendUri);
-        HttpURLConnection con = (HttpURLConnection) url.openConnection();
-        con.setRequestProperty( "Content-Type", "application/json" );
-        con.setRequestMethod("POST");
-        con.setDoOutput(true);
-        con.setReadTimeout(100);
-        con.setDoInput(true);
+    public String post(FormMessage formMessage) throws IOException, URISyntaxException {
+        URI url = new URI(backendUri);
 
-        OutputStream os = con.getOutputStream();
-        OutputStreamWriter osw = new OutputStreamWriter(os, "UTF-8");  
-        osw.write(formMessage.toString());
-        osw.flush();
-        osw.close(); 
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.set("Content-Type", "application/json");
+    
+        
+        HttpEntity <String> httpEntity = new HttpEntity <String> (formMessage.toString(), httpHeaders);
+        
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.postForObject(url, httpEntity, String.class);
+
         return "redirect:/";
     }
 

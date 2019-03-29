@@ -16,7 +16,7 @@ public class MongodbDataSourceConfig extends AbstractMongoConfiguration {
 
     @Override
     public String getDatabaseName(){
-        return "admin";
+        return "guestbook";
     }
 
     @Override

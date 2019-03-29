@@ -1,6 +1,6 @@
 FROM docker.io/node:8
 
-WORKDIR /hello-world
+WORKDIR /frontend
 
 COPY package*.json ./
 

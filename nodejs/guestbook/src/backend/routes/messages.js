@@ -10,24 +10,6 @@ const messageSchema = mongoose.Schema({
 
 const messageModel = mongoose.model('Message', messageSchema);
 
-const getAll = async () => {
-    return messageModel.find({}, null, { sort: { '_id': -1 } }, function (err, messages) {
-        return messages
-    });
-
-    // // const result = async function () {
-    // //     return await messageModel.find({}, null, { sort: { '_id': -1 } })
-    // // }
-
-    // const list = await new Promise(resolve => 
-    //     messageModel.find({}, null, { sort: { '_id': -1 } })
-    // )
-    // return list
-    
-    // // return result
-}
-
-
 const construct = (params) => {
     const name = params.name
     const body = params.body
@@ -55,15 +37,6 @@ const create = (params) => {
     } catch (exception) {
         throw exception
     }
-}
-const messageHandler = (messages, list) => {
-    // let list = []
-    messages.forEach(function (message) {
-        if (message.name && message.body) {
-            list.push({ 'name': message.name, 'body': message.body, 'timestamp': message._id.getTimestamp() })
-        }
-    });
-    return list
 }
 
 module.exports = {

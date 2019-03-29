@@ -3,14 +3,14 @@
     "configurations": [
         {
             "podSelector": {
-                "app": "frontend"
+                "app": "node-hello-world"
             },
             "type": "cloudcode",
             "language": "Node",
             "request": "attach",
             "debugPort": 9229,
             "localRoot": "${workspaceFolder}",
-            "remoteRoot": "/app",
+            "remoteRoot": "/hello-world",
             "name": "Debug on Kubernetes",
 
         }

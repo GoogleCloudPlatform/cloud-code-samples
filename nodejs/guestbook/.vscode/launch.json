@@ -1,0 +1,33 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "podSelector": {
+                "app": "node-guestbook",
+                "tier": "frontend"
+            },
+            "type": "cloudcode",
+            "language": "Node",
+            "request": "attach",
+            "debugPort": 9229,
+            "localRoot": "${workspaceFolder}/src/frontend",
+            "remoteRoot": "/frontend",
+            "name": "Debug Frontend on Kubernetes",
+
+        },
+        {
+            "podSelector": {
+                "app": "node-guestbook",
+                "tier": "backend"
+            },
+            "type": "cloudcode",
+            "language": "Node",
+            "request": "attach",
+            "debugPort": 9229,
+            "localRoot": "${workspaceFolder}/src/backend",
+            "remoteRoot": "/backend",
+            "name": "Debug Backend on Kubernetes",
+
+        }
+    ]
+}

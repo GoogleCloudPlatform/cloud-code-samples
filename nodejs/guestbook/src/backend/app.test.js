@@ -9,23 +9,6 @@ const HOST = 'http://localhost:'
 
 chai.use(chaiHttp);
 
-describe('simple', function () {
-    it('should work!', function () {
-        expect(true).to.be.true;
-    });
-});
-describe('root', function () {
-    it('should load', function (done) {
-        chai.request(HOST + PORT)
-            .get('/')
-            .end(function (err, res) {
-                const result = res.statusCode;
-                expect(result).to.equal(200)
-                done()
-            });
-    });
-});
-
 describe('get messages', function () {
     it('should load', function(done) {
         chai.request(HOST + PORT)
@@ -71,28 +54,5 @@ describe('post messages', function () {
                 done();
             });
     });
-})
+});
 
-// describe('create', function () {
-//     it('given invalid params, throws exception', function(done) {
-//         // const invalidMsg = {"a": "b"}
-//         // expect(Message.create.bind(Message, {})).to.throw()
-//         // Message.create({})
-//         // console.log("result: " + result)
-//         done()
-//     });
-//     it('given valid params, successfully creates', function(done) {
-//         const result = Message.create({name: "test name", "body": "testing things"})
-//         console.log("result: " + result)
-//         done()
-//     });
-// });
-
-// describe('getAll method', function() {
-//     it('should return messages', function(done) {
-//         const result = Message.getAll()
-//         console.log("result : " + result)
-//         // expect(result).length.above(0)
-//         done()
-//     });
-// });

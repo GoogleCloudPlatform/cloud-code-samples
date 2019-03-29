@@ -18,6 +18,8 @@ app.set("views", path.join(__dirname, "views"))
 const router = express.Router()
 
 app.use(router)
+
+app.use(express.static('public'))
 router.use(bodyParser.urlencoded({ extended: false }))
 
 // starts an http server on the $PORT environment variable
@@ -54,6 +56,3 @@ router.post('/post', (req, res, next) => {
       console.log('error with promise: ' + error)
   })
 });
-
-
-

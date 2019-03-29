@@ -1,11 +1,13 @@
 if messages.length > 0
     for msg in messages
-        .card.my-3
+        .card.my-3.col-12
             .card-body
-                strong.card-title #{msg.name}
-                //- TODO time
-                span.card-subtitle.mb-2.text-muted  #{msg.timeAgo} 
+                h5.card-title #{msg.name}
+                h6.card-subtitle.mb-2.text-muted  #{msg.timeAgo} 
+                br
                 p.card-text #{msg.body}
+                br
+
 else
     p.alert.alert-info(role='alert')
         | No messages are logged to the guestbook yet.

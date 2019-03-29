@@ -11,7 +11,6 @@ RUN mvn package
 # Runtime image.
 FROM docker.io/openjdk:8-jdk-alpine
 
-
 # Copy the compiled files over.
 COPY --from=build-env /app/target /app/
 

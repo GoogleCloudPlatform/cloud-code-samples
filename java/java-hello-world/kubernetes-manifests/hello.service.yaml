@@ -10,5 +10,5 @@ spec:
   ports:
   - 
     name: http
-    port: 4000
-    targetPort: 8080
+    port: 80
+    targetPort: http-server

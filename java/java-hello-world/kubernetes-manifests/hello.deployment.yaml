@@ -14,7 +14,8 @@ spec:
         - name: server
           image: hello-world
           ports:
-            - containerPort: 8080
+          - name: http-server
+            containerPort: 8080
           env:
           - name: PORT
             value: "8080"

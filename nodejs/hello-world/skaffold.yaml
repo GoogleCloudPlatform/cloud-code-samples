@@ -4,8 +4,8 @@ build:
   tagPolicy:
     sha256: {}
   artifacts:
-    - context: .
-      image: node-hello-world
+  - context: .
+    image: node-hello-world
 deploy:
   kubectl:
     manifests:

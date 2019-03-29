@@ -4,14 +4,13 @@ build:
   tagPolicy:
     sha256: {}
   artifacts:
-    - context: .
-      image: hello-world
+  - context: .
+    image: java-hello-world
 deploy:
   kubectl:
     manifests:
     - kubernetes-manifests/**
 profiles:
-- name: local
+- name: cloudbuild
   build:
-    local:
-      push: false
+    googleCloudBuild: {}

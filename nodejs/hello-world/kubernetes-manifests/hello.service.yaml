@@ -1,3 +1,7 @@
+# This Service manifest defines:
+# - a load balancer for pods matching label "app: node-hello-world"
+# - exposing the application to the public Internet (type:LoadBalancer)
+# - routes port 80 of the load balancer to the port 8080 of the Pods.
 # Syntax reference https://kubernetes.io/docs/concepts/configuration/overview/
 apiVersion: v1
 kind: Service
@@ -8,6 +12,6 @@ spec:
   selector:
     app: node-hello-world
   ports:
-    - name: http
-      port: 80
-      targetPort: 8080
+  - name: http
+    port: 80
+    targetPort: 8080

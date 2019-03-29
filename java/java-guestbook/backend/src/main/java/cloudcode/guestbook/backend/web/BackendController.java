@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Map;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -18,12 +19,23 @@ public class BackendController {
 
     @GetMapping("/messages")
     public List<Map<String, String>> getMessages() {
-        return repository.findAll();
+        List<Map<String, String>> msgList = repository.findAll();
+        List<Map<String, String>> cleanedList = new ArrayList<Map<String, String>>();
+        for (Map<String, String> msg : msgList) {
+            ArrayList<String> keys = new ArrayList<>(msg.keySet());
+            for (String k : keys){
+                if (! k.equals("Author") && ! k.equals("Message") && !k.equals("Date")){
+                    msg.remove(k);
+                }
+            }
+            cleanedList.add(msg);
+        }
+        return cleanedList;
     }
 
     @PostMapping("/messages")
-    public void post(@RequestBody Map<String, String> formMessage) {
-        System.out.println("test");
+    public void addMessage(@RequestBody Map<String, String> message) {
+        repository.save(message);
     }
 
 }

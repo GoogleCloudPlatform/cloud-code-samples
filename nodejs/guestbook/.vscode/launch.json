@@ -11,8 +11,8 @@
             "request": "attach",
             "debugPort": 9229,
             "localRoot": "${workspaceFolder}",
-            "remoteRoot": "/src/frontend",
-            "name": "Debug on Kubernetes",
+            "remoteRoot": "/frontend",
+            "name": "Debug Frontend on Kubernetes",
 
         },
         {
@@ -25,8 +25,8 @@
             "request": "attach",
             "debugPort": 9229,
             "localRoot": "${workspaceFolder}",
-            "remoteRoot": "/src/backend",
-            "name": "Debug on Kubernetes",
+            "remoteRoot": "/backend",
+            "name": "Debug Backend on Kubernetes",
 
         }
     ]

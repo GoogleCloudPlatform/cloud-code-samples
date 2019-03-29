@@ -5,11 +5,9 @@ import json
 import os
 import datetime
 from flask import Flask, render_template, redirect, url_for, request, jsonify
-import ptvsd
 import requests
 import bleach
 
-# pylint: disable=C0103
 app = Flask(__name__)
 app.config["BACKEND_URI"] = 'http://{}/messages'.format(
     os.environ.get('GUESTBOOK_API_ADDR', 'localhost:8080'))
@@ -19,8 +17,8 @@ def main():
     """ Retrieve a list of messages from the backend, and use them to render the HTML template """
     response = requests.get(app.config["BACKEND_URI"], timeout=0.1)
     json_response = json.loads(response.text)
-    clean_msg_list = [{key: bleach.clean(val) for key, val in message.items()} for message in json_response]
-    return render_template('home.tpl', messages=clean_msg_list)
+    cleaned_list = [{k: bleach.clean(msg[k]) for k in msg} for msg in json_response]
+    return render_template('home.tpl', messages=cleaned_list)
 
 @app.route('/post', methods=['POST'])
 def post():

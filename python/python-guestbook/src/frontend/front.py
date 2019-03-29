@@ -17,7 +17,7 @@ def main():
     response = requests.get(app.config["BACKEND_URI"], timeout=3)
     json_response = json.loads(response.text)
     cleaned_list = [{k: bleach.clean(msg[k]) for k in msg} for msg in json_response]
-    return render_template('home.tpl', messages=cleaned_list)
+    return render_template('home.html', messages=cleaned_list)
 
 @app.route('/post', methods=['POST'])
 def post():

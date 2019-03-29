@@ -6,14 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.util.Map;
-import java.util.ArrayList;
-
 import java.net.*;
 import java.io.*;
-
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpEntity;
@@ -38,10 +32,7 @@ public class FrontendController {
 
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.set("Content-Type", "application/json");
-    
-        
         HttpEntity <FormMessage> httpEntity = new HttpEntity <FormMessage> (formMessage, httpHeaders);
-        
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.postForObject(url, httpEntity, String.class);
 

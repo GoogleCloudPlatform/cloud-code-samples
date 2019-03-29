@@ -14,7 +14,6 @@
 <body>
     <div class="header">
         <div class="container">
-            <img src="/static/googlelogo_clr_112x36px.svg">
             <h1>
                 <a href="/">
                     My Guestbook

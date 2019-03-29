@@ -2,7 +2,8 @@
 # - single-replica deployment of the container image, with label "app: go-hello-world"
 # - Pod exposes port 8080
 # - specify PORT environment variable to the container process
-apiVersion: apps/v1beta1
+# Syntax reference https://kubernetes.io/docs/concepts/configuration/overview/
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: go-hello-world

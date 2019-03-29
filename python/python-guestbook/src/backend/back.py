@@ -1,15 +1,12 @@
 """
 A sample backend server. Saves and retrieves entries using mongodb
 """
-import json
 import os
 from flask import Flask, jsonify, request
-import ptvsd
 from flask_pymongo import PyMongo
 from functools import reduce
 import bleach
 
-# pylint: disable=C0103
 app = Flask(__name__)
 app.config["MONGO_URI"] = 'mongodb://{}:{}@{}:{}/admin'.format(
     os.environ.get('MONGO_USERNAME', 'root'),
@@ -17,31 +14,27 @@ app.config["MONGO_URI"] = 'mongodb://{}:{}@{}:{}/admin'.format(
     os.environ.get('MONGO_HOST', 'localhost'),
     os.environ.get('MONGO_PORT', '27017'))
 mongo = PyMongo(app)
+valid_keys = set(['Date', 'Author', 'Message'])
 
 @app.route('/messages', methods=['GET'])
 def get_messages():
     """ retrieve and return the list of messages on GET request """
-    message_list = list(mongo.db.messages.find())
-    # make json serializable
-    for m in message_list:
-        m['_id'] = str(m['_id'])
-    return jsonify(message_list)
+    raw_data = list(mongo.db.messages.find())
+    cleaned_list = []
+    for msg in raw_data:
+        cleaned_msg = {k: bleach.clean(msg[k]) for k in msg if k in valid_keys}
+        cleaned_list.append(cleaned_msg)
+    return jsonify(cleaned_list)
 
 @app.route('/messages', methods=['POST'])
 def add_message():
     """ save a new message on POST request """
-    data = json.loads(request.data)
-    validKeys = set(['Date', 'Author', 'Message'])
-    isValid = reduce((lambda prevIsValid, thisKey: prevIsValid and 
-                                          thisKey in validKeys and
-                                          isinstance(data[thisKey], str)), data.keys())
-    isValid = isValid and data.keys() == validKeys
-    data = {key: bleach.clean(val) for key, val in data.items()}
-    if isValid:
-        result = mongo.db.messages.insert_one(data)
-        return make_response(jsonify(message='Message created'), status.HTTP_201_CREATED)
-    else:
-        abort(400)
+    raw_data = request.get_json()
+    data = {k: bleach.clean(raw_data[k]) for k in raw_data if k in valid_keys}
+    if len(data) == len(valid_keys):
+        mongo.db.messages.insert_one(data)
+        return jsonify(message={'success':True}), 201
+    return jsonify(message={'success':False}), 400
 
 if __name__ == '__main__':
     server_port = os.getenv('PORT', 8080)

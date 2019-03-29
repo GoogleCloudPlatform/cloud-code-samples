@@ -1,11 +1,11 @@
-apiVersion: skaffold/v1alpha5
+apiVersion: skaffold/v1beta6
 kind: Config
 build:
   tagPolicy:
     sha256: {}
   artifacts:
-    - context: .
-      image: node-hello-world
+  - context: .
+    image: node-hello-world
 deploy:
   kubectl:
     manifests:

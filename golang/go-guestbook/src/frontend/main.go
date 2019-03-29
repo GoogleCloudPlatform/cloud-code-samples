@@ -49,6 +49,8 @@ func main() {
 
 	// Register http handlers and start listening on port.
 	fe := &frontendServer{backendAddr: backendAddr}
+	fs := http.FileServer(http.Dir("static"))
+	http.Handle("/static/", http.StripPrefix("/static/", fs))
 	http.HandleFunc("/", fe.homeHandler)
 	http.HandleFunc("/post", fe.postHandler)
 	log.Printf("frontend server listening on port %s", port)

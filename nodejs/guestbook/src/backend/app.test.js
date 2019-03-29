@@ -32,6 +32,7 @@ describe('get messages', function () {
             .get('/messages')
             .end(function(err, res){
                 const result = res.statusCode;
+                console.log("should load123: " + res.body)
                 expect(result).to.equal(200)
                 done()
             });

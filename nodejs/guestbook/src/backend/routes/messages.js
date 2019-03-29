@@ -10,14 +10,21 @@ const messageSchema = mongoose.Schema({
 
 const messageModel = mongoose.model('Message', messageSchema);
 
-const getAll = () => {
-    // messageModel.find({}, null, { sort: { '_id': -1 } }, function (err, messages) {
-    //     messageHandler(messages)
-    // });
+const getAll = async () => {
+    return messageModel.find({}, null, { sort: { '_id': -1 } }, function (err, messages) {
+        return messages
+    });
 
-    const result = async function () {
-        return await messageModel.find({}, null, { sort: { '_id': -1 } })
-    }
+    // // const result = async function () {
+    // //     return await messageModel.find({}, null, { sort: { '_id': -1 } })
+    // // }
+
+    // const list = await new Promise(resolve => 
+    //     messageModel.find({}, null, { sort: { '_id': -1 } })
+    // )
+    // return list
+    
+    // // return result
 }
 
 
@@ -49,8 +56,8 @@ const create = (params) => {
         throw exception
     }
 }
-const messageHandler = (messages) => {
-    let list = []
+const messageHandler = (messages, list) => {
+    // let list = []
     messages.forEach(function (message) {
         if (message.name && message.body) {
             list.push({ 'name': message.name, 'body': message.body, 'timestamp': message._id.getTimestamp() })
@@ -61,6 +68,6 @@ const messageHandler = (messages) => {
 
 module.exports = {
     create: create,
-    getAll: getAll,
+    messageModel: messageModel
 }
 

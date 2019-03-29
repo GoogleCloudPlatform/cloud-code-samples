@@ -8,13 +8,13 @@
 	</parent>
 	<artifactId>hello-world</artifactId>
 	<groupId>cloudcode</groupId>
-	<name>hello-world-jetty</name>
-	<description>Spring Boot Jetty Sample</description>
+	<name>cloudcode-hello-world</name>
+	<description>Getting started with Cloud Code</description>
 	<version>1.0.0</version>
-	<url>http://projects.spring.io/spring-boot/</url>
+	<url>https://cloud.google.com/cloud-code/docs/vscode/quickstart/</url>
 	<organization>
-		<name>Pivotal Software, Inc.</name>
-		<url>http://www.spring.io</url>
+		<name>Google</name>
+		<url>https://www.google.com</url>
 	</organization>
 	<properties>
 		<main.basedir>${basedir}/../..</main.basedir>

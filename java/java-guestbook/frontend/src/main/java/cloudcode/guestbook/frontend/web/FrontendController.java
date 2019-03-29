@@ -21,18 +21,18 @@ public class FrontendController {
     @GetMapping("/")
     public String main(Model model) throws IOException {
         RestTemplate restTemplate = new RestTemplate();
-        FormMessage[] response = restTemplate.getForObject(backendUri, FormMessage[].class);
+        GuestBookEntry[] response = restTemplate.getForObject(backendUri, GuestBookEntry[].class);
         model.addAttribute("messages", response);
         return "home";
     }
 
     @RequestMapping(value="/post", method=RequestMethod.POST)
-    public String post(FormMessage formMessage) throws IOException, URISyntaxException {
+    public String post(GuestBookEntry formMessage) throws IOException, URISyntaxException {
         URI url = new URI(backendUri);
 
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.set("Content-Type", "application/json");
-        HttpEntity <FormMessage> httpEntity = new HttpEntity <FormMessage> (formMessage, httpHeaders);
+        HttpEntity <GuestBookEntry> httpEntity = new HttpEntity <GuestBookEntry> (formMessage, httpHeaders);
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.postForObject(url, httpEntity, String.class);
 

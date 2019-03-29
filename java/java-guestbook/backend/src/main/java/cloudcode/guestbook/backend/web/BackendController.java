@@ -9,6 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 @RestController
 public class BackendController {
@@ -16,13 +20,15 @@ public class BackendController {
     @Autowired private MessageRepository repository;
 
     @GetMapping("/messages")
-    public List<FormMessage> getMessages() {
-        List<FormMessage> msgList = repository.findAll();
+    public List<GuestBookEntry> getMessages() {
+        List<GuestBookEntry> msgList = repository.findAll();
         return msgList;
     }
 
     @PostMapping("/messages")
-    public void addMessage(@RequestBody FormMessage message) {
+    public void addMessage(@RequestBody GuestBookEntry message) {
+        DateFormat dateFormat = new SimpleDateFormat("MMM dd HH:mm");
+        message.setDate(dateFormat.format(new Date()));
         repository.save(message);
     }
 }

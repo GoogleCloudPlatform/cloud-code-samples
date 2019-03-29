@@ -1,10 +1,10 @@
 package cloudcode.guestbook.backend.web;
 
-public class FormMessage {
+public class GuestBookEntry {
 
-    private String author = "";
-    private String message = "";
-    private String date = "";
+    private String author;
+    private String message;
+    private String date;
 
     public String getAuthor() {
         return author;
@@ -26,4 +26,7 @@ public class FormMessage {
         return this.date;
     }
 
+    public void setDate(String date){
+        this.date = date;
+    }
 }

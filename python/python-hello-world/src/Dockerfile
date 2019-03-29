@@ -1,5 +1,5 @@
 # Python image to use.
-FROM docker.io/python:3.6
+FROM python:3.6
 
 # Set the working directory to /app
 WORKDIR /app

@@ -8,11 +8,7 @@ from functools import reduce
 import bleach
 
 app = Flask(__name__)
-app.config["MONGO_URI"] = 'mongodb://{}:{}@{}:{}/admin'.format(
-    os.environ.get('MONGO_USERNAME', 'root'),
-    os.environ.get('MONGO_PASSWORD', 'password'),
-    os.environ.get('MONGO_HOST', 'localhost'),
-    os.environ.get('MONGO_PORT', '27017'))
+app.config["MONGO_URI"] = 'mongodb://{}/guestbook'.format(os.environ.get('GUESTBOOK_DB_ADDR'))
 mongo = PyMongo(app)
 valid_keys = set(['Date', 'Author', 'Message'])
 

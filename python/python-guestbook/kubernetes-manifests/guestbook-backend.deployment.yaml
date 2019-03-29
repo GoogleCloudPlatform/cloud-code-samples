@@ -22,15 +22,5 @@ spec:
         env:
         - name: PORT
           value: "8080"
-        - name: MONGO_USERNAME
-          valueFrom:
-            secretKeyRef:
-              name: mongo-secret
-              key: username
-        - name: MONGO_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: mongo-secret
-              key: password
-        - name: MONGO_HOST
-          value: "mongo-service"
+        - name: GUESTBOOK_DB_ADDR
+          value: "python-guestbook-mongodb:27017"

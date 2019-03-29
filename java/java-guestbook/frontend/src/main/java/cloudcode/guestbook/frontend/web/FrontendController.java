@@ -27,9 +27,8 @@ public class FrontendController {
     @GetMapping("/")
     public String main(Model model) throws IOException {
         RestTemplate restTemplate = new RestTemplate();
-        String response = restTemplate.getForObject(backendUri, String.class);
-        ArrayList<Map<String, String>> messageList = new Gson().fromJson(response, new TypeToken<ArrayList<Map<String, String>>>(){}.getType());
-        model.addAttribute("messages", messageList);
+        FormMessage[] response = restTemplate.getForObject(backendUri, FormMessage[].class);
+        model.addAttribute("messages", response);
         return "home";
     }
 
@@ -41,7 +40,7 @@ public class FrontendController {
         httpHeaders.set("Content-Type", "application/json");
     
         
-        HttpEntity <String> httpEntity = new HttpEntity <String> (formMessage.toString(), httpHeaders);
+        HttpEntity <FormMessage> httpEntity = new HttpEntity <FormMessage> (formMessage, httpHeaders);
         
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.postForObject(url, httpEntity, String.class);

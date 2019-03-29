@@ -4,6 +4,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.Map;
 
-public interface MessageRepository extends MongoRepository<Map<String, String>, String> {
+public interface MessageRepository extends MongoRepository<FormMessage, String> {
 
 }

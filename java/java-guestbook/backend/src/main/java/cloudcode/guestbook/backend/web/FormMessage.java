@@ -1,15 +1,10 @@
-package cloudcode.guestbook.frontend.web;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+package cloudcode.guestbook.backend.web;
 
 public class FormMessage {
 
-    private DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
     private String author = "";
     private String message = "";
-    private String date = this.dateFormat.format(new Date());
+    private String date = "";
 
     public String getAuthor() {
         return author;
@@ -30,4 +25,5 @@ public class FormMessage {
     public String getDate(){
         return this.date;
     }
+
 }

@@ -29,7 +29,7 @@
                 <div class="input-group-prepend">
                     <div class="input-group-text">Your Name</div>
                 </div>
-                <input type="text" class="form-control" id="name" name="name" required>
+                <input type="text" class="form-control" id="author" name="author" required>
             </div>
             <label class="sr-only" for="message">Message</label>
             <div class="input-group mb-2 mr-sm-2">
@@ -45,6 +45,7 @@
             <div class="card-body">
                 <h5 class="card-title" th:text="${m.Author}">Author</h5>
                 <h6 class="card-subtitle mb-2 text-muted" th:text="${m.Date}">Date</h6>
+                <br>
                 <p class="card-text" th:text="${m.Message}">Message</p>
             </div>
         </div>

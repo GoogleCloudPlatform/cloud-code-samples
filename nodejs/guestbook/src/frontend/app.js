@@ -13,7 +13,7 @@ const BACKEND_URI = `http://${GUESTBOOK_API_ADDR}/messages`
 
 const TRANSLATE_API_ADDR = process.env.TRANSLATE_API_ADDR || 'localhost:27017'
 
-const TRANSLATE_URI = `http://${TRANSLATE_API_ADDR}/?text=`
+var TRANSLATE_URI = `http://${TRANSLATE_API_ADDR}/?text=`
 
 app.set("view engine", "pug")
 
@@ -57,7 +57,7 @@ router.get("/", (req, res) => {
                 body: e.body,
                 timestamp: e.timestamp,
                 english: t.english,
-                german: t.german
+                german: t.english
               })
             }
             const result = util.formatMessages(messages)

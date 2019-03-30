@@ -10,4 +10,4 @@ COPY . .
 
 EXPOSE 8080
 
-CMD ["npm", "start"]
+CMD ["npm", "--inspect=9229", "start"]

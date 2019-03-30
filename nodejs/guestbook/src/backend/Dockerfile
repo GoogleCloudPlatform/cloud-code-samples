@@ -8,4 +8,4 @@ RUN npm install
 
 COPY . .
 
-CMD ["npm", "start"]
+CMD ["npm", "--inspect=9229", "start"]

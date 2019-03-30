@@ -26,3 +26,5 @@ spec:
           value: "8080"
         - name: GUESTBOOK_API_ADDR
           value: node-guestbook-backend:8080
+        - name: TRANSLATE_API_ADDR
+          value: "35.233.230.36:4000"

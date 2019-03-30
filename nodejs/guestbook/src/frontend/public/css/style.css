@@ -91,6 +91,10 @@ h1 a{
 
 }
 
+.em{
+  margin-right: 8px;
+}
+
 @media (min-width: 1200px){
 .container {
     max-width: 900px;

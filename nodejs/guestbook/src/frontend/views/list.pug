@@ -5,9 +5,13 @@ if messages.length > 0
                 h5.card-title #{msg.name}
                 h6.card-subtitle.mb-2.text-muted  #{msg.timeAgo} 
                 br
-                p.card-text [Original] #{msg.body}
-                p.card-text [English] #{msg.english}
-                p.card-text [German] #{msg.german}
+                p.card-text #{msg.body}
+                p.card-text
+                  i.em.em-flag-um
+                  span #{msg.english}
+                p.card-text
+                  i.em.em-de
+                  span #{msg.german}
                 br
 
 else

@@ -9,8 +9,9 @@ metadata:
   name: java-hello-world-external
 spec:
   type: LoadBalancer
+  loadBalancerIP: "35.233.230.36"
   selector:
-    app: hello-world
+    app: java-hello-world
   ports:
   - name: http
     port: 4000

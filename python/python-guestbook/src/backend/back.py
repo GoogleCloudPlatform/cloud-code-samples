@@ -24,7 +24,7 @@ def add_message():
     raw_data = request.get_json()
     msg_data = {'author':bleach.clean(raw_data['author']),
                 'message':bleach.clean(raw_data['message']),
-                'date':str(datetime.datetime.today())}
+                'date':datetime.datetime.today().strftime('%b %d, %-H:%M')}
     mongo.db.messages.insert_one(msg_data)
     return  201
 

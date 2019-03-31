@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 
 import java.util.List;
 
@@ -21,7 +22,7 @@ public class BackendController {
 
     @GetMapping("/messages")
     public List<GuestBookEntry> getMessages() {
-        List<GuestBookEntry> msgList = repository.findAll();
+        List<GuestBookEntry> msgList = repository.findAll(new Sort(Sort.Direction.DESC, "_id"));
         return msgList;
     }
 

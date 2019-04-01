@@ -6,7 +6,6 @@ chai.use(chaiHttp);
 
 describe('hello world', function () {
     it('should load', function (done) {
-        // const PORT = process.env.PORT || 8080;
         chai.request(app)
             .get('/')
             .end(function (err, res) {

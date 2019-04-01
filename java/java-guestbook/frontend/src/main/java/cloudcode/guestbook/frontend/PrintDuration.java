@@ -5,9 +5,6 @@ import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.TimeZone;
 
-import org.springframework.stereotype.Component;
-
-@Component
 public interface PrintDuration {
 
    static String print(long prevDateTimestamp) {

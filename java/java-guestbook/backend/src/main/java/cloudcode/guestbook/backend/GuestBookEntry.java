@@ -1,4 +1,4 @@
-package cloudcode.guestbook.frontend.web;
+package cloudcode.guestbook.backend;
 
 public class GuestBookEntry {
 

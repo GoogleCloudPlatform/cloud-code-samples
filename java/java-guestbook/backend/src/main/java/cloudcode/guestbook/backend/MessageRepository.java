@@ -1,4 +1,4 @@
-package cloudcode.guestbook.backend.web;
+package cloudcode.guestbook.backend;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 

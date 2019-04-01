@@ -1,4 +1,4 @@
-package cloudcode.guestbook.frontend.web;
+package cloudcode.guestbook.frontend;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

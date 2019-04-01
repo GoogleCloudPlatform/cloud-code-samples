@@ -1,4 +1,4 @@
-package cloudcode.guestbook.backend.web;
+package cloudcode.guestbook.backend;
 
 import java.util.ArrayList;
 import java.util.List;

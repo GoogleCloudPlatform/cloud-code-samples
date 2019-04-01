@@ -1,4 +1,4 @@
-package cloudcode.guestbook.backend.web;
+package cloudcode.guestbook.backend;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;

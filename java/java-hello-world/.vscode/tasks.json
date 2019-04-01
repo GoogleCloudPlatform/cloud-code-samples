@@ -8,7 +8,7 @@
             "label": "Checkstyle",
             "type": "shell",
             "command": "mvn",
-            "args": ["checkstyle:check", "-f",  "./backend/pom.xml", ";", "mvn", "checkstyle:check", "-f", "./frontend/pom.xml"],
+            "args": ["checkstyle:check"],
             "problemMatcher": []
         }
     ]

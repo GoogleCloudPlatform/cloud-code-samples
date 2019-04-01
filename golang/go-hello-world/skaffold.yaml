@@ -1,16 +1,16 @@
-apiVersion: skaffold/v1alpha5
+apiVersion: skaffold/v1beta6
 kind: Config
 build:
   tagPolicy:
     sha256: {}
   artifacts:
-    - context: .
-      image: hello-world
+  - context: .
+    image: go-hello-world
 deploy:
   kubectl:
     manifests:
-      - kubernetes-manifests/**
+    - kubernetes-manifests/**
 profiles:
-  - name: cloudbuild
-    build:
-      googleCloudBuild: {}
+- name: cloudbuild
+  build:
+    googleCloudBuild: {}

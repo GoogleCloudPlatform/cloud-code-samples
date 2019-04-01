@@ -1,17 +1,21 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "backend",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node --inspect=9229 app.js ",
+    "test": "mocha app.test.js --exit"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "body-parser": "^1.18.3",
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
     "express": "^4.16.4",
-    "mongod": "^2.0.0"
+    "mocha": "^6.0.2",
+    "mongodb": "^3.2.2",
+    "mongoose": "^5.4.20"
   }
 }

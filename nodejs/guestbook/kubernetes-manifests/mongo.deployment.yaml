@@ -3,18 +3,18 @@ apiVersion: apps/v1
 metadata:
   name: mongo
   labels:
-    app: python-guestbook
+    app: node-guestbook
     tier: db
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: python-guestbook
+      app: node-guestbook
       tier: db
   template:
     metadata:
       labels:
-        app: python-guestbook
+        app: node-guestbook
         tier: db
     spec:
       containers:

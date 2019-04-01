@@ -1,0 +1,13 @@
+if messages.length > 0
+    for msg in messages
+        .card.my-3.col-12
+            .card-body
+                h5.card-title #{msg.name}
+                h6.card-subtitle.mb-2.text-muted  #{msg.timeAgo} 
+                br
+                p.card-text #{msg.body}
+                br
+
+else
+    p.alert.alert-info(role='alert')
+        | No messages are logged to the guestbook yet.

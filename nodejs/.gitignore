@@ -1,4 +1,4 @@
 node_modules/
-hello-world/.vscode/settings.json
-guestbook/.vscode/settings.json
+settings.json
+*.swp
 

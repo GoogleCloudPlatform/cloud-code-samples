@@ -12,7 +12,6 @@ app.get('/', (req, res) => {
   res
     .status(200)
     .send('Hello, world!')
-    .end();
 });
 
 // starts an http server on the $PORT environment variable
@@ -21,3 +20,5 @@ app.listen(PORT, () => {
   logging.info(`App listening on port ${PORT}`);
   logging.info('Press Ctrl+C to quit.');
 });
+
+module.exports = app

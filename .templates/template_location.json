@@ -1,0 +1,62 @@
+[
+  {
+    "repoPath": "https://github.com/GoogleCloudPlatform/cloud-code-samples.git",
+    "directoryPath": "python/python-hello-world",
+    "templatePath": "python-hello-world",
+    "templateName": "Python: Hello World"
+  },
+  {
+    "repoPath": "https://github.com/GoogleCloudPlatform/cloud-code-samples.git",
+    "directoryPath": "python/python-guestbook",
+    "templatePath": "python-guestbook",
+    "templateName": "Python: Guestbook"
+  },
+  {
+    "repoPath": "https://github.com/GoogleCloudPlatform/cloud-code-samples.git",
+    "directoryPath": "golang/go-hello-world",
+    "templatePath": "go-hello-world",
+    "templateName": "Go: Hello World"
+  },
+  {
+    "repoPath": "https://github.com/GoogleCloudPlatform/cloud-code-samples.git",
+    "directoryPath": "golang/go-guestbook",
+    "templatePath": "go-guestbook",
+    "templateName": "Go: Guestbook"
+  },
+  {
+    "repoPath": "https://github.com/GoogleCloudPlatform/cloud-code-samples.git",
+    "directoryPath": "nodejs/nodejs-hello-world",
+    "templatePath": "nodejs-hello-world",
+    "templateName": "Node.js: Hello World"
+  },
+  {
+    "repoPath": "https://github.com/GoogleCloudPlatform/cloud-code-samples.git",
+    "directoryPath": "nodejs/nodejs-guestbook",
+    "templatePath": "nodejs-guestbook",
+    "templateName": "Node.js: Guestbook"
+  },
+  {
+    "repoPath": "https://github.com/GoogleCloudPlatform/cloud-code-samples.git",
+    "directoryPath": "java/java-hello-world",
+    "templatePath": "java-hello-world",
+    "templateName": "Java: Hello World"
+  },
+  {
+    "repoPath": "https://github.com/GoogleCloudPlatform/cloud-code-samples.git",
+    "directoryPath": "java/java-guestbook",
+    "templatePath": "java-guestbook",
+    "templateName": "Java: Guestbook"
+  },
+  {
+    "repoPath": "https://github.com/GoogleCloudPlatform/cloud-code-samples.git",
+    "directoryPath": "dotnet/dotnet-hello-world",
+    "templatePath": "dotnet-hello-world",
+    "templateName": ".NET Core: Hello World"
+  },
+  {
+    "repoPath": "https://github.com/GoogleCloudPlatform/cloud-code-samples.git",
+    "directoryPath": "dotnet/dotnet-guestbook",
+    "templatePath": "dotnet-guestbook",
+    "templateName": ".NET Core: Guestbook"
+  }
+]

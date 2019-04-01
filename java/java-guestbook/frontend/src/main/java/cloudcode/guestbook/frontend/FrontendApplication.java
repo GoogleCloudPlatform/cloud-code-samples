@@ -7,10 +7,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class FrontendApplication {
 
     public static void main(String[] args) {
-        for (String expectedVar : new String[]{"PORT", "GUESTBOOK_API_ADDR"}) {
-            String value = System.getenv(expectedVar);
+        final String expectedVars[] = {"PORT", "GUESTBOOK_API_ADDR"};
+        for (String v : expectedVars) {
+            String value = System.getenv(v);
             if (value == null){
-                System.out.format("error: %s environment variable not set\n", expectedVar);
+                System.out.format("error: %s environment variable not set\n", v);
                 System.exit(1);
             }
         }

@@ -1,32 +1,35 @@
 package cloudcode.guestbook.backend;
 
+/**
+ * defines the data associated with a single guest book entry
+ */
 public class GuestBookEntry {
 
     private String author;
     private String message;
     private long date;
 
-    public String getAuthor() {
+    public final String getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author) {
+    public final void setAuthor(String author) {
         this.author = author;
     }
 
-    public String getMessage() {
+    public final String getMessage() {
         return message;
     }
 
-    public void setMessage(String message) {
+    public final void setMessage(String message) {
         this.message = message;
     }
 
-    public long getDate(){
+    public final long getDate() {
         return this.date;
     }
 
-    public void setDate(long date){
+    public final void setDate(long date) {
         this.date = date;
     }
 }

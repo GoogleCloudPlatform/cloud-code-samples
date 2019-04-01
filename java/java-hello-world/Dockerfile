@@ -1,17 +1,26 @@
-FROM maven:3.5.2-jdk-8-alpine as maven
+# Use maven to compile the java application.
+FROM docker.io/maven AS build-env
 
-COPY pom.xml /tmp/
+# Set the working directory to /app
+WORKDIR /app
 
-COPY src /tmp/src
+# copy the pom.xml file to download dependencies
+COPY pom.xml ./
 
-WORKDIR /tmp/
+# download dependencies as specified in pom.xml
+RUN mvn verify --fail-never
 
-RUN mvn package
+# Copy the rest of the working directory contents into the container
+COPY . ./
 
+# Compile the application.
+RUN mvn -Dmaven.test.skip=true package
+
+# Build runtime image.
 FROM openjdk:8-jre-alpine
 
-COPY --from=maven /tmp/target/hello-world*.jar /hello-world.jar
+# Copy the compiled files over.
+COPY --from=build-env /app/target/ /app/
 
-EXPOSE 8080
-
-CMD ["java", "-jar", "hello-world.jar"]
+# start the java app
+CMD ["java", "-jar", "/app/hello-world-1.0.0.jar"]

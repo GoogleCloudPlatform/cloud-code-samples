@@ -1,14 +1,22 @@
 # Use maven to compile the java application.
 FROM docker.io/maven AS build-env
 
+# Set the working directory to /app
 WORKDIR /app
 
+# copy the pom.xml file to download dependencies
+COPY pom.xml ./
+
+# download dependencies as specified in pom.xml
+RUN mvn verify --fail-never
+
+# Copy the rest of the working directory contents into the container
 COPY . ./
 
 # Compile the application.
-RUN mvn package
+RUN mvn -Dmaven.test.skip=true package
 
-# Runtime image.
+# Build runtime image.
 FROM docker.io/openjdk:8-jdk-alpine
 
 # Copy the compiled files over.

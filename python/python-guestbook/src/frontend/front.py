@@ -6,6 +6,9 @@ import os
 from flask import Flask, render_template, redirect, url_for, request, jsonify
 import requests
 import bleach
+import datetime
+import dateutil.relativedelta
+import time
 
 app = Flask(__name__)
 app.config["BACKEND_URI"] = 'http://{}/messages'.format(os.environ.get('GUESTBOOK_API_ADDR'))
@@ -28,10 +31,24 @@ def post():
                   timeout=3)
     return redirect(url_for('main'))
 
+def format_duration(prev_timestamp):
+    now = datetime.datetime.fromtimestamp(time.time())
+    prev = datetime.datetime.fromtimestamp(prev_timestamp)
+    rd = dateutil.relativedelta.relativedelta(now, prev)
+
+    for n, unit in [(rd.years, "year"), (rd.days, "day"), (rd.hours, "hour"), (rd.minutes, "minute")]:
+        if n == 1:
+            return "{} {} ago".format(n, unit)
+        elif n > 1:
+            return "{} {}s ago".format(n, unit)
+    return "just now"
+
+
 if __name__ == '__main__':
     for v in ['PORT', 'GUESTBOOK_API_ADDR']:
         if os.environ.get(v) is None:
             print("error: {} environment variable not set".format(v))
             exit(1)
 
+    app.jinja_env.globals.update(format_duration=format_duration)
     app.run(debug=False, port=os.environ.get('PORT'), host='0.0.0.0')

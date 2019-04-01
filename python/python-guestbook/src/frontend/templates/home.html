@@ -45,7 +45,7 @@
             <div class="card my-3 col-12">
                 <div class="card-body">
                     <h5 class="card-title">{{m.author}}</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">{{m.date}}</h6>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ format_duration(m.date) }}</h6>
                     <br>
                     <p class="card-text">
                         {{m.message}}

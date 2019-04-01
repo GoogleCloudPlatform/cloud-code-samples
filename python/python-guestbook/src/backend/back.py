@@ -6,7 +6,7 @@ from flask import Flask, jsonify, request
 from flask_pymongo import PyMongo
 from functools import reduce
 import bleach
-import datetime
+import time
 
 app = Flask(__name__)
 app.config["MONGO_URI"] = 'mongodb://{}/guestbook'.format(os.environ.get('GUESTBOOK_DB_ADDR'))
@@ -24,7 +24,7 @@ def add_message():
     raw_data = request.get_json()
     msg_data = {'author':bleach.clean(raw_data['author']),
                 'message':bleach.clean(raw_data['message']),
-                'date':datetime.datetime.today().strftime('%b %d, %-H:%M')}
+                'date':time.time()}
     mongo.db.messages.insert_one(msg_data)
     return  jsonify({}), 201
 

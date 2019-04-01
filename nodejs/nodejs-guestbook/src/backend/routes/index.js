@@ -29,8 +29,8 @@ router.post('/messages', (req, res) => {
         res.status(200).json(msg)
     } catch (err) {
         if (err.name == "ValidationError") {
-            console.log('validation err: ' + validationError)
-            res.status(400).json(validationError)
+            console.log('validation err: ' + err)
+            res.status(400).json(err)
         } else {
             console.log('could not save: ' + err)
             res.status(503).json(err)

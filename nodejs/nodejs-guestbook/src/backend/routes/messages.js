@@ -30,7 +30,7 @@ const create = (params) => {
     try {
         console.log("creating...")
         const msg = construct(params)
-        validationError = msg.validateSync()
+        const validationError = msg.validateSync()
         if (validationError) { throw validationError }
         console.log("msg: " + msg)
         save(msg)

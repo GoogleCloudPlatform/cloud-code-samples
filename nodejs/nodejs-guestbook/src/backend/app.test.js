@@ -1,15 +1,13 @@
-cont expect = require('chai').expect;
+const expect = require('chai').expect;
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-
-const PORT = process.env.PORT || 8080;
-const HOST = 'http://localhost:'
+const app = require('./app')
 
 chai.use(chaiHttp);
 
 describe('get messages', () => {
     it('should load', (done) => {
-        chai.request(HOST + PORT)
+        chai.request(app)
             .get('/messages')
             .end((err, res) => {
                 const result = res.statusCode;
@@ -19,7 +17,7 @@ describe('get messages', () => {
             });
     });
     it('should return messages', (done) => {
-        chai.request(HOST + PORT)
+        chai.request(app)
             .get('/messages')
             .end((err, res) => {
                 const result = res.body
@@ -35,7 +33,7 @@ describe('get messages', () => {
 
 describe('post messages', () => {
     it('given empty message, should fail', (done) => {
-        chai.request(HOST + PORT)
+        chai.request(app)
             .post('/messages').send({})
             .end((err, res) => {
                 const result = res.statusCode;
@@ -44,7 +42,7 @@ describe('post messages', () => {
             });
     });
     it('given valid message, should succeed', (done) => {
-        chai.request(HOST + PORT)
+        chai.request(app)
             .post('/messages').send({name: 'test title', body: 'test body'})
             .end((err, res) => {
                 const result = res.statusCode;

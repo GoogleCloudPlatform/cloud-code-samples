@@ -1,6 +1,5 @@
 const express = require('express')
 const path = require('path');
-const moment = require('moment')
 const app = express();
 const bodyParser = require('body-parser')
 const axios = require('axios')
@@ -41,7 +40,7 @@ router.get("/", (req, res) => {
     })
 });
 
-router.post('/post', (req, res, next) => {
+router.post('/post', (req, res) => {
   // send the new message to the backend and redirect to the homepage
   console.log(req.params)
   console.log(req.body)

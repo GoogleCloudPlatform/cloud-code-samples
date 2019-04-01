@@ -1,9 +1,8 @@
-var expect = require('chai').expect;
-const chai = require('chai');
+const expect = require('chai').expect;
 const utils = require('./utils')
 
-describe('format time', function() {
-    it('given valid utc time, should return correct time ago', function () {
+describe('format time', () => {
+    it('given valid utc time, should return correct time ago', () => {
         const utcTime = "2019-03-27T21:46:57.000Z"
         const currTime = "2019-03-27T21:46:59.000Z" 
         const result = utils.timeAgo(utcTime, currTime)
@@ -12,8 +11,8 @@ describe('format time', function() {
     });
 });
 
-describe('format messages', function() {
-    it('given valid messages, should return valid updated messages', function () {
+describe('format messages', () => {
+    it('given valid messages, should return valid updated messages', () => {
         const testMessages = [
             {
                 "name": "testname",

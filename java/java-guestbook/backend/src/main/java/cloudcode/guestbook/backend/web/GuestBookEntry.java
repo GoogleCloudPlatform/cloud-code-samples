@@ -4,7 +4,7 @@ public class GuestBookEntry {
 
     private String author;
     private String message;
-    private String date;
+    private long date;
 
     public String getAuthor() {
         return author;
@@ -22,11 +22,11 @@ public class GuestBookEntry {
         this.message = message;
     }
 
-    public String getDate(){
+    public long getDate(){
         return this.date;
     }
 
-    public void setDate(String date){
+    public void setDate(long date){
         this.date = date;
     }
 }

@@ -28,8 +28,7 @@ public class BackendController {
 
     @PostMapping("/messages")
     public void addMessage(@RequestBody GuestBookEntry message) {
-        DateFormat dateFormat = new SimpleDateFormat("MMM dd HH:mm");
-        message.setDate(dateFormat.format(new Date()));
+        message.setDate(System.currentTimeMillis());
         repository.save(message);
     }
 }

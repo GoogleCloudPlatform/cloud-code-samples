@@ -1,14 +1,15 @@
 package cloudcode.helloworld;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@Configuration
-@EnableAutoConfiguration
-@ComponentScan
+/**
+ * this class serves as an entry point for the Spring Boot app
+ * Here, we check to ensure all required environment variables are set
+ */
+@SpringBootApplication
 public class HelloWorldApplication {
+
     public static void main(final String[] args) throws Exception {
         String value = System.getenv("PORT");
         if (value == null) {

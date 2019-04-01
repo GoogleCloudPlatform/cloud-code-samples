@@ -9,9 +9,9 @@ router.use(bodyParser.json());
 
 router.get('/messages', (req, res) => {
     try {
-        Message.messageModel.find({}, null, { sort: { '_id': -1 } }, function (err, messages) {
+        Message.messageModel.find({}, null, { sort: { '_id': -1 } }, (err, messages) => {
             let list = []
-            messages.forEach(function (message) {
+            messages.forEach((message) => {
                 if (message.name && message.body) {
                     list.push({ 'name': message.name, 'body': message.body, 'timestamp': message._id.getTimestamp() })
                 }

@@ -15,7 +15,7 @@ mongoose.connect(MONGO_URI, {useNewUrlParser: true})
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection err:'));
-db.once('open', function() {
+db.once('open', () => {
   console.log('connected to ' + MONGO_URI);
 })
 

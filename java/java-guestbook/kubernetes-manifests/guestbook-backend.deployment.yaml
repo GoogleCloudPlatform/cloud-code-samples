@@ -1,0 +1,26 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: java-guestbook-backend
+  labels:
+    app: java-guestbook
+    tier: backend
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: java-guestbook
+        tier: backend
+    spec:
+      containers:
+      - name: backend
+        image: java-guestbook-backend
+        ports:
+        - name: http-server
+          containerPort: 8080
+        env:
+        - name: PORT
+          value: "8080"
+        - name: GUESTBOOK_DB_ADDR
+          value: "java-guestbook-mongodb:27017"

@@ -2,11 +2,11 @@ steps:
 - id: '#0 - hello world install dependencies'
   name: 'gcr.io/cloud-builders/npm'
   args: ['install']
-  dir: 'hello-world/'
+  dir: 'node-hello-world/'
 - id: '#1 - hello-world unit tests'
   name: 'gcr.io/cloud-builders/npm'
   args: ['test']
-  dir: 'hello-world/'
+  dir: 'node-hello-world/'
 - id: '#2 - hello-world build image'
   name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'hello-world', 'hello-world/']

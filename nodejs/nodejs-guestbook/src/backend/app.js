@@ -6,6 +6,7 @@ const messages = require('./routes/messages')
 
 app.use('/', routes)
 
+// Application will fail if environment variables are not set
 if(!process.env.PORT) {
   const errMsg = "PORT environment variable is not defined"
   console.error(errMsg)

@@ -17,8 +17,8 @@ app.get('/', (req, res) => {
 // starts an http server on the $PORT environment variable
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
-  logging.info(`App listening on port ${PORT}`);
-  logging.info('Press Ctrl+C to quit.');
+  console.log(`App listening on port ${PORT}`);
+  console.log('Press Ctrl+C to quit.');
 });
 
 module.exports = app

@@ -6,7 +6,8 @@ const consoleTransport = new winston.transports.Console({
 const winstonOptions = {
     transports: [consoleTransport],
     expressFormat: true,
-    meta: false
+    meta: false,
+    format: winston.format.combine(winston.format.timestamp(), winston.format.prettyPrint())
 }
 
 // Logger to capture all requests and outputs them to the console
@@ -17,7 +18,6 @@ winston.add(consoleTransport)
 
 module.exports = {
     requestLogger: requestLogger,
-    errorLogger: errorLogger,
-    info: winston.info,
-    error: winston.error,
+    errorLogger: errorLogger
+
 }

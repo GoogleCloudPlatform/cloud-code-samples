@@ -9,9 +9,9 @@ router.use(bodyParser.json());
 
 router.get('/messages', (req, res) => {
     try {
-        Message.messageModel.find({}, null, { sort: { '_id': -1 } }, function (err, messages) {
+        Message.messageModel.find({}, null, { sort: { '_id': -1 } }, (err, messages) => {
             let list = []
-            messages.forEach(function (message) {
+            messages.forEach((message) => {
                 if (message.name && message.body) {
                     list.push({ 'name': message.name, 'body': message.body, 'timestamp': message._id.getTimestamp() })
                 }
@@ -29,8 +29,8 @@ router.post('/messages', (req, res) => {
         res.status(200).json(msg)
     } catch (err) {
         if (err.name == "ValidationError") {
-            console.log('validation err: ' + validationError)
-            res.status(400).json(validationError)
+            console.log('validation err: ' + err)
+            res.status(400).json(err)
         } else {
             console.log('could not save: ' + err)
             res.status(503).json(err)

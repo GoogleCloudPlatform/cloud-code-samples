@@ -1,0 +1,20 @@
+// launch.json contains information needed for the debugger to attach to  processes
+// See https://code.visualstudio.com/Docs/editor/debugging#_launch-configurations
+// for documentation about how to create and manage configurations
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "podSelector": {
+        "app": "dotnet-hello-world",
+      },
+      "type": "cloudcode",
+      "request": "attach",
+      "localRoot": "${workspaceFolder}/src",
+      "language": "NETCore",
+      "remoteRoot": "/app",
+      "name": "Debug on Kubernetes",
+      "debugPort": 9229,
+    }
+  ]
+}

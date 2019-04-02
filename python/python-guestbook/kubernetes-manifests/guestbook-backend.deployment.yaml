@@ -24,3 +24,7 @@ spec:
           value: "8080"
         - name: GUESTBOOK_DB_ADDR
           value: "python-guestbook-mongodb:27017"
+    initContainers:
+        - name: mongo-init
+          image: busybox:1.28
+          command: ['sh', '-c', 'echo $(date) "> checking for envt var for mongo-service"; until nslookup mongo-service; do echo $(date) "> waiting for mongo"; sleep 2; done; echo $(date) "> got envt var for mongo-service"']

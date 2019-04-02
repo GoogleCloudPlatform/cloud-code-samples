@@ -21,21 +21,21 @@ router.get('/messages', (req, res) => {
             res.status(200).json(list)
         });
     } catch (exception) {
-        res.status(503).json(exception)
+        res.status(500).json(exception)
     }
 });
 
 router.post('/messages', (req, res) => {
     try {
-        const msg = Message.create(({name: req.body.name, body: req.body.body}))
-        res.status(200).json(msg)
+        Message.create(({name: req.body.name, body: req.body.body}))
+        res.status(200).send()
     } catch (err) {
         if (err.name == "ValidationError") {
             console.log('validation err: ' + err)
             res.status(400).json(err)
         } else {
             console.log('could not save: ' + err)
-            res.status(503).json(err)
+            res.status(500).json(err)
         }
     }
 });

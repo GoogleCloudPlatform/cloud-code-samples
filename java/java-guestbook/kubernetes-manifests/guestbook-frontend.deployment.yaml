@@ -1,21 +1,21 @@
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: python-guestbook-frontend
+  name: java-guestbook-frontend
   labels:
-    app: python-guestbook
+    app: java-guestbook
     tier: frontend
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: python-guestbook
+        app: java-guestbook
         tier: frontend
     spec:
       containers:
       - name: frontend
-        image: python-guestbook-frontend
+        image: java-guestbook-frontend
         ports:
         - name: http-server
           containerPort: 8080
@@ -23,4 +23,4 @@ spec:
         - name: PORT
           value: "8080"
         - name: GUESTBOOK_API_ADDR
-          value: python-guestbook-backend:8080
+          value: java-guestbook-backend:8080

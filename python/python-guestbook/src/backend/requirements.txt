@@ -1,3 +1,3 @@
 Flask==1.0.2
-Flask-PyMongo
-bleach
+Flask-PyMongo==2.2.0
+bleach==3.1.0

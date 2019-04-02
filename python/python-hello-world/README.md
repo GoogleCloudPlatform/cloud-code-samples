@@ -19,10 +19,9 @@
     * [Set up a Google Kubernetes Engine Cluster](https://cloud.google.com/code/docs/vscode/quickstart#creating_a_google_kubernetes_engine_cluster)
     * [Deploy the app](https://cloud.google.com/code/docs/vscode/quickstart#deploying_your_app)
     * [Continuous Deployment](https://cloud.google.com/code/docs/vscode/quickstart#initiating_continuous_deployment)
-    * [View Container Logs](#view-container-logs)
-    * [Debug Your Code](#debug-your-code)
-    * [Open a Terminal in Your Container](#open-a-terminal-in-your-container)
-    * [Tasks](#tasks)
+    * [View Container Logs](https://cloud.google.com/code/docs/vscode/quickstart#viewing_container_logs)
+    * [Debug Your Code](https://cloud.google.com/code/docs/vscode/quickstart#debugging_your_application)
+    * [Open a Terminal in Your Container](https://cloud.google.com/code/docs/vscode/quickstart#opening_a_terminal_in_your_container)
 4. [Using the Command Line](#using-the-command-line)
     * [Skaffold](#using-skaffold)
     * [kubectl](#using-kubectl)
@@ -45,7 +44,7 @@ As an alternative to using the Cloud Code extension, the application can be depl
 
 #### Skaffold
 
-[Skaffold](https://github.com/GoogleContainerTools/skaffold) is a command line tool that can be used to build, push, and deploy your container images as you work
+[Skaffold](https://github.com/GoogleContainerTools/skaffold) is a command line tool that can be used to build, push, and deploy your container images
 
 ```bash
 skaffold run --default-repo=gcr.io/your-project-id-here/cloudcode
@@ -54,21 +53,5 @@ skaffold run --default-repo=gcr.io/your-project-id-here/cloudcode
 #### kubectl
 
 [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) is the official Kubernetes command line tool. It can be used to deploy Kubernetes manifests to your cluster, but images must be build seperately using another tool (for example, using the [Docker CLI](https://docs.docker.com/engine/reference/commandline/cli/))
-
-##### Build Container Images
-
-```bash
-IMAGE_REPO="gcr.io/your-project-here/"
-docker build -t $IMAGE_REPO/hello-world ./src
-docker push $IMAGE_REPO/hello-world
-```
-
-##### Deploy Manifests
-
-Note that you may need to edit hello.deployment.yaml's image field to match `$IMAGE_REPO/hello-world`
-
-```bash
-kubectl apply -f ./kubernetes-manifests
-```
 
 -----|------

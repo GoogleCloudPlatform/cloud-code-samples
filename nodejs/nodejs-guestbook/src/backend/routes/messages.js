@@ -6,22 +6,22 @@ const MONGO_HOST = process.env.MONGO_HOST || 'mongo-service'
 const MONGO_PORT = process.env.MONGO_PORT || '27017'
 const MONGO_URI = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOST}:${MONGO_PORT}/admin`
 
+const db = mongoose.connection;
+db.on('error', (err) => {
+    console.error(`unable to connect to ${MONGO_URI}: ${err}`);
+    setTimeout(connectToMongoDB, 1000);
+});
+db.once('open', () => {
+  console.log(`connected to ${MONGO_URI}`);
+});
+
 const connectToMongoDB = () => {
     mongoose.connect(MONGO_URI, {
         useNewUrlParser: true,
         connectTimeoutMS: 2000
     });
-}
+};
 connectToMongoDB();
-
-const db = mongoose.connection;
-db.on('error', (err) => {
-    console.error(`unable to connect to ${MONGO_URI}: ${err}`);
-    connectToMongoDB();
-});
-db.once('open', () => {
-  console.log(`connected to ${MONGO_URI}`);
-});
 
 const messageSchema = mongoose.Schema({
     name: { type: String, required: [true, 'Name is required'] },

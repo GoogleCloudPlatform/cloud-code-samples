@@ -1,24 +1,29 @@
 const mongoose = require('mongoose')
 
-const GUESTBOOK_DB_ADDR = process.env.GUESTBOOK_DB_ADDR || 'mongodb://localhost:27017/test'; 
+const GUESTBOOK_DB_ADDR = process.env.GUESTBOOK_DB_ADDR || 'localhost:27017' ; 
 const mongoURI = "mongodb://" + GUESTBOOK_DB_ADDR + "/guestbook"
 
 const db = mongoose.connection;
+
+db.on('disconnected', () => {
+    console.error(`Disconnected: unable to reconnect to ${mongoURI}`)
+    throw new Error(`Disconnected: unable to reconnect to ${mongoURI}`) 
+})
 db.on('error', (err) => {
-    console.error(`unable to connect to ${mongoURI}: ${err}`);
-    setTimeout(connectToMongoDB, 1000);
+    console.error(`Unable to connect to ${mongoURI}: ${err}`);
 });
+
 db.once('open', () => {
   console.log(`connected to ${mongoURI}`);
 });
 
-const connectToMongoDB = () => {
-    mongoose.connect(mongoURI, {
+const connectToMongoDB = async () => {
+    await mongoose.connect(mongoURI, {
         useNewUrlParser: true,
         connectTimeoutMS: 2000,
-    });
+        reconnectTries: 1
+    })
 };
-connectToMongoDB();
 
 const messageSchema = mongoose.Schema({
     name: { type: String, required: [true, 'Name is required'] },
@@ -59,6 +64,7 @@ const create = (params) => {
 
 module.exports = {
     create: create,
-    messageModel: messageModel
+    messageModel: messageModel,
+    connectToMongoDB: connectToMongoDB
 }
 

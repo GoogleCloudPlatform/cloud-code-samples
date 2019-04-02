@@ -10,24 +10,31 @@ import org.springframework.data.domain.Sort;
 
 import java.util.List;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-
+/**
+ * defines the REST endpoints managed by the server.
+ */
 @RestController
 public class BackendController {
 
     @Autowired private MessageRepository repository;
 
+    /**
+     * endpoint for retrieving all guest book entries stored in database
+     * @return a list of GuestBookEntry objects
+     */
     @GetMapping("/messages")
-    public List<GuestBookEntry> getMessages() {
-        List<GuestBookEntry> msgList = repository.findAll(new Sort(Sort.Direction.DESC, "_id"));
+    public final List<GuestBookEntry> getMessages() {
+        Sort byCreation = new Sort(Sort.Direction.DESC, "_id");
+        List<GuestBookEntry> msgList = repository.findAll(byCreation);
         return msgList;
     }
 
+    /**
+     * endpoint for adding a new guest book entry to the database
+     * @param message a message object passed in the HTTP POST request
+     */
     @PostMapping("/messages")
-    public void addMessage(@RequestBody GuestBookEntry message) {
+    public final void addMessage(@RequestBody GuestBookEntry message) {
         message.setDate(System.currentTimeMillis());
         repository.save(message);
     }

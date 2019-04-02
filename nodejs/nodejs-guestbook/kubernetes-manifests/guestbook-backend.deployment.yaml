@@ -40,6 +40,8 @@ spec:
           httpGet:
               port: 8080
               path: /messages
-          failureThreshold: 3
-          timeoutSeconds: 2
-          successThreshold: 2
+          periodSeconds: 3
+          initialDelaySeconds: 2
+          failureThreshold: 1
+          timeoutSeconds: 1
+          successThreshold: 1

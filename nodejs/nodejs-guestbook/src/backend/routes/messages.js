@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const GUESTBOOK_DB_ADDR = process.env.GUESTBOOK_DB_ADDR || 'localhost:27017' ; 
+const GUESTBOOK_DB_ADDR = process.env.GUESTBOOK_DB_ADDR; 
 const mongoURI = "mongodb://" + GUESTBOOK_DB_ADDR + "/guestbook"
 
 const db = mongoose.connection;

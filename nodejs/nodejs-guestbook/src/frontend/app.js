@@ -6,7 +6,7 @@ const axios = require('axios')
 
 const util = require('./utils')
 
-const GUESTBOOK_API_ADDR = process.env.GUESTBOOK_API_ADDR || 'localhost:8080'
+const GUESTBOOK_API_ADDR = process.env.GUESTBOOK_API_ADDR
 
 const BACKEND_URI = `http://${GUESTBOOK_API_ADDR}/messages`
 
@@ -21,8 +21,21 @@ app.use(router)
 app.use(express.static('public'))
 router.use(bodyParser.urlencoded({ extended: false }))
 
+// Application will fail if environment variables are not set
+if(!process.env.PORT) {
+  const errMsg = "PORT environment variable is not defined"
+  console.error(errMsg)
+  throw new Error(errMsg)
+}
+
+if(!process.env.GUESTBOOK_API_ADDR) {
+  const errMsg = "GUESTBOOK_API_ADDR environment variable is not defined"
+  console.error(errMsg)
+  throw new Error(errMsg)
+}
+
 // starts an http server on the $PORT environment variable
-const PORT = process.env.PORT || 8001;
+const PORT = process.env.PORT;
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);
   console.log('Press Ctrl+C to quit.');

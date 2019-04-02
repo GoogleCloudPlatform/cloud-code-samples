@@ -1,24 +1,21 @@
 const mongoose = require('mongoose')
 
-const MONGO_USERNAME = process.env.MONGO_USERNAME || 'root'
-const MONGO_PASSWORD = process.env.MONGO_PASSWORD || 'password'
-const MONGO_HOST = process.env.MONGO_HOST || 'mongo-service'
-const MONGO_PORT = process.env.MONGO_PORT || '27017'
-const MONGO_URI = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOST}:${MONGO_PORT}/admin`
+const GUESTBOOK_DB_ADDR = process.env.GUESTBOOK_DB_ADDR || 'mongodb://localhost:27017/test'; 
+const mongoURI = "mongodb://" + GUESTBOOK_DB_ADDR + "/guestbook"
 
 const db = mongoose.connection;
 db.on('error', (err) => {
-    console.error(`unable to connect to ${MONGO_URI}: ${err}`);
+    console.error(`unable to connect to ${mongoURI}: ${err}`);
     setTimeout(connectToMongoDB, 1000);
 });
 db.once('open', () => {
-  console.log(`connected to ${MONGO_URI}`);
+  console.log(`connected to ${mongoURI}`);
 });
 
 const connectToMongoDB = () => {
-    mongoose.connect(MONGO_URI, {
+    mongoose.connect(mongoURI, {
         useNewUrlParser: true,
-        connectTimeoutMS: 2000
+        connectTimeoutMS: 2000,
     });
 };
 connectToMongoDB();

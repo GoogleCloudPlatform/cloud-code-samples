@@ -1,0 +1,1 @@
+gcloud beta builds submit --config cloudbuild.yaml

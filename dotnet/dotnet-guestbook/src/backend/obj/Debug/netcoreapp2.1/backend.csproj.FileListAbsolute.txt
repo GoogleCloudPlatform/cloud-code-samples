@@ -1,0 +1,14 @@
+C:\src\dotnet-guestbook\src\backend\bin\Debug\netcoreapp2.1\backend.deps.json
+C:\src\dotnet-guestbook\src\backend\bin\Debug\netcoreapp2.1\backend.runtimeconfig.json
+C:\src\dotnet-guestbook\src\backend\bin\Debug\netcoreapp2.1\backend.runtimeconfig.dev.json
+C:\src\dotnet-guestbook\src\backend\bin\Debug\netcoreapp2.1\backend.dll
+C:\src\dotnet-guestbook\src\backend\bin\Debug\netcoreapp2.1\backend.pdb
+C:\src\dotnet-guestbook\src\backend\obj\Debug\netcoreapp2.1\backend.csprojAssemblyReference.cache
+C:\src\dotnet-guestbook\src\backend\obj\Debug\netcoreapp2.1\backend.csproj.CoreCompileInputs.cache
+C:\src\dotnet-guestbook\src\backend\obj\Debug\netcoreapp2.1\backend.RazorAssemblyInfo.cache
+C:\src\dotnet-guestbook\src\backend\obj\Debug\netcoreapp2.1\backend.RazorAssemblyInfo.cs
+C:\src\dotnet-guestbook\src\backend\obj\Debug\netcoreapp2.1\backend.AssemblyInfoInputs.cache
+C:\src\dotnet-guestbook\src\backend\obj\Debug\netcoreapp2.1\backend.AssemblyInfo.cs
+C:\src\dotnet-guestbook\src\backend\obj\Debug\netcoreapp2.1\backend.RazorTargetAssemblyInfo.cache
+C:\src\dotnet-guestbook\src\backend\obj\Debug\netcoreapp2.1\backend.dll
+C:\src\dotnet-guestbook\src\backend\obj\Debug\netcoreapp2.1\backend.pdb

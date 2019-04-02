@@ -36,3 +36,10 @@ spec:
               key: password
         - name: MONGO_HOST
           value: "mongo-service"
+        readinessProbe:
+          httpGet:
+              port: 8080
+              path: /messages
+          failureThreshold: 3
+          timeoutSeconds: 2
+          successThreshold: 2

@@ -26,3 +26,10 @@ spec:
           value: "8080"
         - name: GUESTBOOK_API_ADDR
           value: node-guestbook-backend:8080
+        readinessProbe:
+          httpGet:
+              port: 8080
+              path: /
+          failureThreshold: 3
+          timeoutSeconds: 2
+          successThreshold: 2

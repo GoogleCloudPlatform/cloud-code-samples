@@ -19,11 +19,12 @@ RUN go build -o /app -v ./cmd/hello-world
 # If you want to use the debugger, you need to modify the entrypoint to the
 # container and point it to the "dlv debug" comand:
 #   * UNCOMMENT the following ENTRYPOINT statement,
-#   * COMMENT OUT the other ENTRYPOINT statement
-# Start the "dlv debug" server on port 3000 of the container.
-ENTRYPOINT ["dlv", "debug", "./cmd/hello-world",  "--api-version=2", "--headless", "--listen=:3000", "--log"]
+#   * COMMENT OUT the last ENTRYPOINT statement
+# Start the "dlv debug" server on port 3000 of the container. (Note that the
+# application process will NOT start until the debugger is attached.)
+# ENTRYPOINT ["dlv", "debug", "./cmd/hello-world",  "--api-version=2", "--headless", "--listen=:3000", "--log"]
 
 # If you want to run WITHOUT the debugging server:
 #   * COMMENT OUT the previous ENTRYPOINT statements,
 #   * UNCOMMENT the following ENTRYPOINT statement.
-# ENTRYPOINT ["/app"]
+ENTRYPOINT ["/app"]

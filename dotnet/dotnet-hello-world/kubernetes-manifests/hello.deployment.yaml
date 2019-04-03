@@ -24,9 +24,4 @@ spec:
         - containerPort: 8080
         env:
         - name: PORT
-<<<<<<< HEAD
           value: "8080"
-          
-=======
-          value: "8080"
->>>>>>> 1a76577... Add dotnet hello world template

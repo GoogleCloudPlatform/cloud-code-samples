@@ -9,9 +9,10 @@
 
 ----
 
-# Table of Contents
+## Table of Contents
 
-## Cloud Code for Visual Studio Code
+### Cloud Code for Visual Studio Code
+
 1. [Getting Started](#getting-started])
 2. [What's in the box](https://cloud.google.com/code/docs/vscode/quickstart#whats_in_the_box)
 3. Using Cloud Code
@@ -28,39 +29,46 @@
 
 ----
 
+### Getting Started
 
-## Getting Started
 This sample was written to demonstrate how to use the Cloud Code extension for Visual Studio code.
+
 * [Install Cloud Code for VS Code](https://cloud.google.com/code/docs/vscode/install)
 * [Creating a new app](https://cloud.google.com/code/docs/vscode/creating-an-application)
 * [Editing YAML files](https://cloud.google.com/code/docs/vscode/yaml-editing)
 
+----
 
----
+### Using the Command Line
 
-## Using the Command Line
 As an alternative to using the Cloud Code extension, the application can be deployed to a cluster using standard command line tools
 
-### Skaffold
+#### Skaffold
+
 [Skaffold](https://github.com/GoogleContainerTools/skaffold) is a command line tool that can be used to build, push, and deploy your container images as you work
 
-```
+```bash
 skaffold run --default-repo=gcr.io/your-project-id-here/cloudcode
 ```
 
-### kubectl
+#### kubectl
 
-[kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) is the official Kubernetes command line tool. It can be used to deploy Kubernetes manifests to your cluster, but images must be build seperately using another tool (for example, using the [Docker CLI](https://docs.docker.com/engine/reference/commandline/cli/)) 
+[kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) is the official Kubernetes command line tool. It can be used to deploy Kubernetes manifests to your cluster, but images must be build seperately using another tool (for example, using the [Docker CLI](https://docs.docker.com/engine/reference/commandline/cli/))
 
-#### Build Container Images:
-```
+##### Build Container Images
+
+```bash
 IMAGE_REPO="gcr.io/your-project-here/"
 docker build -t $IMAGE_REPO/hello-world ./src
 docker push $IMAGE_REPO/hello-world
 ```
-#### Deploy Manifests
+
+##### Deploy Manifests
+
 Note that you may need to edit hello.deployment.yaml's image field to match `$IMAGE_REPO/hello-world`
-```
+
+```bash
 kubectl apply -f ./kubernetes-manifests
 ```
+
 -----|------

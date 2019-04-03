@@ -3,8 +3,8 @@
 ![Architecture Diagram](./img/diagram.png)
 
 "Hello World" is a simple Kubernetes application that contains a single
-[Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) and a corresponding 
-[Service](https://kubernetes.io/docs/concepts/services-networking/service/). The Deployment contains a 
+[Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) and a corresponding
+[Service](https://kubernetes.io/docs/concepts/services-networking/service/). The Deployment contains a
 [Flask-based](http://flask.pocoo.org/) web server that simply prints "Hello World".
 
 ![NOTE](./img/noun_Excitement_267_3BB300.png) | We will be using [Kubernetes terminology](https://kubernetes.io/docs/reference/glossary/?fundamental=true) throughout in this document
@@ -144,5 +144,4 @@ Note that you may need to edit hello.deployment.yaml's image field to match `$IM
 ```
 kubectl apply -f ./kubernetes-manifests
 ```
-![NOTE](./img/noun_Excitement_267_3BB300.png) | you may need to edit hello.deployment.yaml's image field to match `$IMAGE_REPO/hello-world`
 -----|------

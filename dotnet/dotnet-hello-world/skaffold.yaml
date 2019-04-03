@@ -16,9 +16,4 @@ deploy:
 profiles:
 - name: cloudbuild
   build:
-<<<<<<< HEAD
     googleCloudBuild: {}
-    
-=======
-    googleCloudBuild: {}
->>>>>>> 1a76577d2a78fc71d8c7dfcc9f32ca42229609ae

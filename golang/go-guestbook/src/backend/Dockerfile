@@ -17,7 +17,7 @@ COPY . ./
 RUN go build -o /app/backend .
 
 # If you want to use the debugger, you need to modify the entrypoint to the
-# container and point it to the "dlv debug" comand:
+# container and point it to the "dlv debug" command:
 #   * UNCOMMENT the following ENTRYPOINT statement,
 #   * COMMENT OUT the last ENTRYPOINT statement
 # Start the "dlv debug" server on port 3000 of the container. (Note the process

@@ -1,0 +1,13 @@
+{
+  "name": "nodejs-guestbook",
+  "version": "1.0.0",
+  "description": "Guestbook Application for Kubernetes",
+  "dependencies": {
+    "eslint": "^5.16.0"
+  },
+  "scripts": {
+    "lint": "eslint 'src/**/**.js'"
+  },
+  "author": "",
+  "license": "ISC"
+}

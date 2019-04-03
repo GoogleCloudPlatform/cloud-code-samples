@@ -32,13 +32,14 @@ if(!process.env.GUESTBOOK_API_ADDR) {
   throw new Error(errMsg)
 }
 
-// starts an http server on the $PORT environment variable
+// Starts an http server on the $PORT environment variable
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);
   console.log('Press Ctrl+C to quit.');
 });
 
+// Handles GET request to /
 router.get("/", (req, res) => {
     // retrieve list of messages from the backend, and use them to render the HTML template
     axios.get(BACKEND_URI)
@@ -51,6 +52,7 @@ router.get("/", (req, res) => {
     })
 });
 
+// Handles POST request to /post
 router.post('/post', (req, res) => {
   console.log(`received request: ${req.method} ${req.url}`)
 

@@ -36,8 +36,6 @@ const messageModel = mongoose.model('Message', messageSchema);
 const construct = (params) => {
     const name = params.name
     const body = params.body
-    console.log('name : ' + name)
-    console.log('body: ' + body)
     const message = new messageModel({ name: name, body: body })
     return message
 };
@@ -49,16 +47,15 @@ const save = (message) => {
     })
 };
 
+// Constructs and saves message
 const create = (params) => {
     try {
-        console.log("creating...")
         const msg = construct(params)
         const validationError = msg.validateSync()
         if (validationError) { throw validationError }
-        console.log("msg: " + msg)
         save(msg)
-    } catch (exception) {
-        throw exception
+    } catch (error) {
+        throw error
     }
 }
 

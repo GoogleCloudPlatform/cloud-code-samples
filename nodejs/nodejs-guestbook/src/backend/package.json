@@ -2,12 +2,12 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "backend",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "start": "node --inspect=9229 app.js "
+    "start": "node --inspect=9229 app.js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Google Inc.",
+  "license": "0BSD",
   "devDependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.4",

@@ -22,7 +22,7 @@ if(!process.env.GUESTBOOK_DB_ADDR) {
 // Connect to MongoDB, will retry only once
 messages.connectToMongoDB()
 
-// starts an http server on the $PORT environment variable
+// Starts an http server on the $PORT environment variable
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);
   console.log('Press Ctrl+C to quit.');

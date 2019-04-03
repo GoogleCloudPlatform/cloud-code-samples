@@ -8,6 +8,6 @@
   "scripts": {
     "lint": "eslint 'src/**/**.js'"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "Google Inc.",
+  "license": "0BSD"
 }

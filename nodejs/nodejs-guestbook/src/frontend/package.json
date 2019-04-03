@@ -6,8 +6,8 @@
   "scripts": {
     "start": "node --inspect=9229 app.js "
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Google Inc.",
+  "license": "0BSD",
   "devDependencies": {
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",

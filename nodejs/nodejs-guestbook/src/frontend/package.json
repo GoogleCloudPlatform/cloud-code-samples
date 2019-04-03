@@ -4,17 +4,14 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node --inspect=9229 app.js ",
-    "test": "mocha app.test.js --exit"
+    "start": "node --inspect=9229 app.js "
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Google Inc.",
+  "license": "0BSD",
   "devDependencies": {
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
-    "chai": "^4.2.0",
     "express": "^4.16.4",
-    "mocha": "^6.0.2",
     "moment": "^2.24.0",
     "pug": "^2.0.3"
   }

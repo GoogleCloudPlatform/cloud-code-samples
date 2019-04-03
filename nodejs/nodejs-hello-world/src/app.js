@@ -1,16 +1,11 @@
 const express = require('express');
-const requestLogger = require('./logging')
 
 const app = express();
 
-// Logger to capture all requests and outputs them to the console
-app.use(requestLogger)
-
 // returns a simple respnse 
 app.get('/', (req, res) => {
-  res
-    .status(200)
-    .send('Hello, world!')
+  console.log(`received request: ${req.method} ${req.url}`)
+  res.status(200).send('Hello, world!')
 });
 
 // starts an http server on the $PORT environment variable

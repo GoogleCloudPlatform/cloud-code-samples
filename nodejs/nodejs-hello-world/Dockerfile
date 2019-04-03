@@ -12,3 +12,6 @@ COPY . .
 
 # Run app.js with debugging port when container launches
 ENTRYPOINT ["node", "--inspect=9229", "src/app.js"]
+
+# Comment above and uncomment below to run app.js without debugger port when container launches
+# ENTRYPOINT ["node", "app.js"]

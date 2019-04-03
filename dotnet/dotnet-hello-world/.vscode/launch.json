@@ -12,7 +12,7 @@
       "request": "attach",
       "localRoot": "${workspaceFolder}/src",
       "language": "NETCore",
-      "remoteRoot": "/app",
+      "remoteRoot": "/src",
       "name": "Debug on Kubernetes",
       "debugPort": 9229,
     }

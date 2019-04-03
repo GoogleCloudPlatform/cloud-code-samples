@@ -1,11 +1,15 @@
-FROM docker.io/node:8
+# Use base node 8 image from Docker hub
+FROM node:8
+
 
 WORKDIR /backend
 
+# Copy package.json and install dependencies
 COPY package*.json ./
-
 RUN npm install
 
+# Copy rest of the application csource code
 COPY . .
 
-CMD ["npm", "--inspect=9229", "start"]
+# Run app.js with debugging port when container launches
+CMD ["node", "--inspect=9229", "app.js"]

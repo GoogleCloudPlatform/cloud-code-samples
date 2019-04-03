@@ -4,7 +4,7 @@
   "description": "backend",
   "main": "app.js",
   "scripts": {
-    "start": "node --inspect=9229 app.js "
+    "start": "node --inspect=9229 app.js"
   },
   "author": "Google Inc.",
   "license": "0BSD",

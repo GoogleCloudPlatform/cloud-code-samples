@@ -1,15 +1,14 @@
 {
-  "name": "hello-node",
+  "name": "node-hello-world",
   "version": "0.0.1",
-  "description": "sample",
+  "description": "Hello World Application for Kubernetes",
   "main": "app.js",
   "scripts": {
     "start": "node --inspect=9229 src/app.js ",
-    "test": "mocha src/app.test.js --exit",
-    "lint": "eslint"
+    "lint": "eslint '**/**.js'"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Google Inc.",
+  "license": "0BSD",
   "dependencies": {
     "express": "^4.16.4"
   },

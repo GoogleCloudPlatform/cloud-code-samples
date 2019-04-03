@@ -6,7 +6,7 @@ metadata:
     app: node-guestbook
     tier: backend
 spec:
-  replicas: 1
+  replicas: 10
   template:
     metadata:
       labels:

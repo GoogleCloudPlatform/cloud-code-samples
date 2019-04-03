@@ -1,0 +1,9 @@
+*.suo
+*.user
+_ReSharper.*
+bin
+obj
+packages
+dotnet-hello-world/.vscode/settings.json
+dotnet-hello-world/src/obj/
+dotnet-hello-world/src/bin/

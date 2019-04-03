@@ -1,0 +1,13 @@
+.dockerignore
+.env
+.git
+.gitignore
+.vs
+.vscode
+*/bin
+*/obj
+<<<<<<< HEAD
+**/.toolstarget
+=======
+**/.toolstarget
+>>>>>>> 1a76577... Add dotnet hello world template

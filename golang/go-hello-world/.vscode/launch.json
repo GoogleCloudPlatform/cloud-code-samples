@@ -16,7 +16,7 @@
       "debugPort": 3000,
       "localRoot": "${workspaceFolder}/cmd/hello-world",
       "podSelector": {
-        "app": "hello-world"
+        "app": "go-hello-world"
       },
       "remoteRoot": "/src/hello-world"
     },

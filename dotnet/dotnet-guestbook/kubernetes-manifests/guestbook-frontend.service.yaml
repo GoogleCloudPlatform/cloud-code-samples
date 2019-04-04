@@ -1,0 +1,20 @@
+﻿# This Service manifest defines:
+# - a load balancer for pods matching label "app: dotnet-hello-world"
+# - exposing the application to the public Internet (type:LoadBalancer)
+# - routes port 80 of the load balancer to the port 8080 of the Pods.
+# Syntax reference https://kubernetes.io/docs/concepts/configuration/overview/
+apiVersion: v1
+kind: Service
+metadata:
+  name: dotnet-guestbook-frontend
+  labels:
+    app: dotnet-guestbook
+    tier: frontend
+spec:
+  type: LoadBalancer
+  selector:
+    app: dotnet-guestbook
+    tier: frontend
+  ports:
+  - port: 80
+    targetPort: http-server

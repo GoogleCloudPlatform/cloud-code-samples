@@ -1,0 +1,33 @@
+﻿# This Deployment manifest defines:
+# - single-replica deployment of the container image, with label "app: dotnet-guestbook-frontend"
+# - Pod exposes port 8080
+# - specify PORT environment variable to the container process
+# Syntax reference https://kubernetes.io/docs/concepts/configuration/overview/
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: dotnet-guestbook-backend
+  labels:
+    app: dotnet-guestbook
+    tier: backend
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: dotnet-guestbook
+        tier: backend
+    spec:
+      containers:
+      - name: backend
+        image: dotnet-guestbook-backend
+        ports:
+        - name: http-server
+          containerPort: 8080
+        - name: debug
+          containerPort: 9229
+        env:
+        - name: PORT
+          value: "8080"
+        - name: GUESTBOOK_DB_ADDR
+          value: dotnet-guestbook-mongodb:27017

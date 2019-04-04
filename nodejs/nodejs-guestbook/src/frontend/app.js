@@ -70,18 +70,31 @@ router.get("/", (req, res) => {
 });
 
 // Handles POST request to /post
-router.post('/post', (req, res, next) => {
-  // send the new message to the backend and redirect to the homepage
-  console.log(req.params)
-  console.log(req.body)
+router.post('/post', (req, res) => {
+  console.log(`received request: ${req.method} ${req.url}`)
 
+  // validate request
+  const name = req.body.name
+  const message = req.body.message
+  if (!name || name.length == 0) {
+    res.status(400).send("name is not specified")
+    return
+  }
+
+  if (!message || message.length == 0) {
+    res.status(400).send("message is not specified")
+    return
+  }
+
+  // send the new message to the backend and redirect to the homepage
+  console.log(`posting to ${BACKEND_URI}- name: ${name} body: ${message}`)
   axios.post(BACKEND_URI, {
-    name: req.body.name,
-    body: req.body.message
+    name: name,
+    body: message
   }).then(response => {
-      console.log('got response: ' + response.data)
+      console.log(`response from ${BACKEND_URI}` + response.status)
       res.redirect('/')
   }).catch(error => {
-      console.log('error with promise: ' + error)
+      console.error('error: ' + error)
   })
 });

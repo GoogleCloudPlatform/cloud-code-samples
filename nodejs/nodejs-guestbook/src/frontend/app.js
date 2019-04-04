@@ -1,26 +1,23 @@
 const express = require('express')
 const path = require('path');
-const moment = require('moment')
 const app = express();
 const bodyParser = require('body-parser')
 const axios = require('axios')
 
 const util = require('./utils')
 
-const GUESTBOOK_API_ADDR = process.env.GUESTBOOK_API_ADDR || 'localhost:8080'
+const GUESTBOOK_API_ADDR = process.env.GUESTBOOK_API_ADDR
 
 const BACKEND_URI = `http://${GUESTBOOK_API_ADDR}/messages`
 
-const TRANSLATE_API_ADDR = process.env.TRANSLATE_API_ADDR || 'localhost:27017'
+const TRANSLATE_API_ADDR = process.env.TRANSLATE_API_ADDR
 
 var TRANSLATE_URI = `http://${TRANSLATE_API_ADDR}/?text=`
 
 app.set("view engine", "pug")
-
 app.set("views", path.join(__dirname, "views"))
 
 const router = express.Router()
-
 app.use(router)
 
 app.use(express.static('public'))
@@ -33,6 +30,7 @@ app.listen(PORT, () => {
   console.log('Press Ctrl+C to quit.');
 });
 
+// Handles GET request to /
 router.get("/", (req, res) => {
     // retrieve list of messages from the backend, and use them to render the HTML template
     axios.get(BACKEND_URI)
@@ -71,6 +69,7 @@ router.get("/", (req, res) => {
     })
 });
 
+// Handles POST request to /post
 router.post('/post', (req, res, next) => {
   // send the new message to the backend and redirect to the homepage
   console.log(req.params)

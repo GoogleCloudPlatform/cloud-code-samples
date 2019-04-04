@@ -17,4 +17,4 @@ RUN pip install ptvsd
 COPY . .
 
 # Run app.py when the container launches
-ENTRYPOINT ["python", "-m", "ptvsd", "--port", "3000", "--host", "0.0.0.0", "front.py"]
+ENTRYPOINT ["python", "front.py"]

@@ -6,6 +6,7 @@ import time
 from flask import Flask, jsonify, request
 from flask_pymongo import PyMongo
 import bleach
+import ptvsd
 
 app = Flask(__name__)
 app.config["MONGO_URI"] = 'mongodb://{}/guestbook'.format(os.environ.get('GUESTBOOK_DB_ADDR'))
@@ -33,6 +34,9 @@ if __name__ == '__main__':
         if os.environ.get(v) is None:
             print("error: {} environment variable not set".format(v))
             exit(1)
+
+    # activate the debugger on port 3000
+    ptvsd.enable_attach(('0.0.0.0', '3000'))
 
     # start Flask server
     # Flask's debug mode is unrelated to ptvsd debugger used by Cloud Code

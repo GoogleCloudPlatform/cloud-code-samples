@@ -23,8 +23,21 @@ app.use(router)
 app.use(express.static('public'))
 router.use(bodyParser.urlencoded({ extended: false }))
 
-// starts an http server on the $PORT environment variable
-const PORT = process.env.PORT || 8001;
+// Application will fail if environment variables are not set
+if(!process.env.PORT) {
+  const errMsg = "PORT environment variable is not defined"
+  console.error(errMsg)
+  throw new Error(errMsg)
+}
+
+if(!process.env.GUESTBOOK_API_ADDR) {
+  const errMsg = "GUESTBOOK_API_ADDR environment variable is not defined"
+  console.error(errMsg)
+  throw new Error(errMsg)
+}
+
+// Starts an http server on the $PORT environment variable
+const PORT = process.env.PORT;
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);
   console.log('Press Ctrl+C to quit.');

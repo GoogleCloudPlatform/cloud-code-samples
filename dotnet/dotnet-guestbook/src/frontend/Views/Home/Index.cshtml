@@ -1,0 +1,56 @@
+@model IEnumerable<GuestbookEntry>
+
+<div class="header">
+        <div class="container">
+            <h1>
+                <a href="/">
+                    My Guestbook
+                </a>
+            </h1>
+            <a href="https://github.com/GoogleCloudPlatform/cloud-code-samples/tree/master/dotnet/dotnet-guestbook/" class="text-muted">View on GitHub</a>
+        </div>
+    </div>
+
+<div class="container posts mt-0">
+    <form class="form-inline" method="POST" action="/post">
+@Html.AntiForgeryToken()    
+        <label class="sr-only" for="name">Name</label>
+        <div class="input-group mb-2 mr-sm-2">
+            <div class="input-group-prepend">
+                <div class="input-group-text">Your Name</div>
+            </div>
+            <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+        <label class="sr-only" for="message">Message</label>
+        <div class="input-group mb-2 mr-sm-2">
+            <div class="input-group-prepend">
+                <div class="input-group-text">Message</div>
+            </div>
+            <input type="text" class="form-control" id="message" name="message" required>
+        </div>
+        <button type="submit" class="btn btn-primary mb-2">Post to Guestbook</button>
+    </form>
+
+    @if (Model == null || !Model.Any())
+    {
+        <div class="alert alert-info" role="alert">
+            No messages are logged to the guestbook yet.
+        </div>
+    }
+    else
+    {
+        @foreach (var msg in Model)
+        {
+            <div class="card my-3 col-12">
+                <div class="card-body">
+                    <h5 class="card-title">@Html.DisplayFor(modelItem => msg.Name)</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">@Html.DisplayFor(modelItem => DateTime.UtcNow.Subtract(msg.Date).Minutes) minutes ago</h6>
+                    <br>
+                    <p class="card-text">
+                        @Html.DisplayFor(modelItem => msg.Message)
+                    </p>
+                </div>
+            </div>
+        }
+    }
+</div>

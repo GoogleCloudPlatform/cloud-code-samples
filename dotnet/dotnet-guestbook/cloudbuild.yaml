@@ -1,0 +1,6 @@
+﻿steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/dotnet-guestbook-backend', './src/backend' ]
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/dotnet-guestbook-frontend', './src/frontend' ]
+images: [ 'gcr.io/$PROJECT_ID/dotnet-guestbook-backend', 'gcr.io/$PROJECT_ID/dotnet-guestbook-frontend' ]

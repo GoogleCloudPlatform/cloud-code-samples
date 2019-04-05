@@ -1,9 +1,0 @@
-{
-    "cloudcode.profile-cluster-map": {
-        "[default]": "docker-for-desktop",
-        "cloudbuild": "gke_windows-migrate-next19_us-west1-a_win-migrate1"
-    },
-    "cloudcode.image-registry": {
-        "name": "gcr.io/windows-migrate-next19"
-    }
-}

@@ -7,5 +7,8 @@ packages
 dotnet-hello-world/.vscode/settings.json
 dotnet-hello-world/src/obj/
 dotnet-hello-world/src/bin/
-dotnet-guestbook/src/obj/
-dotnet-guestbook/src/bin/
+dotnet-guestbook/.vscode/settings.json
+dotnet-guestbook/src/backend/obj/
+dotnet-guestbook/src/backend/bin/
+dotnet-guestbook/src/frontend/obj/
+dotnet-guestbook/src/frontend/bin/

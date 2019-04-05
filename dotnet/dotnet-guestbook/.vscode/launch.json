@@ -11,7 +11,7 @@
       "language": "NETCore",
       "debugPort": 9229,
       "localRoot": "${workspaceFolder}/src/frontend",
-      "remoteRoot": "/app/frontend",
+      "remoteRoot": "/src",
       "podSelector": {
         "app": "dotnet-guestbook",
         "tier": "frontend"
@@ -24,7 +24,7 @@
       "language": "NETCore",
       "debugPort": 9229,
       "localRoot": "${workspaceFolder}/src/backend",
-      "remoteRoot": "/app/backend",
+      "remoteRoot": "/src",
       "podSelector": {
         "app": "dotnet-guestbook",
         "tier": "backend"

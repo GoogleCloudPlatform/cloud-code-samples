@@ -1,16 +1,20 @@
 
 package cloudcode.helloworld.web;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+/**
+ * defines the REST endpoints managed by the server.
+ */
+@RestController
 public final class HelloWorldController {
 
-    // returns a simple response
-    @RequestMapping("/")
-    @ResponseBody
+    /**
+     * endpoint for the landing page
+     * @return a simple hello world message
+     */
+    @GetMapping("/")
     public String helloWorld() {
         return "Hello World!";
     }

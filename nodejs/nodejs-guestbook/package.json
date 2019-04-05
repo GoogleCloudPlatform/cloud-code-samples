@@ -1,21 +1,13 @@
 {
-    "name": "guestbook",
-    "version": "0.0.1",
-    "description": "sample",
-    "main": "app.js",
-    "scripts": {
-      "start": "node --inspect=9229 src/app.js "
-    },
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-      "express": "^4.16.4"
-    },
-    "devDependencies": {
-      "chai": "^4.2.0",
-      "chai-http": "^4.2.1",
-      "mocha": "^5.2.0",
-      "request": "^2.88.0"
-    }
-  }
-  
+  "name": "nodejs-guestbook",
+  "version": "1.0.0",
+  "description": "Guestbook Application for Kubernetes",
+  "dependencies": {
+    "eslint": "^5.16.0"
+  },
+  "scripts": {
+    "lint": "eslint 'src/**/**.js'"
+  },
+  "author": "Google Inc.",
+  "license": "0BSD"
+}

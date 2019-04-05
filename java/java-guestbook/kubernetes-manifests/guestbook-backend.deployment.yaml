@@ -24,3 +24,4 @@ spec:
           value: "8080"
         - name: GUESTBOOK_DB_ADDR
           value: "java-guestbook-mongodb:27017"
+          

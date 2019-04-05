@@ -78,7 +78,7 @@ router.get("/", (req, res) => {
             console.log('error with promise: ' + err)
           })
       }).catch(error => {
-        console.log('error with promise: ' + error)
+        console.error('error: ' + error)
     })
 });
 

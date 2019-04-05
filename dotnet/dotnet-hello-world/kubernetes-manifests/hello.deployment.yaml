@@ -1,0 +1,27 @@
+﻿# This Deployment manifest defines:
+# - single-replica deployment of the container image, with label "app: dotnet-hello-world"
+# - Pod exposes port 8080
+# - specify PORT environment variable to the container process
+# Syntax reference https://kubernetes.io/docs/concepts/configuration/overview/
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dotnet-hello-world
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dotnet-hello-world
+  template:
+    metadata:
+      labels:
+        app: dotnet-hello-world
+    spec:
+      containers:
+      - name: server
+        image: dotnet-hello-world
+        ports:
+        - containerPort: 8080
+        env:
+        - name: PORT
+          value: "8080"

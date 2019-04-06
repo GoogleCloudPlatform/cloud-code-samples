@@ -46,5 +46,17 @@
     "directoryPath": "java/java-guestbook",
     "templatePath": "java-guestbook",
     "templateName": "Java: Guestbook"
+  },
+  {
+    "repoPath": "https://github.com/GoogleCloudPlatform/cloud-code-samples.git",
+    "directoryPath": "dotnet/dotnet-hello-world",
+    "templatePath": "dotnet-hello-world",
+    "templateName": ".NET Core: Hello World"
+  },
+  {
+    "repoPath": "https://github.com/GoogleCloudPlatform/cloud-code-samples.git",
+    "directoryPath": "dotnet/dotnet-guestbook",
+    "templatePath": "dotnet-guestbook",
+    "templateName": ".NET Core: Guestbook"
   }
 ]

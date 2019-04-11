@@ -12,3 +12,4 @@ dotnet-guestbook/src/backend/obj/
 dotnet-guestbook/src/backend/bin/
 dotnet-guestbook/src/frontend/obj/
 dotnet-guestbook/src/frontend/bin/
+.vs/

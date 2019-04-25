@@ -18,10 +18,10 @@ COPY . ./
 RUN mvn -Dmaven.test.skip=true package
 
 # Build runtime image.
-FROM docker.io/openjdk:8-jdk-alpine
+FROM openjdk:8-jre-alpine
 
 # Copy the compiled files over.
 COPY --from=build-env /app/target /app/
 
-# Starts java app with debugging server at port 50005.
-ENTRYPOINT ["java","-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=50005,quiet=y", "-jar", "/app/frontend-1.0.jar"]
+# Starts java app with debugging server at port 5005.
+ENTRYPOINT ["java","-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005,quiet=y", "-jar", "/app/frontend-1.0.jar"]

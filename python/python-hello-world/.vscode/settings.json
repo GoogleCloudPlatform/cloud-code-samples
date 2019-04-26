@@ -1,8 +1,0 @@
-{
-    "cloudcode.profile-cluster-map": {
-        "[default]": "gke_gcloud-powershell-testing_us-central1-f_test-cluster"
-    },
-    "cloudcode.image-registry": {
-        "name": "docker.io/quoctruong91"
-    }
-}

@@ -15,110 +15,73 @@
 steps:
 - id: 'build docker image'
   name: 'gcr.io/$PROJECT_ID/skaffold:alpha'
-  args: ['build', '-f dotnet/dotnet-hello-world/skaffold.yaml', '-d gcr.io/$PROJECT_ID', '-p cloudbuild']
-  dir: 'dotnet/dotnet-hello-world'
+  entrypoint: 'skaffold'
+  args: ['build',
+         '-d', 'gcr.io/$PROJECT_ID', 
+         '-p', 'cloudbuild', 
+         '-n', 'test-$BUILD_ID']
+  dir: '/workspace/${_LANGUAGE}/${_TEMPLATE}'
   waitFor: ['-']
-
-#- id: 'build docker image'
-#  name: 'gcr.io/cloud-builders/docker'
-#  args: [
-#    'build',
-#    '--tag=dotnet-hello-world', 
-#    '--tag=gcr.io/$PROJECT_ID/dotnet-hello-world',
-#    '--cache-from', 'gcr.io/$PROJECT_ID/dotnet-hello-world:latest',
-#    'dotnet/dotnet-hello-world/src/.',
-#  ]
-#  waitFor: [] 
 
 - id: 'create k8s namespace'
   name: 'gcr.io/cloud-builders/kubectl'
   args: ['create','namespace','test-$BUILD_ID']
   waitFor: ['-'] # start immediately
 
-#- id: 'push dotnet-hello-world'
-#  name: 'gcr.io/cloud-builders/docker'
-#  args: ['push', 'gcr.io/$PROJECT_ID/dotnet-hello-world']
-#  waitFor: ['build docker image']
-
-
-#- id: 'update image in k8s config'
-#  name: 'gcr.io/cloud-builders/gcloud'
-#  entrypoint: 'bash'
-    #sed -r 's/^(\s*)(image\s*:\s*nginx\s*$)/\1image: apache/' file
-
- # args: ['container clusters get-credentials staging --zone us-central1-a --project $PROJECT_ID']
- # args: ['-c','find k8s -type f | xargs sed -i "s/PROJECT_ID/$PROJECT_ID/g"']
-#  waitFor: ['-']
-
 - id: 'deploy to staging'
   name: 'gcr.io/$PROJECT_ID/skaffold:alpha'
   args: ['deploy', 
-         '-f skaffold.yaml', 
-         '-d gcr.io/$PROJECT_ID',
-         '-p cloudbuild',
-         '-l $BUILD_ID',
-         '-n test-$BUILD_ID']
-  dir: 'dotnet/dotnet-hello-world'
+#         '-f', 'skaffold.yaml', 
+         '-d', 'gcr.io/$PROJECT_ID',
+         '-p', 'cloudbuild',
+         '-l', '$BUILD_ID',
+         '-n', 'test-$BUILD_ID']
+  dir: '/workspace/${_LANGUAGE}/${_TEMPLATE}'
   waitFor: ['build docker image', 'create k8s namespace']
 
-#- id: 'deploy to staging'
-#  name: 'gcr.io/cloud-builders/kubectl'
-#  args: ['apply', '-f', './dotnet/dotnet-hello-world/kubernetes-manifests/', '--namespace=test-$BUILD_ID'] 
-#  waitFor: ['push dotnet-hello-world','create k8s namespace']
+- id: 'get endpoint'
+  name: 'gcr.io/cloud-builders/kubectl'
+  entrypoint: 'bash'
+  args: 
+  - '-c'
+  - |
+    get_externalIp() {
+      kubectl get service ${_TEMPLATE}-external --namespace=test-$BUILD_ID -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
+    }
 
-#- id: 'get endpoint'
-#  name: 'gcr.io/cloud-builders/kubectl'
-#  entrypoint: 'bash'
-#  args: 
-#  - '-c'
-#  - |
-    # determine which node port the service was exposed on
-    #get_nodeport() {
-    #  kubectl get service dotnet-hello-world-external --namespace=test-$BUILD_ID -o=jsonpath='{.spec.ports[0].nodePort}' 
-    #}
+    until [[ -n "$(get_externalIp)" ]]; do
+        echo "querying for external ip"
+        sleep 3
+    done
 
-    #until [[ -n "$(get_nodeport)" ]]; do
-    #    echo "querying for nodeport"
-    #    sleep 3
-    #done
+    echo "$(get_externalIp)" > _externalIP # save external Ip for use in next step
+    echo "External Ip is $(cat _externalIP)"
+  waitFor: ['deploy to staging']
 
-    #echo "$(get_nodeport)" > _nodeport # save port for use in next step
+- id: 'integration tests'
+  name: 'gcr.io/cloud-builders/curl'
+  entrypoint: '/bin/bash'
+  args: 
+  - '-c'
+  - |
+    string="Hello World!"
+    if curl -s "http://$(cat _externalIP)" | grep -q "$string"; then
+      echo "'$string' found"
+    else
+      echo "'$string' not found"
+    fi
+  waitFor: ['get endpoint']
 
-    # grab the public IP of a random node
-    # (why do this instead of a load balancer? b/c it's faster to instantiate)
-    # (and doesn't require additional billable resources)
-    # (we can reasonably expect the node to be durable enough to last until the test completes)
-    #get_nodeip() {
-    #  kubectl get nodes --output jsonpath='{.items[0].status.addresses[?(@.type=="ExternalIP")].address}'
-    #}
+- id: 'delete namespace'
+  name: 'gcr.io/cloud-builders/kubectl'
+  args: ['delete', 'namespaces', 'test-$BUILD_ID']
+  waitFor: ['integration tests']
 
-    #until [[ -n "$(get_nodeip)" ]]; do
-    #    echo "querying for nodeip"
-    #    sleep 3
-    #done
-
-    #echo $(get_nodeip) > _nodeip # save ip for use in next step
-
-#  waitFor: ['deploy to staging']
-
-#- id: 'integration tests'
-#  name: 'gcr.io/cloud-builders/curl'
-#  entrypoint: '/bin/bash'
-#  args: 
-#  - '-c'
-#  - |
-    ### -r = retries; -i = interval; -k = keyword to search for ###
-#    ./test/test-connection.sh -r 20 -i 3 -u http://$(cat _nodeip):$(cat _nodeport)
-#    ./test/test-content.sh -r 20 -i 3 -u http://$(cat _nodeip):$(cat _nodeport) -k 'Chocolate Chip'
-#  waitFor: ['get endpoint']
-
-#- id: 'delete namespace'
-#  name: 'gcr.io/cloud-builders/kubectl'
-#  args: ['delete', 'namespaces', 'test-$BUILD_ID']
-#  waitFor: ['integration tests']
-
+substitutions:
+   _LANGUAGE: dotnet
+   _TEMPLATE: dotnet-hello-world
 options:
   env:
     # location/name of GKE cluster (used by all kubectl commands)
     - CLOUDSDK_COMPUTE_ZONE=us-central1-a
-    - CLOUDSDK_CONTAINER_CLUSTER=staging
+    - CLOUDSDK_CONTAINER_CLUSTER=staging    

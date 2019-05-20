@@ -13,15 +13,6 @@
 # limitations under the License.
 
 steps:
-- id: 'build docker image'
-  name: 'gcr.io/$PROJECT_ID/skaffold:alpha'
-  entrypoint: 'skaffold'
-  args: ['build',
-         '-d', 'gcr.io/$PROJECT_ID', 
-         '-p', 'cloudbuild', 
-         '-n', 'test-$BUILD_ID']
-  dir: '/workspace/${_LANGUAGE}/${_TEMPLATE}'
-  waitFor: ['-']
 
 - id: 'create k8s namespace'
   name: 'gcr.io/cloud-builders/kubectl'
@@ -30,14 +21,14 @@ steps:
 
 - id: 'deploy to staging'
   name: 'gcr.io/$PROJECT_ID/skaffold:alpha'
-  args: ['deploy', 
-#         '-f', 'skaffold.yaml', 
-         '-d', 'gcr.io/$PROJECT_ID',
+  args: ['run', 
+#         '-d', 'gcr.io/$PROJECT_ID',
          '-p', 'cloudbuild',
          '-l', '$BUILD_ID',
          '-n', 'test-$BUILD_ID']
   dir: '/workspace/${_LANGUAGE}/${_TEMPLATE}'
-  waitFor: ['build docker image', 'create k8s namespace']
+  waitFor: ['create k8s namespace']
+
 
 - id: 'get endpoint'
   name: 'gcr.io/cloud-builders/kubectl'
@@ -69,6 +60,7 @@ steps:
       echo "'$string' found"
     else
       echo "'$string' not found"
+      exit 1
     fi
   waitFor: ['get endpoint']
 
@@ -85,3 +77,4 @@ options:
     # location/name of GKE cluster (used by all kubectl commands)
     - CLOUDSDK_COMPUTE_ZONE=us-central1-a
     - CLOUDSDK_CONTAINER_CLUSTER=staging    
+    - SKAFFOLD_DEFAULT_REPO=gcr.io/$PROJECT_ID

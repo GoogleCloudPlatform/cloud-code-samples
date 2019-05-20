@@ -13,7 +13,7 @@ We support two IDEs: Visual Studio Code and IntelliJ.
 
 ## Useful Links
 
-* [Cloud Code for VS Code](https://marketplace.visualstudio.com/itemdetails?itemName=GoogleCloudTools.cloudcode)
+* [Cloud Code for VS Code](https://marketplace.visualstudio.com/items?itemName=GoogleCloudTools.cloudcode)
 * [Cloud Code for IntelliJ](https://plugins.jetbrains.com/plugin/8079-cloud-code)
 * [Cloud Code Docs](https://cloud.google.com/code/docs/)
 * [Cloud Code for VS Code Repo](https://github.com/GoogleCloudPlatform/cloud-code-vscode)

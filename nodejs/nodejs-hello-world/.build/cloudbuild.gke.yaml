@@ -26,7 +26,7 @@ steps:
          '-p', 'cloudbuild',
          '-l', '$BUILD_ID',
          '-n', 'test-$BUILD_ID']
-  dir: '/workspace/${_LANGUAGE}/${_TEMPLATE}'
+  dir: '/workspace/${_LANGUAGE}/${_LANGUAGE}-${_TEMPLATE}'
   waitFor: ['create k8s namespace']
 
 
@@ -37,7 +37,7 @@ steps:
   - '-c'
   - |
     get_externalIp() {
-      kubectl get service node-hello-world-external --namespace=test-$BUILD_ID -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
+      kubectl get service node-${_TEMPLATE}-external --namespace=test-$BUILD_ID -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
     }
 
     until [[ -n "$(get_externalIp)" ]]; do
@@ -71,7 +71,7 @@ steps:
 
 substitutions:
    _LANGUAGE: nodejs
-   _TEMPLATE: nodejs-hello-world
+   _TEMPLATE: hello-world 
 options:
   env:
     # location/name of GKE cluster (used by all kubectl commands)

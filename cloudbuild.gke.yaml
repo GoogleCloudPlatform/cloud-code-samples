@@ -16,7 +16,7 @@ steps:
 
 - id: 'create k8s namespace'
   name: 'gcr.io/cloud-builders/kubectl'
-  args: ['create','namespace','test-$BUILD_ID']
+  args: ['create','namespace','test-$BUILD_ID-${_TEMPLATE}']
   waitFor: ['-'] # start immediately
 
 - id: 'deploy to staging'
@@ -25,7 +25,7 @@ steps:
 #         '-d', 'gcr.io/$PROJECT_ID',
          '-p', 'cloudbuild',
          '-l', '$BUILD_ID',
-         '-n', 'test-$BUILD_ID']
+         '-n', 'test-$BUILD_ID-${_TEMPLATE}']
   dir: '/workspace/${_LANGUAGE}/${_TEMPLATE}'
   waitFor: ['create k8s namespace']
 
@@ -37,7 +37,7 @@ steps:
   - '-c'
   - |
     get_externalIp() {
-      kubectl get service ${_TEMPLATE}-external --namespace=test-$BUILD_ID -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
+      kubectl get service ${_TEMPLATE}-external --namespace=test-$BUILD_ID-${_TEMPLATE} -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
     }
 
     until [[ -n "$(get_externalIp)" ]]; do
@@ -55,18 +55,18 @@ steps:
   args: 
   - '-c'
   - |
-    string="Hello World!"
-    if curl -s "http://$(cat _externalIP)" | grep -q "$string"; then
-      echo "'$string' found"
+    text_to_find="Hello World!"
+    if curl -s "http://$(cat _externalIP)" | grep -q "$text_to_find"; then
+      echo "'$text_to_find' found"
     else
-      echo "'$string' not found"
+      echo "'$text_to_find' not found"
       exit 1
     fi
   waitFor: ['get endpoint']
 
 - id: 'delete namespace'
   name: 'gcr.io/cloud-builders/kubectl'
-  args: ['delete', 'namespaces', 'test-$BUILD_ID']
+  args: ['delete', 'namespaces', 'test-$BUILD_ID-${_TEMPLATE}']
   waitFor: ['integration tests']
 
 substitutions:

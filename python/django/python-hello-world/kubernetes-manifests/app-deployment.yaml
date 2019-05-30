@@ -1,20 +1,20 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: python-helloworld-app
+  name: python-hello-world-app
   labels:
-    app: python-helloworld
+    app: python-hello-world
     tier: app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: python-helloworld
+      app: python-hello-world
       tier: app
   template:
     metadata:
       labels:
-        app: python-helloworld
+        app: python-hello-world
         tier: app
     spec:
       initContainers:
@@ -23,10 +23,10 @@ spec:
       - name: check-db-ready
         image: postgres
         command: ['sh', '-c',
-          'until pg_isready -h python-helloworld-db.default.svc.cluster.local -p 5432;
+          'until pg_isready -h python-hello-world-db.default.svc.cluster.local -p 5432;
           do echo waiting for database; sleep 2; done;']
       containers:
-      - name: python-helloworld
-        image: gcr.io/cloud-django-integration-test1/python-helloworld
+      - name: python-hello-world
+        image: python-hello-world
         ports:
         - containerPort: 8080

@@ -7,20 +7,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: python-helloworld-db
+  name: python-hello-world-db
   labels:
-    app: python-helloworld
+    app: python-hello-world
     tier: db
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: python-helloworld
+      app: python-hello-world
       tier: db
   template:
     metadata:
       labels:
-        app: python-helloworld
+        app: python-hello-world
         tier: db
     spec:
       containers:

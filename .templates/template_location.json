@@ -1,13 +1,13 @@
 [
   {
     "repoPath": "https://github.com/GoogleCloudPlatform/cloud-code-samples.git",
-    "directoryPath": "python/flask/python-hello-world",
+    "directoryPath": "python/python-hello-world",
     "templatePath": "python-hello-world",
     "templateName": "Python:Flask: Hello World"
   },
   {
     "repoPath": "https://github.com/GoogleCloudPlatform/cloud-code-samples.git",
-    "directoryPath": "python/flask/python-guestbook",
+    "directoryPath": "python/python-guestbook",
     "templatePath": "python-guestbook",
     "templateName": "Python:Flask: Guestbook"
   },

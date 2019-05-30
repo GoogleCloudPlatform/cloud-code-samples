@@ -6,7 +6,7 @@
   "configurations": [
     {
       "podSelector": {
-        "app": "python-helloworld",
+        "app": "python-hello-world",
         "tier": "app"
       },
       "type": "cloudcode",

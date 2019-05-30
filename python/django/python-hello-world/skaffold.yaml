@@ -3,12 +3,11 @@ kind: Config
 build:
   tagPolicy:
     sha256: {}
+  # defines where to find the code at build time and where to push the resulting image
   artifacts:
     - context: src
       image: python-hello-world
-  local:
-    useBuildkit: false
-    useDockerCLI: false
+# defines the Kubernetes manifests to deploy on each run
 deploy:
   kubectl:
     manifests:

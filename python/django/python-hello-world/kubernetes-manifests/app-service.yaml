@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: python-helloworld-app
+  labels:
+    app: python-helloworld
+    tier: app
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 8080
+  selector:
+    app: python-helloworld
+    tier: app

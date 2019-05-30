@@ -1,0 +1,10 @@
+apiVersion: skaffold/v1beta11
+kind: Config
+build:
+  artifacts:
+  - image: gcr.io/cloud-django-integration-test1/python-helloworld
+    context: src
+deploy:
+  kubectl:
+    manifests:
+    - kubernetes-manifests/**.yaml

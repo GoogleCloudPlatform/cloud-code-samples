@@ -1,0 +1,8 @@
+{
+    "cloudcode.profile-cluster-map": {
+        "[default]": "gke_cloud-django-integration-test1_us-west1-a_standard-cluster-1"
+    },
+    "cloudcode.image-registry": {
+        "name": "gcr.io/cloud-django-integration-test1"
+    }
+}

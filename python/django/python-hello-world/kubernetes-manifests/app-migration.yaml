@@ -1,0 +1,22 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: python-helloworld-migration
+spec:
+  ttlSecondsAfterFinished: 120
+  template:
+    metadata:
+      name: python-helloworld-migration
+    spec:
+      initContainers:
+      # Wait for the database to get ready before doing migration
+      - name: check-db-ready
+        image: postgres
+        command: ['sh', '-c',
+          'until pg_isready -h python-helloworld-db.default.svc.cluster.local -p 5432;
+          do echo waiting for database; sleep 2; done;']
+      containers:
+      - name: python-helloworld-migration
+        image: gcr.io/cloud-django-integration-test1/python-helloworld
+        command: [ "/bin/sh", "-c", "python manage.py migrate" ]
+      restartPolicy: OnFailure

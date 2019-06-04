@@ -3,7 +3,7 @@
 # - Pod exposes port 8080
 # - specify PORT environment variable to the container process
 # Syntax reference https://kubernetes.io/docs/concepts/configuration/overview/
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: dotnet-guestbook-frontend
@@ -12,6 +12,10 @@ metadata:
     tier: frontend
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: dotnet-guestbook
+      tier: frontend
   template:
     metadata:
       labels:

@@ -9,7 +9,7 @@
         "request": "attach",
         "name": "Debug on Kubernetes",
         "language": "Java",
-        "debugPort": 50005,
+        "debugPort": 5005,
         "localRoot": "${workspaceFolder}",
         "remoteRoot": "/app",
         "podSelector": {

@@ -1,0 +1,30 @@
+################################################################################
+# WARNING: This Postgres database deployment is not suitable for production as
+# the data is not persistently stored and will go away every time the Pod
+# restarts. Consider using a Helm chart that provisions a StatefulSet instead of
+# Deployment.
+################################################################################
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-guestbook-db
+  labels:
+    app: python-guestbook
+    tier: db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: python-guestbook
+      tier: db
+  template:
+    metadata:
+      labels:
+        app: python-guestbook
+        tier: db
+    spec:
+      containers:
+        - image: postgres:9.6
+          name: db
+          ports:
+            - containerPort: 5432

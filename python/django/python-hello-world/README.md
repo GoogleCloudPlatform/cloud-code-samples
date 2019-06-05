@@ -47,6 +47,9 @@
 
 This sample was written to demonstrate how to use the Cloud Code extension for Visual Studio code.
 
+Please change [SECRET_KEY](./src/helloworld/settings.py#L28) as soon as possible. If you keep
+its value unchanged, your application will be vulnerable from security issues. See [link](https://docs.djangoproject.com/en/2.2/ref/settings/#secret-key) for more details.
+
 * [Install Cloud Code for VS Code](https://cloud.google.com/code/docs/vscode/install)
 * [Creating a new app](https://cloud.google.com/code/docs/vscode/creating-an-application)
 * [Editing YAML files](https://cloud.google.com/code/docs/vscode/yaml-editing)

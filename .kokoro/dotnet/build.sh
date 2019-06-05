@@ -6,4 +6,4 @@ set -e
 # Display commands being run
 set -x
 
-dotnet --version
+printenv

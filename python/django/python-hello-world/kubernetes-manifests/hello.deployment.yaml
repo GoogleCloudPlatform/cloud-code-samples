@@ -17,14 +17,6 @@ spec:
         app: python-hello-world
         tier: app
     spec:
-      initContainers:
-      # Wait for the database to get ready before starting the server, otherwise
-      # the server will crash
-      - name: check-db-ready
-        image: postgres
-        command: ['sh', '-c',
-          'until pg_isready -h python-hello-world-db.default.svc.cluster.local -p 5432;
-          do echo waiting for database; sleep 2; done;']
       containers:
       - name: python-hello-world
         image: python-hello-world

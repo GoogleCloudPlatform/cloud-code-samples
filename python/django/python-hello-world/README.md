@@ -14,22 +14,7 @@
 ### Cloud Code for Visual Studio Code
 
 1. [Getting Started](#getting-started])
-2. What's in the box
-    * .vscode
-      * extensions.json: prompt requesting download of related extensions when opening this project
-      * launch.json: information needed for the debugger to attach to our service
-      * tasks.json: configuration information for Visual Studio Code Tasks
-    * kubernetes-manifests
-      * hello.deployment.yaml: Kubernetes manifest for the Hello World server Deployment
-      * hello.service.yaml: Kubernetes manifest for the Hello World LoadBalancer Service
-      * hello.migration.yaml: Kubernetes manifest for the Postgres database migration job
-      * postgres.development.yaml: Kubernetes manifest for the Postgres database Deployment
-      * postgres.service.yaml: Kubernetes manifest for the Postgres database Cluster IP Service
-    * src
-      * helloworld, manage.py: Django project files generated with "[django-admin startproject helloworld](https://docs.djangoproject.com/en/2.2/ref/django-admin/#startproject)".
-      * home: A simple Django app that only prints "Hello World".
-      * Dockerfile: used to build the container image for our program
-    * skaffold.yaml: config file for [Skaffold](https://skaffold.dev/docs/), which is used by Cloud Code to build and deploy images
+2. [What's in the box](https://cloud.google.com/code/docs/vscode/quickstart#whats_in_the_box)
 3. Using Cloud Code
     * [Set up a Google Kubernetes Engine Cluster](https://cloud.google.com/code/docs/vscode/quickstart#creating_a_google_kubernetes_engine_cluster)
     * [Deploy the app](https://cloud.google.com/code/docs/vscode/quickstart#deploying_your_app)
@@ -47,8 +32,8 @@
 
 This sample was written to demonstrate how to use the Cloud Code extension for Visual Studio code.
 
-Please change [SECRET_KEY](./src/helloworld/settings.py#L28) as soon as possible. If you keep
-its value unchanged, your application will be vulnerable from security issues. See [link](https://docs.djangoproject.com/en/2.2/ref/settings/#secret-key) for more details.
+Please change [SECRET_KEY](./src/helloworld/settings.py#L28) as soon as possible. The application will run successfully even if you keep
+its value unchanged, but your application will be vulnerable from security issues. For example, privilege escalation and remote code execution. See [link](https://docs.djangoproject.com/en/2.2/ref/settings/#secret-key) for more details.
 
 * [Install Cloud Code for VS Code](https://cloud.google.com/code/docs/vscode/install)
 * [Creating a new app](https://cloud.google.com/code/docs/vscode/creating-an-application)

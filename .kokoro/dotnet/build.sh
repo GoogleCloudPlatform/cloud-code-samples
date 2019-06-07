@@ -10,12 +10,12 @@ export PATH=${PATH}:${HOME}/gcloud/google-cloud-sdk/bin
 export ProjectId=cloud-code-samples-tests
 
 # Activate service account used for invoking CI/CD builds with Cloud Build
-gcloud auth activate-service-account --project=$ProjectId --key-file="${KOKORO_GFILE_DIR}/cloud-code-samples-tests-ac6e20d34ba6.json"
+gcloud auth activate-service-account --project=$ProjectId --key-file="${KOKORO_GFILE_DIR}/cloud-code-samples-tests-ac6e20d34ba6.json" --quiet
 gcloud init --console-only 
-gcloud config set account cicd-983@cloud-code-samples-tests.iam.gserviceaccount.com
-gcloud auth application-default login --no-launch-browser
+#gcloud config set account cicd-983@cloud-code-samples-tests.iam.gserviceaccount.com
+#gcloud auth application-default login --no-launch-browser --quiet
 
 # Submit a build job
-gcloud builds submit . --config github/cloud-code-samples/dotnet/dotnet-hello-world/.build/cloudbuild.gke.yaml
+gcloud builds submit . --config github/cloud-code-samples/dotnet/dotnet-hello-world/.build/cloudbuild.gke.yaml --project=$ProjectId
 
 printenv

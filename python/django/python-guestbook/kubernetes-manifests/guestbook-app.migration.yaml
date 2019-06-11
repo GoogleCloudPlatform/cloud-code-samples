@@ -22,4 +22,13 @@ spec:
       - name: python-guestbook-migration
         image: python-guestbook
         command: [ "/bin/sh", "-c", "python manage.py migrate" ]
+        env:
+        - name: DATABASE_NAME
+          value: "postgres"
+        - name: DATABASE_USER
+          value: "postgres"
+        - name: DATABASE_HOST
+          value: "python-guestbook-db"
+        - name: DATABASE_PORT
+          value: "5432"
       restartPolicy: OnFailure

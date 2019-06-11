@@ -20,7 +20,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = ')#53(g@x1pk#h9$&nb(-*2$y8xbi-(x(=i5n8n5(mr&v^eer!8'
+# See https://docs.djangoproject.com/en/2.2/ref/settings/#secret-key
+# You can generate a secret key using the following code:
+#
+# from django.core.management.utils import get_random_secret_key
+# get_random_secret_key()
+SECRET_KEY = 'CHANGE_ME_PLEASE'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -77,10 +82,10 @@ WSGI_APPLICATION = 'guestbook.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'HOST': 'python-guestbook-db',
-        'PORT': '5432',
+        'NAME': os.getenv('DATABASE_NAME'),
+        'USER': os.getenv('DATABASE_USER'),
+        'HOST': os.getenv('DATABASE_HOST'),
+        'PORT': os.getenv('DATABASE_PORT'),
     }
 }
 

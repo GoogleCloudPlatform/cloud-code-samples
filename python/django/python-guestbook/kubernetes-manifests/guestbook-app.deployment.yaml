@@ -30,3 +30,12 @@ spec:
         image: python-guestbook
         ports:
         - containerPort: 8080
+        env:
+        - name: DATABASE_NAME
+          value: "postgres"
+        - name: DATABASE_USER
+          value: "postgres"
+        - name: DATABASE_HOST
+          value: "python-guestbook-db"
+        - name: DATABASE_PORT
+          value: "5432"

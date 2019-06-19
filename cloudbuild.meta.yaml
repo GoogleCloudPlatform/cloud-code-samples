@@ -1,16 +1,20 @@
 steps:
-- id: 'nodejs-hello-world tests'
+- id: 'java-hello-world tests'
   name: 'gcr.io/cloud-builders/gcloud'
-  args: ['builds', 'submit', '.', '--config', 'nodejs/nodejs-hello-world/.build/cloudbuild.gke.yaml']
-  waitFor: ['-'] 
-
-- id: 'nodejs-guestbook tests'
-  name: 'gcr.io/cloud-builders/gcloud'
-  args: ['builds', 'submit', '.', '--config', 'nodejs/nodejs-guestbook/.build/cloudbuild.gke.yaml']
-  waitFor: ['-'] 
-
-- id: 'donet-hello-world tests'
-  name: 'gcr.io/cloud-builders/gcloud'
-  args: ['builds', 'submit', '.', '--config', 'dotnet/dotnet-hello-world/.build/cloudbuild.gke.yaml']
-  waitFor: ['-'] 
+  args: ['builds', 'submit', '.', '--config', 'java/java-hello-world/.build/cloudbuild.gke.yaml']
+  waitFor: ['-']
+  #- id: 'nodejs-hello-world tests'
+  #  name: 'gcr.io/cloud-builders/gcloud'
+  #  args: ['builds', 'submit', '.', '--config', 'nodejs/nodejs-hello-world/.build/cloudbuild.gke.yaml']
+  #  waitFor: ['-'] 
+  #
+  #- id: 'nodejs-guestbook tests'
+  #  name: 'gcr.io/cloud-builders/gcloud'
+  #  args: ['builds', 'submit', '.', '--config', 'nodejs/nodejs-guestbook/.build/cloudbuild.gke.yaml']
+  #  waitFor: ['-'] 
+  #
+  #- id: 'donet-hello-world tests'
+  #  name: 'gcr.io/cloud-builders/gcloud'
+  #  args: ['builds', 'submit', '.', '--config', 'dotnet/dotnet-hello-world/.build/cloudbuild.gke.yaml']
+  #  waitFor: ['-'] 
 

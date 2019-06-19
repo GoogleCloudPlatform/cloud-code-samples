@@ -1,8 +1,12 @@
 steps:
-- id: 'go-hello-world tests'
+- id: 'go-guestbook tests'
   name: 'gcr.io/cloud-builders/gcloud'
-  args: ['builds', 'submit', '.', '--config', 'golang/go-hello-world/.build/cloudbuild.gke.yaml']
+  args: ['builds', 'submit', '.', '--config', 'golang/go-guestbook/.build/cloudbuild.gke.yaml']
   waitFor: ['-']
+    #- id: 'go-hello-world tests'
+    #  name: 'gcr.io/cloud-builders/gcloud'
+    #  args: ['builds', 'submit', '.', '--config', 'golang/go-hello-world/.build/cloudbuild.gke.yaml']
+    #  waitFor: ['-']
     #- id: 'java-hello-world tests'
     #  name: 'gcr.io/cloud-builders/gcloud'
     #  args: ['builds', 'submit', '.', '--config', 'java/java-hello-world/.build/cloudbuild.gke.yaml']

@@ -1,0 +1,24 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: python-hello-world-app
+  labels:
+    app: python-hello-world
+    tier: app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: python-hello-world
+      tier: app
+  template:
+    metadata:
+      labels:
+        app: python-hello-world
+        tier: app
+    spec:
+      containers:
+      - name: python-hello-world
+        image: python-hello-world
+        ports:
+        - containerPort: 8080

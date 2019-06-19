@@ -1,4 +1,4 @@
-# Use base Python image from Docker Hub
+# Python image to use.
 FROM python:3.6
 
 # Set the working directory to /app
@@ -16,5 +16,5 @@ RUN pip install ptvsd
 # Copy the rest of the working directory contents into the container at /app
 COPY . .
 
-# Run app.py when the container launches
-ENTRYPOINT ["python", "-m", "ptvsd", "--port", "3000", "--host", "0.0.0.0", "back.py"]
+# Start the server when the container launches
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8080"]

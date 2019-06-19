@@ -1,7 +1,11 @@
 steps:
-- id: 'java-hello-world tests'
+    #- id: 'java-hello-world tests'
+    #  name: 'gcr.io/cloud-builders/gcloud'
+    #  args: ['builds', 'submit', '.', '--config', 'java/java-hello-world/.build/cloudbuild.gke.yaml']
+    #  waitFor: ['-']
+- id: 'java-guestbook tests'
   name: 'gcr.io/cloud-builders/gcloud'
-  args: ['builds', 'submit', '.', '--config', 'java/java-hello-world/.build/cloudbuild.gke.yaml']
+  args: ['builds', 'submit', '.', '--config', 'java/java-guestbook/.build/cloudbuild.gke.yaml']
   waitFor: ['-']
   #- id: 'nodejs-hello-world tests'
   #  name: 'gcr.io/cloud-builders/gcloud'

@@ -13,7 +13,7 @@ curl -Lo skaffold https://storage.googleapis.com/skaffold/builds/latest/skaffold
 chmod +x skaffold
 export PATH=$PATH:$(pwd)
 
-cd github/cloud-code-samples/dotnet
+cd github/cloud-code-samples/dotnet/dotnet-hello-world
 
 # Building locally using skaffold
 skaffold build --default-repo gcr.io/${GCLOUD_PROJECT}

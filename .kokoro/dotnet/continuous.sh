@@ -16,5 +16,5 @@ export PATH=$PATH:$(pwd)
 cd github/cloud-code-samples/dotnet/dotnet-hello-world
 
 # Building locally using skaffold
-skaffold build --default-repo gcr.io/${GCLOUD_PROJECT}
+skaffold build --default-repo gcr.io/${GCLOUD_PROJECT} --profile cloudbuild
 

@@ -1,0 +1,48 @@
+steps:
+- id: 'create namespace'
+  name: 'gcr.io/cloud-builders/kubectl'
+  entrypoint: 'bash' ## bash used for env var to work in args
+  args: ['-c', 'kubectl create --namespace $$TEST_NAMESPACE']
+
+- id: 'deploy to staging'
+  name: 'gcr.io/cloud-builders/skaffold:alpha'
+  entrypoint: 'bash'
+  args: ['-c', 'skaffold run -p cloudbuild -l $BUILD_ID -n $$NAMESPACE']
+  dir: '/workspace/${_LANG}/${_LANG}-${_APP}'
+  waitFor: ['create namespace']
+
+- id: 'get endpoint'
+  name: 'gcr.io/cloud-builders/kubectl'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+      get_externalIP() {
+        kubectl get service $$APP_SERVICE --namespace=$$TEST_NAMESPACE -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
+      }
+     
+      until [[ -n "$(get_externalIp)" ]]; do
+        echo "querying for external ip"
+        sleep 3
+      done
+
+      echo "$(get_externalIP)" > _externalIP
+      echo "external IP for $$APP_SERVICE is $(cat _externalIP)"
+  waitFor: ['deploy to staging']
+
+- id: 'integration tests'
+  name: 'gcr.io/cloud-builders/curl'
+  entrypoint: 'bin/bash'
+  args:
+  - '-c'
+  - |
+    ./integration_tests.sh --app=${_APP} --ip$(cat _externalIP)
+  waitFor: ['get endpoint']
+
+options:
+    env:
+    - CLOUDSDK_COMPUTE_ZONE=us-central1-a
+    - CLOUDSDK_CONTAINER_CLUSTER=staging
+    - SKAFFOLD_DEFAULT_REPO=gcr.io/$PROJECT_ID
+    - TEST_NAMESPACE=test-$BUILD_ID-$_LANG-$_APP
+    - APP_SERVICE-${_LANG}-${_APP}-external

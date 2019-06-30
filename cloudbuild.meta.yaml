@@ -1,43 +1,13 @@
 steps:
-- id: 'python-guestbook tests'
+- id: 'java tests'
   name: 'gcr.io/cloud-builders/gcloud'
-  args: ['builds', 'submit', '.', '--config', 'python/python-guestbook/.build/cloudbuild.gke.yaml']
-  waitFor: ['-']
-- id: 'python-hello-world tests'
-  name: 'gcr.io/cloud-builders/gcloud'
-  args: ['builds', 'submit', '.', '--config', 'python/python-hello-world/.build/cloudbuild.gke.yaml']
-  waitFor: ['-']
-- id: 'go-guestbook tests'
-  name: 'gcr.io/cloud-builders/gcloud'
-  args: ['builds', 'submit', '.', '--config', 'golang/go-guestbook/.build/cloudbuild.gke.yaml']
-  waitFor: ['-']
-- id: 'go-hello-world tests'
-  name: 'gcr.io/cloud-builders/gcloud'
-  args: ['builds', 'submit', '.', '--config', 'golang/go-hello-world/.build/cloudbuild.gke.yaml']
-  waitFor: ['-']
-- id: 'java-hello-world tests'
-  name: 'gcr.io/cloud-builders/gcloud'
-  args: ['builds', 'submit', '.', '--config', 'java/java-hello-world/.build/cloudbuild.gke.yaml']
-  #waitFor: ['-']
-- id: 'java-guestbook tests'
-  name: 'gcr.io/cloud-builders/gcloud'
-  args: ['builds', 'submit', '.', '--config', 'java/java-guestbook/.build/cloudbuild.gke.yaml']
-  #waitFor: ['-']
-- id: 'nodejs-hello-world tests'
-  name: 'gcr.io/cloud-builders/gcloud'
-  args: ['builds', 'submit', '.', '--config', 'nodejs/nodejs-hello-world/.build/cloudbuild.gke.yaml']
-  #waitFor: ['-'] 
-- id: 'nodejs-guestbook tests'
-  name: 'gcr.io/cloud-builders/gcloud'
-  args: ['builds', 'submit', '.', '--config', 'nodejs/nodejs-guestbook/.build/cloudbuild.gke.yaml']
-  #waitFor: ['-'] 
-- id: 'donet-hello-world tests'
-  name: 'gcr.io/cloud-builders/gcloud'
-  args: ['builds', 'submit', '.', '--config', 'dotnet/dotnet-hello-world/.build/cloudbuild.gke.yaml']
-  #waitFor: ['-'] 
-- id: 'dotnet-guestbook tests'
-  name: 'gcr.io/cloud-builders/gcloud'
-  args: ['builds', 'submit', '.', '--config', 'dotnet/dotnet-guestbook/.build/cloudbuild.gke.yaml']
-  #waitFor: ['-']
-timeout: 2500s
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    # run hello world test
+    gcloud builds submit . --config cloudbuild.tmpl.yaml --substitutions _LANG=java,_APP=hello-world \
+    ## run guestbook test
+    && gcloud builds submit . --config cloudbuild.tmpl.yaml --substitutions _LANG=java,_APP=guestbook
+
 

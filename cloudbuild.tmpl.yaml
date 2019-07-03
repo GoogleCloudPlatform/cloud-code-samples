@@ -2,12 +2,26 @@ steps:
 - id: 'create namespace'
   name: 'gcr.io/cloud-builders/kubectl'
   entrypoint: 'bash' ## bash used for env var to work in args
-  args: ['-c', 'kubectl create --namespace $$TEST_NAMESPACE']
+  # TODO: bug...removed because kubectl does not get context here
+  # TODO: seems like context is preserved in other steps because the gcloud creates .kubeconfig?
+  #args: ['-c', 'kubectl create namespace $$TEST_NAMESPACE']
+  args:
+  - '-c'
+  - |
+    kubectl config view
+    gcloud container clusters get-credentials $$CLOUDSDK_CONTAINER_CLUSTER
+    kubectl config view
+    kubectl create namespace $$TEST_NAMESPACE
 
 - id: 'deploy to staging'
-  name: 'gcr.io/cloud-builders/skaffold:alpha'
+  name: 'gcr.io/$PROJECT_ID/skaffold:alpha'
   entrypoint: 'bash'
-  args: ['-c', 'skaffold run -p cloudbuild -l $BUILD_ID -n $$NAMESPACE']
+  # args: ['-c', 'skaffold run -p cloudbuild -l $BUILD_ID -n $$TEST_NAMESPACE']
+  args:
+  - '-c'
+  - |
+    skaffold run -p cloudbuild -l $BUILD_ID -n $$TEST_NAMESPACE -d $$SKAFFOLD_DEFAULT_REPO
+
   dir: '/workspace/${_LANG}/${_LANG}-${_APP}'
   waitFor: ['create namespace']
 
@@ -18,10 +32,10 @@ steps:
   - '-c'
   - |
       get_externalIP() {
-        kubectl get service $$APP_SERVICE --namespace=$$TEST_NAMESPACE -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
+        kubectl get service $$APP_SERVICE --namespace $(echo $$TEST_NAMESPACE) -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
       }
      
-      until [[ -n "$(get_externalIp)" ]]; do
+      until [[ -n "$(get_externalIP)" ]]; do
         echo "querying for external ip"
         sleep 3
       done
@@ -45,4 +59,4 @@ options:
     - CLOUDSDK_CONTAINER_CLUSTER=staging
     - SKAFFOLD_DEFAULT_REPO=gcr.io/$PROJECT_ID
     - TEST_NAMESPACE=test-$BUILD_ID-$_LANG-$_APP
-    - APP_SERVICE-${_LANG}-${_APP}-external
+    - APP_SERVICE=${_LANG}-${_APP}-external

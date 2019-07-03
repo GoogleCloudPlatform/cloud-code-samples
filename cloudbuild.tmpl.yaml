@@ -46,11 +46,13 @@ steps:
 
 - id: 'integration tests'
   name: 'gcr.io/cloud-builders/curl'
-  entrypoint: 'bin/bash'
+  # TODO: this is weird! cloud-builders should be consistent with bash entrypoint
+  entrypoint: '/bin/bash'
   args:
   - '-c'
   - |
-    ./integration_tests.sh --app=${_APP} --ip$(cat _externalIP)
+    ./test_connection.sh -r 20 -i 3 -u http://$(cat _externalIP)
+    ./test_content.sh -r 20 -i 3 -u http://$(cat _externalIP) -k 'Hello'
   waitFor: ['get endpoint']
 
 options:

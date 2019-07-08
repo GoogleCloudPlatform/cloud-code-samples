@@ -51,8 +51,16 @@ steps:
   args:
   - '-c'
   - |
+    if [ "${_APP}" = "hello-world" ]
+    then
+        keyword='Hello'
+    fi
+    if [ "${_APP}" = "guestbook" ]
+    then
+        keyword='Guestbook'
+    fi
     ./test_connection.sh -r 20 -i 3 -u http://$(cat _externalIP)
-    ./test_content.sh -r 20 -i 3 -u http://$(cat _externalIP) -k 'Hello'
+    ./test_content.sh -r 20 -i 3 -u http://$(cat _externalIP) -k $(echo $keyword) 
   waitFor: ['get endpoint']
 
 options:

@@ -31,17 +31,28 @@ steps:
   args:
   - '-c'
   - |
-      get_externalIP() {
-        kubectl get service $$APP_SERVICE --namespace $(echo $$TEST_NAMESPACE) -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
-      }
+    if [ "${_APP}" = "hello-world" ]
+    then
+        echo "hello service"
+        service=$$HELLO_WORLD_SERVICE
+    fi
+    if [ "${_APP}" = "guestbook" ]
+    then
+        echo "guestbook service"
+        service=$$GUESTBOOK_SERVICE
+    fi
+    echo 'service is' $service
+    get_externalIP() {
+      kubectl get service $service --namespace $$TEST_NAMESPACE -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
+    }
      
-      until [[ -n "$(get_externalIP)" ]]; do
-        echo "querying for external ip"
-        sleep 3
-      done
+    until [[ -n "$(get_externalIP)" ]]; do
+      echo "querying for external ip $service"
+      sleep 3
+    done
 
-      echo "$(get_externalIP)" > _externalIP
-      echo "external IP for $$APP_SERVICE is $(cat _externalIP)"
+    echo "$(get_externalIP)" > _externalIP
+    echo "external IP for $service is $(cat _externalIP)"
   waitFor: ['deploy to staging']
 
 - id: 'integration tests'
@@ -78,4 +89,5 @@ options:
     - CLOUDSDK_CONTAINER_CLUSTER=staging
     - SKAFFOLD_DEFAULT_REPO=gcr.io/$PROJECT_ID
     - TEST_NAMESPACE=test-$BUILD_ID-$_LANG-$_APP
-    - APP_SERVICE=${_LANG}-${_APP}-external
+    - HELLO_WORLD_SERVICE=${_LANG}-${_APP}-external
+    - GUESTBOOK_SERVICE=${_LANG}-${_APP}-frontend

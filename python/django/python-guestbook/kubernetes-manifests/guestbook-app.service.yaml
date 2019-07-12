@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: python-guestbook-app
+  labels:
+    app: python-guestbook
+    tier: app
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 8080
+  selector:
+    app: python-guestbook
+    tier: app

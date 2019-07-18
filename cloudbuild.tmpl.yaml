@@ -76,14 +76,14 @@ steps:
     ./test_content.sh -r 20 -i 3 -u http://$(cat _externalIP) -k $keyword 
   waitFor: ['get endpoint']
 
-  #- id: 'delete namespaces'
-  #  name: 'gcr.io/cloud-builders/kubectl'
-  #  entrypoint: 'bash'
-  #  args:
-  #  - '-c'
-  #  - |
-  #    kubectl delete namespace $$TEST_NAMESPACE
-  #  waitFor: ['integration tests']
+- id: 'delete namespaces'
+  name: 'gcr.io/cloud-builders/kubectl'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    kubectl delete namespace $$TEST_NAMESPACE
+  waitFor: ['integration tests']
 
 options:
     env:

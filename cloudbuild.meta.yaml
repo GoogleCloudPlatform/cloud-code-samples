@@ -34,5 +34,5 @@ steps:
     gcloud builds submit . --config cloudbuild.tmpl.yaml --substitutions _LANG=${lang},_APP=${apps[0]}
     gcloud builds submit . --config cloudbuild.tmpl.yaml --substitutions _LANG=${lang},_APP=${apps[1]}
   waitFor: ['-'] # start immediately
-
+timeout: 2500s
 

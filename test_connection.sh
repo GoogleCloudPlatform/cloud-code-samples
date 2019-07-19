@@ -59,10 +59,4 @@ echo "Error! Unable to connect"
 echo "Status code received: $status"
 echo "END CONNECTION TEST: Fail!"
 
-# publish logs of failed test
-docker-compose logs --no-color --tail=1000 web > test/logs/connection-test-web.txt
-docker-compose logs --no-color --tail=1000 database > test/logs/connection-test-database.txt
-
-# If desired, cat the logs or copy to GCS
-
 exit 1

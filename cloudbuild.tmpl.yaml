@@ -1,10 +1,7 @@
 steps:
 - id: 'create namespace'
   name: 'gcr.io/cloud-builders/kubectl'
-  entrypoint: 'bash' ## bash used for env var to work in args
-  # TODO: bug...removed because kubectl does not get context here
-  # TODO: seems like context is preserved in other steps because the gcloud creates .kubeconfig?
-  #args: ['-c', 'kubectl create namespace $$TEST_NAMESPACE']
+  entrypoint: 'bash'
   args:
   - '-c'
   - |
@@ -16,13 +13,11 @@ steps:
 - id: 'deploy to staging'
   name: 'gcr.io/$PROJECT_ID/skaffold:alpha'
   entrypoint: 'bash'
-  # args: ['-c', 'skaffold run -p cloudbuild -l $BUILD_ID -n $$TEST_NAMESPACE']
   args:
   - '-c'
   - |
     skaffold run -p cloudbuild -l $BUILD_ID -n $$TEST_NAMESPACE -d $$SKAFFOLD_DEFAULT_REPO
-
-  dir: '/workspace/${_LANG}/${_LANG}-${_APP}'
+  dir: '/workspace/${_DIR}/${_LANG}-${_APP}'
   waitFor: ['create namespace']
 
 - id: 'get endpoint'
@@ -33,19 +28,33 @@ steps:
   - |
     if [ "${_APP}" = "hello-world" ]
     then
-        echo "hello service"
-        service=$$HELLO_WORLD_SERVICE
+        if [ "${_LANG}" = "nodejs" ]
+          then
+          # set nodejs service to use node prefix
+          service=node-${_APP}-external
+        else
+          service=$$HELLO_WORLD_SERVICE
+        fi
     fi
     if [ "${_APP}" = "guestbook" ]
     then
-        echo "guestbook service"
-        service=$$GUESTBOOK_SERVICE
+        if [ "${_LANG}" = "nodejs" ]
+          then
+          # set nodejs service to use node prefix
+          service=node-${_APP}-frontend
+        elif [ "${_LANG}" = go ]
+          then
+          # set go service to use no prefix
+          service=${_APP}-frontend
+        else
+          service=$$GUESTBOOK_SERVICE
+        fi
     fi
     echo 'service is' $service
     get_externalIP() {
       kubectl get service $service --namespace $$TEST_NAMESPACE -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
     }
-     
+    # TODO: set timeout for function or for step
     until [[ -n "$(get_externalIP)" ]]; do
       echo "querying for external ip $service"
       sleep 3
@@ -57,7 +66,6 @@ steps:
 
 - id: 'integration tests'
   name: 'gcr.io/cloud-builders/curl'
-  # TODO: this is weird! cloud-builders should be consistent with bash entrypoint
   entrypoint: '/bin/bash'
   args:
   - '-c'
@@ -70,7 +78,7 @@ steps:
     then
         keyword='Guestbook'
     fi
-    # TODO: dotnet app currently fails connection but passes content
+    # TODO: dotnet (404) and go (405) guestbook currently fails connection but passes content
     # TODO: refactor these tests, step should fail if either fail
     ./test_connection.sh -r 20 -i 3 -u http://$(cat _externalIP)
     ./test_content.sh -r 20 -i 3 -u http://$(cat _externalIP) -k $keyword 

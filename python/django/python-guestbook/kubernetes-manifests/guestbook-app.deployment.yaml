@@ -1,0 +1,41 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: python-guestbook-app
+  labels:
+    app: python-guestbook
+    tier: app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: python-guestbook
+      tier: app
+  template:
+    metadata:
+      labels:
+        app: python-guestbook
+        tier: app
+    spec:
+      initContainers:
+      # Wait for the database to get ready before starting the server, otherwise
+      # the server will crash
+      - name: check-db-ready
+        image: postgres
+        command: ['sh', '-c',
+          'until pg_isready -h python-guestbook-db.default.svc.cluster.local -p 5432;
+          do echo waiting for database; sleep 2; done;']
+      containers:
+      - name: python-guestbook
+        image: python-guestbook
+        ports:
+        - containerPort: 8080
+        env:
+        - name: DATABASE_NAME
+          value: "postgres"
+        - name: DATABASE_USER
+          value: "postgres"
+        - name: DATABASE_HOST
+          value: "python-guestbook-db"
+        - name: DATABASE_PORT
+          value: "5432"

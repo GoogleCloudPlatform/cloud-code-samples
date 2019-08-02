@@ -14,7 +14,7 @@
       "name": "Debug on Kubernetes",
       "language": "Go",
       "debugPort": 3000,
-      "localRoot": "${workspaceFolder}/cmd/hello-world",
+      "localRoot": "${workspaceFolder}",
       "podSelector": {
         "app": "go-hello-world"
       },

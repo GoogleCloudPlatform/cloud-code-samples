@@ -5,8 +5,13 @@ build:
     sha256: {}
   # defines where to find the code at build time and where to push the resulting image
   artifacts:
-  - image: java-hello-world
-    context: .
+    - image: java-hello-world
+      context: .
+      # Comment out the jibMaven line below to use the Dockerfile based build.
+      # To learn more about how jib build Java containers visit
+      # https://github.com/GoogleContainerTools/jib
+      jibMaven: {}
+
 # defines the Kubernetes manifests to deploy on each run
 deploy:
   kubectl:

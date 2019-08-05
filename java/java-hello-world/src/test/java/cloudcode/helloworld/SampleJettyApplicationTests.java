@@ -23,7 +23,7 @@ public class SampleJettyApplicationTests {
 
 	@Value("${local.server.port}")
 	private int port;
-// TODO: review test
+// TODO: review test   
 	@Test
 	public void testHome() throws Exception {
 		ResponseEntity<String> entity = new TestRestTemplate().getForEntity(

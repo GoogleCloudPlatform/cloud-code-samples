@@ -3,13 +3,25 @@
     "repoPath": "https://github.com/GoogleCloudPlatform/cloud-code-samples.git",
     "directoryPath": "python/python-hello-world",
     "templatePath": "python-hello-world",
-    "templateName": "Python: Hello World"
+    "templateName": "Python (Flask): Hello World"
   },
   {
     "repoPath": "https://github.com/GoogleCloudPlatform/cloud-code-samples.git",
     "directoryPath": "python/python-guestbook",
     "templatePath": "python-guestbook",
-    "templateName": "Python: Guestbook"
+    "templateName": "Python (Flask): Guestbook"
+  },
+  {
+    "repoPath": "https://github.com/GoogleCloudPlatform/cloud-code-samples.git",
+    "directoryPath": "python/django/python-hello-world",
+    "templatePath": "python-hello-world",
+    "templateName": "Python (Django): Hello World"
+  },
+  {
+    "repoPath": "https://github.com/GoogleCloudPlatform/cloud-code-samples.git",
+    "directoryPath": "python/django/python-guestbook",
+    "templatePath": "python-guestbook",
+    "templateName": "Python (Django): Guestbook"
   },
   {
     "repoPath": "https://github.com/GoogleCloudPlatform/cloud-code-samples.git",

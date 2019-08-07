@@ -7,8 +7,14 @@ build:
   artifacts:
   - image: java-guestbook-backend
     context: backend
+    # Comment out the jibMaven line below to use the Dockerfile based build.
+    # To learn more about how jib build Java containers visit
+    # https://github.com/GoogleContainerTools/jib
+    jibMaven: {}
   - image: java-guestbook-frontend
     context: frontend
+    # Comment out the jibMaven line below to use the Dockerfile based build.
+    jibMaven: {}
 # defines the Kubernetes manifests to deploy on each run
 deploy:
   kubectl:

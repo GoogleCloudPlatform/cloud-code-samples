@@ -42,11 +42,6 @@
                 <groupId>com.google.cloud.tools</groupId>
                 <artifactId>jib-maven-plugin</artifactId>
                 <version>1.4.0</version>
-                <configuration>
-                    <to>
-                        <image>gcr.io/gcp-dev-tools/java-backend-guestbook</image>
-                    </to>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

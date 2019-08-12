@@ -5,10 +5,14 @@ build:
     sha256: {}
   # defines where to find the code at build time and where to push the resulting image
   artifacts:
-  - image: java-guestbook-backend
-    context: backend
-  - image: java-guestbook-frontend
-    context: frontend
+    - image: java-guestbook-backend
+      context: backend
+      # To learn more about how Jib builds Java containers visit
+      # https://github.com/GoogleContainerTools/jib
+      jibMaven: {}
+    - image: java-guestbook-frontend
+      context: frontend
+      jibMaven: {}
 # defines the Kubernetes manifests to deploy on each run
 deploy:
   kubectl:
@@ -19,3 +23,11 @@ profiles:
 - name: cloudbuild
   build:
     googleCloudBuild: {}
+# use the dockerfile profile to build images using Docker instead of Jib
+- name: dockerfile
+  build:
+    artifacts:
+      - image: java-guestbook-backend
+        context: backend
+      - image: java-guestbook-frontend
+        context: frontend

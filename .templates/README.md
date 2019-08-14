@@ -3,4 +3,4 @@
 * `directoryPath`: Since a repository can contain multiple templates, `directoryPath` is used to determine the location of the template in a repository.
 * `templatePath`: Name of the folder where the template will be downloaded too.
 * `templateName`: Name of the template.
-* `templateLanguages`: The list of languages used by the template.
+* `templateLanguages`: The list of programming languages used by the template.

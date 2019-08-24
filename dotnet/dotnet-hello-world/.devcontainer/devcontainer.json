@@ -1,0 +1,26 @@
+{
+	"name": ".NET Core Sample",
+	"dockerFile": "Dockerfile",
+	"appPort": [8080, 9229],
+	"extensions": [
+		"ms-vscode.csharp",
+		"GoogleCloudTools.cloudcode",
+		"ms-azuretools.vscode-docker"
+	],
+	"runArgs": [
+		"-v","/var/run/docker.sock:/var/run/docker.sock",
+		"--mount", "type=bind,source=${env:HOME}${env:USERPROFILE}/.ssh,target=/root/.ssh-localhost",
+		"--mount", "type=bind,source=${env:HOME}${env:USERPROFILE}/.kube,target=/root/.kube-localhost",
+		"--mount", "type=bind,source=${env:HOME}${env:USERPROFILE}/.config/gcloud,target=/root/.gcloud-localhost",
+		"-e", "SYNC_LOCALHOST_KUBECONFIG=true",
+		"-e", "SYNC_LOCALHOST_GCLOUD=true",
+		"-e", "SYNC_LOCALHOST_SSH=true",
+		"--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined"
+	],
+	"postCreateCommand": "source ~/.bashrc",
+	"settings": {
+		"remote.extensionKind": {
+			"ms-azuretools.vscode-docker": "workspace"
+		}
+	},
+}

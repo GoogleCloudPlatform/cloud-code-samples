@@ -1,0 +1,32 @@
+{
+	"name": "Nodejs Hello World Sample",
+	"dockerFile": "Dockerfile",
+	"appPort": [8080],
+	"extensions": [
+        "ms-vscode.vscode-typescript-tslint-plugin",
+        "CoenraadS.bracket-pair-colorizer-2",
+        "eg2.vscode-npm-script",
+        "christian-kohler.npm-intellisense",
+        "dbaeumer.vscode-eslint",
+        "streetsidesoftware.code-spell-checker",
+		"GoogleCloudTools.cloudcode",
+		"ms-azuretools.vscode-docker"
+	],
+	"runArgs": [
+		"-v","/var/run/docker.sock:/var/run/docker.sock",
+		"--mount", "type=bind,source=${env:HOME}${env:USERPROFILE}/.ssh,target=/root/.ssh-localhost",
+		"--mount", "type=bind,source=${env:HOME}${env:USERPROFILE}/.kube,target=/root/.kube-localhost",
+		"--mount", "type=bind,source=${env:HOME}${env:USERPROFILE}/.config/gcloud,target=/root/.gcloud-localhost",
+		"-e", "SYNC_LOCALHOST_KUBECONFIG=true",
+		"-e", "SYNC_LOCALHOST_GCLOUD=true",
+		"-e", "SYNC_LOCALHOST_SSH=true",
+		"--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined"
+	],
+	"postCreateCommand": "gcloud info",
+	"settings": {
+		"remote.extensionKind": {
+            "ms-azuretools.vscode-docker": "workspace",
+            "eg2.vscode-npm-script" : "workspace"
+		}
+	},
+}

@@ -16,7 +16,13 @@ steps:
   args:
   - '-c'
   - |
-    skaffold run -p cloudbuild -l $BUILD_ID -n $$TEST_NAMESPACE -d $$SKAFFOLD_DEFAULT_REPO
+    # builds java apps with dockerfile profile due to jib/skaffold community builder incompatibility 
+    if [ "${_LANG}" = "java" ]
+    then
+        skaffold run -p dockerfile -l $BUILD_ID -n $$TEST_NAMESPACE -d $$SKAFFOLD_DEFAULT_REPO
+    else
+        skaffold run -p cloudbuild -l $BUILD_ID -n $$TEST_NAMESPACE -d $$SKAFFOLD_DEFAULT_REPO
+    fi
   dir: '/workspace/${_DIR}/${_LANG}-${_APP}'
   waitFor: ['create namespace']
 

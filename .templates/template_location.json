@@ -16,14 +16,14 @@
   {
     "repoPath": "https://github.com/GoogleCloudPlatform/cloud-code-samples.git",
     "directoryPath": "python/django/python-hello-world",
-    "templatePath": "python-hello-world",
+    "templatePath": "python-django-hello-world",
     "templateName": "Python (Django): Hello World",
     "templateLanguages": ["python"]
   },
   {
     "repoPath": "https://github.com/GoogleCloudPlatform/cloud-code-samples.git",
     "directoryPath": "python/django/python-guestbook",
-    "templatePath": "python-guestbook",
+    "templatePath": "python-django-guestbook",
     "templateName": "Python (Django): Guestbook",
     "templateLanguages": ["python"]
   },

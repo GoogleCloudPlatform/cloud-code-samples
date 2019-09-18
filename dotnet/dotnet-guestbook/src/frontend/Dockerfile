@@ -22,7 +22,9 @@ ENV ASPNETCORE_URLS=http://*:8080
 RUN printf "deb http://archive.debian.org/debian/ jessie main\ndeb-src http://archive.debian.org/debian/ jessie main\ndeb http://security.debian.org jessie/updates main\ndeb-src http://security.debian.org jessie/updates main" > /etc/apt/sources.list
 
 # Installing vsdbg on the container to enable debugging of .NET Core
-RUN apt-get update \
+RUN apt --fix-broken install \ 
+    && apt-get update \
+    && apt-get upgrade \
     && apt-get install -y --no-install-recommends unzip \
     && apt-get install -y procps \
     && rm -rf /var/lib/apt/lists/* \

@@ -1,6 +1,5 @@
 **/.DS_Store
 .idea/workspace.xml
-.idea/modules.xml
 .idea/misc.xml
 .idea/gradle.xml
 .idea/libraries/
@@ -9,9 +8,7 @@
 .idea/compiler.xml
 .idea/encodings.xml
 .idea/vcs.xml
-**/*.iml
 target
-*.iml
 .classpath
 .project
 .settings

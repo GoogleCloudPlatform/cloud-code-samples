@@ -17,6 +17,10 @@ WORKDIR /src
 COPY --from=publish /out .
 ENV ASPNETCORE_URLS=http://*:8080
 
+# The following line solves a cashing issue that might prevent 
+# downloading debian packages required in the next step
+RUN printf "deb http://archive.debian.org/debian/ jessie main\ndeb-src http://archive.debian.org/debian/ jessie main\ndeb http://security.debian.org jessie/updates main\ndeb-src http://security.debian.org jessie/updates main" > /etc/apt/sources.list
+
 # Installing vsdbg on the container to enable debugging of .NET Core
 RUN apt-get update \
     && apt-get install -y --no-install-recommends unzip \

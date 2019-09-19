@@ -32,7 +32,8 @@ steps:
     lang=dotnet
     declare -a apps=("hello-world" "guestbook")
     gcloud builds submit . --config cloudbuild.tmpl.yaml --substitutions _DIR=${lang},_LANG=${lang},_APP=${apps[0]}
-    gcloud builds submit . --config cloudbuild.tmpl.yaml --substitutions _DIR=${lang},_LANG=${lang},_APP=${apps[1]}
+# WARNING: guestbook test coverage is currently temporarily disabled
+#    gcloud builds submit . --config cloudbuild.tmpl.yaml --substitutions _DIR=${lang},_LANG=${lang},_APP=${apps[1]}
   waitFor: ['-'] # start immediately
 
 - id: 'go tests'

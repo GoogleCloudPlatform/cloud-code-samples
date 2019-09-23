@@ -20,11 +20,10 @@ RUN go build -o /app/backend .
 # container and point it to the "dlv debug" command:
 #   * UNCOMMENT the following ENTRYPOINT statement,
 #   * COMMENT OUT the last ENTRYPOINT statement
-# Start the "dlv debug" server on port 3000 of the container. (Note that the
-# application process will NOT start until the debugger is attached.)
-# ENTRYPOINT ["dlv", "debug", ".",  "--api-version=2", "--headless", "--listen=:3000", "--log"]
+# Start the "dlv debug" server on port 3000 of the container.
+ENTRYPOINT ["dlv", "exec", "/app/backend", "--continue", "--accept-multiclient", "--api-version=2", "--headless", "--listen=:3000", "--log"]
 
 # If you want to run WITHOUT the debugging server:
 #   * COMMENT OUT the previous ENTRYPOINT statements,
 #   * UNCOMMENT the following ENTRYPOINT statement.
-ENTRYPOINT ["/app/backend"]
+# ENTRYPOINT ["/app/backend"]

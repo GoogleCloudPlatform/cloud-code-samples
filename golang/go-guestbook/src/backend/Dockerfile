@@ -2,7 +2,7 @@
 FROM golang:1.12
 
 # Download the dlv (delve) debugger for go (you can comment this out if unused)
-RUN go get -u github.com/go-delve/delve/cmd/dlv
+RUN go get -u -v github.com/go-delve/delve/cmd/dlv
 
 WORKDIR /src/backend
 

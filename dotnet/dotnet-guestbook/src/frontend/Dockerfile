@@ -21,7 +21,7 @@ ENV ASPNETCORE_URLS=http://*:8080
 RUN apt -o Acquire::https::No-Cache=True -o Acquire::http::No-Cache=True update \
     && apt --fix-broken install \ 
     && apt-get update \
-    && apt-get upgrade \
+    && apt-get upgrade -y \
     && apt-get install -y --no-install-recommends unzip \
     && apt-get install -y procps \
     && rm -rf /var/lib/apt/lists/* \

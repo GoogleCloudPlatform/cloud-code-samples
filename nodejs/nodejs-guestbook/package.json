@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Guestbook Application for Kubernetes",
   "dependencies": {
-    "eslint": "5.16.0"
+    "eslint": "6.5.1"
   },
   "scripts": {
     "lint": "eslint 'src/**/**.js'"

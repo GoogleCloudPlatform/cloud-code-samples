@@ -16,8 +16,15 @@ spec:
       labels:
         app: node-guestbook
         tier: backend
-    spec:
-      containers:
+  spec:
+     initContainers:
+      - name: init-db-ready
+        image: mongo:4
+        command: ['/bin/sh', '-c']
+        args:
+          - echo "Waiting for mongodb at node-guestbook-mongodb:27017 to go live before the BE..."; 
+          - until (mongo --host node-guestbook-mongodb:27017 >/dev/null) do echo "Waiting for connection for 2 sec."; sleep 2; done
+     containers:
       - name: backend
         image: node-guestbook-backend
         ports:

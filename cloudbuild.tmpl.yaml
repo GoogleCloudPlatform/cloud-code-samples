@@ -11,7 +11,7 @@ steps:
     kubectl create namespace $$TEST_NAMESPACE
 
 - id: 'deploy to staging'
-  name: 'gcr.io/$PROJECT_ID/skaffold:alpha'
+  name: 'gcr.io/k8s-skaffold/skaffold:latest'
   entrypoint: 'bash'
   args:
   - '-c'

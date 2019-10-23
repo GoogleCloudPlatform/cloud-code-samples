@@ -16,7 +16,7 @@ spec:
       labels:
         app: node-guestbook
         tier: backend
-  spec:
+    spec:
      initContainers:
       - name: init-db-ready
         image: mongo:4

@@ -8,8 +8,7 @@ build:
     - image: java-hello-world
       # To learn more about how Jib builds Java containers visit
       # https://github.com/GoogleContainerTools/jib
-      jib:
-        project: .
+      jib: {}
 
 # defines the Kubernetes manifests to deploy on each run
 deploy:
@@ -26,4 +25,3 @@ profiles:
   build:
     artifacts:
       - image: java-hello-world
-        context: .

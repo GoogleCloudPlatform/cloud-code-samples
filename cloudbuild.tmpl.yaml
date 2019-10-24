@@ -29,6 +29,7 @@ steps:
 - id: 'get endpoint'
   name: 'gcr.io/cloud-builders/kubectl'
   entrypoint: 'bash'
+  timeout: 300s
   args:
   - '-c'
   - |
@@ -60,7 +61,6 @@ steps:
     get_externalIP() {
       kubectl get service $service --namespace $$TEST_NAMESPACE -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
     }
-    # TODO: set timeout for function or for step
     until [[ -n "$(get_externalIP)" ]]; do
       echo "querying for external ip $service"
       sleep 3
@@ -84,8 +84,6 @@ steps:
     then
         keyword='Guestbook'
     fi
-    # TODO: dotnet (404) and go (405) guestbook currently fails connection but passes content
-    # TODO: refactor these tests, step should fail if either fail
     ./test_connection.sh -r 20 -i 3 -u http://$(cat _externalIP)
     ./test_content.sh -r 20 -i 3 -u http://$(cat _externalIP) -k $keyword 
   waitFor: ['get endpoint']

@@ -1,5 +1,5 @@
 steps:
-- id: 'create namespace'
+- id: 'Create namespace'
   name: 'gcr.io/cloud-builders/kubectl'
   entrypoint: 'bash'
   args:
@@ -10,13 +10,13 @@ steps:
     kubectl config view
     kubectl create namespace $$TEST_NAMESPACE
 
-- id: 'deploy to staging'
+- id: 'Deploy to staging'
   name: 'gcr.io/k8s-skaffold/skaffold:latest'
   entrypoint: 'bash'
   args:
   - '-c'
   - |
-    # builds java apps with dockerfile profile due to jib/skaffold community builder incompatibility 
+    # Builds java apps with dockerfile profile due to jib/skaffold community builder incompatibility 
     if [ "${_LANG}" = "java" ]
     then
         skaffold run -p dockerfile -l $BUILD_ID -n $$TEST_NAMESPACE -d $$SKAFFOLD_DEFAULT_REPO
@@ -24,9 +24,9 @@ steps:
         skaffold run -p cloudbuild -l $BUILD_ID -n $$TEST_NAMESPACE -d $$SKAFFOLD_DEFAULT_REPO
     fi
   dir: '/workspace/${_DIR}/${_LANG}-${_APP}'
-  waitFor: ['create namespace']
+  waitFor: ['Create namespace']
 
-- id: 'get endpoint'
+- id: 'Get Endpoint'
   name: 'gcr.io/cloud-builders/kubectl'
   entrypoint: 'bash'
   timeout: 300s
@@ -62,20 +62,27 @@ steps:
       kubectl get service $service --namespace $$TEST_NAMESPACE -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
     }
     until [[ -n "$(get_externalIP)" ]]; do
-      echo "querying for external ip $service"
+      echo "Querying for external IP $service"
       sleep 3
     done
 
     echo "$(get_externalIP)" > _externalIP
     echo "external IP for $service is $(cat _externalIP)"
-  waitFor: ['deploy to staging']
+  waitFor: ['Deploy to staging']
 
-- id: 'integration tests'
+- id: 'Integration tests'
   name: 'gcr.io/cloud-builders/curl'
   entrypoint: '/bin/bash'
   args:
   - '-c'
   - |
+    set -e 
+
+    # Testing connection
+    chmod +x test_connection.sh
+    ./test_connection.sh -r 20 -i 3 -u http://$(cat _externalIP)
+
+    # Testing content
     if [ "${_APP}" = "hello-world" ]
     then
         keyword='Hello'
@@ -84,18 +91,18 @@ steps:
     then
         keyword='Guestbook'
     fi
-    ./test_connection.sh -r 20 -i 3 -u http://$(cat _externalIP)
-    ./test_content.sh -r 20 -i 3 -u http://$(cat _externalIP) -k $keyword 
-  waitFor: ['get endpoint']
+    chmod +x test_content.sh
+    ./test_content.sh -r 25 -i 3 -u http://$(cat _externalIP) -k $keyword
+  waitFor: ['Get Endpoint']
 
-- id: 'delete namespaces'
+- id: 'Delete namespaces'
   name: 'gcr.io/cloud-builders/kubectl'
   entrypoint: 'bash'
   args:
   - '-c'
   - |
     kubectl delete namespace $$TEST_NAMESPACE
-  waitFor: ['integration tests']
+  waitFor: ['Integration tests']
 
 options:
     env:

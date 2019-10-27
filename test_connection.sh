@@ -34,22 +34,24 @@ do
     esac
 done
 
-echo "START CONNECTION TEST"
+echo "*************************************"
+echo "Connectivity Test"
+echo "*************************************"
 echo "retries: "$retries
 echo "interval: "$interval
 echo "url: "$url
 
 for i in $(seq 0 $retries); do
     
-    status="$(curl -sL -w "%{http_code}" -I "$url" -o /dev/null)" || status='000'
+    status="$(curl -s -o /dev/null -w "%{http_code}" "$url" )" || status='000'
     
     if [[ $status == '200' ]]
     then
-        echo "END CONNECTION TEST: Success"
+        echo "Connectivity test result: Success"
         exit 0
     else
         if [ $i -gt 0 ]; then
-            echo "unable to connect. retrying in $interval sec..."
+            echo "Unable to connect. retrying in $interval sec..."
             sleep $interval
         fi
     fi
@@ -57,6 +59,6 @@ done
 
 echo "Error! Unable to connect"
 echo "Status code received: $status"
-echo "END CONNECTION TEST: Fail!"
+echo "Connectivity test result:  Fail!"
 
 exit 1

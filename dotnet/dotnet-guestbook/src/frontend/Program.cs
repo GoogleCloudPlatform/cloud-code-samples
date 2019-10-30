@@ -23,6 +23,7 @@ namespace dotnet_guestbook
                 {
                     logging.AddDebug();
                 })
+                .UseKestrel()
                 .UseStartup<Startup>();
     }
 }

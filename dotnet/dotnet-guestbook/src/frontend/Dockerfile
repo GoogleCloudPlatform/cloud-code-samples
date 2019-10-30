@@ -22,7 +22,7 @@ RUN apt -o Acquire::https::No-Cache=True -o Acquire::http::No-Cache=True update 
     && apt --fix-broken install \ 
     && apt-get update \
     && apt-get upgrade -y \
-    && apt-get install -y --no-install-recommends unzip \
+    && apt-get install -y --no-install-recommends apt-utils unzip \
     && apt-get install -y procps \
     && rm -rf /var/lib/apt/lists/* \
     && curl -sSL https://aka.ms/getvsdbgsh | bash /dev/stdin -v latest -l /vsdbg

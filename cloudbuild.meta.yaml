@@ -7,8 +7,8 @@ steps:
   - |
     lang=python
     declare -a apps=("hello-world" "guestbook")
-    gcloud builds submit . --config cloudbuild.tmpl.yaml --substitutions _DIR=${lang},_LANG=${lang},_APP=${apps[0]}
-    gcloud builds submit . --config cloudbuild.tmpl.yaml --substitutions _DIR=${lang},_LANG=${lang},_APP=${apps[1]}
+    #gcloud builds submit . --config cloudbuild.tmpl.yaml --substitutions _DIR=${lang},_LANG=${lang},_APP=${apps[0]}
+    #gcloud builds submit . --config cloudbuild.tmpl.yaml --substitutions _DIR=${lang},_LANG=${lang},_APP=${apps[1]}
   waitFor: ['-'] # start immediately
 
 - id: 'java tests'
@@ -19,7 +19,7 @@ steps:
   - |
     lang=java
     declare -a apps=("hello-world" "guestbook")
-    gcloud builds submit . --config cloudbuild.tmpl.yaml --substitutions _DIR=${lang},_LANG=${lang},_APP=${apps[0]}
+    #gcloud builds submit . --config cloudbuild.tmpl.yaml --substitutions _DIR=${lang},_LANG=${lang},_APP=${apps[0]}
     gcloud builds submit . --config cloudbuild.tmpl.yaml --substitutions _DIR=${lang},_LANG=${lang},_APP=${apps[1]}
   waitFor: ['-'] # start immediately
 
@@ -31,8 +31,8 @@ steps:
   - |
     lang=dotnet
     declare -a apps=("hello-world" "guestbook")
-    gcloud builds submit . --config cloudbuild.tmpl.yaml --substitutions _DIR=${lang},_LANG=${lang},_APP=${apps[0]}
-    gcloud builds submit . --config cloudbuild.tmpl.yaml --substitutions _DIR=${lang},_LANG=${lang},_APP=${apps[1]}
+    #gcloud builds submit . --config cloudbuild.tmpl.yaml --substitutions _DIR=${lang},_LANG=${lang},_APP=${apps[0]}
+    #gcloud builds submit . --config cloudbuild.tmpl.yaml --substitutions _DIR=${lang},_LANG=${lang},_APP=${apps[1]}
   waitFor: ['-'] # start immediately
 
 - id: 'go tests'
@@ -44,8 +44,8 @@ steps:
     lang=go
     dir=golang
     declare -a apps=("hello-world" "guestbook")
-    gcloud builds submit . --config cloudbuild.tmpl.yaml --substitutions _DIR=${dir},_LANG=${lang},_APP=${apps[0]}
-    gcloud builds submit . --config cloudbuild.tmpl.yaml --substitutions _DIR=${dir},_LANG=${lang},_APP=${apps[1]}
+    #gcloud builds submit . --config cloudbuild.tmpl.yaml --substitutions _DIR=${dir},_LANG=${lang},_APP=${apps[0]}
+    #gcloud builds submit . --config cloudbuild.tmpl.yaml --substitutions _DIR=${dir},_LANG=${lang},_APP=${apps[1]}
   waitFor: ['-']
 
 - id: 'nodejs tests'
@@ -56,8 +56,8 @@ steps:
   - |
     lang=nodejs
     declare -a apps=("hello-world" "guestbook")
-    gcloud builds submit . --config cloudbuild.tmpl.yaml --substitutions _DIR=${lang},_LANG=${lang},_APP=${apps[0]}
-    gcloud builds submit . --config cloudbuild.tmpl.yaml --substitutions _DIR=${lang},_LANG=${lang},_APP=${apps[1]}
+    #gcloud builds submit . --config cloudbuild.tmpl.yaml --substitutions _DIR=${lang},_LANG=${lang},_APP=${apps[0]}
+    #gcloud builds submit . --config cloudbuild.tmpl.yaml --substitutions _DIR=${lang},_LANG=${lang},_APP=${apps[1]}
   waitFor: ['-']
 
 timeout: 2500s

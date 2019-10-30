@@ -29,7 +29,6 @@ steps:
 - id: 'Get Endpoint'
   name: 'gcr.io/cloud-builders/kubectl'
   entrypoint: 'bash'
-  timeout: 500s
   args:
   - '-c'
   - |

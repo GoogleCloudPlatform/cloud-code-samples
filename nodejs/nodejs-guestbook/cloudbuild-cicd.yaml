@@ -1,0 +1,85 @@
+####################################################################
+#
+# Sample CI/CD pipeline that does:
+# 1. Create a test kubernetes namespace
+# 2. Build the  artifacts and push container imaages
+# 3. Run simple curl command to externally exposed cluster IP
+# 4. Delte test namespace
+#
+####################################################################
+
+steps:
+- id: 'Create namespace'
+  name: 'gcr.io/cloud-builders/kubectl'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    gcloud container clusters get-credentials $$CLOUDSDK_CONTAINER_CLUSTER
+    kubectl create namespace $$TEST_NAMESPACE
+
+- id: 'Deploy to staging'
+  name: 'gcr.io/k8s-skaffold/skaffold:latest'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    skaffold run -p cloudbuild -l $BUILD_ID -n $$TEST_NAMESPACE -d $$SKAFFOLD_DEFAULT_REPO
+  #dir: '/workspace/nodejs/nodejs-guestbook'
+  waitFor: ['Create namespace']
+
+- id: 'Get endpoint'
+  name: 'gcr.io/cloud-builders/kubectl'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    get_externalIP() {
+      kubectl get service node-guestbook-frontend --namespace $$TEST_NAMESPACE -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
+    }
+    
+    until [[ -n "$(get_externalIP)" ]]; do
+      echo "Querying for external ip of node-guestbook-frontend"
+      sleep 3
+    done
+
+    echo "$(get_externalIP)" > _externalIP
+    echo "external IP for node-guestbook-frontend is $(cat _externalIP)"
+  waitFor: ['Deploy to staging']
+
+- id: 'Integration tests'
+  name: 'gcr.io/cloud-builders/curl'
+  entrypoint: '/bin/bash'
+  args:
+  - '-c'
+  - |
+    # Run simple curl against external IP of the cluster
+    status="$(curl -sL -w "%{http_code}" -I "http://$(cat _externalIP)" -o /dev/null)" || status='000'
+    
+    if [[ $status == '200' ]]
+    then
+        echo "Connection Test: Success"
+        exit 0
+    else
+        if [ $i -gt 0 ]; then
+            echo "Connection Test: Failure"
+            exit 1
+        fi
+    fi
+  waitFor: ['Get endpoint']
+
+- id: 'Delete namespace'
+  name: 'gcr.io/cloud-builders/kubectl'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    kubectl delete namespace $$TEST_NAMESPACE
+  waitFor: ['Integration tests']
+
+options:
+    env:
+    - CLOUDSDK_COMPUTE_ZONE=us-central1-a
+    - CLOUDSDK_CONTAINER_CLUSTER=staging
+    - SKAFFOLD_DEFAULT_REPO=gcr.io/$PROJECT_ID
+    - TEST_NAMESPACE=test-$BUILD_ID-nodejs-guestbook

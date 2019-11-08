@@ -1,4 +1,4 @@
-apiVersion: skaffold/v1beta2
+apiVersion: skaffold/v1beta15
 kind: Config
 build:
   tagPolicy:
@@ -6,13 +6,13 @@ build:
   # defines where to find the code at build time and where to push the resulting image
   artifacts:
     - image: java-guestbook-backend
-      context: backend
       # To learn more about how Jib builds Java containers visit
       # https://github.com/GoogleContainerTools/jib
-      jibMaven: {}
+      jib:
+        project: backend
     - image: java-guestbook-frontend
-      context: frontend
-      jibMaven: {}
+      jib:
+        project: frontend
 # defines the Kubernetes manifests to deploy on each run
 deploy:
   kubectl:

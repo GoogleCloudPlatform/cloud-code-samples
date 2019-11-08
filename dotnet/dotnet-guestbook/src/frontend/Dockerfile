@@ -1,8 +1,8 @@
-FROM mcr.microsoft.com/dotnet/core/aspnet:2.1 AS base
+FROM mcr.microsoft.com/dotnet/core/aspnet:2.2 AS base
 WORKDIR /src
 EXPOSE 80
 
-FROM mcr.microsoft.com/dotnet/core/sdk:2.1 AS build
+FROM mcr.microsoft.com/dotnet/core/sdk:2.2 AS build
 WORKDIR /src
 COPY . .
 RUN dotnet restore frontend.csproj
@@ -22,7 +22,7 @@ RUN apt -o Acquire::https::No-Cache=True -o Acquire::http::No-Cache=True update 
     && apt --fix-broken install \ 
     && apt-get update \
     && apt-get upgrade -y \
-    && apt-get install -y --no-install-recommends unzip \
+    && apt-get install -y --no-install-recommends apt-utils unzip \
     && apt-get install -y procps \
     && rm -rf /var/lib/apt/lists/* \
     && curl -sSL https://aka.ms/getvsdbgsh | bash /dev/stdin -v latest -l /vsdbg

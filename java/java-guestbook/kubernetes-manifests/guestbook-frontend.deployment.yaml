@@ -28,3 +28,5 @@ spec:
           value: "8080"
         - name: GUESTBOOK_API_ADDR
           value: java-guestbook-backend:8080
+        - name: JAVA_TOOL_OPTIONS
+          value: -agentlib:jdwp=transport=dt_socket,server=y,address=5005,suspend=n,quiet=y

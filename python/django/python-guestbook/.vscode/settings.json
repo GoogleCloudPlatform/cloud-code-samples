@@ -1,0 +1,8 @@
+{
+    "cloudcode.profile-cluster-map": {
+        "[default]": "another-context"
+    },
+    "cloudcode.profile-registry-map": {
+        "[default]": "gcr.io/gcloud-powershell-testing"
+    }
+}

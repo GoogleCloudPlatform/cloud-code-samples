@@ -24,4 +24,4 @@ FROM openjdk:8-jre-alpine
 COPY --from=build-env /app/target/ /app/
 
 # Starts java app with debugging server at port 5005.
-CMD ["java", "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005,quiet=y", "-jar", "/app/hello-world-1.0.0.jar"]
+CMD ["java", "-jar", "/app/hello-world-1.0.0.jar"]

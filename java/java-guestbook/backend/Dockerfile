@@ -24,4 +24,4 @@ FROM docker.io/openjdk:8-jdk-alpine
 COPY --from=build-env /app/target /app/
 
 # Starts java app with debugging server at port 5005.
-ENTRYPOINT ["java","-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005,quiet=y", "-jar", "/app/backend-1.0.jar"]
+ENTRYPOINT ["java", "-jar", "/app/backend-1.0.jar"]

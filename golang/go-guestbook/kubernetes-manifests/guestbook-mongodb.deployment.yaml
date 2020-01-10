@@ -6,7 +6,7 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: go=guestbook-mongodb
+  name: go-guestbook-mongodb
   labels:
     app: guestbook
     tier: db

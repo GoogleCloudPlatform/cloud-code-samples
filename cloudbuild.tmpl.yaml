@@ -1,5 +1,5 @@
 steps:
-- id: '${_LANG}-${_APP} Create namespace'
+- id: 'Create namespace'
   name: 'gcr.io/cloud-builders/kubectl'
   entrypoint: 'bash'
   args:
@@ -10,7 +10,7 @@ steps:
     kubectl config view
     kubectl create namespace $$TEST_NAMESPACE
 
-- id: '${_LANG}-${_APP} Deploy to staging'
+- id: 'Deploy to staging'
   name: 'gcr.io/k8s-skaffold/skaffold:latest'
   entrypoint: 'bash'
   args:
@@ -26,7 +26,7 @@ steps:
   dir: '/workspace/${_DIR}/${_LANG}-${_APP}'
   waitFor: ['Create namespace']
 
-- id: '${_LANG}-${_APP} Get Endpoint'
+- id: 'Get Endpoint'
   name: 'gcr.io/cloud-builders/kubectl'
   entrypoint: 'bash'
   args:
@@ -53,7 +53,7 @@ steps:
     echo "external IP for $service is $(cat _externalIP)"
   waitFor: ['Deploy to staging']
 
-- id: '${_LANG}-${_APP} Integration tests'
+- id: 'Integration tests'
   name: 'gcr.io/cloud-builders/curl'
   entrypoint: '/bin/bash'
   args:
@@ -78,7 +78,7 @@ steps:
     ./test_content.sh -r 25 -i 3 -u http://$(cat _externalIP) -k $keyword
   waitFor: ['Get Endpoint']
 
-- id: '${_LANG}-${_APP} Delete namespaces'
+- id: 'Delete namespaces'
   name: 'gcr.io/cloud-builders/kubectl'
   entrypoint: 'bash'
   args:

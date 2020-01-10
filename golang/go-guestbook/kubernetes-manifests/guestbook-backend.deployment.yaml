@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: guestbook-backend
+  name: go-guestbook-backend
   labels:
     app: guestbook
     tier: backend
@@ -22,11 +22,11 @@ spec:
         image: mongo:4
         command: ['/bin/sh', '-c']
         args:
-          - echo "Waiting for mongodb at guestbook-mongodb:27017 to go live before the BE..."; 
-          - until (mongo --host guestbook-mongodb:27017 >/dev/null) do echo "Waiting for connection for 2 sec."; sleep 2; done
+          - echo "Waiting for mongodb at go-guestbook-mongodb:27017 to go live before the BE..."; 
+          - until (mongo --host go-guestbook-mongodb:27017 >/dev/null) do echo "Waiting for connection for 2 sec."; sleep 2; done
       containers:
       - name: backend
-        image: guestbook-backend
+        image: go-guestbook-backend
         ports:
         - name: http-server
           containerPort: 8080
@@ -36,4 +36,4 @@ spec:
         - name: PORT
           value: "8080"
         - name: GUESTBOOK_DB_ADDR
-          value: guestbook-mongodb:27017
+          value: go-guestbook-mongodb:27017

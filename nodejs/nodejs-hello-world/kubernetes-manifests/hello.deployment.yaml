@@ -6,20 +6,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: node-hello-world
+  name: nodejs-hello-world
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: node-hello-world
+      app: nodejs-hello-world
   template:
     metadata:
       labels:
-        app: node-hello-world
+        app: nodejs-hello-world
     spec:
       containers:
         - name: server
-          image: node-hello-world
+          image: nodejs-hello-world
           ports:
           - containerPort: 8080
           env:

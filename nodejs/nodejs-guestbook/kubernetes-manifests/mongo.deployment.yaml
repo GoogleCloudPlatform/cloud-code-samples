@@ -6,20 +6,20 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: node-guestbook-mongodb
+  name: nodejs-guestbook-mongodb
   labels:
-    app: node-guestbook
+    app: nodejs-guestbook
     tier: db
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: node-guestbook
+      app: nodejs-guestbook
       tier: db
   template:
     metadata:
       labels:
-        app: node-guestbook
+        app: nodejs-guestbook
         tier: db
     spec:
       containers:

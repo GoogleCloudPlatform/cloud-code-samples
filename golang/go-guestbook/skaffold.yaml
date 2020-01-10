@@ -2,9 +2,9 @@ apiVersion: skaffold/v1beta15
 kind: Config
 build:
   artifacts:
-  - image: guestbook-backend
+  - image: go-guestbook-backend
     context: src/backend
-  - image: guestbook-frontend
+  - image: go-guestbook-frontend
     context: src/frontend
   tagPolicy:
     sha256: {}

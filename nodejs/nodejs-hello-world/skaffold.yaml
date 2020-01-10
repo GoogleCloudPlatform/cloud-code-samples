@@ -5,7 +5,7 @@ build:
     sha256: {}
   artifacts:
   - context: .
-    image: node-hello-world
+    image: nodejs-hello-world
 deploy:
   kubectl:
     manifests:

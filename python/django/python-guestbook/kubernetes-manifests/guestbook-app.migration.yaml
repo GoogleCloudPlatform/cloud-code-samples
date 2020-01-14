@@ -16,7 +16,7 @@ spec:
       - name: check-db-ready
         image: postgres
         command: ['sh', '-c',
-          'until pg_isready -h python-guestbook-db.default.svc.cluster.local -p 5432;
+          'until pg_isready -h python-guestbook-db -p 5432;
           do echo waiting for database; sleep 2; done;']
       containers:
       - name: python-guestbook-migration

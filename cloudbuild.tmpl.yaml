@@ -49,7 +49,7 @@ steps:
       sleep 3
     done
 
-    echo "$(git_externalIP):$(kubectl get service $service --namespace $$TEST_NAMESPACE -o jsonpath='{.spec.ports[0].port}')" > _externalIP
+    echo "$(get_externalIP):$(kubectl get service $service --namespace $$TEST_NAMESPACE -o jsonpath='{.spec.ports[0].port}')" > _externalIP
     echo "External IP and port for $service is $(cat _externalIP)"
   waitFor: ['Deploy to staging']
 

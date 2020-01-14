@@ -27,9 +27,9 @@ spec:
           do echo waiting for database; sleep 2; done;']
       containers:
       - name: frontend
-        image: python-guestbook-frontend
+        image: python-guestbook-frontend-django
         ports:
-        - http-server
+        - name: http-server
           containerPort: 8080
         env:
         - name: DATABASE_NAME

@@ -42,7 +42,7 @@ steps:
     fi
     echo 'service is' $service
     get_externalIP() {
-      kubectl get service $service --namespace $$TEST_NAMESPACE -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
+      kubectl get service $service --namespace $$TEST_NAMESPACE -o jsonpath='{.status.loadBalancer.ingress[0].ip}:{.spec.ports[0].port}'
     }
     until [[ -n "$(get_externalIP)" ]]; do
       echo "Querying for external IP $service"

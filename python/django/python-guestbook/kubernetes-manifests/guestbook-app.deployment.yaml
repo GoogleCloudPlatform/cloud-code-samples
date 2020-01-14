@@ -1,21 +1,21 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: python-guestbook-app
+  name: python-guestbook-frontend
   labels:
     app: python-guestbook
-    tier: app
+    tier: frontend
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: python-guestbook
-      tier: app
+      tier: frontend
   template:
     metadata:
       labels:
         app: python-guestbook
-        tier: app
+        tier: frontend
     spec:
       initContainers:
       # Wait for the database to get ready before starting the server, otherwise
@@ -23,13 +23,14 @@ spec:
       - name: check-db-ready
         image: postgres
         command: ['sh', '-c',
-          'until pg_isready -h python-guestbook-db.default.svc.cluster.local -p 5432;
+          'until pg_isready -h python-guestbook-db -p 5432;
           do echo waiting for database; sleep 2; done;']
       containers:
-      - name: python-guestbook
-        image: python-guestbook
+      - name: frontend
+        image: python-guestbook-frontend-django
         ports:
-        - containerPort: 8080
+        - name: http-server
+          containerPort: 8080
         env:
         - name: DATABASE_NAME
           value: "postgres"

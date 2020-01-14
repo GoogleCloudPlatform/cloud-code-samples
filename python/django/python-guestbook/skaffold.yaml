@@ -6,7 +6,7 @@ build:
   # defines where to find the code at build time and where to push the resulting image
   artifacts:
     - context: src
-      image: python-guestbook
+      image: python-guestbook-frontend-django
 # defines the Kubernetes manifests to deploy on each run
 deploy:
   kubectl:

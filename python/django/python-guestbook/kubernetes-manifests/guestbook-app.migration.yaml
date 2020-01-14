@@ -20,7 +20,7 @@ spec:
           do echo waiting for database; sleep 2; done;']
       containers:
       - name: python-guestbook-migration
-        image: python-guestbook-django-migration
+        image: python-guestbook-frontend-django
         command: [ "/bin/sh", "-c", "python manage.py migrate" ]
         env:
         - name: DATABASE_NAME

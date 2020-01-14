@@ -42,15 +42,15 @@ steps:
     fi
     echo 'service is' $service
     get_externalIP() {
-      kubectl get service $service --namespace $$TEST_NAMESPACE -o jsonpath='{.status.loadBalancer.ingress[0].ip}:{.spec.ports[0].port}'
+      kubectl get service $service --namespace $$TEST_NAMESPACE -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
     }
     until [[ -n "$(get_externalIP)" ]]; do
       echo "Querying for external IP $service"
       sleep 3
     done
 
-    echo "$(get_externalIP)" > _externalIP
-    echo "external IP for $service is $(cat _externalIP)"
+    echo "$(git_externalIP):$(kubectl get service $service --namespace $$TEST_NAMESPACE -o jsonpath='{.spec.ports[0].port}')" > _externalIP
+    echo "External IP and port for $service is $(cat _externalIP)"
   waitFor: ['Deploy to staging']
 
 - id: 'Integration tests'

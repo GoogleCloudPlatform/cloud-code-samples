@@ -3,7 +3,7 @@
     "configurations": [
         {
             "podSelector": {
-                "app": "node-hello-world"
+                "app": "nodejs-hello-world"
             },
             "type": "cloudcode",
             "language": "Node",

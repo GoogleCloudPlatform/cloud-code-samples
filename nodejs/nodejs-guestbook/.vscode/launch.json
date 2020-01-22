@@ -3,7 +3,7 @@
     "configurations": [
         {
             "podSelector": {
-                "app": "node-guestbook",
+                "app": "nodejs-guestbook",
                 "tier": "frontend"
             },
             "type": "cloudcode",
@@ -17,7 +17,7 @@
         },
         {
             "podSelector": {
-                "app": "node-guestbook",
+                "app": "nodejs-guestbook",
                 "tier": "backend"
             },
             "type": "cloudcode",

@@ -5,6 +5,15 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "cloudcode.kubernetes",
+      "request": "launch",
+      "name": "Run on Kubernetes",
+      "skaffoldConfig": "${workspaceFolder}/skaffold.yaml",
+      "watch": true,
+      "cleanUp": true,
+      "portForward": true
+    },
+    {
       "podSelector": {
         "app": "python-hello-world",
         "tier": "app"

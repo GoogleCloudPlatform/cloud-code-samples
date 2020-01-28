@@ -2,9 +2,9 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Run on Kubernetes",
             "type": "cloudcode.kubernetes",
             "request": "launch",
-            "name": "Run on Kubernetes",
             "skaffoldConfig": "${workspaceFolder}/skaffold.yaml",
             "watch": true,
             "cleanUp": true,

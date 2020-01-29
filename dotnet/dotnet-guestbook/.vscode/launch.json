@@ -14,9 +14,9 @@
       "portForward": true
     },
     {
-      "type": "cloudcode",
-      "request": "attach",
       "name": "Debug on Kubernetes (frontend)",
+      "type": "cloudcode.kubernetes",
+      "request": "attach",
       "language": "NETCore",
       "debugPort": 9229,
       "localRoot": "${workspaceFolder}/src/frontend",
@@ -27,9 +27,9 @@
       }
     },
     {
-      "type": "cloudcode",
-      "request": "attach",
       "name": "Debug on Kubernetes (backend)",
+      "type": "cloudcode.kubernetes",
+      "request": "attach",
       "language": "NETCore",
       "debugPort": 9229,
       "localRoot": "${workspaceFolder}/src/backend",

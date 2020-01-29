@@ -14,15 +14,15 @@
         "portForward": true
       },
       {
-        "type": "cloudcode",
-        "request": "attach",
         "name": "Debug on Kubernetes",
+        "type": "cloudcode.kubernetes",
+        "request": "attach",
         "language": "Java",
         "debugPort": 5005,
         "localRoot": "${workspaceFolder}",
         "remoteRoot": "/app",
         "podSelector": {
-          "app": "java-hello-world",
+          "app": "java-hello-world"
         }
       }
     ]

@@ -11,9 +11,9 @@
       "portForward": true
     },
     {
-      "type": "cloudcode",
-      "request": "attach",
       "name": "Debug on Kubernetes (frontend)",
+      "type": "cloudcode.kubernetes",
+      "request": "attach",
       "language": "Python",
       "debugPort": 3000,
       "localRoot": "${workspaceFolder}/src/frontend",
@@ -24,9 +24,9 @@
       }
     },
     {
-      "type": "cloudcode",
-      "request": "attach",
       "name": "Debug on Kubernetes (backend)",
+      "type": "cloudcode.kubernetes",
+      "request": "attach",
       "language": "Python",
       "debugPort": 3000,
       "localRoot": "${workspaceFolder}/src/backend",

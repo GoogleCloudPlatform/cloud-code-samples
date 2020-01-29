@@ -14,15 +14,15 @@
       "portForward": true
     },
     {
+      "name": "Debug on Kubernetes",
+      "type": "cloudcode.kubernetes",
+      "request": "attach",
       "podSelector": {
         "app": "python-hello-world"
       },
-      "type": "cloudcode",
-      "request": "attach",
       "localRoot": "${workspaceFolder}/src",
       "language": "Python",
       "remoteRoot": "/app",
-      "name": "Debug on Kubernetes",
       "debugPort": 3000
     }
   ]

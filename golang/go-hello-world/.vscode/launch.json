@@ -15,12 +15,12 @@
       "request": "launch",
       "name": "Launch (local)",
       "mode": "auto",
-      "program": "${workspaceFolder}/cmd/hello-world",
+      "program": "${workspaceFolder}/cmd/hello-world"
     },
     {
-      "type": "cloudcode",
-      "request": "attach",
       "name": "Debug on Kubernetes",
+      "type": "cloudcode.kubernetes",
+      "request": "attach",
       "language": "Go",
       "debugPort": 3000,
       "localRoot": "${workspaceFolder}",

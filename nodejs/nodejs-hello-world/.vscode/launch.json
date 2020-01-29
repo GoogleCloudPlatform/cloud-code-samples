@@ -11,17 +11,16 @@
             "portForward": true
         },
         {
+            "name": "Debug on Kubernetes",
+            "type": "cloudcode.kubernetes",
+            "request": "attach",
             "podSelector": {
                 "app": "nodejs-hello-world"
             },
-            "type": "cloudcode",
             "language": "Node",
-            "request": "attach",
             "debugPort": 9229,
             "localRoot": "${workspaceFolder}",
-            "remoteRoot": "/hello-world",
-            "name": "Debug on Kubernetes",
-
+            "remoteRoot": "/hello-world"
         }
     ]
 }

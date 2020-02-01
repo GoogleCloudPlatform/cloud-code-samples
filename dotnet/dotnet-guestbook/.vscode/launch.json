@@ -5,9 +5,18 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "type": "cloudcode",
-      "request": "attach",
+      "name": "Run on Kubernetes",
+      "type": "cloudcode.kubernetes",
+      "request": "launch",
+      "skaffoldConfig": "${workspaceFolder}/skaffold.yaml",
+      "watch": true,
+      "cleanUp": true,
+      "portForward": true
+    },
+    {
       "name": "Debug on Kubernetes (frontend)",
+      "type": "cloudcode.kubernetes",
+      "request": "attach",
       "language": "NETCore",
       "debugPort": 9229,
       "localRoot": "${workspaceFolder}/src/frontend",
@@ -18,9 +27,9 @@
       }
     },
     {
-      "type": "cloudcode",
-      "request": "attach",
       "name": "Debug on Kubernetes (backend)",
+      "type": "cloudcode.kubernetes",
+      "request": "attach",
       "language": "NETCore",
       "debugPort": 9229,
       "localRoot": "${workspaceFolder}/src/backend",

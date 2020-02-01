@@ -2,32 +2,39 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Run on Kubernetes",
+            "type": "cloudcode.kubernetes",
+            "request": "launch",
+            "skaffoldConfig": "${workspaceFolder}/skaffold.yaml",
+            "watch": true,
+            "cleanUp": true,
+            "portForward": true
+        },
+        {
+            "name": "Debug Frontend on Kubernetes",
+            "type": "cloudcode.kubernetes",
+            "request": "attach",
             "podSelector": {
                 "app": "nodejs-guestbook",
                 "tier": "frontend"
             },
-            "type": "cloudcode",
             "language": "Node",
-            "request": "attach",
             "debugPort": 9229,
             "localRoot": "${workspaceFolder}/src/frontend",
-            "remoteRoot": "/frontend",
-            "name": "Debug Frontend on Kubernetes",
-
+            "remoteRoot": "/frontend"
         },
         {
+            "name": "Debug Backend on Kubernetes",
+            "type": "cloudcode.kubernetes",
+            "request": "attach",
             "podSelector": {
                 "app": "nodejs-guestbook",
                 "tier": "backend"
             },
-            "type": "cloudcode",
             "language": "Node",
-            "request": "attach",
             "debugPort": 9229,
             "localRoot": "${workspaceFolder}/src/backend",
-            "remoteRoot": "/backend",
-            "name": "Debug Backend on Kubernetes",
-
+            "remoteRoot": "/backend"
         }
     ]
 }

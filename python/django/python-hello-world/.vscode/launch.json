@@ -5,16 +5,25 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Run on Kubernetes",
+      "type": "cloudcode.kubernetes",
+      "request": "launch",
+      "skaffoldConfig": "${workspaceFolder}/skaffold.yaml",
+      "watch": true,
+      "cleanUp": true,
+      "portForward": true
+    },
+    {
+      "name": "Debug on Kubernetes",
+      "type": "cloudcode.kubernetes",
+      "request": "attach",
       "podSelector": {
         "app": "python-hello-world",
         "tier": "app"
       },
-      "type": "cloudcode",
-      "request": "attach",
       "localRoot": "${workspaceFolder}/src",
       "language": "Python",
       "remoteRoot": "/app",
-      "name": "Debug on Kubernetes",
       "debugPort": 3000
     }
   ]

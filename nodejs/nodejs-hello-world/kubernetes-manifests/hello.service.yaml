@@ -6,11 +6,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: node-hello-world-external
+  name: nodejs-hello-world-external
 spec:
   type: LoadBalancer
   selector:
-    app: node-hello-world
+    app: nodejs-hello-world
   ports:
   - name: http
     port: 81

@@ -9,9 +9,14 @@ Spend less time learning about configuration and management of your app - and sp
 ## What's in this repo
 
 Code templates for easy Getting-Started experience with Google Cloud Code in Python, Java, Nodejs, Go and .NET Core.
-We support two IDEs: Visual Studio Code and IntelliJ.
+We support two IDEs: Visual Studio Code and IntelliJ (and other JetBrains IDEs).
 
-![Create New Application](https://cloud.google.com/code/docs/vscode/images/create-new-app.gif)
+VS Code:
+![Create New Application VS Code](https://cloud.google.com/code/docs/vscode/images/create-new-app.gif)
+
+IntelliJ:
+![Create New Application IntelliJ](https://cloud.google.com/code/docs/intellij/images/quickstart-intellij-runthrough.gif)
+
 
 ## Useful Links
 

@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: node-guestbook-backend
+  name: nodejs-guestbook-backend
   labels:
-    app: node-guestbook
+    app: nodejs-guestbook
     tier: backend
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: node-guestbook
+      app: nodejs-guestbook
       tier: backend
   template:
     metadata:
       labels:
-        app: node-guestbook
+        app: nodejs-guestbook
         tier: backend
     spec:
      initContainers:
@@ -22,11 +22,11 @@ spec:
         image: mongo:4
         command: ['/bin/sh', '-c']
         args:
-          - echo "Waiting for mongodb at node-guestbook-mongodb:27017 to go live before the BE..."; 
-          - until (mongo --host node-guestbook-mongodb:27017 >/dev/null) do echo "Waiting for connection for 2 sec."; sleep 2; done
+          - echo "Waiting for mongodb at nodejs-guestbook-mongodb:27017 to go live before the BE..."; 
+          - until (mongo --host nodejs-guestbook-mongodb:27017 >/dev/null) do echo "Waiting for connection for 2 sec."; sleep 2; done
      containers:
       - name: backend
-        image: node-guestbook-backend
+        image: nodejs-guestbook-backend
         ports:
         - name: http-server
           containerPort: 8080
@@ -34,4 +34,4 @@ spec:
         - name: PORT
           value: "8080"
         - name: GUESTBOOK_DB_ADDR
-          value: "node-guestbook-mongodb:27017"
+          value: "nodejs-guestbook-mongodb:27017"

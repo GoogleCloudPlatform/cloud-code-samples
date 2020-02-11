@@ -2,17 +2,25 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "podSelector": {
-                "app": "node-hello-world"
-            },
-            "type": "cloudcode",
-            "language": "Node",
+            "name": "Run on Kubernetes",
+            "type": "cloudcode.kubernetes",
+            "request": "launch",
+            "skaffoldConfig": "${workspaceFolder}/skaffold.yaml",
+            "watch": true,
+            "cleanUp": true,
+            "portForward": true
+        },
+        {
+            "name": "Debug on Kubernetes",
+            "type": "cloudcode.kubernetes",
             "request": "attach",
+            "podSelector": {
+                "app": "nodejs-hello-world"
+            },
+            "language": "Node",
             "debugPort": 9229,
             "localRoot": "${workspaceFolder}",
-            "remoteRoot": "/hello-world",
-            "name": "Debug on Kubernetes",
-
+            "remoteRoot": "/hello-world"
         }
     ]
 }

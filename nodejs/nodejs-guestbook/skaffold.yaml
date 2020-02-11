@@ -6,9 +6,9 @@ build:
     sha256: {}
   # defines where to find the code at build time and where to push the resulting image
   artifacts:
-  - image: node-guestbook-backend
+  - image: nodejs-guestbook-backend
     context: src/backend
-  - image: node-guestbook-frontend
+  - image: nodejs-guestbook-frontend
     context: src/frontend
 # defines the Kubernetes manifests to deploy on each run
 deploy:

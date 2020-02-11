@@ -1,25 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: node-guestbook-frontend
+  name: nodejs-guestbook-frontend
   labels:
-    app: node-guestbook
+    app: nodejs-guestbook
     tier: frontend
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: node-guestbook
+      app: nodejs-guestbook
       tier: frontend
   template:
     metadata:
       labels:
-        app: node-guestbook
+        app: nodejs-guestbook
         tier: frontend
     spec:
       containers:
       - name: frontend
-        image: node-guestbook-frontend
+        image: nodejs-guestbook-frontend
         ports:
         - name: http-server
           containerPort: 8080
@@ -27,4 +27,4 @@ spec:
         - name: PORT
           value: "8080"
         - name: GUESTBOOK_API_ADDR
-          value: node-guestbook-backend:8080
+          value: nodejs-guestbook-backend:8080

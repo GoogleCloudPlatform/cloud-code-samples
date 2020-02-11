@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: guestbook-frontend
+  name: go-guestbook-frontend
   labels:
     app: guestbook
     tier: frontend
@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: guestbook-frontend
+        image: go-guestbook-frontend
         ports:
         - name: http-server
           containerPort: 8080
@@ -29,4 +29,4 @@ spec:
         - name: PORT
           value: "8080"
         - name: GUESTBOOK_API_ADDR
-          value: guestbook-backend:8080
+          value: go-guestbook-backend:8080

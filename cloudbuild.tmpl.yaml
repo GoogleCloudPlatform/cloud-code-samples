@@ -34,27 +34,11 @@ steps:
   - |
     if [ "${_APP}" = "hello-world" ]
     then
-        if [ "${_LANG}" = "nodejs" ]
-          then
-          # set nodejs service to use node prefix
-          service=node-${_APP}-external
-        else
-          service=$$HELLO_WORLD_SERVICE
-        fi
+        service=$$HELLO_WORLD_SERVICE
     fi
     if [ "${_APP}" = "guestbook" ]
     then
-        if [ "${_LANG}" = "nodejs" ]
-          then
-          # set nodejs service to use node prefix
-          service=node-${_APP}-frontend
-        elif [ "${_LANG}" = go ]
-          then
-          # set go service to use no prefix
-          service=${_APP}-frontend
-        else
-          service=$$GUESTBOOK_SERVICE
-        fi
+        service=$$GUESTBOOK_SERVICE
     fi
     echo 'service is' $service
     get_externalIP() {
@@ -65,8 +49,8 @@ steps:
       sleep 3
     done
 
-    echo "$(get_externalIP)" > _externalIP
-    echo "external IP for $service is $(cat _externalIP)"
+    echo "$(get_externalIP):$(kubectl get service $service --namespace $$TEST_NAMESPACE -o jsonpath='{.spec.ports[0].port}')" > _externalIP
+    echo "External IP and port for $service is $(cat _externalIP)"
   waitFor: ['Deploy to staging']
 
 - id: 'Integration tests'

@@ -11,7 +11,8 @@ build:
 deploy:
   kubectl:
     manifests:
-    - kubernetes-manifests/**
+    - ./kubernetes-manifests/*.service.yaml
+    - ./kubernetes-manifests/*.deployment.yaml
 profiles:
 - name: cloudbuild
   build:

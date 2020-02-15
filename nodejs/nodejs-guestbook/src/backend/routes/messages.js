@@ -4,24 +4,22 @@ const GUESTBOOK_DB_ADDR = process.env.GUESTBOOK_DB_ADDR;
 const mongoURI = "mongodb://" + GUESTBOOK_DB_ADDR + "/guestbook"
 
 const db = mongoose.connection;
-
 db.on('disconnected', () => {
     console.error(`Disconnected: unable to reconnect to ${mongoURI}`)
-    throw new Error(`Disconnected: unable to reconnect to ${mongoURI}`) 
 })
 db.on('error', (err) => {
     console.error(`Unable to connect to ${mongoURI}: ${err}`);
 });
-
 db.once('open', () => {
-  console.log(`connected to ${mongoURI}`);
+  console.log(`Connected to ${mongoURI}`);
 });
 
 const connectToMongoDB = async () => {
     await mongoose.connect(mongoURI, {
         useNewUrlParser: true,
         connectTimeoutMS: 2000,
-        reconnectTries: 1
+        reconnectTries: 5,
+        useUnifiedTopology: true
     })
 };
 

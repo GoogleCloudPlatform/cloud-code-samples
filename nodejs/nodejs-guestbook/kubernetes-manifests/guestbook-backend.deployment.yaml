@@ -22,8 +22,7 @@ spec:
         image: mongo:4
         command: ['/bin/sh', '-c']
         args:
-          - echo "Waiting for mongodb at nodejs-guestbook-mongodb:27017 to go live before the BE..."; 
-          - until (mongo --host nodejs-guestbook-mongodb:27017 >/dev/null) do echo "Waiting for connection for 2 sec."; sleep 2; done
+          - echo "Waiting for mongodb to start...";until (mongo --host nodejs-guestbook-mongodb:27017 >/dev/null 2>&1) do echo "Waiting for connection for 2 sec."; sleep 2; done
      containers:
       - name: backend
         image: nodejs-guestbook-backend

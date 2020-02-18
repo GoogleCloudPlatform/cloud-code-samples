@@ -1,4 +1,4 @@
-    // tasks.josn defines quick commands that cam be launched in Visual Studio Code
+    // tasks.json defines quick commands that cam be launched in Visual Studio Code
     // See https://go.microsoft.com/fwlink/?LinkId=733558
     // for the documentation about the tasks.json format
 {

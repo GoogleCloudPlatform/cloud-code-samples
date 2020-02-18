@@ -4,7 +4,7 @@
 <meta charset=utf-8>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Congratulations | Cloud Run</title>
-<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="preload" as="font">
 <link
   href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsSAAALEgHS3X78AAAB5klEQVRYha2XMVLDMBBFPxl6qCjciBskNzA3AE5AqrTQuaVVR1pX4QSYGyQ3SGqGATcu3JBUlGGUiTPyeiWvZH6TsSTLb/+XN8nZfr+H0lUBYAvgucySbzBSupoCmJRZ8sTNx2p0vG8J4AHAl9LVQunqmtnPQD4qXa0d81GyARo1IC/2hmWWGIfeAYwBGIi7fwMos2QNYEfmTLWXZKw4fl4AeKOQQxwAcaERrbIg14MjCQKwYrA1KJI+gBtmjLqAIZEcXsNGSlfb42a27sssKaw15lz8ePbcGOdcrzPViFz3uuCIwVZQJBIAbiMuBlviSCQASulqEgjQqPctaQE4+gEiYrDljYQ6AIcLU2ZM6gJ8kUgBxp6uGKJOJFIACJuSRK1IOgCecxDzNrh0iuScW/D7+eG4LxGuk6sDcDVbTZhuCEe1sV/JxuFpnacF5wDX/zsAV7OVOZS3EQ8/tOo6Tw+tWgqwqfN0S8Ziqp/Xedr6SScFWDBjIQAny+lEC8CT/5KsC7G/ZbkXwFF9WefpmoxJq+9YHgMQc/qdlscAhNrvtdwJ4Mh/x1Thq77XcieApHoPgNjyUABJ8wmyfBAAU32w5SyAI/+5p/tFW84CkOpfzb9kaqll/yDLfQDsgy2Z6gdb3hKAP2n+6m+fxBVHAAAAAElFTkSuQmCC"
   rel="icon" 
@@ -13,151 +13,120 @@
 <style>
  body {
 	font-family: 'Roboto', sans-serif;
+	font-display: fallback;
 	background: url('/assets/cloud_bg.svg');
 	background-size: cover;
 	background-position: center;
-	background-attachment: fixed;
 	line-height: 1.6;
  }
 
- h1 {
+h1 {
 	font-size: 24px;
 	font-weight: bold;
 	margin-bottom: 0px;
- }
+}
 
- h2 {
+h2 {
 	font-size: 18px;
 	font-weight: normal;
 	margin-top: 4px;
- }
+}
 
- h3 {
+h3 {
 	font-size: 20px;
 	margin-bottom: 0px;
- }
+}
 
- .next {
-	font-size: 15px;
+.next {
+    font-size: 15px;
 	margin-top: 8px;
 	margin-bottom: 8px;
- }
+}
 
- .container {
+.container {
 	max-width: 700px;
 	margin-left: auto;
 	margin-right: auto;
 } 
 
- .hero {
+.hero {
 	margin-top: 172px;
- }
+}
 
- .hero .logo {
+.hero .logo {
 	width: 140px;
 	float: left;
 	margin-right: 32px;
- }
+}
 
- .hero .message {
+.hero .message {
 	font-size: 15px;
 	text-align: center;
 	margin-bottom: 24px;
- }
+}
 
- .details {
+.details {
 	clear: both;
 	height: 400px;
 	line-height: 1.8;
- }
+}
 
- .callout {
+.callout {
 	font-size: 14px;
-	background-color: #E8F0FE;
-	width: 100%;
 	color: #1967D2;
 	font-weight: 600;
-	padding: 16px 24px;
+	padding: 16px 24px 16px 40px;
+	background: url('/assets/lightbulb_icon.svg') #E8F0FE ;
+	background-position: 16px 16px;
+	background-repeat: no-repeat;
 	line-height: 1.6;
- }
+}
 
- .callout label {
-	display: block;
-	padding-left: 2em;
-	text-indent: -2em;
- }
-
- .code {
+code {
 	font-family: 'Roboto Mono', Courier, monospace;
-	color: #F90056;
+	color: #A30038;
 	background-color: #F8F8F8;
 	border: 1px solid #DDD;
 	border-radius: 2px;
 	padding: 0 6px;
 	font-weight: 500;
- }
+}
 
- .warning {
-	color: rgb(213, 0, 0);
-	background: #fbe9e7;
-	margin-bottom: 1.0em;
-	padding: 1.0em;
- }
-
- .warning a:visited {
-	color: rgb(213, 0, 0);
- }
-
- .warning a:link {
-	color: rgb(213, 0, 0);
- }
-
- .cta {
-	color: #3367D6;
-	text-align: left;
-	position: absolute;
- }
-
- .cta a {
+.cta a {
 	color: white;
 	text-decoration: none;
-	background-color: rgb(66, 133, 244);
+	background-color: rgb(14, 101, 241);
 	padding: 8px 12px;
 	margin-top: 8px;
 	min-height: 36px;
 	border-radius: 2px;
 	font-weight: 600;
- }
+}
 
- .cta a:hover {
-	background-color: rgb(66, 133, 244, 0.9);
- }
+.cta a:hover {
+    background-color: rgb(66, 133, 244, 0.9);
+}
 
- @media (max-width: 600px) {
-  .hero .logo {
-	  float: initial;
-	  display: block;
-	  margin-left: auto;
-	  margin-right: auto;
-	}
+@media (max-width: 600px) {
+    .hero .logo {
+        float: initial;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
 
 	.container {
-	  margin-top: 0;
+        margin-top: 0;
 	}
 
-	.hero {
-	  margin-top: 0;
-	  margin-bottom: 24px;
+    .hero {
+        margin-top: 0;
+        margin-bottom: 24px;
 	}
-  }
-  @media (prefers-color-scheme: dark) {
+}
+@media (prefers-color-scheme: dark) {
     body {
         background: black url('/assets/dark_bg.svg');
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
-        line-height: 1.6;
-        font-family: 'Roboto', sans-serif;
         color:white;
     }
 }
@@ -170,9 +139,9 @@
 		<div class="hero">
 			<div style="text-align:center;">
 				<picture>
-                    <source srcset="/assets/celebration-dark.svg" alt="celebration" media="(prefers-color-scheme: dark)">
-                    <img src="/assets/celebration.svg" alt="celebration" width="427" height="231">
-                </picture>
+					<source srcset="/assets/celebration-dark.svg" alt="A group celebrating" media="(prefers-color-scheme: dark)">
+					<img src="/assets/celebration.svg" alt="A group celebrating" width="427" height="231">
+				</picture>
 			</div>
 
 			<div class="message">
@@ -182,16 +151,16 @@
 		</div>
 
 		<div class="details">
-			<p>This created the revision <span class="code">{{.Revision}}</span> of the Cloud Run service <span
-					class="code">{{.Service}}</span>{{if .ProjectFound}} in the GCP project <span
-					class="code">{{.Project}}</span>{{end}}.</p>
+			<p>
+                This created the revision <code>{{.Revision}}</code> of the Cloud Run service <code>{{.Service}}</code>
+                {{if .ProjectFound}} in the GCP project <code>{{.Project}}</code>{{end}}.
+            </p>
 
 			<p class="callout">
-				<label><img src="/assets/lightbulb_icon.svg" style="margin:0px 8px 0px 0px; vertical-align:text-top;">
-					You can deploy any container to Cloud Run that listens for HTTP requests on the port defined by the
-					<code>PORT</code> environment variable.
-					Cloud Run will scale automatically based on requests and you never have to worry about
-					infrastructure.</label>
+				You can deploy any container to Cloud Run that listens for HTTP requests on the port defined by the
+				<code>PORT</code> environment variable.
+				Cloud Run will scale automatically based on requests and you never have to worry about
+				infrastructure.
 			</p>
 
 			<h3>What's next?</h3>
@@ -199,7 +168,7 @@
 				language into
 				a container image, and then deploy it to Cloud Run.</p>
 			<p class="cta">
-				<a href="https://cloud.google.com/run/docs/quickstarts/build-and-deploy" target="_blank">
+				<a href="https://cloud.google.com/run/docs/quickstarts/build-and-deploy" target="_blank" rel="noopener">
 					BUILD AND DEPLOY QUICKSTART</a></p>
 		</div>
 	</div>

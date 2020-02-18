@@ -1,24 +1,23 @@
 package cloudcode.helloworld.web;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 
-/**
-* defines the endpoints managed by the server.
-*/
+/** defines the endpoints managed by the server. */
 @Controller
 public final class HelloWorldController {
 
   /**
-  * endpoint for the landing page
-  * @return the index view
-  */
+   * endpoint for the landing page
+   *
+   * @return the index view
+   */
   @GetMapping("/")
   public String helloWorld(Model model) {
     String revision = System.getenv("K_REVISION");
@@ -32,9 +31,10 @@ public final class HelloWorldController {
   }
 
   /**
-  * Get the project ID from GCP metadata server
-  * @return your project Id or null
-  */
+   * Get the project ID from GCP metadata server
+   *
+   * @return your project Id or null
+   */
   public static String getProjectId() {
     OkHttpClient ok =
         new OkHttpClient.Builder()

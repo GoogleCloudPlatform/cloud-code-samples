@@ -38,9 +38,6 @@ var (
 )
 
 func main() {
-	// Comment out in local development for timestamp prefixes.
-	log.SetFlags(0)
-
 	// Initialize template parameters.
 	service := os.Getenv("K_SERVICE")
 	if service == "" {
@@ -52,15 +49,25 @@ func main() {
 		revision = "???"
 	}
 
-	project := "???"
+	project := os.Getenv("GOOGLE_CLOUD_PROJECT")
+
+	// Environment variable GOOGLE_CLOUD_PROJECT is only set locally.
+	// On Cloud Run, strip the timestamp prefix from log entries.
+	if project == "" {
+		log.SetFlags(0)
+	}
+
 	projectFound := false
 	// Only attempt to check the Cloud Run metadata server if it looks like
-	// the service is deployed to Cloud Run.
-	if service != "???" {
+	// the service is deployed to Cloud Run or GOOGLE_CLOUD_PROJECT not already set.
+	if project == "" || service != "???" {
 		var err error
 		if project, err = metadata.ProjectID(); err != nil {
 			log.Printf("metadata.ProjectID: Cloud Run metadata server: %v", err)
 		}
+	}
+	if project == "" {
+		project = "???"
 	}
 
 	// Prepare template for execution.
@@ -85,6 +92,7 @@ func main() {
 	}
 
 	log.Print("Hello from Cloud Run! The container started successfully and is listening for HTTP requests on $PORT")
+	log.Printf("Listening on port %s", port)
 	err := http.ListenAndServe(":"+port, nil)
 	if err != nil {
 		log.Fatal(err)

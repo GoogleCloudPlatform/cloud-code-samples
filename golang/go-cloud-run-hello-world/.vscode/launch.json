@@ -3,7 +3,7 @@
   "configurations": [
     {
       "name": "Run on Cloud Run",
-      "type": "cloudcode.kubernetes",
+      "type": "cloudcode.cloudrun",
       "request": "launch",
       "skaffoldConfig": "${workspaceFolder}/skaffold.yaml",
       "watch": true,

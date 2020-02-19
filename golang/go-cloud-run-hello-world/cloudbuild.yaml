@@ -13,7 +13,7 @@ steps:
   args:
   - 'run'
   - 'deploy'
-  - '${_SERVICE}'
+  - '${_SERVICE}-${COMMIT_SHA}'
   - '--image'
   - 'gcr.io/${PROJECT_ID}/${_SERVICE_TAG}:${COMMIT_SHA}'
   - '--allow-unauthenticated'
@@ -29,7 +29,7 @@ steps:
   - '-c'
   - |
     get_url() {
-        gcloud run services describe ${_SERVICE} --format 'value(status.url)' \
+        gcloud run services describe ${_SERVICE}-${COMMIT_SHA} --format 'value(status.url)' \
           --platform managed --region ${_CLOUDSDK_REGION}
     }
     echo $(get_url) > _service_url
@@ -54,7 +54,8 @@ steps:
   - |
     set -ex
     gcloud --quiet container images delete gcr.io/${PROJECT_ID}/${_SERVICE_TAG}:${COMMIT_SHA}
-    gcloud --quiet run services delete ${_SERVICE} --region ${_CLOUDSDK_REGION} --platform managed
+    gcloud --quiet run services delete ${_SERVICE}-${COMMIT_SHA} --region ${_CLOUDSDK_REGION} --platform managed
+    echo "View build details in the console: https://console.cloud.google.com/cloud-build/builds/${BUILD_ID}"
 
 # Uncomment if skipping teardown to associate build with container image.
 # images:

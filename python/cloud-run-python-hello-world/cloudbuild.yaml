@@ -1,0 +1,30 @@
+steps:
+- id: docker build
+  name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/${_PROJECT_ID}/${_SERVICE}', '.']
+
+- id: docker push
+  name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/${_PROJECT_ID}/${_SERVICE}']
+
+- id: Deploy to Cloud Run
+  name: 'gcr.io/cloud-builders/gcloud'
+  args:
+  - beta
+  - run
+  - deploy
+  - ${_SERVICE}
+  - --image
+  - gcr.io/${_PROJECT_ID}/${_SERVICE}
+  - --region
+  - ${_REGION} # e.g. us-central1
+  - --platform
+  - managed
+  - --allow-unauthenticated
+
+images:
+- gcr.io/${_PROJECT_ID}/${_SERVICE}
+
+substitutions:
+  _SERVICE: hello-world
+  _REGION: us-central1

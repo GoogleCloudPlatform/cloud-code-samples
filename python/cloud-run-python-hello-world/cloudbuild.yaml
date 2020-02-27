@@ -1,21 +1,20 @@
 steps:
 - id: docker build
   name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/${_PROJECT_ID}/${_SERVICE}', '.']
+  args: ['build', '-t', 'gcr.io/${_PROJECT_ID}/${_SERVICE}-${COMMIT_SHA}', '.']
 
 - id: docker push
   name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/${_PROJECT_ID}/${_SERVICE}']
+  args: ['push', 'gcr.io/${_PROJECT_ID}/${_SERVICE}-${COMMIT_SHA}']
 
 - id: Deploy to Cloud Run
   name: 'gcr.io/cloud-builders/gcloud'
   args:
-  - beta
   - run
   - deploy
   - ${_SERVICE}
   - --image
-  - gcr.io/${_PROJECT_ID}/${_SERVICE}
+  - gcr.io/${_PROJECT_ID}/${_SERVICE}-${COMMIT_SHA}
   - --region
   - ${_REGION} # e.g. us-central1
   - --platform
@@ -23,7 +22,7 @@ steps:
   - --allow-unauthenticated
 
 images:
-- gcr.io/${_PROJECT_ID}/${_SERVICE}
+- gcr.io/${_PROJECT_ID}/${_SERVICE}-${COMMIT_SHA}
 
 substitutions:
   _SERVICE: hello-world

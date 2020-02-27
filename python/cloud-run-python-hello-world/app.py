@@ -37,9 +37,5 @@ def hello():
         Revision=revision)
 
 if __name__ == '__main__':
-    server_port = os.environ.get('PORT')
-    if server_port is None:
-        print("error: PORT environment variable not set")
-        exit(1)
-
+    server_port = os.environ.get('PORT', '8080')
     app.run(debug=False, port=server_port, host='0.0.0.0')

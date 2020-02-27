@@ -12,10 +12,13 @@ namespace dotnet_cloud_run_hello_world.Pages
     {
         private readonly ILogger<IndexModel> _logger;
 
-        public IndexModel(ILogger<IndexModel> logger)
+        public IndexModel(ILogger<IndexModel> logger, IEnvironmentInfo envInfo)
         {
             _logger = logger;
+            EnvironmentInfo = envInfo;
         }
+
+        public IEnvironmentInfo EnvironmentInfo{ get; private set; }
 
         public void OnGet()
         {

@@ -8,8 +8,8 @@
 <div class="hero">
     <div style="text-align:center;">
         <picture>
-            <source srcset="~/wwwroot/img/celebration-dark.svg" alt="A group celebrating" media="(prefers-color-scheme: dark)">
-            <img src="~/wwwroot/img/celebration.svg" alt="A group celebrating" width="427" height="231">
+            <source srcset="img/celebration-dark.svg" alt="A group celebrating" media="(prefers-color-scheme: dark)">
+            <img src="img/celebration.svg" alt="A group celebrating" width="427" height="231">
         </picture>
     </div>
 
@@ -21,7 +21,7 @@
 
 <div class="details">
     <p>
-        This created the revision <code>@Model.EnvironmentInfo.Revision</code> of the Cloud Run service <code>@Model.EnvironmentInfo.Service}}</code>
+        This created the revision <code>@Model.EnvironmentInfo.Revision</code> of the Cloud Run service <code>@Model.EnvironmentInfo.Service</code>
         @if(Model.EnvironmentInfo.ProjectFound) 
         {
             <text>in the GCP project <code>@Model.EnvironmentInfo.Project</code></text>

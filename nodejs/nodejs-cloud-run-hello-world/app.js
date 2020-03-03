@@ -4,9 +4,11 @@ const fs = require('fs').promises;
 const metadata = require('gcp-metadata');
 
 const app = express();
+// Serve the files in /assets at the URI /assets.
 app.use('/assets', express.static('assets'));
 
-// Initialize handlebars template values for reuse.
+// The HTML content is produced by rendering a handlebars template.
+// The template values are stored in global state for reuse.
 const data = {
   project: process.env.GOOGLE_CLOUD_PROJECT,
   service: process.env.K_SERVICE || '???',
@@ -15,10 +17,20 @@ const data = {
 let template;
 
 app.get('/', async (req, res) => {
-  // Prepare the template for use if not ready.
+  // The handlebars template is stored in global state so this will only once.
   if (!template) {
-    // Only check the Cloud Run metadata server if it looks like the service
-    // is deployed to Cloud Run or GOOGLE_CLOUD_PROJECT is not set.
+    // Load Handlebars template from filesystem and compile for use.
+    try {
+      const source = await fs.readFile('index.html.hbs', 'utf-8');
+      template = handlebars.compile(source);
+    } catch (e) {
+      console.error(e);
+      res.status(500).send('Internal Server Error');
+    }
+
+    // Populate the Google Cloud Project template parameter.
+    // If the custom environment variable GOOGLE_CLOUD_PROJECT is not set
+    // check the Cloud Run metadata server for the project ID.
     if (!data.project) {
       try {
         data.project = await metadata.project();
@@ -27,18 +39,9 @@ app.get('/', async (req, res) => {
         console.error(e);
       }
     }
-
-    // Load template file into memory and compile.
-    try {
-      const source = await fs.readFile('index.html.hbs', 'utf-8');
-      template = handlebars.compile(source);
-    } catch (e) {
-      console.error(e);
-      res.status(500).send('Internal Server Error');
-    }
   }
 
-  // Execute the template and send an HTTP response.
+  // Apply the template to the parameters to generate an HTML string.
   try {
     const output = template(data);
     res.status(200).send(output);

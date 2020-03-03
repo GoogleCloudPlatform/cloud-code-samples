@@ -14,7 +14,7 @@ describe('Hello World', () => {
 
     assert.equal(res.status, '200');
     assert.ok(
-      res.data.includes('Congrats, you successfully deployed a container image to Cloud Run'),
+      res.data.includes('Congratulations, you successfully deployed a container image to Cloud Run'),
     );
   });
 });

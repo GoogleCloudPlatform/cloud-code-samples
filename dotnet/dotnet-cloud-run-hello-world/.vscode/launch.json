@@ -5,25 +5,33 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Run on Clour Run",
-      "type": "cloudcode.cloudrun",
-      "request": "launch",
-      "skaffoldConfig": "${workspaceFolder}/skaffold.yaml",
-      "watch": true,
-      "cleanUp": true,
-      "portForward": true
-    },
-    {
       "name": "Debug on Cloud Run",
       "type": "cloudcode.cloudrun",
       "request": "attach",
       "podSelector": {
         "app": "dotnet-cloud-run-hello-world",
       },
-      "localRoot": "${workspaceFolder}/src",
+      "localRoot": "${workspaceFolder}",
       "language": "NETCore",
       "remoteRoot": "/src",
       "debugPort": 9229
-    }
+    },
+    {
+      "name": "Run on Cloud Run",
+      "type": "cloudcode.cloudrun",
+      "request": "launch",
+      "service": {
+        "name": "dotnet-cloud-run-hello-world"
+      },
+      "build": {
+        "image": "cloud-run-dotnet-hello-world",
+        "docker": {
+        "path": "${workspaceFolder}/Dockerfile",
+        },
+      },
+      "watch": true,
+      "cleanUp": true,
+      "portForward": true
+    },
   ]
 }

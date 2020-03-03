@@ -36,14 +36,12 @@ steps:
     echo "Cloud Run URL for ${_SERVICE} is $(cat _service_url)"
 
 - id: 'Integration Tests'
-  name: 'gcr.io/cloud-builders/curl:latest'
+  name: 'golang:1.14'
   entrypoint: '/bin/bash'
   args:
   - '-c'
   - |
-    set -ex
-    chmod +x test_content.sh
-    ./test_content.sh $(cat _service_url)
+    SERVICE_URL=$(cat _service_url) go test -v .
 
 - id: 'Teardown'
   name: 'gcr.io/cloud-builders/gcloud:$_CLOUDSDK_VERSION'
@@ -51,9 +49,10 @@ steps:
   args:
   - '-c'
   - |
-    set -ex
+    set -x
     gcloud --quiet container images delete gcr.io/${PROJECT_ID}/${_SERVICE_TAG}:${COMMIT_SHA}
     gcloud --quiet run services delete ${_SERVICE}-${COMMIT_SHA} --region ${_CLOUDSDK_REGION} --platform managed
+    set +x
     echo "View build details in the console: https://console.cloud.google.com/cloud-build/builds/${BUILD_ID}"
 
 # Uncomment if skipping teardown to associate build with container image.

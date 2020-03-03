@@ -82,6 +82,6 @@ gcloud builds submit . --config cloudbuild.yaml --substitutions COMMIT_SHA=manua
 You can run the tests against a locally running instance of the service:
 
 ```
-npm start
+GOOGLE_CLOUD_PROJECT=local npm start
 npm test
 ```

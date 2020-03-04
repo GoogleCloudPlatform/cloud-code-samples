@@ -41,7 +41,7 @@ steps:
   - '-c'
   - |
     set -ex
-    keyword='Congrats, you successfully deployed a container image to Cloud Run'
+    keyword='Congratulations, you successfully deployed a container image to Cloud Run'
     chmod +x test_content.sh
     ./test_content.sh -r 25 -i 3 -u $(cat _service_url) -k $keyword
 - id: 'Teardown'

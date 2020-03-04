@@ -5,52 +5,78 @@ This "Hello World" is a [Cloud Run](https://cloud.google.com/run/docs) service t
 ----
 ## Table of Contents
 
-### Cloud Code for Visual Studio Code
-
-1. [Getting Started](#getting-started])
-2. [What's in the box](https://cloud.google.com/code/docs/vscode/quickstart#whats_in_the_box)
-3. [Using the Command Line](#using-the-command-line)
-
+* [VS Code Guide](#vs-code-guide)
+    1. [Getting Started](#getting-started])
+    2. [Running locally](#running-locally)
+    3. [Running on Cloud Run](#running-on-cloud-run)
+* [IntelliJ Guide](#intellij-guide)
+    1. [Getting Started](#getting-started])
+    2. [Running locally](#running-locally)
+    3. [Running on Cloud Run](#running-on-cloud-run)
+* [Service Configuration](#service-configuration)
+* [Next steps](#next-steps)
+* [Contributing](#contributing)
 ----
 
-## Getting Started
+## VS Code Guide
 
-This sample was written to demonstrate how to use the Cloud Code extension for Visual Studio code.
+### Getting Started
+
+This sample demonstrates how to use the Cloud Code extension in VS Code.
 
 * [Install Cloud Code for VS Code](https://cloud.google.com/code/docs/vscode/install)
 * [Creating a new app](https://cloud.google.com/code/docs/vscode/creating-an-application)
 * [Editing YAML files](https://cloud.google.com/code/docs/vscode/yaml-editing)
 
-## Using the Command Line
+## Running locally
 
-## Build the Container Image
+1. Open the command palette
+2. Run `Cloud Code: Run Locally`
 
-```
-docker build -t java-cloud-run-hello-world .
-```
+## Running on Cloud Run
 
-## Run the Container Locally
+1. Open the command palette
+2. Run `Cloud Code: Deploy to Cloud Run`
 
-```
-docker run ...
-```
+## IntelliJ Guide
 
-## Deploy to Cloud Run
+### Getting Started
 
-```
-export PROJECT_ID=<your_project_id>
-```
+This sample demonstrates how to use the Cloud Code extension in IntelliJ.
 
-```
-gcloud builds submit --tag gcr.io/$PROJECT_ID/java-cloud-run-hello-world
-gcloud run deploy hello-world \
-  --image gcr.io/$PROJECT_ID/java-cloud-run-hello-world \
-  --platform managed \
-  --region us-central1 \
-```
+* [Install Cloud Code for IntelliJ](https://cloud.google.com/code/docs/intellij/install)
+* [Creating a new app](https://cloud.google.com/code/docs/intellij/create-run-app)
 
-## Run the Tests
+## Service Configuration
+
+Configuration for this service uses environment variables.
+
+* **`GOOGLE_CLOUD_PROJECT`** [default: `<none>`] Override for the Project ID. If set the service assumes it's running locally and does not use the metadata server.
+* **`PORT`** [default: `8080`] The service binds this port. To avoid conflicts, set explicitly set this environment variable to an unused value.
+
+## Next Steps
+
+* Read the Cloud Run documentation on [developing your service](https://cloud.google.com/run/docs/developing).
+* Follow the [System packages tutorial](https://cloud.google.com/run/docs/tutorials/system-packages) to learn how to use the command-line to build and deploy a more complicated service.
+* {Cloud Code link?}
+
+### Run the Tests
+
+The tests for this code are implemented as a [Cloud Build](https://cloud.google.com/cloud-build) pipeline which takes the following steps:
+
+* Build the service
+* Deploy to Cloud Run
+* Run the tests
+* Delete the service and container image
+
+To run this end-to-end test manually, run this command-line operation:
 
 ```
 gcloud builds submit . --config cloudbuild.yaml --substitutions COMMIT_SHA=manual
+```
+
+You can run the tests against a locally running instance of the service:
+
+```
+GOOGLE_CLOUD_PROJECT=local mvn spring-boot:run
 ```

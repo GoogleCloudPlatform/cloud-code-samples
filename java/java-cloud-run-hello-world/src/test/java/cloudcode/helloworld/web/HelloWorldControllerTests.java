@@ -1,4 +1,4 @@
-package cloudcode.helloworld;
+package cloudcode.helloworld.web;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;

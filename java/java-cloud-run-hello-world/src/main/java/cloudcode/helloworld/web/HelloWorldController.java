@@ -20,13 +20,13 @@ public final class HelloWorldController {
    */
   @GetMapping("/")
   public String helloWorld(Model model) {
-    String revision = System.getenv("K_REVISION") ?: "???";
-    String service = System.getenv("K_SERVICE") ?: "???";
+    String revision = System.getenv("K_REVISION") == null ? "???" : System.getenv("K_REVISION");
+    String service = System.getenv("K_SERVICE") == null ? "???" : System.getenv("K_SERVICE");
     String project = System.getenv("GOOGLE_CLOUD_PROJECT");
     if (project == null) {
       project = getProjectId();
     }
-
+    System.out.println(service);
     model.addAttribute("revision", revision);
     model.addAttribute("service", service);
     model.addAttribute("project", project);

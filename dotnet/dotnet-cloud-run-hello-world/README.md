@@ -72,5 +72,5 @@ Join us at https://github.com/GoogleCloudPlatform/cloud-code-samples.
 The tests for this code are implemented as a [Cloud Build](https://cloud.google.com/cloud-build) pipeline. To run the test manually, run this command-line operation:
 
 ```bash
-gcloud builds submit . --config cloudbuild.yaml --substitutions COMMIT_SHA=manual
+gcloud builds submit . --config .ci/cloudbuild.yaml --substitutions COMMIT_SHA=manual
 ```

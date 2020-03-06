@@ -16,7 +16,7 @@
 
 PORT=${PORT:-8080}
 url=${1:-'http://localhost:$PORT'}
-expected='Congrats, you successfully deployed a container image to Cloud Run'
+expected='Congratulations, you successfully deployed a container image to Cloud Run'
 retries=10
 interval=5
 

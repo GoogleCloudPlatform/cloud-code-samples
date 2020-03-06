@@ -11,10 +11,14 @@
       "podSelector": {
         "app": "dotnet-cloud-run-hello-world",
       },
-      "localRoot": "${workspaceFolder}",
       "language": "NETCore",
-      "remoteRoot": "/src",
-      "debugPort": 9229
+      "debug": {
+        "sourceFileMap": {
+           "localRoot": "${workspaceFolder}",
+           "remoteRoot": "/src",
+           "debugPort": 9229
+        }
+      }
     },
     {
       "name": "Run on Cloud Run",

@@ -46,7 +46,6 @@ steps:
     declare -a apps=("hello-world" "guestbook")
     gcloud builds submit . --config cloudbuild.tmpl.yaml --substitutions _DIR=${dir},_LANG=${lang},_APP=${apps[0]}
     gcloud builds submit . --config cloudbuild.tmpl.yaml --substitutions _DIR=${dir},_LANG=${lang},_APP=${apps[1]}
-    gcloud builds submit . --config golang/go-cloud-run-hello-world
   waitFor: ['-']
 
 - id: 'nodejs tests'

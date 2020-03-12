@@ -1,0 +1,21 @@
+{
+    "configurations": [
+        {
+            "build": {
+                "docker": {
+                    "path": "dotnet/dotnet-cloud-run-hello-world/Dockerfile"
+                }
+            },
+            "image": "cloud-code-samples",
+            "name": "Run as Cloud Run Service Locally",
+            "request": "launch",
+            "service": {
+                "envVars": {},
+                "name": "cloud-code-samples-dotnet-run-hello",
+                "resourceLimits": {}
+            },
+            "type": "cloudcode.cloudrun",
+            "watch": true
+        }
+    ]
+}

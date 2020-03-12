@@ -1,3 +1,7 @@
+# This docker file uses multi-stage build strategy
+# to ensure optimal image build times and sizes
+# End result container image requires .NET runtime,
+# however creating it requires .NET SDK.
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-alpine AS base
 WORKDIR /src
 
@@ -14,6 +18,4 @@ RUN dotnet publish dotnet-cloud-run-hello-world.csproj -c Debug -o /out
 FROM base AS final
 WORKDIR /src
 COPY --from=publish /out .
-ENV ASPNETCORE_URLS=http://*:8080
-
-ENTRYPOINT ["dotnet", "dotnet-cloud-run-hello-world.dll"]
+CMD ASPNETCORE_URLS=http://*:$PORT dotnet dotnet-cloud-run-hello-world.dll

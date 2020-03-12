@@ -5,23 +5,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Debug on Cloud Run",
-      "type": "cloudcode.cloudrun",
-      "request": "attach",
-      "podSelector": {
-        "app": "dotnet-cloud-run-hello-world",
-      },
-      "language": "NETCore",
-      "debug": {
-        "sourceFileMap": {
-           "localRoot": "${workspaceFolder}",
-           "remoteRoot": "/src",
-           "debugPort": 9229
-        }
-      }
-    },
-    {
-      "name": "Run on Cloud Run",
+      "name": "Run as Cloud Run Service Locally",
       "type": "cloudcode.cloudrun",
       "request": "launch",
       "service": {
@@ -30,12 +14,11 @@
       "build": {
         "image": "cloud-run-dotnet-hello-world",
         "docker": {
-        "path": "${workspaceFolder}/Dockerfile",
+          "path": "${workspaceFolder}/Dockerfile",
         },
       },
       "watch": true,
-      "cleanUp": true,
-      "portForward": true
-    },
+      
+    }
   ]
 }

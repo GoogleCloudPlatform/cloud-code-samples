@@ -104,6 +104,9 @@ namespace dotnet_cloud_run_hello_world
                 app.UseHsts();
             }
 
+            // Cloud Run automatically redirects to HTTPS
+            // however we keep it here for portability to other platforms
+            // that might not do it by default
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

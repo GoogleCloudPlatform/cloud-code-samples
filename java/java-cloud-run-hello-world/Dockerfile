@@ -1,27 +1,25 @@
-# Use maven to compile the java application.
-FROM docker.io/maven AS build-env
+# Use the official maven/Java 8 image to create a build artifact.
+# https://hub.docker.com/_/maven
+FROM maven:3-jdk-8-slim AS build-env
 
 # Set the working directory to /app
 WORKDIR /app
-
-# copy the pom.xml file to download dependencies
+# Copy the pom.xml file to download dependencies
 COPY pom.xml ./
+# Copy local code to the container image.
+COPY src ./src
 
-# download dependencies as specified in pom.xml
-# building dependency layer early will speed up compile time when pom is unchanged
-RUN mvn verify --fail-never
+# Download dependencies and build a release artifact.
+RUN mvn package -DskipTests
 
-# Copy the rest of the working directory contents into the container
-COPY . ./
+# Use AdoptOpenJDK for base image.
+# It's important to use OpenJDK 8u191 or above that has container support enabled.
+# https://hub.docker.com/r/adoptopenjdk/openjdk8
+# https://docs.docker.com/develop/develop-images/multistage-build/#use-multi-stage-builds
+FROM adoptopenjdk/openjdk8:alpine-slim
 
-# Compile the application.
-RUN mvn -Dmaven.test.skip=true package
+# Copy the jar to the production image from the builder stage.
+COPY --from=build-env /app/target/hello-world-*.jar /hello-world.jar
 
-# Build runtime image.
-FROM openjdk:8-jre-alpine
-
-# Copy the compiled files over.
-COPY --from=build-env /app/target/ /app/
-
-# Starts java app with debugging server at port 5005.
-CMD ["java", "-jar", "/app/hello-world-1.0.0.jar"]
+# Run the web service on container startup.
+CMD ["java", "-jar", "/hello-world.jar"]

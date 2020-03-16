@@ -67,6 +67,7 @@
     "directoryPath": "java/java-cloud-run-hello-world",
     "templatePath": "java-cloud-run-hello-world",
     "templateName": "Java: Cloud Run Hello World",
+    "runPlatforms": ["cloudrun"],
     "templateLanguages": ["java"]
   },
   {

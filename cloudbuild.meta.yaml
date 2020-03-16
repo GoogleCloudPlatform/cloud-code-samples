@@ -18,9 +18,9 @@ steps:
   - '-c'
   - |
     lang=java
-    declare -a apps=("hello-world" "guestbook" "cloud-run-hello-world")
-    gcloud builds submit . --config cloudbuild.tmpl.yaml --substitutions _DIR=${lang},_LANG=${lang},_APP=${apps[0]}
-    gcloud builds submit . --config cloudbuild.tmpl.yaml --substitutions _DIR=${lang},_LANG=${lang},_APP=${apps[1]}
+    declare -a apps=("hello-world" "guestbook")
+    # gcloud builds submit . --config cloudbuild.tmpl.yaml --substitutions _DIR=${lang},_LANG=${lang},_APP=${apps[0]}
+    # gcloud builds submit . --config cloudbuild.tmpl.yaml --substitutions _DIR=${lang},_LANG=${lang},_APP=${apps[1]}
   waitFor: ['-'] # start immediately
 
 - id: 'dotnet tests'

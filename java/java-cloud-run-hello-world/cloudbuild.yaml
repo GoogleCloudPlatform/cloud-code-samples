@@ -35,15 +35,13 @@ steps:
     echo $(get_url) > _service_url
     echo "Cloud Run URL for ${_SERVICE} is $(cat _service_url)"
 - id: 'Integration Tests'
-  name: 'gcr.io/cloud-builders/curl:latest'
+  name: 'maven:3-jdk-8-slim'
   entrypoint: '/bin/bash'
   args:
   - '-c'
   - |
-    set -ex
-    keyword='Congratulations, you successfully deployed a container image to Cloud Run'
-    chmod +x test_content.sh
-    ./test_content.sh -r 25 -i 3 -u $(cat _service_url) -k $keyword
+    SERVICE_URL=$(cat _service_url) mvn verify
+
 - id: 'Teardown'
   name: 'gcr.io/cloud-builders/gcloud:$_CLOUDSDK_VERSION'
   entrypoint: '/bin/bash'
@@ -53,6 +51,7 @@ steps:
     set -ex
     gcloud --quiet container images delete gcr.io/${PROJECT_ID}/${_SERVICE_TAG}:${COMMIT_SHA}
     gcloud --quiet run services delete ${_SERVICE} --region ${_CLOUDSDK_REGION} --platform managed
+
 # Uncomment if skipping teardown to associate build with container image.
 # images:
 # - 'gcr.io/${PROJECT_ID}/${_SERVICE}:${COMMIT_SHA}'

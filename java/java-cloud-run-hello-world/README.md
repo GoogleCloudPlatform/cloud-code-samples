@@ -58,7 +58,6 @@ Configuration for this service uses environment variables.
 
 * Read the Cloud Run documentation on [developing your service](https://cloud.google.com/run/docs/developing).
 * Follow the [System packages tutorial](https://cloud.google.com/run/docs/tutorials/system-packages) to learn how to use the command-line to build and deploy a more complicated service.
-* {Cloud Code link?}
 
 ### Run the Tests
 
@@ -79,4 +78,5 @@ You can run the tests against a locally running instance of the service:
 
 ```
 GOOGLE_CLOUD_PROJECT=local mvn spring-boot:run
+mvn verify
 ```

@@ -5,28 +5,38 @@ import java.util.concurrent.TimeUnit;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-/** defines the endpoints managed by the server. */
+/** Defines a controller to handle HTTP requests */
 @Controller
 public final class HelloWorldController {
 
+  private static String project;
+  private static final Logger logger = LoggerFactory.getLogger(HelloWorldController.class);
+
   /**
-   * endpoint for the landing page
+   * Create an endpoint for the landing page
    *
-   * @return the index view
+   * @return the index view template
    */
   @GetMapping("/")
   public String helloWorld(Model model) {
-    String revision = System.getenv("K_REVISION") == null ? "???" : System.getenv("K_REVISION");
-    String service = System.getenv("K_SERVICE") == null ? "???" : System.getenv("K_SERVICE");
-    String project = System.getenv("GOOGLE_CLOUD_PROJECT");
+    // If the custom environment variable GOOGLE_CLOUD_PROJECT is not set
+    // check the Cloud Run metadata server for the Project Id.
+    project = System.getenv("GOOGLE_CLOUD_PROJECT");
     if (project == null) {
       project = getProjectId();
     }
-    System.out.println(service);
+
+    // Get Cloud Run environment variables.
+    String revision = System.getenv("K_REVISION") == null ? "???" : System.getenv("K_REVISION");
+    String service = System.getenv("K_SERVICE") == null ? "???" : System.getenv("K_SERVICE");
+
+    // Set variables in html template.
     model.addAttribute("revision", revision);
     model.addAttribute("service", service);
     model.addAttribute("project", project);
@@ -34,9 +44,9 @@ public final class HelloWorldController {
   }
 
   /**
-   * Get the project ID from GCP metadata server
+   * Get the Project Id from GCP metadata server
    *
-   * @return your project Id or null
+   * @return GCP Project Id or null
    */
   public static String getProjectId() {
     OkHttpClient ok =
@@ -54,7 +64,7 @@ public final class HelloWorldController {
       Response response = ok.newCall(request).execute();
       project = response.body().string();
     } catch (IOException e) {
-      System.out.println("Error retrieving Project Id");
+      logger.error("Error retrieving Project Id");
     }
     return project;
   }

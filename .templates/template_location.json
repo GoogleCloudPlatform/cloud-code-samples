@@ -109,6 +109,6 @@
     "templatePath": "dotnet-cloud-run-hello-world",
     "templateName": "Dotnet: Cloud Run",
     "templateLanguages": ["csharp"],
-    “runPlatforms”: [“cloudrun”]
-  },
+    "runPlatforms": ["cloudrun"]
+  }
 ]

@@ -1,0 +1,45 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Congratulations | Cloud Run";
+}
+
+
+<div class="hero">
+    <div style="text-align:center;">
+        <picture>
+            <source srcset="img/celebration-dark.svg" alt="A group celebrating" media="(prefers-color-scheme: dark)">
+            <img src="img/celebration.svg" alt="A group celebrating" width="427" height="231">
+        </picture>
+    </div>
+
+    <div class="message">
+        <h1>It's running!</h1>
+        <h2>Congratulations, you successfully deployed a container image to Cloud Run</h2>
+    </div>
+</div>
+
+<div class="details">
+    <p>
+        This created the revision <code>@Model.EnvironmentInfo.Revision</code> of the Cloud Run service <code>@Model.EnvironmentInfo.Service</code>
+        @if(Model.EnvironmentInfo.ProjectFound) 
+        {
+            <text>in the GCP project <code>@Model.EnvironmentInfo.Project</code></text>
+        }
+    </p>
+
+    <p class="callout">
+        You can deploy any container to Cloud Run that listens for HTTP requests on the port defined by the
+        <code>PORT</code> environment variable.
+        Cloud Run will scale automatically based on requests and you never have to worry about
+        infrastructure.
+    </p>
+
+    <h3>What's next?</h3>
+    <p class="next">Follow the Quickstart tutorial to build a “Hello World” application in your favorite
+        language into
+        a container image, and then deploy it to Cloud Run.</p>
+    <p class="cta">
+        <a href="https://cloud.google.com/run/docs/quickstarts/build-and-deploy" target="_blank" rel="noopener">
+            BUILD AND DEPLOY QUICKSTART</a></p>
+</div>

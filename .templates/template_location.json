@@ -73,6 +73,14 @@
   },
   {
     "repoPath": "https://github.com/GoogleCloudPlatform/cloud-code-samples.git",
+    "directoryPath": "java/java-cloud-run-hello-world",
+    "templatePath": "java-cloud-run-hello-world",
+    "templateName": "Java: Cloud Run Hello World",
+    "runPlatforms": ["cloudrun"],
+    "templateLanguages": ["java"]
+  },
+  {
+    "repoPath": "https://github.com/GoogleCloudPlatform/cloud-code-samples.git",
     "directoryPath": "java/java-guestbook",
     "templatePath": "java-guestbook",
     "templateName": "Java: Guestbook",

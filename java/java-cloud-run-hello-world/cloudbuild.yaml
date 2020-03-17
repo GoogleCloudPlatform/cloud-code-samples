@@ -1,0 +1,63 @@
+steps:
+
+- id: 'Build Container Image'
+  name: 'gcr.io/cloud-builders/docker:latest'
+  args: ['build', '-t', 'gcr.io/${PROJECT_ID}/${_SERVICE_TAG}:${COMMIT_SHA}', '.']
+
+- id: 'Push Container Image'
+  name: 'gcr.io/cloud-builders/docker:latest'
+  args: ['push', 'gcr.io/${PROJECT_ID}/${_SERVICE_TAG}:${COMMIT_SHA}']
+
+- id: 'Deploy to Cloud Run'
+  name: 'gcr.io/cloud-builders/gcloud:$_CLOUDSDK_VERSION'
+  args:
+  - 'run'
+  - 'deploy'
+  - '${_SERVICE}'
+  - '--image'
+  - 'gcr.io/${PROJECT_ID}/${_SERVICE_TAG}:${COMMIT_SHA}'
+  - '--allow-unauthenticated'
+  - '--region'
+  - '${_CLOUDSDK_REGION}'
+  - '--platform'
+  - 'managed'
+
+- id: 'Get Cloud Run URL'
+  name: 'gcr.io/cloud-builders/gcloud:$_CLOUDSDK_VERSION'
+  entrypoint: '/bin/bash'
+  args:
+  - '-c'
+  - |
+    get_url() {
+        gcloud run services describe ${_SERVICE} --format 'value(status.url)' \
+          --platform managed --region ${_CLOUDSDK_REGION}
+    }
+    echo $(get_url) > _service_url
+    echo "Cloud Run URL for ${_SERVICE} is $(cat _service_url)"
+- id: 'Integration Tests'
+  name: 'maven:3-jdk-8-slim'
+  entrypoint: '/bin/bash'
+  args:
+  - '-c'
+  - |
+    SERVICE_URL=$(cat _service_url) mvn verify
+
+- id: 'Teardown'
+  name: 'gcr.io/cloud-builders/gcloud:$_CLOUDSDK_VERSION'
+  entrypoint: '/bin/bash'
+  args:
+  - '-c'
+  - |
+    set -ex
+    gcloud --quiet container images delete gcr.io/${PROJECT_ID}/${_SERVICE_TAG}:${COMMIT_SHA}
+    gcloud --quiet run services delete ${_SERVICE} --region ${_CLOUDSDK_REGION} --platform managed
+
+# Uncomment if skipping teardown to associate build with container image.
+# images:
+# - 'gcr.io/${PROJECT_ID}/${_SERVICE}:${COMMIT_SHA}'
+
+substitutions:
+  _CLOUDSDK_VERSION: latest
+  _CLOUDSDK_REGION: us-central1
+  _SERVICE: hello-world
+  _SERVICE_TAG: java-cloud-run-hello-world

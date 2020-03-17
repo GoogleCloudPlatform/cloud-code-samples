@@ -1,0 +1,53 @@
+steps:
+- id: docker build
+  name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/${_PROJECT_ID}/${_SERVICE}-${COMMIT_SHA}', '.']
+
+- id: docker push
+  name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/${_PROJECT_ID}/${_SERVICE}-${COMMIT_SHA}']
+
+- id: Deploy to Cloud Run
+  name: 'gcr.io/cloud-builders/gcloud'
+  args:
+  - run
+  - deploy
+  - ${_SERVICE}
+  - --image
+  - gcr.io/${_PROJECT_ID}/${_SERVICE}-${COMMIT_SHA}
+  - --region
+  - ${_REGION} # e.g. us-central1
+  - --platform
+  - managed
+  - --allow-unauthenticated
+
+- id: 'Get Cloud Run URL'
+  name: 'gcr.io/cloud-builders/gcloud:latest'
+  entrypoint: '/bin/bash'
+  args:
+  - '-c'
+  - |
+    get_url() {
+        gcloud run services describe ${_SERVICE} --format 'value(status.url)' \
+          --platform managed --region ${_REGION}
+    }
+    echo $(get_url) > _service_url
+    echo "Cloud Run URL for ${_SERVICE} is $(cat _service_url)"
+
+- id: 'Integration Tests'
+  name: 'gcr.io/cloud-builders/curl:latest'
+  entrypoint: '/bin/bash'
+  args:
+  - '-c'
+  - |
+    set -ex
+    chmod +x test_content.sh
+    ./test_content.sh $(cat _service_url)
+
+
+images:
+- gcr.io/${_PROJECT_ID}/${_SERVICE}-${COMMIT_SHA}
+
+substitutions:
+  _SERVICE: hello-world
+  _REGION: us-central1

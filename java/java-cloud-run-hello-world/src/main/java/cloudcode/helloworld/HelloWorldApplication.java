@@ -1,5 +1,6 @@
 package cloudcode.helloworld;
 
+import java.util.Collections;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -14,12 +15,14 @@ public class HelloWorldApplication {
   public static void main(final String[] args) throws Exception {
     String port = System.getenv("PORT");
     if (port == null) {
-      logger.error("Error: $PORT environment variable not set");
-      System.exit(1);
+      port = "8080";
+      logger.warn("$PORT environment variable not set, defaulting to 8080");
     }
+    SpringApplication app = new SpringApplication(HelloWorldApplication.class);
+    app.setDefaultProperties(Collections.singletonMap("server.port", port));
 
     // Start the Spring Boot application.
-    SpringApplication.run(HelloWorldApplication.class, args);
+    app.run(args);
     logger.info(
         "Hello from Cloud Run! The container started successfully and is listening for HTTP requests on $PORT");
   }

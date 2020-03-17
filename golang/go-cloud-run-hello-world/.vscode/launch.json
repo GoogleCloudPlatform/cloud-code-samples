@@ -1,0 +1,21 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run on Cloud Run",
+      "type": "cloudcode.cloudrun",
+      "request": "launch",
+      "skaffoldConfig": "${workspaceFolder}/skaffold.yaml",
+      "watch": true,
+      "cleanUp": true,
+      "portForward": true
+    },
+    {
+      "type": "go",
+      "request": "launch",
+      "name": "Launch (local)",
+      "mode": "auto",
+      "program": "${workspaceFolder}/."
+    },
+  ]
+}

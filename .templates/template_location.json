@@ -17,6 +17,14 @@
   },
   {
     "repoPath": "https://github.com/GoogleCloudPlatform/cloud-code-samples.git",
+    "directoryPath": "python/cloud-run-python-hello-world",
+    "templatePath": "cloud-run-python-hello-world",
+    "templateName": "Python (Flask): Cloud Run",
+    "templateLanguages": ["python"],
+    "runPlatforms": ["cloudrun"]
+  },
+  {
+    "repoPath": "https://github.com/GoogleCloudPlatform/cloud-code-samples.git",
     "directoryPath": "python/django/python-hello-world",
     "templatePath": "python-django-hello-world",
     "templateName": "Python (Django): Hello World",
@@ -30,6 +38,14 @@
     "templateName": "Python (Django): Guestbook",
     "templateLanguages": ["python"],
     "runPlatforms": ["kubernetes"]
+  },
+  {
+    "repoPath": "https://github.com/GoogleCloudPlatform/cloud-code-samples.git",
+    "directoryPath": "python/cloud-run-django-hello-world",
+    "templatePath": "cloud-run-django-hello-world",
+    "templateName": "Python (Django): Cloud Run",
+    "templateLanguages": ["python"],
+    "runPlatforms": ["cloudrun"]
   },
   {
     "repoPath": "https://github.com/GoogleCloudPlatform/cloud-code-samples.git",
@@ -75,9 +91,9 @@
     "repoPath": "https://github.com/GoogleCloudPlatform/cloud-code-samples.git",
     "directoryPath": "java/java-cloud-run-hello-world",
     "templatePath": "java-cloud-run-hello-world",
-    "templateName": "Java: Cloud Run Hello World",
-    "runPlatforms": ["cloudrun"],
-    "templateLanguages": ["java"]
+    "templateName": "Java: Cloud Run",
+    "templateLanguages": ["java"],
+    "runPlatforms": ["cloudrun"]
   },
   {
     "repoPath": "https://github.com/GoogleCloudPlatform/cloud-code-samples.git",
@@ -91,7 +107,7 @@
     "repoPath": "https://github.com/GoogleCloudPlatform/cloud-code-samples.git",
     "directoryPath": "dotnet/dotnet-hello-world",
     "templatePath": "dotnet-hello-world",
-    "templateName": ".NET Core: Hello World",
+    "templateName": ".NET: Hello World",
     "templateLanguages": ["csharp"],
     "runPlatforms": ["kubernetes"]
   },
@@ -99,7 +115,7 @@
     "repoPath": "https://github.com/GoogleCloudPlatform/cloud-code-samples.git",
     "directoryPath": "dotnet/dotnet-guestbook",
     "templatePath": "dotnet-guestbook",
-    "templateName": ".NET Core: Guestbook",
+    "templateName": ".NET: Guestbook",
     "templateLanguages": ["csharp"],
     "runPlatforms": ["kubernetes"]
   },
@@ -107,7 +123,7 @@
     "repoPath": "https://github.com/GoogleCloudPlatform/cloud-code-samples.git",
     "directoryPath": "dotnet/dotnet-cloud-run-hello-world",
     "templatePath": "dotnet-cloud-run-hello-world",
-    "templateName": "Dotnet: Cloud Run",
+    "templateName": ".NET: Cloud Run",
     "templateLanguages": ["csharp"],
     "runPlatforms": ["cloudrun"]
   }

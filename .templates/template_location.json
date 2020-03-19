@@ -73,6 +73,14 @@
   },
   {
     "repoPath": "https://github.com/GoogleCloudPlatform/cloud-code-samples.git",
+    "directoryPath": "nodejs/nodejs-cloud-run-hello-world",
+    "templatePath": "nodejs-cloud-run-hello-world",
+    "templateName": "Node.js: Cloud Run Hello World",
+    "runPlatforms": ["cloudrun"],
+    "templateLanguages": ["nodejs"]
+  },
+  {
+    "repoPath": "https://github.com/GoogleCloudPlatform/cloud-code-samples.git",
     "directoryPath": "nodejs/nodejs-guestbook",
     "templatePath": "nodejs-guestbook",
     "templateName": "Node.js: Guestbook",

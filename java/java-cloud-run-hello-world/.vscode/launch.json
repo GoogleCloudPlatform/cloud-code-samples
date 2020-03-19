@@ -2,23 +2,23 @@
 // See https://code.visualstudio.com/Docs/editor/debugging#_launch-configurations
 // for documentation about how to create and manage configurations
 {
-    "version": "0.2.0",
-    "configurations": [
-      {
-        "name": "Run as Cloud Run Service Locally",
-        "type": "cloudcode.cloudrun",
-        "request": "launch",
-        "service": {
-          "name": "java-cloud-run-hello-world"
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run as Cloud Run Service Locally",
+      "type": "cloudcode.cloudrun",
+      "request": "launch",
+      "service": {
+        "name": "java-cloud-run-hello-world"
+      },
+      "build": {
+        "image": "cloud-run-java-hello-world",
+        "docker": {
+          "path": "${workspaceFolder}/Dockerfile",
         },
-        "build": {
-          "image": "cloud-run-java-hello-world",
-          "docker": {
-            "path": "${workspaceFolder}/Dockerfile",
-          },
-        },
-        "watch": true,
+      },
+      "watch": true,
 
-      }
-    ]
-  }
+    }
+  ]
+}

@@ -9,9 +9,9 @@ Some of the samples are tested by a dedicated [Cloud Build](https://cloud.google
 All sample tests are expected to take the following steps:
 
 * Build the service
-* Deploy to Cloud Run
+* Deploy to the intended platform (such as Cloud Run)
 * Run the tests
-* Delete the service and container image
+* Delete the service, container image, and any other resources created during testing
 
 ### Cloud Run Hello World
 

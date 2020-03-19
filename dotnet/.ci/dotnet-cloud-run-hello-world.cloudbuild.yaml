@@ -41,8 +41,8 @@ steps:
   - '-c'
   - |
     set -ex
-    chmod +x test_content.sh
-    ./test_content.sh $(cat _service_url)
+    chmod +x test/test_content.sh
+    test/test_content.sh $(cat _service_url)
 
 - id: 'Teardown'
   name: 'gcr.io/cloud-builders/gcloud:$_CLOUDSDK_VERSION'

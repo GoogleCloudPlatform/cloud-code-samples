@@ -14,7 +14,7 @@
         "portForward": true
       },
       {
-        "name": "Attach to Kubernetes",
+        "name": "Attach to Kubernetes pod",
         "type": "cloudcode.kubernetes",
         "request": "attach",
         "language": "Java",

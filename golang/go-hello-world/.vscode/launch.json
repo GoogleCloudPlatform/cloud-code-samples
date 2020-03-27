@@ -18,7 +18,7 @@
       "program": "${workspaceFolder}/cmd/hello-world"
     },
     {
-      "name": "Attach to Kubernetes",
+      "name": "Attach to Kubernetes pod",
       "type": "cloudcode.kubernetes",
       "request": "attach",
       "language": "Go",

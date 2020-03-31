@@ -29,14 +29,14 @@ This sample demonstrates how to use the Cloud Code extension in VS Code.
 * [Creating a new app](https://cloud.google.com/code/docs/vscode/creating-an-application)
 * [Editing YAML files](https://cloud.google.com/code/docs/vscode/yaml-editing)
 
-## VS Code Running locally
+### VS Code Running locally
 
-1. Open the command pallette
+1. Open the command palette
 2. Run `Cloud Code: Run Locally`
 
-## VS Code Running on Cloud Run
+### VS Code Running on Cloud Run
 
-1. Open the command pallette
+1. Open the command palette
 2. Run `Cloud Code: Deploy to Cloud Run`
 
 ## IntelliJ Guide
@@ -47,6 +47,22 @@ This sample demonstrates how to use the Cloud Code extension in IntelliJ.
 
 * [Install Cloud Code for IntelliJ](https://cloud.google.com/code/docs/intellij/install)
 * [Creating a new app](https://cloud.google.com/code/docs/intellij/create-run-app)
+
+### IntelliJ Running locally
+
+1. Select `Edit Configurations` from the Run/Debug configurations dialog on the
+  top taskbar.
+1. Add a `Cloud Code: Cloud Run: Run Locally` configuration.
+1. Select `Cloud Code: Run Locally` target from the Run/Debug configurations
+  dialog on the top taskbar.
+
+### IntelliJ Running on Cloud Run
+
+1. Select `Edit Configurations` from the Run/Debug configurations dialog on the
+  top taskbar.
+1. Add a `Cloud Code: Cloud Run: Deploy` configuration.
+1. Select `Cloud Code: Deploy` target from the Run/Debug configurations
+  dialog on the top taskbar.
 
 ## Service Configuration
 

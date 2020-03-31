@@ -11,7 +11,7 @@
             "portForward": true
         },
         {
-            "name": "Debug Frontend on Kubernetes",
+            "name": "Attach to Kubernetes pod (frontend)",
             "type": "cloudcode.kubernetes",
             "request": "attach",
             "podSelector": {
@@ -24,7 +24,7 @@
             "remoteRoot": "/frontend"
         },
         {
-            "name": "Debug Backend on Kubernetes",
+            "name": "Attach to Kubernetes pod (backend)",
             "type": "cloudcode.kubernetes",
             "request": "attach",
             "podSelector": {

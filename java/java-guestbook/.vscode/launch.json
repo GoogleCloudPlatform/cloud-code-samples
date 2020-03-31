@@ -14,7 +14,7 @@
       "portForward": true
     },
     {
-      "name": "Debug on Kubernetes (frontend)",
+      "name": "Attach to Kubernetes pod (frontend)",
       "type": "cloudcode.kubernetes",
       "request": "attach",
       "language": "Java",
@@ -27,7 +27,7 @@
       }
     },
     {
-      "name": "Debug on Kubernetes (backend)",
+      "name": "Attach to Kubernetes pod (backend)",
       "type": "cloudcode.kubernetes",
       "request": "attach",
       "language": "Java",

@@ -20,6 +20,9 @@ RUN go build -mod=readonly -v -o /app
 COPY index.html /index.html
 COPY assets ./assets/
 
+# Add stack traces for all user-created goroutines
+ENV GOTRACEBACK=all
+
 # If you want to use the debugger, you need to modify the entrypoint to the
 # container and point it to the "dlv debug" command:
 #   * UNCOMMENT the following ENTRYPOINT statement,

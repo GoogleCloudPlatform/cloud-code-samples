@@ -1,2 +1,2 @@
-Django==3.0.4
+Django==3.0.5
 psycopg2==2.8.4

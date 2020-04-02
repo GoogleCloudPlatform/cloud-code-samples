@@ -18,8 +18,5 @@ RUN npm install --production
 # Copy local code to the container image.
 COPY . ./
 
-# Run with debugging on container startup.
-CMD ["npm", "run", "debug"]
-
-# Comment above and uncomment below to run without debugging.
-# CMD [ "npm", "start" ]
+# Run the web service on container startup.
+CMD ["node", "index.js"]

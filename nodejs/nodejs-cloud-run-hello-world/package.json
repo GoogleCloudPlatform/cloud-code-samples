@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "debug": "node --inspect=9229 index.js",
     "lint": "eslint **.js",
     "fix": "eslint --fix *.js",
     "test": "mocha test/*.test.js --check-leaks --timeout 5000"

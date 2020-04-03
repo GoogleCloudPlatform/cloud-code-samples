@@ -1,32 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using frontend;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Google.Cloud.Diagnostics.AspNetCore;
 
 namespace dotnet_guestbook
 {
     public class Startup
     {
-        private ILogger logger;
         private EnvironmentConfiguration envConfig;
 
-        public Startup(
-            IConfiguration configuration,
-            ILoggerFactory loggerFactory)
+        public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
             envConfig = new EnvironmentConfiguration();
-            logger = loggerFactory.CreateLogger<Startup>();
         }
 
         public IConfiguration Configuration { get; }
@@ -46,30 +37,26 @@ namespace dotnet_guestbook
 
             services.AddLogging();
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddControllersWithViews();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(
-            IApplicationBuilder app, 
-            IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app,  IWebHostEnvironment env, ILogger<Startup> logger)
         {
             // GUESTBOOK_API_ADDR environment variable is provided in guestbook-frontend.deployment.yaml.
-            string backendAddr = Environment.GetEnvironmentVariable("GUESTBOOK_API_ADDR");
-            logger.LogError($"Backend address is set to {backendAddr}");
+            var backendAddr = Environment.GetEnvironmentVariable("GUESTBOOK_API_ADDR");
+            logger.LogInformation($"Backend address is set to {backendAddr}");
             if (string.IsNullOrEmpty(backendAddr))
             {
-                logger.LogError("GUESTBOOK_API_ADDR environment variable is not set");
-                Environment.Exit(-1);
+                throw new ArgumentException("GUESTBOOK_API_ADDR environment variable is not set");
             }
 
             // PORT environment variable is provided in guestbook-frontend.deployment.yaml.
-            string port = Environment.GetEnvironmentVariable("PORT");
+            var port = Environment.GetEnvironmentVariable("PORT");
             logger.LogInformation($"Port env var is set to {port}");
             if (string.IsNullOrEmpty(port))
             {
-                logger.LogError("PORT environment variable is not set");
-                Environment.Exit(-1);
+                throw new ArgumentException("PORT environment variable is not set");
             }
 
             // Set the address of the backend microservice
@@ -83,21 +70,29 @@ namespace dotnet_guestbook
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                //app.UseHsts();
             }
 
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
-            app.UseMvc(routes =>
+            app.UseRouting();
+
+            app.UseEndpoints(endpoints =>
             {
-                routes.MapRoute(name: "postRoute", template: "{controller}/post",
+                // endpoints.MapControllerRoute(
+                //     name: "postRoute",
+                //     pattern: "{controller=Home}/{action=Post}/");
+
+                endpoints.MapControllerRoute(
+                    name: "postRoute",
+                    pattern: "{controller}/post",
                     defaults: new { controller = "Home", action = "Post" });
 
-                routes.MapRoute(
+                endpoints.MapControllerRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
         }
     }
 }

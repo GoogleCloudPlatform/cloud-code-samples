@@ -1,8 +1,8 @@
-FROM mcr.microsoft.com/dotnet/core/aspnet:2.2 AS base
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.1 AS base
 WORKDIR /src
 EXPOSE 80
 
-FROM mcr.microsoft.com/dotnet/core/sdk:2.2 AS build
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
 WORKDIR /src
 COPY . .
 RUN dotnet restore frontend.csproj
@@ -19,7 +19,7 @@ ENV ASPNETCORE_URLS=http://*:8080
 
 # Installing vsdbg on the container to enable debugging of .NET Core
 RUN apt -o Acquire::https::No-Cache=True -o Acquire::http::No-Cache=True update \
-    && apt --fix-broken install \ 
+    && apt --fix-broken install \
     && apt-get update \
     && apt-get upgrade -y \
     && apt-get install -y --no-install-recommends apt-utils unzip \

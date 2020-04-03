@@ -59,7 +59,7 @@
     "repoPath": "https://github.com/GoogleCloudPlatform/cloud-code-samples.git",
     "directoryPath": "golang/go-cloud-run-hello-world",
     "templatePath": "go-cloud-run-hello-world",
-    "templateName": "Golang: Cloud Run Hello World",
+    "templateName": "Golang: Cloud Run",
     "runPlatforms": ["cloudrun"],
     "templateLanguages": ["go"]
   },
@@ -83,7 +83,7 @@
     "repoPath": "https://github.com/GoogleCloudPlatform/cloud-code-samples.git",
     "directoryPath": "nodejs/nodejs-cloud-run-hello-world",
     "templatePath": "nodejs-cloud-run-hello-world",
-    "templateName": "Node.js: Cloud Run Hello World",
+    "templateName": "Node.js: Cloud Run",
     "runPlatforms": ["cloudrun"],
     "templateLanguages": ["nodejs"]
   },

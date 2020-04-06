@@ -15,6 +15,10 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+/**
+ * Integration test for local or remote service based on the env var
+ * "SERVICE_URL". See java/CONTRIBUTING.MD for more information. 
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
@@ -23,12 +27,12 @@ public class HelloWorldControllerIT {
   @Test
   public void respondsToHttpRequest() throws IOException {
     String port = System.getenv("PORT");
-    if (port == null) {
+    if (port == null || port == "") {
       port = "8080";
     }
 
     String url = System.getenv("SERVICE_URL");
-    if (url == null) {
+    if (url == null || url == "") {
       url = "http://localhost:" + port;
     }
 

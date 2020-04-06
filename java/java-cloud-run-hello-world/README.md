@@ -47,23 +47,6 @@ This sample demonstrates how to use the Cloud Code extension in IntelliJ.
 * [Install Cloud Code for IntelliJ](https://cloud.google.com/code/docs/intellij/install)
 * [Creating a new app](https://cloud.google.com/code/docs/intellij/create-run-app)
 
-## Testing
-
-Run unit tests:
-```
-mvn test
-```
-
-Run integraiton tests:
-```
-mvn integration-test
-```
-
-Run all tests:
-```
-mvn verify
-```
-
 ## Service Configuration
 
 Configuration for this service uses environment variables.

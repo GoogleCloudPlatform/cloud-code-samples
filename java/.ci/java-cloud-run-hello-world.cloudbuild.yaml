@@ -1,12 +1,12 @@
 steps:
 
-- id: 'Build Container Image'
-  name: 'gcr.io/cloud-builders/docker:latest'
-  args: ['build', '-t', 'gcr.io/${PROJECT_ID}/${_SERVICE_TAG}:${COMMIT_SHA}', '.']
-
-- id: 'Push Container Image'
-  name: 'gcr.io/cloud-builders/docker:latest'
-  args: ['push', 'gcr.io/${PROJECT_ID}/${_SERVICE_TAG}:${COMMIT_SHA}']
+- id: 'Build and Push Container Image'
+  name: 'maven:latest'
+  entrypoint: '/bin/bash'
+  args: 
+    - '-c'
+    - | 
+      mvn compile jib:build -Dimage=gcr.io/${PROJECT_ID}/${_SERVICE_TAG}:${COMMIT_SHA}
 
 - id: 'Deploy to Cloud Run'
   name: 'gcr.io/cloud-builders/gcloud:$_CLOUDSDK_VERSION'
@@ -35,7 +35,7 @@ steps:
     echo $(get_url) > _service_url
     echo "Cloud Run URL for ${_SERVICE} is $(cat _service_url)"
 - id: 'Integration Tests'
-  name: 'maven:3-jdk-8-slim'
+  name: 'maven:latest'
   entrypoint: '/bin/bash'
   args:
   - '-c'

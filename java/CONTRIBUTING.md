@@ -24,9 +24,19 @@ gcloud builds submit $SAMPLE --config .ci/$SAMPLE.cloudbuild.yaml --substitution
 
 #### Running locally
 
-You can run the tests against a locally running instance:
+Run unit tests:
+```sh
+mvn test
+```
+
+Run integration tests against a locally running instance:
 
 ```sh
 GOOGLE_CLOUD_PROJECT=local mvn spring-boot:run
+mvn integration-test
+```
+
+Run all tests:
+```sh
 mvn verify
 ```

@@ -15,7 +15,7 @@ VS Code:
 ![Create New Application VS Code](https://cloud.google.com/code/docs/vscode/images/create-new-app.gif)
 
 IntelliJ:
-![Create New Application IntelliJ](https://cloud.google.com/code/docs/intellij/images/quickstart-intellij-runthrough.gif)
+![Create New Application IntelliJ](https://cloud.google.com/code/docs/intellij/images/intellij-quickstart-runthrough.gif)
 
 
 ## Useful Links

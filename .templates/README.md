@@ -1,6 +1,8 @@
 # Templates in Cloud Code
 
-`template_location.json` contains the information to pull sample templates from a GitHub repository:
+`template_location.json` contains the information to pull sample templates from a GitHub repository for Cloud Code for VSCode
+`template_location_v2.json` contains the information to pull sample templates from a GitHub repository for Cloud Code for IntelliJ
+
 
 * `repoPath`: Path to the GitHub repository containing the template.
 * `directoryPath`: Since a repository can contain multiple templates, `directoryPath` is used to determine the location of the template in a repository.

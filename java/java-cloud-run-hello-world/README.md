@@ -1,3 +1,5 @@
+# Cloud Run Hello World with Cloud Code
+
 This "Hello World" is a [Cloud Run](https://cloud.google.com/run/docs) service that renders a webpage.
 
 ----
@@ -9,7 +11,6 @@ This "Hello World" is a [Cloud Run](https://cloud.google.com/run/docs) service t
     2. [Running on Cloud Run](#intellij-running-on-cloud-run)
 * [Service Configuration](#service-configuration)
 * [Next steps](#next-steps)
-* [Contributing](#contributing)
 
 ----
 
@@ -24,18 +25,21 @@ This sample demonstrates how to use the Cloud Code extension in IntelliJ.
 
 ### IntelliJ Running on Cloud Run
 
-1. Select `Edit Configurations` from the Run/Debug configurations dialog on the
-  top taskbar.
-1. Add a `Cloud Code: Cloud Run: Deploy` configuration.
-1. Select `Cloud Code: Deploy` target from the Run/Debug configurations
-  dialog on the top taskbar.
+1. Enable Cloud Run support on your project.
+In the [Console](http://console.cloud.google.com), use the navigation menu to access `APIs and Services` > `Dashboard`.
+Click on Cloud Run API within the list of available APIs and click `Enable API`.
+2. Choose the automatically created run configuration, `Cloud Run: Deploy` from the Run/Debug
+configurations dialog on the top taskbar.
+3. Click `Run` run action icon. This brings up the `Edit configuration` window.
+4. Set your Google Cloud project ID.
+5. Choose a region for your deployment platform.
+6. Click `Run`.
 
 ## Service Configuration
 
 Configuration for this service uses environment variables.
 
-* **`GOOGLE_CLOUD_PROJECT`** [default: `<none>`] Override for the Project ID. If set the service assumes it's running locally and does not use the metadata server.
-* **`PORT`** [default: `8080`] The service binds this port. To avoid conflicts, set explicitly set this environment variable to an unused value.
+* **`PORT`** [default: `8080`] The service binds this port. To avoid conflicts, set explicitly this environment variable to an unused value.
 
 ## Next Steps
 

@@ -23,14 +23,6 @@ This sample demonstrates how to use the Cloud Code extension in IntelliJ.
 * [Install Cloud Code for IntelliJ](https://cloud.google.com/code/docs/intellij/install)
 * [Creating a new Cloud Run app](https://cloud.google.com/code/docs/intellij/quickstart-cloud-run)
 
-### IntelliJ Running locally
-
-1. Select `Edit Configurations` from the Run/Debug configurations dialog on the
-  top taskbar.
-1. Add a `Cloud Code: Cloud Run: Run Locally` configuration.
-1. Select `Cloud Code: Run Locally` target from the Run/Debug configurations
-  dialog on the top taskbar.
-
 ### IntelliJ Running on Cloud Run
 
 1. Select `Edit Configurations` from the Run/Debug configurations dialog on the

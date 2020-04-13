@@ -11,7 +11,6 @@ This "Hello World" is a [Cloud Run](https://cloud.google.com/run/docs) service t
     2. [Running on Cloud Run](#intellij-running-on-cloud-run)
 * [Service Configuration](#service-configuration)
 * [Next steps](#next-steps)
-* [Contributing](#contributing)
 
 ----
 
@@ -27,7 +26,7 @@ This sample demonstrates how to use the Cloud Code extension in IntelliJ.
 ### IntelliJ Running on Cloud Run
 
 1. Enable Cloud Run support on your project.
-In the Console, use the navigation menu to access `APIs and Services` > `Dashboard`.
+In the [Console](http://console.cloud.google.com), use the navigation menu to access `APIs and Services` > `Dashboard`.
 Click on Cloud Run API within the list of available APIs and click `Enable API`.
 2. Choose the automatically created run configuration, `Cloud Run: Deploy` from the Run/Debug
 configurations dialog on the top taskbar.

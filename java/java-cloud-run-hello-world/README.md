@@ -6,8 +6,7 @@ This "Hello World" is a [Cloud Run](https://cloud.google.com/run/docs) service t
 
 * [IntelliJ Guide](#intellij-guide)
     1. [Getting Started](#intellij-getting-started])
-    2. [Running locally](#intellij-running-locally)
-    3. [Running on Cloud Run](#intellij-running-on-cloud-run)
+    2. [Running on Cloud Run](#intellij-running-on-cloud-run)
 * [Service Configuration](#service-configuration)
 * [Next steps](#next-steps)
 * [Contributing](#contributing)

@@ -20,6 +20,11 @@ RUN go build -mod=readonly -v -o /app
 COPY index.html /index.html
 COPY assets ./assets/
 
+# Definition of this variable is used by 'skaffold debug' to identify a golang binary.
+# Default behavior - a failure prints a stack trace for the current goroutine.
+# See https://golang.org/pkg/runtime/
+ENV GOTRACEBACK=single
+
 # If you want to use the debugger, you need to modify the entrypoint to the
 # container and point it to the "dlv debug" command:
 #   * UNCOMMENT the following ENTRYPOINT statement,

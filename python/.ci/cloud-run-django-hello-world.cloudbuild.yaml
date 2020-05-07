@@ -2,6 +2,7 @@ steps:
 - id: docker build
   name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'gcr.io/$PROJECT_ID/$_SERVICE-$COMMIT_SHA', '.']
+  dir: 'python/cloud-run-django-hello-world'
 
 - id: docker push
   name: 'gcr.io/cloud-builders/docker'
@@ -43,7 +44,8 @@ steps:
     set -ex
     chmod +x test_content.sh
     ./test_content.sh $(cat _service_url)
-
+  dir: 'python/cloud-run-django-hello-world'
+  
 - id: 'Teardown'
   name: 'gcr.io/cloud-builders/gcloud:$_CLOUDSDK_VERSION'
   entrypoint: '/bin/bash'

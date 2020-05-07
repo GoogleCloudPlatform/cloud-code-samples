@@ -63,5 +63,5 @@ images:
 
 substitutions:
   _CLOUDSDK_VERSION: latest
-  _SERVICE: cloud-run-python-hello-world
+  _SERVICE: run-python-helloworld
   _REGION: us-central1

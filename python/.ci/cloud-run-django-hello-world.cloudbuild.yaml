@@ -63,5 +63,5 @@ images:
 
 substitutions:
   _CLOUDSDK_VERSION: latest
-  _SERVICE: cloud-run-django-hello-world
+  _SERVICE: run-django-helloworld
   _REGION: us-central1

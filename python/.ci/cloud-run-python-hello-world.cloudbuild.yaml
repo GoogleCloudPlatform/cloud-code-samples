@@ -34,6 +34,7 @@ steps:
     }
     echo $(get_url) > _service_url
     echo "Cloud Run URL for $_SERVICE is $(cat _service_url)"
+  dir: 'python/cloud-run-python-hello-world'
 
 - id: 'Integration Tests'
   name: 'gcr.io/cloud-builders/curl:latest'

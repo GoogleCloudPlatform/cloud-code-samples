@@ -35,6 +35,7 @@ steps:
     }
     echo $(get_url) > _service_url
     echo "Cloud Run URL for ${_SERVICE} is $(cat _service_url)"
+  dir: 'golang/go-cloud-run-hello-world'
 
 - id: 'Integration Tests'
   name: 'golang:1.14'
@@ -42,7 +43,7 @@ steps:
   args:
   - '-c'
   - |
-    SERVICE_URL=$(cat _service_url) go test -v .
+    export SERVICE_URL=$(cat _service_url) && go test -v .
   dir: 'golang/go-cloud-run-hello-world'
   
 - id: 'Teardown'
@@ -56,6 +57,7 @@ steps:
     gcloud --quiet run services delete ${_SERVICE}-${COMMIT_SHA} --region ${_CLOUDSDK_REGION} --platform managed
     set +x
     echo "View build details in the console: https://console.cloud.google.com/cloud-build/builds/${BUILD_ID}"
+  dir: 'golang/go-cloud-run-hello-world'
 
 # Uncomment if skipping teardown to associate build with container image.
 # images:

@@ -34,6 +34,7 @@ steps:
     }
     echo $(get_url) > _service_url
     echo "Cloud Run URL for $_SERVICE is $(cat _service_url)"
+  dir: 'python/cloud-run-django-hello-world'
 
 - id: 'Integration Tests'
   name: 'gcr.io/cloud-builders/curl:latest'
@@ -45,7 +46,7 @@ steps:
     chmod +x test_content.sh
     ./test_content.sh $(cat _service_url)
   dir: 'python/cloud-run-django-hello-world'
-  
+
 - id: 'Teardown'
   name: 'gcr.io/cloud-builders/gcloud:$_CLOUDSDK_VERSION'
   entrypoint: '/bin/bash'

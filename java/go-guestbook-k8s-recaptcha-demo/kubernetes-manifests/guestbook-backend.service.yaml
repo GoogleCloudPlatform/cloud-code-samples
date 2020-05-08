@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: go-guestbook-backend
+  labels:
+    app: guestbook
+    tier: backend
+spec:
+  type: ClusterIP
+  selector:
+    app: guestbook
+    tier: backend
+  ports:
+  - port: 8080
+    targetPort: http-server

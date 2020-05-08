@@ -1,0 +1,11 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: brokend-dev-ingress
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: broken-dev-external
+    networking.gke.io/managed-certificates: broken-dev
+spec:
+  backend:
+    serviceName: go-guestbook-frontend
+    servicePort: 80

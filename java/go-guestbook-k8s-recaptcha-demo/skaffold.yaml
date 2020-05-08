@@ -1,0 +1,20 @@
+apiVersion: skaffold/v1beta15
+kind: Config
+build:
+  artifacts:
+  - image: go-guestbook-backend
+    context: src/backend
+  - image: go-guestbook-frontend
+    context: src/frontend
+  tagPolicy:
+    sha256: {}
+deploy:
+  kubectl:
+    manifests:
+    - ./kubernetes-manifests/*.service.yaml
+    - ./kubernetes-manifests/*.deployment.yaml
+profiles:
+- name: cloudbuild
+  build:
+    googleCloudBuild: {}
+

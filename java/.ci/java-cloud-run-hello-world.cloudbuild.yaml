@@ -7,6 +7,7 @@ steps:
     - '-c'
     - | 
       mvn compile jib:build -Dimage=gcr.io/${PROJECT_ID}/${_SERVICE_TAG}:${COMMIT_SHA}
+  dir: 'java/java-cloud-run-hello-world'
 
 - id: 'Deploy to Cloud Run'
   name: 'gcr.io/cloud-builders/gcloud:$_CLOUDSDK_VERSION'
@@ -34,13 +35,16 @@ steps:
     }
     echo $(get_url) > _service_url
     echo "Cloud Run URL for ${_SERVICE} is $(cat _service_url)"
+  dir: 'java/java-cloud-run-hello-world'
+
 - id: 'Integration Tests'
   name: 'maven:latest'
   entrypoint: '/bin/bash'
   args:
   - '-c'
   - |
-    SERVICE_URL=$(cat _service_url) mvn verify
+    export SERVICE_URL=$(cat _service_url) && mvn verify
+  dir: 'java/java-cloud-run-hello-world'
 
 - id: 'Teardown'
   name: 'gcr.io/cloud-builders/gcloud:$_CLOUDSDK_VERSION'
@@ -59,5 +63,5 @@ steps:
 substitutions:
   _CLOUDSDK_VERSION: latest
   _CLOUDSDK_REGION: us-central1
-  _SERVICE: hello-world
+  _SERVICE: run-java-hello-world
   _SERVICE_TAG: java-cloud-run-hello-world

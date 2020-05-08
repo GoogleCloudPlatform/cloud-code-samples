@@ -63,5 +63,5 @@ images:
 
 substitutions:
   _CLOUDSDK_VERSION: latest
-  _SERVICE: run-dotnet-hello-world
+  _SERVICE: dotnetrun-helloworld
   _REGION: us-central1 

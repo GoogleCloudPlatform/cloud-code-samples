@@ -6,6 +6,9 @@ This "Hello World" is a [Cloud Run](https://cloud.google.com/run/docs) service t
 
 ## Table of Contents
 
+* [VS Code Guide](#vs-code-guide)
+    1. [Getting Started](#vs-code-getting-started])
+    2. [Running on Cloud Run](#vs-code-running-on-cloud-run)
 * [IntelliJ Guide](#intellij-guide)
     1. [Getting Started](#intellij-getting-started])
     2. [Running on Cloud Run](#intellij-running-on-cloud-run)
@@ -13,6 +16,21 @@ This "Hello World" is a [Cloud Run](https://cloud.google.com/run/docs) service t
 * [Next steps](#next-steps)
 
 ----
+
+## VS Code Guide
+
+### VS Code Getting Started
+
+This sample demonstrates how to use the Cloud Code extension in VS Code.
+
+* [Install Cloud Code for VS Code](https://cloud.google.com/code/docs/vscode/install)
+* [Creating a new app](https://cloud.google.com/code/docs/vscode/creating-an-application)
+* [Editing YAML files](https://cloud.google.com/code/docs/vscode/yaml-editing)
+
+### VS Code Running on Cloud Run
+
+1. Open the command palette
+2. Run `Cloud Code: Deploy to Cloud Run`
 
 ## IntelliJ Guide
 

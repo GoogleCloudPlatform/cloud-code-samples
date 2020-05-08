@@ -2,6 +2,7 @@ steps:
 - id: docker build
   name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'gcr.io/$PROJECT_ID/$_SERVICE-$COMMIT_SHA', '.']
+  dir: 'python/cloud-run-python-hello-world'
 
 - id: docker push
   name: 'gcr.io/cloud-builders/docker'
@@ -33,6 +34,7 @@ steps:
     }
     echo $(get_url) > _service_url
     echo "Cloud Run URL for $_SERVICE is $(cat _service_url)"
+  dir: 'python/cloud-run-python-hello-world'
 
 - id: 'Integration Tests'
   name: 'gcr.io/cloud-builders/curl:latest'
@@ -43,6 +45,7 @@ steps:
     set -ex
     chmod +x test_content.sh
     ./test_content.sh $(cat _service_url)
+  dir: 'python/cloud-run-python-hello-world'
 
 - id: 'Teardown'
   name: 'gcr.io/cloud-builders/gcloud:$_CLOUDSDK_VERSION'
@@ -60,5 +63,5 @@ images:
 
 substitutions:
   _CLOUDSDK_VERSION: latest
-  _SERVICE: cloud-run-python-hello-world
+  _SERVICE: run-python-helloworld
   _REGION: us-central1

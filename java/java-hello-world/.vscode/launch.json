@@ -5,25 +5,13 @@
     "version": "0.2.0",
     "configurations": [
       {
-        "name": "Run on Kubernetes",
+        "name": "Run/Debug on Kubernetes",
         "type": "cloudcode.kubernetes",
         "request": "launch",
         "skaffoldConfig": "${workspaceFolder}/skaffold.yaml",
         "watch": true,
         "cleanUp": true,
         "portForward": true
-      },
-      {
-        "name": "Attach to Kubernetes pod",
-        "type": "cloudcode.kubernetes",
-        "request": "attach",
-        "language": "Java",
-        "debugPort": 5005,
-        "localRoot": "${workspaceFolder}",
-        "remoteRoot": "/app",
-        "podSelector": {
-          "app": "java-hello-world"
-        }
       }
     ]
   }

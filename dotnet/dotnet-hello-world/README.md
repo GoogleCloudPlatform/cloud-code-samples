@@ -65,9 +65,9 @@ As an alternative to using Cloud Code, the application can be deployed to a clus
 [Skaffold](https://github.com/GoogleContainerTools/skaffold) is a command line tool that can be used to build, push, and deploy your container images
 
 ```bash
-skaffold run --default-repo=gcr.io/your-project-id-here/cloudcode
+skaffold run --default-repo=gcr.io/YOUR-PROJECT-ID-HERE/cloudcode
 ```
 
 #### kubectl
 
-[kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) is the official Kubernetes command line tool. It can be used to deploy Kubernetes manifests to your cluster, but images must be build seperately using another tool (for example, using the [Docker CLI](https://docs.docker.com/engine/reference/commandline/cli/))
+[kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) is the official Kubernetes command line tool. It can be used to deploy Kubernetes manifests to your cluster, but images must be build separately using another tool (for example, using the [Docker CLI](https://docs.docker.com/engine/reference/commandline/cli/))

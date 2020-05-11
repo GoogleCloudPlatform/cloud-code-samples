@@ -42,7 +42,7 @@ func main() {
 	}
 
 	mongoURI := "mongodb://" + dbAddr
-	connCtx, cancel := context.WithTimeout(ctx, time.Second*10)
+	connCtx, cancel := context.WithTimeout(ctx, time.Second*30)
 	defer cancel()
 	dbConn, err := mongo.Connect(connCtx, options.Client().ApplyURI(mongoURI))
 	if err != nil {

@@ -1,4 +1,16 @@
 steps:
+- id: Generate unique service name
+  name: 'gcr.io/cloud-builders/gcloud:$_CLOUDSDK_VERSION'
+  entrypoint: '/bin/bash'
+  args:
+  - '-c'
+  - |
+    random-string() {
+        cat /dev/urandom | env LC_CTYPE=C tr -dc 'a-z0-9' | fold -w 15 | head -n 1
+    }
+    echo $(random-string) > _RND
+    echo "Cloud Run Service Name is $_SERVICE-$(cat _RND)"
+  dir: '${_SAMPLE_DIR}'
 
 - id: 'Build and Push Container Image'
   name: 'maven:latest'
@@ -7,20 +19,18 @@ steps:
     - '-c'
     - | 
       mvn compile jib:build -Dimage=gcr.io/${PROJECT_ID}/${_SERVICE_TAG}:${COMMIT_SHA}
+  dir: '${_SAMPLE_DIR}'
 
-- id: 'Deploy to Cloud Run'
+- id: Deploy to Cloud Run
   name: 'gcr.io/cloud-builders/gcloud:$_CLOUDSDK_VERSION'
+  entrypoint: '/bin/bash'
   args:
-  - 'run'
-  - 'deploy'
-  - '${_SERVICE}'
-  - '--image'
-  - 'gcr.io/${PROJECT_ID}/${_SERVICE_TAG}:${COMMIT_SHA}'
-  - '--allow-unauthenticated'
-  - '--region'
-  - '${_CLOUDSDK_REGION}'
-  - '--platform'
-  - 'managed'
+  - '-c'
+  - |
+    gcloud run deploy $_SERVICE-$(cat _RND) \
+     --image gcr.io/$PROJECT_ID/$_SERVICE_TAG:$COMMIT_SHA \
+     --region $_CLOUDSDK_REGION --platform managed --allow-unauthenticated
+  dir: '${_SAMPLE_DIR}'
 
 - id: 'Get Cloud Run URL'
   name: 'gcr.io/cloud-builders/gcloud:$_CLOUDSDK_VERSION'
@@ -29,18 +39,21 @@ steps:
   - '-c'
   - |
     get_url() {
-        gcloud run services describe ${_SERVICE} --format 'value(status.url)' \
+        gcloud run services describe $_SERVICE-$(cat _RND) --format 'value(status.url)' \
           --platform managed --region ${_CLOUDSDK_REGION}
     }
     echo $(get_url) > _service_url
-    echo "Cloud Run URL for ${_SERVICE} is $(cat _service_url)"
+    echo "Cloud Run URL for $_SERVICE-$(cat _RND) is $(cat _service_url)"
+  dir: '${_SAMPLE_DIR}'
+
 - id: 'Integration Tests'
   name: 'maven:latest'
   entrypoint: '/bin/bash'
   args:
   - '-c'
   - |
-    SERVICE_URL=$(cat _service_url) mvn verify
+    export SERVICE_URL=$(cat _service_url) && mvn verify
+  dir: '${_SAMPLE_DIR}'
 
 - id: 'Teardown'
   name: 'gcr.io/cloud-builders/gcloud:$_CLOUDSDK_VERSION'
@@ -50,14 +63,12 @@ steps:
   - |
     set -ex
     gcloud --quiet container images delete gcr.io/${PROJECT_ID}/${_SERVICE_TAG}:${COMMIT_SHA}
-    gcloud --quiet run services delete ${_SERVICE} --region ${_CLOUDSDK_REGION} --platform managed
-
-# Uncomment if skipping teardown to associate build with container image.
-# images:
-# - 'gcr.io/${PROJECT_ID}/${_SERVICE}:${COMMIT_SHA}'
+    gcloud --quiet run services delete $_SERVICE-$(cat _RND) --region ${_CLOUDSDK_REGION} --platform managed
+  dir: '${_SAMPLE_DIR}'
 
 substitutions:
   _CLOUDSDK_VERSION: latest
   _CLOUDSDK_REGION: us-central1
-  _SERVICE: hello-world
+  _SERVICE: run-java-hello-world
   _SERVICE_TAG: java-cloud-run-hello-world
+  _SAMPLE_DIR: java/java-cloud-run-hello-world

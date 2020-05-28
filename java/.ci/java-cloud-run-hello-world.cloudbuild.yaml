@@ -6,7 +6,7 @@ steps:
   - '-c'
   - |
     random-string() {
-        cat /dev/urandom | env LC_CTYPE=C tr -dc 'a-z0-9' | fold -w 15 | head -n 1
+      cat /dev/urandom | LC_CTYPE=C tr -dc 'a-z0-9' | head -c 15
     }
     echo $(random-string) > _RND
     echo "Cloud Run Service Name is $_SERVICE-$(cat _RND)"
@@ -18,7 +18,7 @@ steps:
   args: 
     - '-c'
     - | 
-      mvn compile jib:build -Dimage=gcr.io/${PROJECT_ID}/${_SERVICE_TAG}:${COMMIT_SHA}
+      mvn compile jib:build -Dimage=gcr.io/${PROJECT_ID}/${_SERVICE}:${COMMIT_SHA}
   dir: '${_SAMPLE_DIR}'
 
 - id: Deploy to Cloud Run
@@ -28,7 +28,7 @@ steps:
   - '-c'
   - |
     gcloud run deploy $_SERVICE-$(cat _RND) \
-     --image gcr.io/$PROJECT_ID/$_SERVICE_TAG:$COMMIT_SHA \
+     --image gcr.io/$PROJECT_ID/$_SERVICE:$COMMIT_SHA \
      --region $_CLOUDSDK_REGION --platform managed --allow-unauthenticated
   dir: '${_SAMPLE_DIR}'
 
@@ -62,13 +62,12 @@ steps:
   - '-c'
   - |
     set -ex
-    gcloud --quiet container images delete gcr.io/${PROJECT_ID}/${_SERVICE_TAG}:${COMMIT_SHA}
+    gcloud --quiet container images delete gcr.io/${PROJECT_ID}/${_SERVICE}:${COMMIT_SHA}
     gcloud --quiet run services delete $_SERVICE-$(cat _RND) --region ${_CLOUDSDK_REGION} --platform managed
   dir: '${_SAMPLE_DIR}'
 
 substitutions:
   _CLOUDSDK_VERSION: latest
   _CLOUDSDK_REGION: us-central1
-  _SERVICE: run-java-hello-world
-  _SERVICE_TAG: java-cloud-run-hello-world
+  _SERVICE: java-cloud-run-hello-world
   _SAMPLE_DIR: java/java-cloud-run-hello-world

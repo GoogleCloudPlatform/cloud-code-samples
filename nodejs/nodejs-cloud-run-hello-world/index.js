@@ -59,4 +59,3 @@ app.listen(PORT, () => {
   console.log(`${pkg.name} listening on port ${PORT}`);
   console.log('Press Ctrl+C to quit.');
 });
-

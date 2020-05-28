@@ -2,7 +2,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Run on Kubernetes",
+      "name": "Run/Debug on Kubernetes",
       "type": "cloudcode.kubernetes",
       "request": "launch",
       "skaffoldConfig": "${workspaceFolder}/skaffold.yaml",
@@ -16,18 +16,6 @@
       "name": "Launch (local)",
       "mode": "auto",
       "program": "${workspaceFolder}/cmd/hello-world"
-    },
-    {
-      "name": "Attach to Kubernetes pod",
-      "type": "cloudcode.kubernetes",
-      "request": "attach",
-      "language": "Go",
-      "debugPort": 3000,
-      "localRoot": "${workspaceFolder}",
-      "podSelector": {
-        "app": "go-hello-world"
-      },
-      "remoteRoot": "/src/hello-world"
-    },
+    }
   ]
 }

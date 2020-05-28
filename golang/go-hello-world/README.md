@@ -11,45 +11,63 @@
 
 ## Table of Contents
 
-### Cloud Code for Visual Studio Code
-
-1. [Getting Started](#getting-started])
-2. [What's in the box](https://cloud.google.com/code/docs/vscode/quickstart#whats_in_the_box)
-3. Using Cloud Code
-    * [Set up a Google Kubernetes Engine Cluster](https://cloud.google.com/code/docs/vscode/quickstart#creating_a_google_kubernetes_engine_cluster)
-    * [Deploy the app](https://cloud.google.com/code/docs/vscode/quickstart#deploying_your_app)
-    * [Continuous Deployment](https://cloud.google.com/code/docs/vscode/quickstart#initiating_continuous_deployment)
-    * [View Container Logs](https://cloud.google.com/code/docs/vscode/quickstart#viewing_container_logs)
-    * [Debug Your Code](https://cloud.google.com/code/docs/vscode/quickstart#debugging_your_application)
-    * [Open a Terminal in Your Container](https://cloud.google.com/code/docs/vscode/quickstart#opening_a_terminal_in_your_container)
-4. [Using the Command Line](#using-the-command-line)
-    * [Skaffold](#using-skaffold)
-    * [kubectl](#using-kubectl)
+* [VS Code Guide](#vs-code-guide)
+    1. [Getting Started](#vs-code-getting-started)
+    2. [What's in the box](https://cloud.google.com/code/docs/vscode/quickstart#whats_in_the_box)
+* [IntelliJ Guide](#intellij-guide)
+    1. [Getting Started](#intellij-getting-started)
+    2. [What's in the box](https://cloud.google.com/code/docs/intellij/quickstart#whats_in_the_box)    
+* [Using the Command Line](#using-the-command-line)
 
 ----
 
-### Getting Started
+## VS Code Guide
 
-This sample was written to demonstrate how to use the Cloud Code extension for Visual Studio code.
+### VS Code Getting Started
+
+This sample was written to demonstrate how to use the Cloud Code extension for Visual Studio Code.
 
 * [Install Cloud Code for VS Code](https://cloud.google.com/code/docs/vscode/install)
 * [Creating a new app](https://cloud.google.com/code/docs/vscode/creating-an-application)
 * [Editing YAML files](https://cloud.google.com/code/docs/vscode/yaml-editing)
 
+### Using Cloud Code
+* [Set up a Google Kubernetes Engine Cluster](https://cloud.google.com/code/docs/vscode/quickstart#creating_a_google_kubernetes_engine_cluster)
+* [Running the app](https://cloud.google.com/code/docs/vscode/quickstart#running_your_app)
+* [Debug the app](https://cloud.google.com/code/docs/vscode/quickstart#debugging_your_app)
+* [View Container Logs](https://cloud.google.com/code/docs/vscode/quickstart#viewing_logs)
+* [Open a Terminal in Your Container](https://cloud.google.com/code/docs/vscode/quickstart#bonus_opening_a_terminal_in_your_container)
 ----
 
-### Using the Command Line
+## IntelliJ Guide
 
-As an alternative to using the Cloud Code extension, the application can be deployed to a cluster using standard command line tools
+### IntelliJ Getting Started
+
+This sample was written to demonstrate how to use the Cloud Code plugin for IntelliJ.
+
+* [Install Cloud Code for IntelliJ](https://cloud.google.com/code/docs/intellij/install)
+* [Creating a new app](https://cloud.google.com/code/docs/intellij/creating-a-k8-app)
+* [Editing YAML files](https://cloud.google.com/code/docs/intellij/yaml-editing)
+
+### Using Cloud Code
+* [Creating an app](https://cloud.google.com/code/docs/intellij/quickstart-k8s#creating_an_application)
+* [Develop an app](https://cloud.google.com/code/docs/intellij/quickstart-k8s#developing_your_application)
+* [Debug an app](https://cloud.google.com/code/docs/intellij/quickstart-k8s#debugging_your_application)
+* [View Container Logs](https://cloud.google.com/code/docs/intellij/quickstart-k8s#viewing_logs)
+----
+
+## Using the Command Line
+
+As an alternative to using Cloud Code, the application can be deployed to a cluster using standard command line tools
 
 #### Skaffold
 
 [Skaffold](https://github.com/GoogleContainerTools/skaffold) is a command line tool that can be used to build, push, and deploy your container images
 
 ```bash
-skaffold run --default-repo=gcr.io/your-project-id-here/cloudcode
+skaffold run --default-repo=gcr.io/YOUR-PROJECT-ID-HERE/cloudcode
 ```
 
 #### kubectl
 
-[kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) is the official Kubernetes command line tool. It can be used to deploy Kubernetes manifests to your cluster, but images must be build seperately using another tool (for example, using the [Docker CLI](https://docs.docker.com/engine/reference/commandline/cli/))
+[kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) is the official Kubernetes command line tool. It can be used to deploy Kubernetes manifests to your cluster, but images must be build separately using another tool (for example, using the [Docker CLI](https://docs.docker.com/engine/reference/commandline/cli/))

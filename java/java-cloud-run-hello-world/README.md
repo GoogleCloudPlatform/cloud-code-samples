@@ -30,7 +30,7 @@ This sample demonstrates how to use the Cloud Code extension in VS Code.
 ### VS Code Running on Cloud Run
 
 1. Open the command palette
-2. Run `Cloud Code - Cloud Run: Deploy`
+2. Run `Cloud Code: Cloud Run > Deploy`
 
 ## IntelliJ Guide
 

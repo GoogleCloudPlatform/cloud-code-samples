@@ -1,5 +1,4 @@
-
-apiVersion: skaffold/v1beta15
+apiVersion: skaffold/v2beta5
 kind: Config
 build:
   tagPolicy:
@@ -21,3 +20,15 @@ profiles:
 - name: cloudbuild
   build:
     googleCloudBuild: {}
+
+- name: buildpacks
+  build:
+    artifacts:
+    - image: node-guestbook-backend
+      context: src/backend
+      buildpacks:
+        builder: "gcr.io/buildpacks/builder:v1"
+    - image: node-guestbook-frontend
+      context: src/frontend
+      buildpacks:
+        builder: "gcr.io/buildpacks/builder:v1"

@@ -16,8 +16,5 @@ RUN pip install ptvsd
 # Copy the rest of the working directory contents into the container at /app
 COPY . .
 
-# Set the entrypoint so sh is used to execute the command
-ENTRYPOINT [ "/bin/sh", "-c" ]
-
 # Start the server when the container launches
-CMD [ "python -m ptvsd --port 3000 --host 0.0.0.0 manage.py runserver 0.0.0.0:8080 --noreload" ]
+CMD [ "python", "-m", "ptvsd", "--port", "3000", "--host", "0.0.0.0", "manage.py", "runserver", "0.0.0.0:8080", "--noreload" ]

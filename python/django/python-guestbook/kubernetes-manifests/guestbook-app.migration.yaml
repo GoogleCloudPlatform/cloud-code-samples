@@ -21,7 +21,7 @@ spec:
       containers:
       - name: python-guestbook-migration
         image: python-guestbook-frontend-django
-        args: [ "python manage.py migrate" ]
+        command: [ "/bin/sh", "-c", "python manage.py migrate" ]
         env:
         - name: DATABASE_NAME
           value: "postgres"

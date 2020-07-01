@@ -1,0 +1,7 @@
+# Set the default behavior, in case people don't have core.autocrlf set.
+* text=auto
+
+# Force Procfiles to always use LFs. This is a temporary workaround that
+# should be removed once https://github.com/GoogleCloudPlatform/buildpacks/issues/56
+# is fixed and included in Skaffold.
+Procfile text eol=lf

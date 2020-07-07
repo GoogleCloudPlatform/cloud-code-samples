@@ -6,6 +6,6 @@
 # is fixed and included in Skaffold.
 Procfile text eol=lf
 
-# Force mvnw and gradlew to always use LFs. This is a temporary workaround.
+# mvnw and gradlew are shell scripts. Unix tools expect lf.
 mvnw text eol=lf
 gradlew text eol=lf

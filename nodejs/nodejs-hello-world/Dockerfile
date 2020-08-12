@@ -1,5 +1,5 @@
 # Use base node 8 image from Docker hub
-FROM node:8
+FROM node:12-alpine
 
 WORKDIR /hello-world
 

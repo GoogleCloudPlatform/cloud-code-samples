@@ -59,7 +59,7 @@
     "repoPath": "https://github.com/GoogleCloudPlatform/cloud-code-samples.git",
     "directoryPath": "golang/go-cloud-run-hello-world",
     "templatePath": "hello-world",
-    "templateName": "Golang: Cloud Run",
+    "templateName": "Go: Cloud Run",
     "runPlatforms": ["cloudrun"],
     "templateLanguages": ["go"]
   },

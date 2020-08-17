@@ -1,4 +1,4 @@
-apiVersion: skaffold/v2beta5
+apiVersion: skaffold/v2beta4
 kind: Config
 build:
   tagPolicy:
@@ -25,9 +25,9 @@ profiles:
     artifacts:
     - image: nodejs-guestbook-backend
       context: src/backend
-      buildpacks:
+      buildpack:
         builder: "gcr.io/buildpacks/builder:v1"
     - image: nodejs-guestbook-frontend
       context: src/frontend
-      buildpacks:
+      buildpack:
         builder: "gcr.io/buildpacks/builder:v1"

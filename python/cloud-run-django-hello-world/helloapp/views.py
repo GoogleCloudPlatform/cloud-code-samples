@@ -20,6 +20,7 @@ def homepage(request):
     revision = os.environ.get('K_REVISION', 'Unknown revision')
     
     return render(request, 'homepage.html', context={
+        "message": "It's running!",
         "Project": project,
         "Service": service,
         "Revision": revision,

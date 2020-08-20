@@ -20,7 +20,6 @@ profiles:
 - name: cloudbuild
   build:
     googleCloudBuild: {}
-
 - name: buildpacks
   build:
     artifacts:

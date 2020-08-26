@@ -27,6 +27,6 @@
     "eslint-plugin-promise": "4.2.1",
     "gaxios": "2.3.4",
     "mocha": "8.1.0",
-    "prettier": "2.0.5"
+    "prettier": "2.1.1"
   }
 }

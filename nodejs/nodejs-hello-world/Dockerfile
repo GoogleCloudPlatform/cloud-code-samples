@@ -1,5 +1,5 @@
-# Use base node 8 image from Docker hub
-FROM node:8
+# Use base node:12-slim image from Docker hub
+FROM node:12-slim
 
 WORKDIR /hello-world
 
@@ -11,7 +11,7 @@ RUN npm install
 COPY . .
 
 # Run app.js with debugging port when container launches
-ENTRYPOINT ["node", "--inspect=9229", "src/app.js"]
+ENTRYPOINT ["node", "--inspect=9229", "src/index.js"]
 
 # Comment above and uncomment below to run app.js without debugger port when container launches
-# ENTRYPOINT ["node", "src/app.js"]
+# ENTRYPOINT ["node", "src/index.js"]

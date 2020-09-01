@@ -24,7 +24,7 @@ def get_metadata(item_name):
 @app.route('/')
 def hello():
     """Return a friendly HTTP greeting."""
-    message = "Hello World"
+    message = "It's running!"
 
     project = get_metadata('project/project-id')
     service = os.environ.get('K_SERVICE', 'Unknown service')

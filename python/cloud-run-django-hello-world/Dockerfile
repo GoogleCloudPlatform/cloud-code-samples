@@ -14,4 +14,4 @@ RUN pip install --trusted-host pypi.python.org -r requirements.txt
 COPY . .
 
 # Run app.py when the container launches
-ENTRYPOINT ["python", "-m", "ptvsd", "--port", "3000", "--host", "0.0.0.0", "manage.py", "runserver", "--noreload"]
+ENTRYPOINT ["python", "manage.py", "runserver", "--noreload"]

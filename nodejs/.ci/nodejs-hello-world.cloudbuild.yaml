@@ -19,7 +19,6 @@ steps:
     - '-c'
     - |
       skaffold run -p cloudbuild -l $BUILD_ID -n $$TEST_NAMESPACE -d $$SKAFFOLD_DEFAULT_REPO
-      fi
     dir: '/workspace/nodejs/nodejs-hello-world'
     waitFor: ['Create namespace']
 

@@ -13,7 +13,7 @@
 
 ### Cloud Code for Visual Studio Code
 
-1. [Getting Started](#getting-started])
+1. [Getting Started](#getting-started)
 2. [What's in the box](https://cloud.google.com/code/docs/vscode/quickstart#whats_in_the_box)
 3. Using Cloud Code
     * [Set up a Google Kubernetes Engine Cluster](https://cloud.google.com/code/docs/vscode/quickstart#creating_a_google_kubernetes_engine_cluster)

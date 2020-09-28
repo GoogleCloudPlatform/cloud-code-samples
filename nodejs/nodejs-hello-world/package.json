@@ -13,7 +13,7 @@
     "express": "^4.16.4"
   },
   "devDependencies": {
-    "eslint": "7.6.0",
+    "eslint": "7.9.0",
     "express-winston": "4.0.5",
     "winston": "3.3.3"
   }

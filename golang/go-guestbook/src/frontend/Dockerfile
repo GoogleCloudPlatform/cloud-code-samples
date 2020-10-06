@@ -1,5 +1,5 @@
 # Use base golang image from Docker Hub
-FROM golang:1.14
+FROM golang:1.15
 
 # Download the dlv (delve) debugger for go (you can comment this out if unused)
 RUN go get -u -v github.com/go-delve/delve/cmd/dlv

@@ -1,5 +1,10 @@
-from django.http import HttpResponse
+from django.shortcuts import render
+import os
+import requests
 
 
 def homePageView(request):
-    return HttpResponse('Hello World')
+    
+    return render(request, 'homepage.html', context={
+        "message": "It's running!"
+    })

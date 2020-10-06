@@ -73,4 +73,3 @@ options:
     - SKAFFOLD_DEFAULT_REPO=gcr.io/$PROJECT_ID
     - TEST_NAMESPACE=test-$BUILD_ID-nodejs-hello-world
     - HELLO_WORLD_SERVICE=nodejs-hello-world-external
-    - GUESTBOOK_SERVICE=nodejs-hello-world-frontend

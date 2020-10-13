@@ -79,6 +79,9 @@ code {
 	font-weight: 500;
 }
 
+.cta {
+	display: inline-block;
+}
 .cta a {
 	color: white;
 	text-decoration: none;
@@ -115,5 +118,8 @@ code {
     body {
         background: black url('img/dark_bg.svg');
         color:white;
-    }
+	}
+	a {
+		color: #70A0FF;
+	}
 }

@@ -47,7 +47,7 @@ func main() {
 	}
 }
 
-// home logs the received request and returns a simple response.
+// home responds to requests by rendering an HTML page.
 func home(w http.ResponseWriter, r *http.Request) {
 	if err := tmpl.Execute(w, data); err != nil {
 		msg := http.StatusText(http.StatusInternalServerError)

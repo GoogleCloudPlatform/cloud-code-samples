@@ -9,7 +9,12 @@ import (
 
 const defaultAddr = ":8080"
 
+type templateData struct {
+	Message	string
+}
+
 var (
+	data templateData
 	tmpl *template.Template
 )
 
@@ -21,6 +26,10 @@ func main() {
 	}
 	tmpl = t
 	
+	data = templateData{
+		Message: "It's running!",
+	}
+
 	addr := defaultAddr
 	// $PORT environment variable is provided in the Kubernetes deployment.
 	if p := os.Getenv("PORT"); p != "" {
@@ -40,7 +49,7 @@ func main() {
 
 // home logs the received request and returns a simple response.
 func home(w http.ResponseWriter, r *http.Request) {
-	if err := tmpl.Execute(w, "It's running!"); err != nil {
+	if err := tmpl.Execute(w, data); err != nil {
 		msg := http.StatusText(http.StatusInternalServerError)
 		log.Printf("template.Execute: %v", err)
 		http.Error(w, msg, http.StatusInternalServerError)

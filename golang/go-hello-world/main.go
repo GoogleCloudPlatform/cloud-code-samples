@@ -15,7 +15,7 @@ var (
 
 // main starts an http server on the $PORT environment variable.
 func main() {
-	t, err := template.ParseFiles("cmd/hello-world/template/index.html")
+	t, err := template.ParseFiles("template/index.html")
 	if err != nil {
 		log.Fatalf("Error parsing template: %+v", err)
 	}
@@ -30,7 +30,7 @@ func main() {
 
 	http.HandleFunc("/", home)
 	
-	fs := http.FileServer(http.Dir("cmd/hello-world/template/static"))
+	fs := http.FileServer(http.Dir("template/static"))
 	http.Handle("/static/", http.StripPrefix("/static/", fs))
 
 	if err := http.ListenAndServe(addr, nil); err != nil {

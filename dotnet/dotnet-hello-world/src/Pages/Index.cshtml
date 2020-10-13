@@ -1,0 +1,30 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Congratulations | Cloud Run";
+}
+
+
+<div class="hero">
+    <div style="text-align:center;">
+        <picture>
+            <source srcset="img/celebration-dark.svg" alt="A group celebrating" media="(prefers-color-scheme: dark)">
+            <img src="img/celebration.svg" alt="A group celebrating" width="427" height="231">
+        </picture>
+    </div>
+
+    <div class="message">
+        <h1>It's running!</h1>
+        <h2>Congratulations, you successfully deployed a container image to Cloud Run</h2>
+    </div>
+</div>
+
+<div class="details">
+
+    <h3>What's next?</h3>
+    <p class="next">Manage Cloud APIs and libraries in Cloud Code for <a href="https://cloud.google.com/code/docs/vscode/client-libraries" target="_blank" rel="noopener">VSCode</a> or <a href="https://cloud.google.com/code/docs/intellij/client-libraries" target="_blank" rel="noopener">IntelliJ</a></p>
+    <p class="next">Explore more options with
+    <p class="cta">
+        <a href="https://cloud.google.com/code/docs" target="_blank" rel="noopener">
+            CLOUD CODE DOCS</a></p>
+</div>

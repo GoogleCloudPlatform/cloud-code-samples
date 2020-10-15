@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 public final class HelloWorldController {
 
     /**
-     * endpoint for the landing page
-     * @return a simple hello world message
+     * Create an endpoint for the landing page
+     * @return the index view template
      */
     @GetMapping("/")
     public String helloWorld(Model model) {
-        String message = "It's runnnnnning!";
+        String message = "It's running!";
         model.addAttribute("message", message);
         return "index";
     }

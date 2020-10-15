@@ -24,6 +24,5 @@ public class SampleJettyApplicationTests {
 
 		ResponseEntity<String> responseEntity = this.testRestTemplate.getForEntity("/", String.class);
 		assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
-		assertEquals("Hello World!", responseEntity.getBody());
 	}
 }

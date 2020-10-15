@@ -6,7 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * this class serves as an entry point for the Spring Boot app
+ * This class serves as an entry point for the Spring Boot app
  * Here, we check to ensure all required environment variables are set
  */
 @SpringBootApplication

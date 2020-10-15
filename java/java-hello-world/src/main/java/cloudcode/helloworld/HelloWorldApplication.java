@@ -1,5 +1,7 @@
 package cloudcode.helloworld;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -10,11 +12,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class HelloWorldApplication {
 
+    private static final Logger logger = LoggerFactory.getLogger(HelloWorldApplication.class);
+
     public static void main(final String[] args) throws Exception {
-        String value = System.getenv("PORT");
-        if (value == null) {
-            System.out.println("error: PORT environment variable not set");
-            System.exit(1);
+        String port = System.getenv("PORT");
+        if (port == null) {
+            port = "8080";
+            logger.warn("$PORT environment variable not set, defaulting to 8080");
         }
         SpringApplication.run(HelloWorldApplication.class, args);
     }

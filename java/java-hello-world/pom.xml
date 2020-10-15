@@ -20,6 +20,19 @@
         <checkstyle.config.location>./checkstyle.xml</checkstyle.config.location>
 	</properties>
 
+	  <!-- The Spring Cloud GCP BOM will manage spring-cloud-gcp version numbers for you. -->
+	  <dependencyManagement>
+		<dependencies>
+		  <dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-gcp-dependencies</artifactId>
+			<version>1.2.3.RELEASE</version>
+			<type>pom</type>
+			<scope>import</scope>
+		  </dependency>
+		</dependencies>
+	  </dependencyManagement>
+	
 	<dependencies>
 
 		<dependency>
@@ -39,11 +52,22 @@
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-gcp-starter-logging</artifactId>
+		</dependency>
+		
 	</dependencies>
+
 	<build>
 		<plugins>
 			<plugin>

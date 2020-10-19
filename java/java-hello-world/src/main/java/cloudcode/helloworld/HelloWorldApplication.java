@@ -17,8 +17,7 @@ public class HelloWorldApplication {
     public static void main(final String[] args) throws Exception {
         String port = System.getenv("PORT");
         if (port == null) {
-            port = "8080";
-            logger.warn("$PORT environment variable not set, defaulting to 8080");
+            logger.warn("$PORT environment variable not set");
         }
         SpringApplication.run(HelloWorldApplication.class, args);
     }

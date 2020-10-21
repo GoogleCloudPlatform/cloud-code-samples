@@ -1,7 +1,7 @@
 body {
 	font-family: 'Roboto', sans-serif;
 	font-display: fallback;
-	background: url('img/cloud_bg.svg');
+	background: url('../../img/cloud_bg.svg');
 	background-size: cover;
 	background-position: center;
 	line-height: 1.6;
@@ -63,7 +63,7 @@ h3 {
 	color: #1967D2;
 	font-weight: 600;
 	padding: 16px 24px 16px 40px;
-	background: url('img/lightbulb_icon.svg') #E8F0FE ;
+	background: url('../../img/lightbulb_icon.svg') #E8F0FE ;
 	background-position: 16px 16px;
 	background-repeat: no-repeat;
 	line-height: 1.6;
@@ -116,7 +116,7 @@ code {
 }
 @media (prefers-color-scheme: dark) {
     body {
-        background: black url('img/dark_bg.svg');
+        background: black url('../../img/dark_bg.svg');
         color:white;
 	}
 	a {

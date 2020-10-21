@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>src</RootNamespace>
+    <RootNamespace>dotnet_hello_world</RootNamespace>
   </PropertyGroup>
 
 </Project>

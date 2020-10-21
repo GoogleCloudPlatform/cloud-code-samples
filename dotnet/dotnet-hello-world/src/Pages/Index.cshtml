@@ -1,20 +1,20 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Congratulations | Cloud Run";
+    ViewData["Title"] = "Congratulations | Kubernetes";
 }
 
 
 <div class="hero">
     <div style="text-align:center;">
         <picture>
-            <source srcset="img/KE-hello-world-dark.svg" alt="A group celebrating" media="(prefers-color-scheme: dark)">
-            <img src="img/KE-hello-world.svg" alt="A group celebrating" width="427" height="231">
+            <source srcset="~/img/KE-hello-world-dark.svg" alt="A group celebrating" media="(prefers-color-scheme: dark)">
+            <img src="~/img/KE-hello-world.svg" alt="A group celebrating" width="427" height="231">
         </picture>
     </div>
 
     <div class="message">
-        <h1>It's running!</h1>
+        <h1>@Model.Message</h1>
         <h2>Congratulations, you successfully deployed a Kubernetes application with Cloud Code!</h2>
     </div>
 </div>

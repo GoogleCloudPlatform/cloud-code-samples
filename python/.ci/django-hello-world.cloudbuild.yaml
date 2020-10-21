@@ -7,10 +7,9 @@ steps:
     - |
       kubectl config view
       gcloud container clusters get-credentials $$CLOUDSDK_CONTAINER_CLUSTER
-      kubectl config view
       kubectl create namespace $$TEST_NAMESPACE
       echo "Kubernetes Namespace is $$TEST_NAMESPACE"
-    dir: '${_SAMPLE_DIR}'
+    dir: '/workspace/python/django/python-hello-world'
 
   - id: 'Deploy to staging'
     name: 'gcr.io/k8s-skaffold/skaffold:latest'
@@ -19,7 +18,7 @@ steps:
     - '-c'
     - |
       skaffold run -p cloudbuild -l $BUILD_ID -n $$TEST_NAMESPACE -d $$SKAFFOLD_DEFAULT_REPO
-    dir: '/workspace/django/python-hello-world'
+    dir: '/workspace/python/django/python-hello-world'
     waitFor: ['Create namespace']
 
   - id: 'Get Endpoint'
@@ -55,6 +54,7 @@ steps:
       keyword='Congratulations'
       chmod +x test_content.sh
       ./test_content.sh -r 25 -i 3 -u http://$(cat _externalIP) -k $keyword
+    dir: '/workspace'
     waitFor: ['Get Endpoint']
 
   - id: 'Delete namespaces'
@@ -72,4 +72,4 @@ options:
     - CLOUDSDK_CONTAINER_CLUSTER=staging
     - SKAFFOLD_DEFAULT_REPO=gcr.io/$PROJECT_ID
     - TEST_NAMESPACE=test-$BUILD_ID-django-hello-world
-    - HELLO_WORLD_SERVICE=django-hello-world-external
+    - HELLO_WORLD_SERVICE=python-hello-world-external

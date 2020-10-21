@@ -10,8 +10,5 @@ RUN npm install
 # Copy rest of the application csource code
 COPY . .
 
-# Run app.js with debugging port when container launches
-ENTRYPOINT ["node", "--inspect=9229", "src/app.js"]
-
-# Comment above and uncomment below to run app.js without debugger port when container launches
-# ENTRYPOINT ["node", "src/app.js"]
+# Run index.js with debugging port when container launches
+ENTRYPOINT ["node", "--inspect=9229", "src/index.js"]

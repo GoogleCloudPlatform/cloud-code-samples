@@ -1,18 +1,3 @@
-
-// Copyright 2020 Google LLC
-
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-
-//     https://www.apache.org/licenses/LICENSE-2.0
-
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-
 const express = require('express');
 const {readFileSync} = require('fs');
 const path = require('path');
@@ -25,9 +10,12 @@ app.use('/assets', express.static(path.join(__dirname, 'assets')));
 // The HTML content is produced by rendering a handlebars template.
 // The template values are stored in global state for reuse.
 let template;
+const data = {
+  message: "It's running!"
+};
 
 app.get('/', async (req, res) => {
-  // The handlebars template is stored in global state so this will only once.
+  // The handlebars template is stored in global state so this will only load once.
   if (!template) {
     // Load Handlebars template from filesystem and compile for use.
     try {
@@ -40,7 +28,7 @@ app.get('/', async (req, res) => {
 
   // Apply the template to generate an HTML string.
   try {
-    const output = template();
+    const output = template(data);
     res.status(200).send(output);
   } catch (e) {
     console.error(e);
@@ -51,7 +39,7 @@ app.get('/', async (req, res) => {
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(
-    'Hello from Google Kubernetes Engine! The container started successfully and is listening for HTTP requests on $PORT'
+    'Hello! The container started successfully and is listening for HTTP requests on $PORT'
   );
   console.log('Press Ctrl+C to quit.');
 });

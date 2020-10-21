@@ -13,7 +13,7 @@ public final class HelloWorldController {
 
     /**
      * Create an endpoint for the landing page
-     * @return the index view template
+     * @return the index view template with a simple message
      */
     @GetMapping("/")
     public String helloWorld(Model model) {

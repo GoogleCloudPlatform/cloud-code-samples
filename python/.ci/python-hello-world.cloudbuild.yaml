@@ -64,8 +64,8 @@ steps:
 
 options:
     env:
-    - CLOUDSDK_COMPUTE_ZONE=us-central1-c
-    - CLOUDSDK_CONTAINER_CLUSTER=spare-cluster
+    - CLOUDSDK_COMPUTE_ZONE=us-central1-a
+    - CLOUDSDK_CONTAINER_CLUSTER=staging
     - SKAFFOLD_DEFAULT_REPO=gcr.io/$PROJECT_ID
     - TEST_NAMESPACE=test-$BUILD_ID-python-hello-world
     - HELLO_WORLD_SERVICE=python-hello-world-external

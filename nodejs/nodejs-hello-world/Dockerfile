@@ -10,5 +10,5 @@ RUN npm install
 # Copy rest of the application csource code
 COPY . .
 
-# Run index.js with debugging port when container launches
-ENTRYPOINT ["node", "--inspect=9229", "src/index.js"]
+# Run index.js
+ENTRYPOINT ["node", "src/index.js"]

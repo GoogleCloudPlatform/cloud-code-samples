@@ -7,10 +7,9 @@ steps:
     - |
       kubectl config view
       gcloud container clusters get-credentials $$CLOUDSDK_CONTAINER_CLUSTER
-      kubectl config view
       kubectl create namespace $$TEST_NAMESPACE
       echo "Kubernetes Namespace is $$TEST_NAMESPACE"
-    dir: '${_SAMPLE_DIR}'
+    dir: '/workspace/golang/go-hello-world'
 
   - id: 'Deploy to staging'
     name: 'gcr.io/k8s-skaffold/skaffold:latest'
@@ -20,7 +19,6 @@ steps:
     - |
       skaffold run -p cloudbuild -l $BUILD_ID -n $$TEST_NAMESPACE -d $$SKAFFOLD_DEFAULT_REPO
     dir: '/workspace/golang/go-hello-world'
-    waitFor: ['Create namespace']
 
   - id: 'Get Endpoint'
     name: 'gcr.io/cloud-builders/kubectl'
@@ -39,7 +37,6 @@ steps:
       done
       echo "$(get_externalIP):$(kubectl get service $service --namespace $$TEST_NAMESPACE -o jsonpath='{.spec.ports[0].port}')" > _externalIP
       echo "External IP and port for $service is $(cat _externalIP)"
-    waitFor: ['Deploy to staging']
 
   - id: 'Integration tests'
     name: 'gcr.io/cloud-builders/curl'
@@ -55,7 +52,7 @@ steps:
       keyword='Congratulations'
       chmod +x test_content.sh
       ./test_content.sh -r 25 -i 3 -u http://$(cat _externalIP) -k $keyword
-    waitFor: ['Get Endpoint']
+    dir: '/workspace'
 
   - id: 'Delete namespaces'
     name: 'gcr.io/cloud-builders/kubectl'
@@ -64,7 +61,6 @@ steps:
     - '-c'
     - |
       kubectl delete namespace $$TEST_NAMESPACE
-    waitFor: ['Integration tests']
 
 options:
     env:

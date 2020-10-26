@@ -5,7 +5,7 @@
 "Hello World" is a simple Kubernetes application that contains a single
 [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) and a corresponding
 [Service](https://kubernetes.io/docs/concepts/services-networking/service/). The Deployment contains a
-[Flask-based](http://flask.pocoo.org/) web server that simply prints "Hello World".
+[Flask-based](http://flask.pocoo.org/) web server that renders a simple webpage.
 
 ----
 

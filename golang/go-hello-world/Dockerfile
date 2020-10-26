@@ -14,7 +14,7 @@ RUN go mod download
 COPY . ./
 
 # Compile the application to /app.
-RUN go build -o /app -v ./cmd/hello-world
+RUN go build -v -o /app
 
 # If you want to use the debugger, you need to modify the entrypoint to the
 # container and point it to the "dlv debug" command:

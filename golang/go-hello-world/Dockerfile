@@ -1,5 +1,5 @@
 # Use base golang image from Docker Hub
-FROM golang:1.14
+FROM golang:1.15
 
 # Download the dlv (delve) debugger for go (you can comment this out if unused)
 RUN go get -u -v github.com/go-delve/delve/cmd/dlv
@@ -14,7 +14,7 @@ RUN go mod download
 COPY . ./
 
 # Compile the application to /app.
-RUN go build -o /app -v ./cmd/hello-world
+RUN go build -v -o /app
 
 # If you want to use the debugger, you need to modify the entrypoint to the
 # container and point it to the "dlv debug" command:

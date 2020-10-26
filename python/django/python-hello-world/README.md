@@ -5,7 +5,7 @@
 "Hello World" is a simple Kubernetes application that contains
 [Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) for a web server and a database, and corresponding
 [Services](https://kubernetes.io/docs/concepts/services-networking/service/). The Deployment contains a
-[Django-based](https://www.djangoproject.com/) web server that simply prints "Hello World".
+[Django-based](https://www.djangoproject.com/) web server that renders a simple webpage.
 
 ----
 

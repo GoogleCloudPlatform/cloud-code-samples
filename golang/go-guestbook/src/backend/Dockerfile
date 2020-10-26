@@ -11,7 +11,10 @@ RUN go mod download
 COPY . ./
 
 # Compile the application to /app/backend.
-RUN go build -o /app/backend .
+# Skaffold passes in debug-oriented compiler flags
+ARG SKAFFOLD_GO_GCFLAGS
+RUN echo "Go gcflags: ${SKAFFOLD_GO_GCFLAGS}"
+RUN go build -gcflags="${SKAFFOLD_GO_GCFLAGS}" -mod=readonly -v -o /app/backend .
 
 # Now create separate deployment image
 FROM gcr.io/distroless/base

@@ -1,5 +1,5 @@
 # Use base golang image from Docker Hub
-FROM golang:1.14 as build
+FROM golang:1.15 as build
 
 WORKDIR /src/hello-world
 
@@ -11,7 +11,7 @@ RUN go mod download
 COPY . ./
 
 # Compile the application to /app.
-RUN go build -o /app -v ./cmd/hello-world
+RUN go build -v -o /app
 
 # Now create separate deployment image
 FROM gcr.io/distroless/base

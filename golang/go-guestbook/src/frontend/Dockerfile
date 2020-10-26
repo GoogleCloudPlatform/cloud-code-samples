@@ -1,5 +1,5 @@
 # Use base golang image from Docker Hub
-FROM golang:1.14 as build
+FROM golang:1.15 as build
 
 WORKDIR /src/frontend
 

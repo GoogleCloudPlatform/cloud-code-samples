@@ -33,7 +33,7 @@ app.get('/', async (req, res) => {
     // check the Cloud Run metadata server for the project ID.
     if (!data.project) {
       try {
-        data.project = await metadata.project();
+        data.project = await metadata.project('project-id');
       } catch (e) {
         data.project = undefined;
         console.error(e);

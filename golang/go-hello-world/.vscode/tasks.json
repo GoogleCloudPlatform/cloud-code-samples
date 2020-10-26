@@ -4,7 +4,7 @@
     "version": "2.0.0",
     "presentation": {
         "panel": "shared",
-        "showReuseMessage": true,
+        "showReuseMessage": true
     },
     "tasks": [
         {
@@ -16,7 +16,7 @@
                 "build",
                 "-p=no-push"
             ],
-            "problemMatcher": [],
+            "problemMatcher": []
         },
         {
             "label": "Deploy to Kubernetes cluster",
@@ -25,7 +25,7 @@
             "args": [
                 "run"
             ],
-            "problemMatcher": [],
+            "problemMatcher": []
         },
         {
             "label": "View application logs on Kubernetes",
@@ -36,7 +36,7 @@
                 "--selector",
                 "app=hello-world"
             ],
-            "problemMatcher": [],
+            "problemMatcher": []
         }
     ]
 }

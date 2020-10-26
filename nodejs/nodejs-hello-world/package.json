@@ -2,18 +2,19 @@
   "name": "node-hello-world",
   "version": "0.0.1",
   "description": "Hello World Application for Kubernetes",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node --inspect=9229 src/app.js ",
+    "start": "node src/index.js ",
     "lint": "eslint '**/**.js'"
   },
   "author": "Google Inc.",
   "license": "0BSD",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "handlebars": "^4.7.4"
   },
   "devDependencies": {
-    "eslint": "7.6.0",
+    "eslint": "7.10.0",
     "express-winston": "4.0.5",
     "winston": "3.3.3"
   }

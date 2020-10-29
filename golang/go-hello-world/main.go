@@ -10,7 +10,7 @@ import (
 const defaultAddr = ":8080"
 
 type templateData struct {
-	Message	string
+	Message string
 }
 
 var (
@@ -25,7 +25,7 @@ func main() {
 		log.Fatalf("Error parsing template: %+v", err)
 	}
 	tmpl = t
-	
+
 	data = templateData{
 		Message: "It's running!",
 	}
@@ -38,7 +38,7 @@ func main() {
 	log.Printf("server starting to listen on %s", addr)
 
 	http.HandleFunc("/", home)
-	
+
 	fs := http.FileServer(http.Dir("template/static"))
 	http.Handle("/static/", http.StripPrefix("/static/", fs))
 
@@ -49,6 +49,7 @@ func main() {
 
 // home responds to requests by rendering an HTML page.
 func home(w http.ResponseWriter, r *http.Request) {
+	log.Printf("received request: %s %s", r.Method, r.URL.Path)
 	if err := tmpl.Execute(w, data); err != nil {
 		msg := http.StatusText(http.StatusInternalServerError)
 		log.Printf("template.Execute: %v", err)

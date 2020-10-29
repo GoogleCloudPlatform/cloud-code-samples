@@ -26,7 +26,7 @@ func main() {
 	}
 	tmpl = t
 
-	data = templateData{
+  data = templateData{
 		Message: "It's running!",
 	}
 
@@ -39,7 +39,7 @@ func main() {
 
 	http.HandleFunc("/", home)
 
-	fs := http.FileServer(http.Dir("template/static"))
+  fs := http.FileServer(http.Dir("template/static"))
 	http.Handle("/static/", http.StripPrefix("/static/", fs))
 
 	if err := http.ListenAndServe(addr, nil); err != nil {

@@ -1,7 +1,7 @@
 # Use base golang image from Docker Hub
 FROM golang:1.15 as build
 
-WORKDIR /src/backend
+WORKDIR /app
 
 # Copy the go.mod and go.sum, download the dependencies
 COPY go.mod go.sum ./

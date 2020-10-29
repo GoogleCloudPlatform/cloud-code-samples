@@ -3,7 +3,7 @@
 # Use base golang image from Docker Hub
 FROM golang:1.15 as build
 
-WORKDIR /src/hello-world
+WORKDIR /hello-world
 
 # Install dependencies in go.mod and go.sum
 COPY go.mod go.sum ./

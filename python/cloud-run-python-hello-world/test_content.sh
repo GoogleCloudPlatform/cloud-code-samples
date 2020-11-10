@@ -15,7 +15,7 @@
 # limitations under the License.
 
 PORT=${PORT:-8080}
-url=${1:-'http://localhost:$PORT'}
+url=${1:-'http://localhost:'$PORT}
 expected='you successfully deployed a container image to Cloud Run'
 retries=10
 interval=5

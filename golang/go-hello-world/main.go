@@ -10,7 +10,7 @@ import (
 const defaultAddr = ":8080"
 
 type templateData struct {
-	Message	string
+	Message string
 }
 
 var (
@@ -25,7 +25,7 @@ func main() {
 		log.Fatalf("Error parsing template: %+v", err)
 	}
 	tmpl = t
-	
+
 	data = templateData{
 		Message: "It's running!",
 	}
@@ -35,20 +35,21 @@ func main() {
 	if p := os.Getenv("PORT"); p != "" {
 		addr = ":" + p
 	}
-	log.Printf("server starting to listen on %s", addr)
+	log.Printf("Server listening on port %s", addr)
 
 	http.HandleFunc("/", home)
-	
+
 	fs := http.FileServer(http.Dir("template/static"))
 	http.Handle("/static/", http.StripPrefix("/static/", fs))
 
 	if err := http.ListenAndServe(addr, nil); err != nil {
-		log.Fatalf("server listen error: %+v", err)
+		log.Fatalf("Server listening error: %+v", err)
 	}
 }
 
 // home responds to requests by rendering an HTML page.
 func home(w http.ResponseWriter, r *http.Request) {
+	log.Printf("Hello from Cloud Code! Received request: %s %s", r.Method, r.URL.Path)
 	if err := tmpl.Execute(w, data); err != nil {
 		msg := http.StatusText(http.StatusInternalServerError)
 		log.Printf("template.Execute: %v", err)

@@ -1,2 +1,3 @@
 Flask==1.1.2
+gunicorn==20.0.4
 ptvsd==4.3.2 # Required for debugging.

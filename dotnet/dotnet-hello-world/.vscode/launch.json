@@ -18,7 +18,7 @@
       "type": "cloudcode.kubernetes",
       "request": "attach",
       "podSelector": {
-        "app": "dotnet-hello-world",
+        "app": "dotnet-hello-world"
       },
       "localRoot": "${workspaceFolder}/src",
       "language": "NETCore",

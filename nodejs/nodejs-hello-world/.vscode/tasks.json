@@ -6,7 +6,7 @@
         {
             "label": "run eslint",
             "type": "npm",
-            "script": "lint",
-        },
+            "script": "lint"
+        }
     ]
 }

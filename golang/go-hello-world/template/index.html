@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang=en>
+<head>
+<meta charset=utf-8>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Congratulations on deploying your Kubernetes app</title>
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="preload" as="font">
+<link
+  href="/static/kubernetes-engine-icon.png"
+  rel="icon" 
+  type="image/png" 
+/>
+<style>
+ body {
+	font-family: 'Roboto', sans-serif;
+	font-display: fallback;
+	background: url('/static/cloud_bg.svg');
+	background-size: cover;
+	background-position: center;
+	line-height: 1.6;
+ }
+
+h1 {
+	font-size: 24px;
+	font-weight: bold;
+	margin-bottom: 0px;
+}
+
+h2 {
+	font-size: 18px;
+	font-weight: normal;
+	margin-top: 4px;
+}
+
+h3 {
+	font-size: 20px;
+	margin-bottom: 0px;
+}
+
+.next {
+    font-size: 15px;
+	margin-top: 8px;
+	margin-bottom: 8px;
+}
+
+.container {
+	max-width: 700px;
+	margin-left: auto;
+	margin-right: auto;
+} 
+
+.hero {
+	margin-top: 172px;
+}
+
+.hero .logo {
+	width: 140px;
+	float: left;
+	margin-right: 32px;
+}
+
+.hero .message {
+	font-size: 15px;
+	text-align: center;
+	margin-bottom: 24px;
+}
+
+.details {
+	clear: both;
+	height: 400px;
+	line-height: 1.8;
+}
+
+.callout {
+	font-size: 14px;
+	color: #1967D2;
+	font-weight: 600;
+	padding: 16px 24px 16px 40px;
+	background: url('/static/lightbulb_icon.svg') #E8F0FE ;
+	background-position: 16px 16px;
+	background-repeat: no-repeat;
+	line-height: 1.6;
+}
+
+code {
+	font-family: 'Roboto Mono', Courier, monospace;
+	color: #A30038;
+	background-color: #F8F8F8;
+	border: 1px solid #DDD;
+	border-radius: 2px;
+	padding: 0 6px;
+	font-weight: 500;
+}
+
+.cta {
+	display: inline-block;
+}
+.cta a {
+	color: white;
+	text-decoration: none;
+	background-color: rgb(14, 101, 241);
+	padding: 8px 12px;
+	margin-top: 8px;
+	min-height: 36px;
+	border-radius: 2px;
+	font-weight: 600;
+}
+
+.cta a:hover {
+    background-color: rgb(66, 133, 244, 0.9);
+}
+
+@media (max-width: 600px) {
+    .hero .logo {
+        float: initial;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+	.container {
+        margin-top: 0;
+	}
+
+    .hero {
+        margin-top: 0;
+        margin-bottom: 24px;
+	}
+}
+@media (prefers-color-scheme: dark) {
+    body {
+        background: black url('/static/dark_bg.svg');
+        color:white;
+    }
+	a {
+		color: #70A0FF;
+	}
+}
+
+</style>
+</head>
+
+<body>
+	<div class="container">
+		<div class="hero">
+			<div style="text-align:center;">
+				<picture>
+					<source srcset="/static/KE-hello-world-dark.svg" media="(prefers-color-scheme: dark)">
+					<img src="/static/KE-hello-world.svg" alt="A group celebrating" width="427" height="231">
+				</picture>
+			</div>
+
+			<div class="message">
+				<h1>{{.Message}}</h1>
+				<h2>Congratulations, you successfully deployed a Kubernetes application with Cloud Code!</h2>
+			</div>
+		</div>
+
+		<div class="details">
+			<h3>What's next?</h3>
+			<p class="next">Learn more about working with Kubernetes in Cloud Code for 
+				<a href="https://cloud.google.com/code/docs/vscode/how-to#working-with-kubernetes" target="_blank" rel="noopener">
+					VSCode
+				</a> 
+				or 
+				<a href="https://cloud.google.com/code/docs/intellij/how-to#working-with-kubernetes" target="_blank" rel="noopener">
+					IntelliJ
+				</a>
+			</p>
+			<p class="next">Get started with <a href="https://cloud.google.com/blog/products/application-development/how-cloud-code-improves-app-dev-on-gcp" target="_blank" rel="noopener">Google Cloud APIs</a> in Cloud Code</p>
+			<p class="next">Watch how Cloud Code can optimize your <a href="https://www.youtube.com/watch?v=Z2fyc3AbfKE&autoplay=1" target="_blank" rel="noopener">GKE Developer Workflow</a></p>
+			<p class="next">Explore more options with
+			<p class="cta">
+				<a href="https://cloud.google.com/code/docs" target="_blank" rel="noopener">
+					CLOUD CODE DOCS
+				</a>
+			</p>
+			<p class="cta"><a href="https://cloud.google.com/kubernetes-engine" target="_blank" rel="noopener">
+			GOOGLE KUBERNETES ENGINE
+			</a>
+			</p>
+		</div>
+	</div>
+</body>
+</html>

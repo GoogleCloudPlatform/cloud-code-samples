@@ -1,0 +1,46 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Congratulations | Kubernetes";
+}
+
+
+<div class="hero">
+    <div style="text-align:center;">
+        <picture>
+            <source srcset="~/img/KE-hello-world-dark.svg" media="(prefers-color-scheme: dark)">
+            <img src="~/img/KE-hello-world.svg" alt="A group celebrating" width="427" height="231">
+        </picture>
+    </div>
+
+    <div class="message">
+        <h1>@Model.Message</h1>
+        <h2>Congratulations, you successfully deployed a Kubernetes application with Cloud Code!</h2>
+    </div>
+</div>
+
+<div class="details">
+
+    <h3>What's next?</h3>
+        <p class="next">Learn more about working with Kubernetes in Cloud Code for 
+            <a href="https://cloud.google.com/code/docs/vscode/how-to#working-with-kubernetes" target="_blank" rel="noopener">
+                VSCode
+            </a> 
+            or 
+            <a href="https://cloud.google.com/code/docs/intellij/how-to#working-with-kubernetes" target="_blank" rel="noopener">
+                IntelliJ
+            </a>
+        </p>
+        <p class="next">Get started with <a href="https://cloud.google.com/blog/products/application-development/how-cloud-code-improves-app-dev-on-gcp" target="_blank" rel="noopener">Google Cloud APIs</a> in Cloud Code</p>
+        <p class="next">Watch how Cloud Code can optimize your <a href="https://www.youtube.com/watch?v=Z2fyc3AbfKE&autoplay=1" target="_blank" rel="noopener">GKE Developer Workflow</a></p>
+        <p class="next">Explore more options with
+        <p class="cta">
+            <a href="https://cloud.google.com/code/docs" target="_blank" rel="noopener">
+                CLOUD CODE DOCS
+            </a>
+        </p>
+        <p class="cta"><a href="https://cloud.google.com/kubernetes-engine" target="_blank" rel="noopener">
+        GOOGLE KUBERNETES ENGINE
+        </a>
+        </p>
+</div>

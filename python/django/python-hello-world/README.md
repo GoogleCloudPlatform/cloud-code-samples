@@ -1,7 +1,5 @@
 # Hello World with Cloud Code
 
-![Architecture Diagram](./img/diagram.png)
-
 "Hello World" is a simple Kubernetes application that contains
 [Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) for a web server and a database, and corresponding
 [Services](https://kubernetes.io/docs/concepts/services-networking/service/). The Deployment contains a
@@ -56,5 +54,8 @@ skaffold run --default-repo=gcr.io/your-project-id-here/cloudcode
 #### kubectl
 
 [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) is the official Kubernetes command line tool. It can be used to deploy Kubernetes manifests to your cluster, but images must be build seperately using another tool (for example, using the [Docker CLI](https://docs.docker.com/engine/reference/commandline/cli/))
+
+## Architecture
+![Architecture Diagram](./img/diagram.png)
 
 -----|------

@@ -1,22 +1,24 @@
-"""
-A sample Hello World server.
-"""
 import os
-from flask import Flask
+
+from signal import signal, SIGINT
+from flask import Flask, render_template
+
+def handler(signal_received, frame):
+    # SIGINT or  ctrl-C detected, exit without error
+    exit(0)
 
 # pylint: disable=C0103
 app = Flask(__name__)
 
+
 @app.route('/')
 def hello():
-    """Return a friendly HTTP greeting."""
-    message = "Hello World"
-    return message
+    """Return a simple HTML page with a friendly message."""
+    message = "It's running!"
+
+    return render_template('index.html', message=message)
 
 if __name__ == '__main__':
-    server_port = os.environ.get('PORT')
-    if server_port is None:
-        print("error: PORT environment variable not set")
-        exit(1)
-
+    signal(SIGINT, handler)
+    server_port = os.environ.get('PORT', '8080')
     app.run(debug=False, port=server_port, host='0.0.0.0')

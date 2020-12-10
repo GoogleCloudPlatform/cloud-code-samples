@@ -32,6 +32,11 @@ spec:
           containerPort: 8080
         - name: debug
           containerPort: 3000
+        readinessProbe:
+          tcpSocket:
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 10
         env:
         - name: PORT
           value: "8080"

@@ -20,8 +20,9 @@
     "handlebars": "^4.7.4"
   },
   "devDependencies": {
-    "eslint": "7.15.0",
+    "eslint": "7.16.0",
     "eslint-config-prettier": "7.1.0",
+    "eslint-config-prettier": "7.0.0",
     "eslint-plugin-node": "11.1.0",
     "eslint-plugin-prettier": "3.3.0",
     "eslint-plugin-promise": "4.2.1",

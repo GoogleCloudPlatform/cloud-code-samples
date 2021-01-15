@@ -1,7 +1,7 @@
 # Guestbook with Cloud Code
 
 
-The Guestbook sample demonstrates how to deploy a Kubernetes application with a front end service and a back end service using the Cloud Code extension for Visual Studio Code.
+The Guestbook sample demonstrates how to deploy a Kubernetes application with a front end service and a back end service using the Cloud Code extension for Cloud Shell.
 
 ### Table of Contents
 * [Getting Started](#getting-started)
@@ -19,34 +19,41 @@ The Guestbook sample demonstrates how to deploy a Kubernetes application with a 
 ### Run the app locally with minikube
 
 1. To run your application, click on the Cloud Code status bar and select ‘Run on Kubernetes’.  
-
 ![image](./img/status-bar.png)
 
 2. Select ‘Run locally using minikube’ when prompted. Cloud Code runs your app in a local Kubernetes cluster created using [minikube](https://minikube.sigs.k8s.io/docs/start/).
 ![image](./img/create-k8s-cluster.png)
 
-3. View the build progress in the OUTPUT window. Once the build has finished, click on the front end service's URL in the OUTPUT window to view your live application.
+3. If prompted, authorize Cloud Shell to use your credentials to make a GCP API call.
+![image](./img/authorize-cloud-shell.png)
+
+4. View the build progress in the OUTPUT window. Once the build has finished, click on the front end service's URL in the OUTPUT window to view your live application.
 ![image](./img/kubernetes-guestbook-url.png)
 
-4.  To stop the application, click the stop icon on the Debug Toolbar.
+5.  To stop the application, click the stop icon in the Debug Explorer.
+![image](./img/debug-explorer.png)
 
 ### Run the app remotely on Google Kubernetes Engine
 
 #### Set up a GKE cluster
 
-1. Navigate to the Cloud Code - Kubernetes explorer using the left side taskbar.
-2. In the Google Kubernetes Engine Explorer, click '+' to create a new Google Kubernetes Engine cluster. If prompted, follow the instructions to log in to Google Cloud Platform.
-![image](./img/kubernetes-explorer.png)
-3. Follow the steps to configure your cluster and click "Create Cluster".
-4. Once your GKE cluster has been created, it will be displayed in the Google Kubernetes Engine Explorer.
-5. Your new cluster will be set as the active cluster by default. To switch clusters, right click on a different cluster in the GKE Explorer and select “Set Active Cluster”. 
+1. From the command palette, run "Create GKE cluster".
+![image](./img/create-gke-cluster.png)
+
+2. Follow the steps to configure your cluster and click "Create Cluster". Once your cluster has been created, it will be displayed in the Google Kubernetes Engine Explorer.
+![image](./img/gke-cluster-config.png)
+
+3. Your new cluster will be set as the active cluster by default. To switch clusters, right click on a different cluster in the GKE Explorer and select “Set as Active Cluster”. 
 ![image](./img/kubernetes-explorer-new-cluster.png)
 
 #### Deploy app to GKE
 
 1. Click on the Cloud Code status bar and select ‘Run on Kubernetes’.
 2. If prompted, confirm the current context and image registry.
+![image](./img/confirm-current-context.png)
+
 3. View the build’s progress in the OUTPUT window. Once the build has finished, you can visit your deployed app by clicking the URL in the OUTPUT window.
+![image](./img/kubernetes-guestbook-url.png)
 
 ---
 ## Next steps

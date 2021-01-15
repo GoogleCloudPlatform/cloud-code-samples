@@ -1,7 +1,7 @@
 # Kubernetes Hello World with Cloud Code
 
 
-This "Hello World" sample demonstrates how to deploy a simple "Hello World" application to Kubernetes using the Cloud Code extension for [Cloud Shell](https://cloud.google.com/shell). When you run the application, Cloud Code uses [skaffold](https://skaffold.dev/docs/) under the hood to create a Kubernetes cluster and run the app in a container. To learn more about Kubernetes, explore the [Kubernetes overview](https://kubernetes.io/docs/concepts/overview/). 
+This "Hello World" sample demonstrates how to deploy a simple "Hello World" application to Kubernetes using the Cloud Code extension for Cloud Shell. When you run the application, Cloud Code uses [skaffold](https://skaffold.dev/docs/) under the hood to create a Kubernetes cluster and run the app in a container. To learn more about Kubernetes, explore the [Kubernetes overview](https://kubernetes.io/docs/concepts/overview/). 
 
 ### Table of Contents
 * [Getting Started](#getting-started)
@@ -41,10 +41,10 @@ This "Hello World" sample demonstrates how to deploy a simple "Hello World" appl
 1. From the command palette, run "Create GKE cluster".
 ![image](./img/create-gke-cluster.png)
 
-3. Follow the steps to configure your cluster and click "Create Cluster". Once your cluster has been created, it will be displayed in the Google Kubernetes Engine Explorer.
+2. Follow the steps to configure your cluster and click "Create Cluster". Once your cluster has been created, it will be displayed in the Google Kubernetes Engine Explorer.
 ![image](./img/gke-cluster-config.png)
 
-4. Your new cluster will be set as the active cluster by default. To switch clusters, right click on a different cluster in the GKE Explorer and select “Set Active Cluster”. 
+3. Your new cluster will be set as the active cluster by default. To switch clusters, right click on a different cluster in the GKE Explorer and select “Set as Active Cluster”. 
 ![image](./img/kubernetes-explorer-new-cluster.png)
 
 #### Deploy app to GKE

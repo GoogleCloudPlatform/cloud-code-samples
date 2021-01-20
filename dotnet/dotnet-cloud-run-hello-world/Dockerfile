@@ -16,6 +16,8 @@ RUN dotnet publish dotnet-cloud-run-hello-world.csproj -c Debug -o /out
 
 # Building final image used in running container
 FROM base AS final
+RUN apk update \
+    && apk add procps
 WORKDIR /src
 COPY --from=publish /out .
 CMD ASPNETCORE_URLS=http://*:$PORT dotnet dotnet-cloud-run-hello-world.dll

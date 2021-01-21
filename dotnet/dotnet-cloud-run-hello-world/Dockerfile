@@ -16,6 +16,12 @@ RUN dotnet publish dotnet-cloud-run-hello-world.csproj -c Debug -o /out
 
 # Building final image used in running container
 FROM base AS final
+RUN apk update \
+    && apk add unzip \
+    && apk add procps \
+    && apk add curl bash \
+    && rm -rf /var/lib/apt/lists/* \
+    && curl -sSL https://aka.ms/getvsdbgsh | bash /dev/stdin -v latest -l /vsdbg
 WORKDIR /src
 COPY --from=publish /out .
 CMD ASPNETCORE_URLS=http://*:$PORT dotnet dotnet-cloud-run-hello-world.dll

@@ -12,6 +12,7 @@ This "Hello World" sample demonstrates how to deploy a simple "Hello World" appl
         * [Set up a GKE cluster](#set-up-a-gke-cluster)
         * [Deploy app to GKE](#deploy-app-to-gke)
 * [Next steps](#next-steps)
+* [Sign up for User Research](#sign-up-for-user-research)
 
 ---
 ## Getting Started
@@ -105,5 +106,8 @@ The Cloud Code team is inviting our user community to sign-up to participate in 
 If you’re invited to join a study, you may try out a new product or tell us what you think about the products you use every day. At this time, Google is only sending invitations for upcoming remote studies. Once a study is complete, you’ll receive a token of thanks for your participation such as a gift card or some Google swag. 
 
 [Sign up using this link](https://google.qualtrics.com/jfe/form/SV_4Me7SiMewdvVYhL?reserved=1&utm_source=In-product&Q_Language=en&utm_medium=own_prd&utm_campaign=Q1&productTag=clou&campaignDate=January2021&referral_code=UXbT481079) and answer a few questions about yourself, as this will help our research team match you to studies that are a great fit.
+
+---
+![kubernetes diagram](./img/diagram.png)
 
 ----

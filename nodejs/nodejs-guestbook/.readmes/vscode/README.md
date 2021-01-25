@@ -10,6 +10,7 @@ The Guestbook sample demonstrates how to deploy a Kubernetes application with a 
         * [Set up a GKE cluster](#set-up-a-gke-cluster)
         * [Deploy app to GKE](#deploy-app-to-gke)
 * [Next steps](#next-steps)
+* [Sign up for User Research](#sign-up-for-user-research)
 * [Kubernetes Architecture Diagram](#kubernetes-architecture-diagram)
 
 ---
@@ -50,17 +51,28 @@ The Guestbook sample demonstrates how to deploy a Kubernetes application with a 
 
 ---
 ## Next steps
-* [Configure an existing app to run on Cloud Code](https://cloud.google.com/code/docs/vscode/setting-up-an-existing-app)
-* [Edit YAML files](https://cloud.google.com/code/docs/vscode/yaml-editing)
-* [Use the Google Kubernetes Engine Explorer](https://cloud.google.com/code/docs/vscode/using-the-gke-explorer)
-* [Manage Cloud APIs and client libraries](https://cloud.google.com/code/docs/vscode/client-libraries)
-* [Manage secrets with Secret Manager](https://cloud.google.com/code/docs/vscode/secret-manager)
-* [Debug the app](https://cloud.google.com/code/docs/vscode/debug)
-* [View Container Logs](https://cloud.google.com/code/docs/vscode/logging)
+* Try [debugging your app](https://cloud.google.com/code/docs/vscode/debug) using Cloud Code
+* Navigate the [Kubernetes Engine Explorer](https://cloud.google.com/code/docs/vscode/using-the-gke-explorer)
+* Learn how to [edit YAML files](https://cloud.google.com/code/docs/vscode/yaml-editing) to deploy your Kubernetes app
+* [Configure an existing app](https://cloud.google.com/code/docs/vscode/setting-up-an-existing-app) to run on Cloud Code
+* Enable [Cloud APIs and client libraries](https://cloud.google.com/code/docs/vscode/client-libraries)
+* Manage secrets with [Secret Manager](https://cloud.google.com/code/docs/vscode/secret-manager)
+
+For more Cloud Code tutorials and resources, check out [Awesome Cloud Code](https://github.com/russwolf/awesome-cloudclode)!
+
+---
+## Sign up for User Research
+
+We want to hear your feedback!
+
+The Cloud Code team is inviting our user community to sign-up to participate in Google User Experience Research. 
+
+If you’re invited to join a study, you may try out a new product or tell us what you think about the products you use every day. At this time, Google is only sending invitations for upcoming remote studies. Once a study is complete, you’ll receive a token of thanks for your participation such as a gift card or some Google swag. 
+
+[Sign up using this link](https://google.qualtrics.com/jfe/form/SV_4Me7SiMewdvVYhL?reserved=1&utm_source=In-product&Q_Language=en&utm_medium=own_prd&utm_campaign=Q1&productTag=clou&campaignDate=January2021&referral_code=UXbT481079) and answer a few questions about yourself, as this will help our research team match you to studies that are a great fit.
 
 ---
 ## Kubernetes Architecture Diagram
 ![Architecture Diagram](./img/diagram.png)
 
 ----
-

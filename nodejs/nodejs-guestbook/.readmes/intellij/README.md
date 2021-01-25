@@ -12,6 +12,8 @@ The Guestbook sample demonstrates how to deploy a Kubernetes application with a 
         * [Set up a GKE cluster](#set-up-a-gke-cluster)
         * [Deploy app to GKE](#deploy-app-to-gke)
 * [Next steps](#next-steps)
+* [Sign up for user research](#sign-up-for-user-research)
+
 
 ---
 ## Getting Started
@@ -19,35 +21,56 @@ The Guestbook sample demonstrates how to deploy a Kubernetes application with a 
 ### Run the app locally with minikube
 
 #### Start a minikube cluster
-1. Navigate to the Kubernetes Explorer from the right side panel. If your Cluster Explorer is empty, go to the terminal and run 'minikube start'. 
+1. Navigate to the Kubernetes Explorer from the right side panel, or by going to **Tools > Cloud Code > Kubernetes > View Cluster Explorer**. 
+
+2. If the Cluster Explorer is empty, go to the terminal and run 'minikube start'. 
+
 ![image](./img/k8s-explorer-empty.png)
 
-2. Once minikube has started, it will be displayed in the Cluster Explorer.
- ![image](./img/k8s-explorer-full.png)
+3. Once minikube has started, it will be displayed in the Cluster Explorer.
+
+![image](./img/k8s-explorer-full.png)
+
+5. Minikube will be set as the current context by default. To switch contexts, right click on a different cluster in the Cluster Explorer and select 'Set as Current Context'.
 
 #### Run the app on minikube
-1. Click the Run/Debug configurations dropdown on the top taskbar and select 'Edit Configurations'. Select 'Develop on Kubernetes' and specify your [container image repository](https://cloud.google.com/code/docs/intellij/configuring-container-image-settings), then click 'OK'.
+1. Click the Run/Debug configurations dropdown on the top taskbar and select 'Edit Configurations'. Select 'Develop on Kubernetes'. You may need to specify your [container image repository](https://cloud.google.com/code/docs/intellij/configuring-container-image-settings).
 
-2. Select 'Develop on Kubernetes' from the configuration drop down and click the run icon. Cloud Code runs your app in a local Kubernetes cluster created using [minikube](https://minikube.sigs.k8s.io/docs/start/).  
+![image](./img/image-repo.png)
+
+2. Click 'OK' to save your configuration. 
+
+3. Select 'Develop on Kubernetes' from the configuration drop down and click the run icon. Cloud Code runs your app in a local [minikube](ttps://minikube.sigs.k8s.io/docs/start/) cluster.
+
 ![image](./img/deploy-config.png)
 
-2. View the build process in the output window. Once the build has finished, you will receive a notification from the Event Log. Click 'View' to access the local URLs for your deployed services.
+4. View the build process in the output window. Once the build has finished, you will receive a notification from the Event Log. Click 'View' to access the local URLs for your deployed services. The URLs remain accessible through the Event Log dialog.
+
 ![image](./img/deploy-success.png)
 
-3.  To stop the application, click the stop icon next to the configuration dropdown.
+5.  To stop the application, click the stop icon next to the configuration dropdown.
 
 ---
 ### Run the app remotely on Google Kubernetes Engine
 
 #### Set up a GKE cluster
 
-1. Navigate to the Kubernetes Explorer from the right side panel.
+1. Navigate to the Kubernetes Explorer from the right side panel, or by going to **Tools > Cloud Code > Kubernetes > View Cluster Explorer**. 
 
-2. Click '+' to create a new cluster. If prompted, log in to your GCP account and select a project.
+2. Click '+' to create a new cluster, or go to **Tools > Cloud Code > Kubernetes > Add GKE Cluster**. 
+
+![image](./img/add-cluster.png)
+
+2. If prompted, log in to your GCP account and select a project.
+
+![image](./img/gcp-login-prompt.png)
 
 3. Click 'Create a new GKE cluster`. You will be directed to the Google Cloud Console to create your new cluster.
 
+![image](./img/gcp-console-new-cluster.png)
+
 4. Once your GKE cluster has been created, it will be displayed in the Cluster Explorer. 
+
 ![image](./img/added-cluster.png)
 
 5. Your new cluster will be set as the current context by default. To switch contexts, right click on a different cluster in the Cluster Explorer and select 'Set as Current Context'. 
@@ -56,17 +79,34 @@ The Guestbook sample demonstrates how to deploy a Kubernetes application with a 
 
 1. Select 'Run on Kubernetes' from the configuration drop down and click the 'Run' button.
 
-2. View the build process in the output window. Once the build has finished, you will receive a notification from the Event Log. Click 'View' to access the local URLs for your deployed services.
+![image](./img/run-on-k8s.png)
+
+2. View the build process in the output window. Once the build has finished, you will receive a notification from the Event Log. Click 'View' to access the local URLs for your deployed services. The URLs remain accessible through the Event Log dialog.
+
 ![image](./img/deploy-success.png)
 
 ---
 ## Next steps
-* [Configure an existing app to run on Cloud Code](https://cloud.google.com/code/docs/intellij/using-a-k8-existing-app)
-* [Edit YAML files](https://cloud.google.com/code/docs/intellij/yaml-editing)
-* [Use the Kubernetes Engine Explorer](https://cloud.google.com/code/docs/intellij/using-the-kubernetes-explorer)
-* [Manage Cloud APIs and client libraries](https://cloud.google.com/code/docs/intellij/client-libraries)
-* [Manage secrets with Secret Manager](https://cloud.google.com/code/docs/intellij/secret-manager)
-* [Debug the app](https://cloud.google.com/code/docs/intellij/kubernetes-debugging)
-* [View Container Logs](https://cloud.google.com/code/docs/intellij/logging-a-k8-app)
+* Try [debugging your app](https://cloud.google.com/code/docs/intellij/kubernetes-debugging) using Cloud Code
+* Navigate the [Kubernetes Engine Explorer](https://cloud.google.com/code/docs/intellij/using-the-kubernetes-explorer)
+* Learn how to [edit YAML files](https://cloud.google.com/code/docs/intellij/yaml-editing) to deploy your Kubernetes app
+* [Configure an existing app](https://cloud.google.com/code/docs/intellij/using-a-k8-existing-app) to run on Cloud Code
+* Enable [Cloud APIs and client libraries](https://cloud.google.com/code/docs/intellij/client-libraries)
+* Manage secrets with [Secret Manager](https://cloud.google.com/code/docs/intellij/secret-manager)
+
+For more Cloud Code tutorials and resources, check out [Awesome Cloud Code](https://github.com/russwolf/awesome-cloudclode)!
+
+---
+## Sign up for User Research
+
+We want to hear your feedback!
+
+The Cloud Code team is inviting our user community to sign-up to participate in Google User Experience Research. 
+
+If you’re invited to join a study, you may try out a new product or tell us what you think about the products you use every day. At this time, Google is only sending invitations for upcoming remote studies. Once a study is complete, you’ll receive a token of thanks for your participation such as a gift card or some Google swag. 
+
+[Sign up using this link](https://google.qualtrics.com/jfe/form/SV_4Me7SiMewdvVYhL?reserved=1&utm_source=In-product&Q_Language=en&utm_medium=own_prd&utm_campaign=Q1&productTag=clou&campaignDate=January2021&referral_code=UXbT481079) and answer a few questions about yourself, as this will help our research team match you to studies that are a great fit.
+
+
 
 ----

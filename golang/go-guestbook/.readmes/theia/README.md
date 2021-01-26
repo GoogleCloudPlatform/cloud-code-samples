@@ -49,7 +49,6 @@ The Guestbook sample demonstrates how to deploy a Kubernetes application with a 
 #### Deploy app to GKE
 
 1. Click on the Cloud Code status bar and select ‘Run on Kubernetes’.
-
 2. If prompted, confirm the current context and image registry.
 ![image](./img/confirm-current-context.png)
 

@@ -1,7 +1,6 @@
 # Guestbook with Cloud Code
 
-
-The Guestbook sample demonstrates how to deploy a Kubernetes application with a front end service and a back end service using the Cloud Code extension for Cloud Shell.
+The Guestbook sample demonstrates how to deploy a Kubernetes application with a front end service and a back end service using the Cloud Code extension for Cloud Shell. When you run the application, Cloud Code uses [skaffold](https://skaffold.dev/docs/) under the hood to build an image and deploy the project's Kubernetes manifests.
 
 ### Table of Contents
 * [Getting Started](#getting-started)
@@ -22,7 +21,8 @@ The Guestbook sample demonstrates how to deploy a Kubernetes application with a 
 1. To run your application, click on the Cloud Code status bar and select ‘Run on Kubernetes’.  
 ![image](./img/status-bar.png)
 
-2. Select ‘Run locally using minikube’ when prompted. Cloud Code runs your app in a local Kubernetes cluster created using [minikube](https://minikube.sigs.k8s.io/docs/start/).
+2. Select ‘Run locally using minikube’ when prompted. Cloud Code runs your app in a local [minikube](https://minikube.sigs.k8s.io/docs/start/) cluster.
+
 ![image](./img/create-k8s-cluster.png)
 
 3. If prompted, authorize Cloud Shell to use your credentials to make a GCP API call.
@@ -50,6 +50,7 @@ The Guestbook sample demonstrates how to deploy a Kubernetes application with a 
 #### Deploy app to GKE
 
 1. Click on the Cloud Code status bar and select ‘Run on Kubernetes’.
+
 2. If prompted, confirm the current context and image registry.
 ![image](./img/confirm-current-context.png)
 
@@ -58,13 +59,13 @@ The Guestbook sample demonstrates how to deploy a Kubernetes application with a 
 
 ---
 ## Next steps
-* Install Cloud Code on your local [VS Code](https://cloud.google.com/code/docs/vscode/install) or [IntelliJ](https://cloud.google.com/code/docs/intellij/install) IDE
-* Try [debugging your app](https://cloud.google.com/code/docs/vscode/debug) using Cloud Code
-* Navigate the [Kubernetes Engine Explorer](https://cloud.google.com/code/docs/vscode/using-the-gke-explorer)
-* Learn how to [edit YAML files](https://cloud.google.com/code/docs/vscode/yaml-editing) to deploy your Kubernetes app
-* [Configure an existing app](https://cloud.google.com/code/docs/vscode/setting-up-an-existing-app) to run on Cloud Code
-* Enable [Cloud APIs and client libraries](https://cloud.google.com/code/docs/vscode/client-libraries)
-* Manage secrets with [Secret Manager](https://cloud.google.com/code/docs/vscode/secret-manager)
+* Install Cloud Code on your local [VS Code](https://cloud.google.com/code/docs/vscode/install?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-) or [IntelliJ](https://cloud.google.com/code/docs/intellij/install?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-) IDE
+* Try [debugging your app](https://cloud.google.com/code/docs/vscode/debug?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-) using Cloud Code
+* Navigate the [Kubernetes Engine Explorer](https://cloud.google.com/code/docs/vscode/using-the-gke-explorer?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-)
+* Learn how to [edit YAML files](https://cloud.google.com/code/docs/vscode/yaml-editing?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-) to deploy your Kubernetes app
+* [Configure an existing app](https://cloud.google.com/code/docs/vscode/setting-up-an-existing-app?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-) to run on Cloud Code
+* Enable [Cloud APIs and client libraries](https://cloud.google.com/code/docs/vscode/client-libraries?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-)
+* Manage secrets with [Secret Manager](https://cloud.google.com/code/docs/vscode/secret-manager?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-)
 
 For more Cloud Code tutorials and resources, check out [Awesome Cloud Code](https://github.com/russwolf/awesome-cloudclode)!
 

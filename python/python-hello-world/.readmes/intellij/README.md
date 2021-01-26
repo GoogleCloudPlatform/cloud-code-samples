@@ -26,11 +26,10 @@ This "Hello World" sample demonstrates how to deploy a simple "Hello World" appl
 
 ![image](./img/k8s-explorer-empty.png)
 
-3. Once minikube has started, it will be displayed in the Cluster Explorer.
+3. Once minikube has started, it will be displayed in the Cluster Explorer. Minikube will be set as the current context by default. To switch contexts, right click on a different cluster in the Cluster Explorer and select 'Set as Current Context'.
 
 ![image](./img/k8s-explorer-full.png)
 
-5. Minikube will be set as the current context by default. To switch contexts, right click on a different cluster in the Cluster Explorer and select 'Set as Current Context'.
 
 #### Run the app on minikube
 1. Click the Run/Debug configurations dropdown on the top taskbar and select 'Edit Configurations'. Select 'Develop on Kubernetes'. You may need to specify your [container image repository](https://cloud.google.com/code/docs/intellij/configuring-container-image-settings).
@@ -61,19 +60,19 @@ This "Hello World" sample demonstrates how to deploy a simple "Hello World" appl
 
 ![image](./img/add-cluster.png)
 
-2. If prompted, log in to your GCP account and select a project.
+3. If prompted, log in to your GCP account and select a project.
 
 ![image](./img/gcp-login-prompt.png)
 
-3. Click 'Create a new GKE cluster`. You will be directed to the Google Cloud Console to create your new cluster.
+4. Click 'Create a new GKE cluster`. You will be directed to the Google Cloud Console to create your new cluster.
 
 ![image](./img/gcp-console-new-cluster.png)
 
-4. Once your GKE cluster has been created, it will be displayed in the Cluster Explorer. 
+5. Once your GKE cluster has been created, it will be displayed in the Cluster Explorer. 
 
 ![image](./img/added-cluster.png)
 
-5. Your new cluster will be set as the current context by default. To switch contexts, right click on a different cluster in the Cluster Explorer and select 'Set as Current Context'. 
+6. Your new cluster will be set as the current context by default. To switch contexts, right click on a different cluster in the Cluster Explorer and select 'Set as Current Context'. 
 
 #### Deploy app to GKE
 

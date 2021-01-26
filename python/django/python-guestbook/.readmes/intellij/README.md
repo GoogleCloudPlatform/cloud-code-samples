@@ -27,11 +27,10 @@ The Guestbook sample demonstrates how to deploy a Kubernetes application with a 
 
 ![image](./img/k8s-explorer-empty.png)
 
-3. Once minikube has started, it will be displayed in the Cluster Explorer.
+3. Once minikube has started, it will be displayed in the Cluster Explorer. Minikube will be set as the current context by default. To switch contexts, right click on a different cluster in the Cluster Explorer and select 'Set as Current Context'.
 
 ![image](./img/k8s-explorer-full.png)
 
-5. Minikube will be set as the current context by default. To switch contexts, right click on a different cluster in the Cluster Explorer and select 'Set as Current Context'.
 
 #### Run the app on minikube
 1. Click the Run/Debug configurations dropdown on the top taskbar and select 'Edit Configurations'. Select 'Develop on Kubernetes'. You may need to specify your [container image repository](https://cloud.google.com/code/docs/intellij/configuring-container-image-settings).

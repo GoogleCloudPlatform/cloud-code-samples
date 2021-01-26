@@ -2,9 +2,9 @@
 
 "Hello World" is a Kubernetes application that contains a single
 [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) and a corresponding
-[Service](https://kubernetes.io/docs/concepts/services-networking/service/). The Deployment contains an HTTP web server that renders a simple webpage.
+[Service](https://kubernetes.io/docs/concepts/services-networking/service/). The Deployment contains a web server that renders a simple webpage.
 
-For details on how to install Cloud Code and start a new application using this sample as a template, read the [Google Cloud Code Samples README](https://github.com/GoogleCloudPlatform/cloud-code-samples/blob/master/README.md).
+For details on how to use this sample as a template in Cloud Code, read the documentation for Cloud Code for [VS Code](https://cloud.google.com/code/docs/vscode/quickstart-local-dev?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-) or [IntelliJ](https://cloud.google.com/code/docs/intellij/quickstart-k8s?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-).
 
 ### Table of Contents
 * [Getting Started with VS Code](#getting-started-with-vs-code)
@@ -43,14 +43,13 @@ For details on how to install Cloud Code and start a new application using this 
 
 ![image](./img/k8s-explorer-empty.png)
 
-3. Once minikube has started, it will be displayed in the Cluster Explorer.
+3. Once minikube has started, it will be displayed in the Cluster Explorer. Minikube will be set as the current context by default. To switch contexts, right click on a different cluster in the Cluster Explorer and select 'Set as Current Context'.
 
 ![image](./img/k8s-explorer-full.png)
 
-5. Minikube will be set as the current context by default. To switch contexts, right click on a different cluster in the Cluster Explorer and select 'Set as Current Context'.
 
 #### Run the app on minikube
-1. Click the Run/Debug configurations dropdown on the top taskbar and select 'Edit Configurations'. Select 'Develop on Kubernetes'. You may need to specify your [container image repository](https://cloud.google.com/code/docs/intellij/configuring-container-image-settings).
+1. Click the Run/Debug configurations dropdown on the top taskbar and select 'Edit Configurations'. Select 'Develop on Kubernetes'. You may need to specify your [container image repository](https://cloud.google.com/code/docs/intellij/configuring-container-image-settings?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-).
 
 ![image](./img/image-repo.png)
 
@@ -80,4 +79,3 @@ The Cloud Code team is inviting our user community to sign-up to participate in 
 If you’re invited to join a study, you may try out a new product or tell us what you think about the products you use every day. At this time, Google is only sending invitations for upcoming remote studies. Once a study is complete, you’ll receive a token of thanks for your participation such as a gift card or some Google swag. 
 
 [Sign up using this link](https://google.qualtrics.com/jfe/form/SV_4Me7SiMewdvVYhL?reserved=1&utm_source=In-product&Q_Language=en&utm_medium=own_prd&utm_campaign=Q1&productTag=clou&campaignDate=January2021&referral_code=UXbT481079) and answer a few questions about yourself, as this will help our research team match you to studies that are a great fit.
-

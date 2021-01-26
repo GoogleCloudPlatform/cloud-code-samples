@@ -21,14 +21,13 @@ The Guestbook sample demonstrates how to deploy a Kubernetes application with a 
 1. To run your application, click on the Cloud Code status bar and select ‘Run on Kubernetes’.  
 ![image](./img/status-bar.png)
 
-2. Select ‘Run locally using minikube’ when prompted. Cloud Code runs your app in a local [minikube](https://minikube.sigs.k8s.io/docs/start/) cluster.
-
+2. Select ‘Run locally using minikube’ when prompted. Cloud Code runs your app in a local [minikube](https://minikube.sigs.k8s.io/docs/start/) cluster.  
 ![image](./img/create-k8s-cluster.png)
 
 3. If prompted, authorize Cloud Shell to use your credentials to make a GCP API call.
 ![image](./img/authorize-cloud-shell.png)
 
-4. View the build progress in the OUTPUT window. Once the build has finished, click on the front end service's URL in the OUTPUT window to view your live application.
+4. View the build progress in the OUTPUT window. Once the build has finished, click on the front end service's URL in the OUTPUT window to view your live application.  
 ![image](./img/kubernetes-guestbook-url.png)
 
 5.  To stop the application, click the stop icon in the Debug Explorer.
@@ -38,13 +37,13 @@ The Guestbook sample demonstrates how to deploy a Kubernetes application with a 
 
 #### Set up a GKE cluster
 
-1. From the command palette, run "Create GKE cluster".
+1. From the command palette, run "Create GKE cluster".  
 ![image](./img/create-gke-cluster.png)
 
-2. Follow the steps to configure your cluster and click "Create Cluster". Once your cluster has been created, it will be displayed in the Google Kubernetes Engine Explorer.
+2. Follow the steps to configure your cluster and click "Create Cluster". Once your cluster has been created, it will be displayed in the Google Kubernetes Engine Explorer.  
 ![image](./img/gke-cluster-config.png)
 
-3. Your new cluster will be set as the active cluster by default. To switch clusters, right click on a different cluster in the GKE Explorer and select “Set as Active Cluster”. 
+3. Your new cluster will be set as the active cluster by default. To switch clusters, right click on a different cluster in the GKE Explorer and select “Set as Active Cluster”.  
 ![image](./img/kubernetes-explorer-new-cluster.png)
 
 #### Deploy app to GKE

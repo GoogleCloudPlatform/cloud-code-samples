@@ -18,7 +18,7 @@ This "Hello World" sample demonstrates how to deploy a simple "Hello World" appl
 
 #### Define run configuration
 
-1. Click the Run/Debug configurations dropdown on the top taskbar and select 'Edit Configurations'. 
+1. Click the Run/Debug configurations dropdown on the top taskbar and select 'Edit Configurations'.  
 ![image](./img/edit-config.png)
 
 2. Select 'Cloud Run: Run Locally' and specify your [builder option](https://cloud.google.com/code/docs/intellij/developing-a-cloud-run-app#defining_your_run_configuration?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-). Cloud Code supports Docker, Jib, and Buildpacks. See the skaffold documentation on [builders](https://skaffold.dev/docs/pipeline-stages/builders/) for more information about build artifact types.  

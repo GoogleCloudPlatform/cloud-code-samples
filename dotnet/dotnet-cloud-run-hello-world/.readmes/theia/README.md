@@ -14,53 +14,45 @@ This "Hello World" sample demonstrates how to deploy a simple "Hello World" appl
 ## Getting Started
 
 ### Run the app locally with the Cloud Run Emulator
-1. Click on the Cloud Code status bar and select 'Run on Cloud Run Emulator'.
-
+1. Click on the Cloud Code status bar and select 'Run on Cloud Run Emulator'.  
 ![image](./img/status-bar.png)
 
-2. Use the Cloud Run Emulator dialog to specify your [builder option](https://cloud.google.com/code/docs/vscode/deploying-a-cloud-run-app#deploying_a_cloud_run_service). Cloud Code supports Docker, Jib, and Buildpacks. See the skaffold documentation on [builders](https://skaffold.dev/docs/pipeline-stages/builders/) for more information about build artifact types.  
-
+2. Use the Cloud Run Emulator dialog to specify your [builder option](https://cloud.google.com/code/docs/vscode/deploying-a-cloud-run-app?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-#deploying_a_cloud_run_service). Cloud Code supports Docker, Jib, and Buildpacks. See the skaffold documentation on [builders](https://skaffold.dev/docs/pipeline-stages/builders/) for more information about build artifact types.  
 ![image](./img/build-config.png)
 
-3. Click ‘Run’. If prompted, authorize Cloud Shell to make GCP API calls.
-
+3. Click ‘Run’. If prompted, authorize Cloud Shell to make GCP API calls.  
 ![image](./img/authorize-cloud-shell.png)
 
-4. View the build progress in the OUTPUT window. Once the build has finished, click on the URL in the OUTPUT window to view your live application.
-
+4. View the build progress in the OUTPUT window. Once the build has finished, click on the URL in the OUTPUT window to view your live application.  
 ![image](./img/cloud-run-url.png)
 
-5. To stop the application, navigate to the Debug window in the left side taskbar and click the stop icon.
-
+5. To stop the application, navigate to the Debug window in the left side taskbar and click the stop icon.  
 ![image](./img/debug-window.png)
 
 ### Deploy to Cloud Run
 
-1. Select 'Deploy to Cloud Run' using the Cloud Code status bar.
-
+1. Select 'Deploy to Cloud Run' using the Cloud Code status bar.  
 ![image](./img/status-bar.png)
 
 2. If prompted, login to your Google Cloud account and set your project.
 
-3. Use the Deploy to Cloud Run dialog to specify your build option and configure your deploy settings. For more information on the configuration options available, see [Deploying a Cloud Run app](https://cloud.google.com/code/docs/vscode/deploying-a-cloud-run-app).  
-
+3. Use the Deploy to Cloud Run dialog to specify your build option and configure your deploy settings. For more information on the configuration options available, see [Deploying a Cloud Run app](https://cloud.google.com/code/docs/vscode/deploying-a-cloud-run-app?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-).  
 ![image](./img/deploy-build-config.png)
 
 4. Click 'Deploy'. Cloud Code now builds your image, pushes it to the container registry, and deploys your service to Cloud Run.
 
-5. View your live service by clicking on the URL displayed at the top of the 'Deploy to Cloud Run' dialog. 
-
+5. View your live service by clicking on the URL displayed at the top of the 'Deploy to Cloud Run' dialog.  
 ![image](./img/cloud-run-deployed-url.png)
 
 ---
 ## Next steps
-* Install Cloud Code on your local [VS Code](https://cloud.google.com/code/docs/vscode/install) or [IntelliJ](https://cloud.google.com/code/docs/intellij/install) IDE
-* Try [debugging your app](https://cloud.google.com/code/docs/vscode/debug) using Cloud Code
-* Navigate the [Cloud Run Explorer](https://cloud.google.com/code/docs/vscode/cloud-run-explorer)
-* Launch the [Log Viewer](https://cloud.google.com/code/docs/vscode/logging#cloud_run_logs)
-* Create a [Cloud Run for Anthos GKE cluster](https://cloud.google.com/code/docs/vscode/adding-an-anthos-gke-cluster)
-* Enable [Cloud APIs and client libraries](https://cloud.google.com/code/docs/vscode/client-libraries)
-* Manage secrets with [Secret Manager](https://cloud.google.com/code/docs/vscode/secret-manager)
+* Install Cloud Code on your local [VS Code](https://cloud.google.com/code/docs/vscode/install?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-) or [IntelliJ](https://cloud.google.com/code/docs/intellij/install?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-) IDE
+* Try [debugging your app](https://cloud.google.com/code/docs/vscode/debug?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-) using Cloud Code
+* Navigate the [Cloud Run Explorer](https://cloud.google.com/code/docs/vscode/cloud-run-explorer?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-)
+* Launch the [Log Viewer](https://cloud.google.com/code/docs/vscode/logging#cloud_run_logs?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-)
+* Create a [Cloud Run for Anthos GKE cluster](https://cloud.google.com/code/docs/vscode/adding-an-anthos-gke-cluster?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-)
+* Enable [Cloud APIs and client libraries](https://cloud.google.com/code/docs/vscode/client-libraries?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-)
+* Manage secrets with [Secret Manager](https://cloud.google.com/code/docs/vscode/secret-manager?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-)
 
 For more Cloud Code tutorials and resources, check out [Awesome Cloud Code](https://github.com/russwolf/awesome-cloudclode)!
 

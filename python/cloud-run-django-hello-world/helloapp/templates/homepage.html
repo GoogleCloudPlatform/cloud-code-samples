@@ -4,6 +4,7 @@
 <meta charset=utf-8>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Congratulations | Cloud Run</title>
+{% load static %}
 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="preload" as="font">
 <link
   href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsSAAALEgHS3X78AAAB5klEQVRYha2XMVLDMBBFPxl6qCjciBskNzA3AE5AqrTQuaVVR1pX4QSYGyQ3SGqGATcu3JBUlGGUiTPyeiWvZH6TsSTLb/+XN8nZfr+H0lUBYAvgucySbzBSupoCmJRZ8sTNx2p0vG8J4AHAl9LVQunqmtnPQD4qXa0d81GyARo1IC/2hmWWGIfeAYwBGIi7fwMos2QNYEfmTLWXZKw4fl4AeKOQQxwAcaERrbIg14MjCQKwYrA1KJI+gBtmjLqAIZEcXsNGSlfb42a27sssKaw15lz8ePbcGOdcrzPViFz3uuCIwVZQJBIAbiMuBlviSCQASulqEgjQqPctaQE4+gEiYrDljYQ6AIcLU2ZM6gJ8kUgBxp6uGKJOJFIACJuSRK1IOgCecxDzNrh0iuScW/D7+eG4LxGuk6sDcDVbTZhuCEe1sV/JxuFpnacF5wDX/zsAV7OVOZS3EQ8/tOo6Tw+tWgqwqfN0S8Ziqp/Xedr6SScFWDBjIQAny+lEC8CT/5KsC7G/ZbkXwFF9WefpmoxJq+9YHgMQc/qdlscAhNrvtdwJ4Mh/x1Thq77XcieApHoPgNjyUABJ8wmyfBAAU32w5SyAI/+5p/tFW84CkOpfzb9kaqll/yDLfQDsgy2Z6gdb3hKAP2n+6m+fxBVHAAAAAElFTkSuQmCC"
@@ -129,6 +130,12 @@ code {
         background: black url('/static/dark_bg.svg');
         color:white;
     }
+	a {
+		color: #8AB4F8;
+	}
+	a:visited {
+		color: #b48af8;
+	}
 }
 
 </style>
@@ -139,7 +146,7 @@ code {
 		<div class="hero">
 			<div style="text-align:center;">
 				<picture>
-					<source srcset="/static/celebration-dark.svg" media="(prefers-color-scheme: dark)">
+					<source srcset="{% static 'celebration-darkf.svg' %}" media="(prefers-color-scheme: dark)">
 					<img src="/static/celebration.svg" alt="A group celebrating" width="427" height="231">
 				</picture>
 			</div>
@@ -164,11 +171,27 @@ code {
 			</p>
 
 			<h3>What's next?</h3>
-			<p class="next">Manage Cloud APIs and libraries in Cloud Code for <a href="https://cloud.google.com/code/docs/vscode/client-libraries" target="_blank" rel="noopener">VSCode</a> or <a href="https://cloud.google.com/code/docs/intellij/client-libraries" target="_blank" rel="noopener">IntelliJ</a></p>
+			<p class="next">
+				Want to help shape the future of Cloud Code? Sign up for the chance to participate in our ongoing research studies 
+				<a href="https://google.qualtrics.com/jfe/form/SV_4Me7SiMewdvVYhL?reserved=1&utm_source=In-product&Q_Language=en&utm_medium=own_prd&utm_campaign=Q1&productTag=clou&campaignDate=January2021&referral_code=UXlX318928" target="_blank" rel="noopener">
+				here!
+				</a>
+			</p>
+			<p class="next">Try out live debugging in Cloud Code for <a href="https://cloud.google.com/code/docs/vscode/debugging-a-cloud-run-service" target="_blank" rel="noopener">VS Code</a> or <a href="https://cloud.google.com/code/docs/intellij/debugger" target="_blank" rel="noopener">IntelliJ</a></p>
+			<p class="next">Extend your Cloud Code application with Secret Manager for <a href="https://cloud.google.com/code/docs/vscode/secret-manager" target="_blank" rel="noopener">VS Code</a> or <a href="https://cloud.google.com/code/docs/intellij/secret-manager" target="_blank" rel="noopener">IntelliJ</a></p>
+			<p class="next">Joing the <em>#cloud-code</em> channel in the <a href="https://join.slack.com/t/googlecloud-community/shared_invite/zt-erdf4ity-8ZMUQ18DYV~5hkbZ~gCswg" target="_blank" rel="noopener">Google Cloud Platform Slack community</a> to ask questions, provide feedback, and get the latest Cloud Code news</p>
 			<p class="next">Explore more options with
 			<p class="cta">
 				<a href="https://cloud.google.com/code/docs" target="_blank" rel="noopener">
-					CLOUD CODE DOCS</a>
+					CLOUD CODE DOCS
+				</a>
+				<a href="https://cloud.google.com/run/docs" target="_blank" rel="noopener">
+					GOOGLE CLOUD RUN
+				</a>
+				<a href="https://google.qualtrics.com/jfe/form/SV_4Me7SiMewdvVYhL?reserved=1&utm_source=In-product&Q_Language=en&utm_medium=own_prd&utm_campaign=Q1&productTag=clou&campaignDate=January2021&referral_code=UXlX318928" target="_blank" rel="noopener">
+					SIGN UP FOR USER RESEARCH
+				</a>
+				<br/>
 			</p>
 		</div>
 	</div>

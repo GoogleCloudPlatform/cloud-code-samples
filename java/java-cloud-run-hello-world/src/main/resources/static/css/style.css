@@ -74,7 +74,7 @@ em {
 	line-height: 1.6;
 }
 
-code {
+code, .code {
 	font-family: 'Roboto Mono', Courier, monospace;
 	color: #A30038;
 	background-color: #F8F8F8;
@@ -135,3 +135,4 @@ code {
 		color: white;
 	}
 }
+

@@ -16,7 +16,6 @@
   },
   "dependencies": {
     "express": "^4.17.1",
-    "gcp-metadata": "^4.0.0",
     "handlebars": "^4.7.4"
   },
   "devDependencies": {
@@ -26,7 +25,6 @@
     "eslint-plugin-prettier": "3.3.1",
     "eslint-plugin-promise": "4.2.1",
     "gaxios": "4.0.0",
-    "gaxios": "2.3.4",
     "mocha": "8.2.1",
     "prettier": "2.2.1"
   }

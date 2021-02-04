@@ -9,8 +9,8 @@ import (
 
 // templateData provides template parameters.
 type templateData struct {
-	Service      string
-	Revision     string
+	Service  string
+	Revision string
 }
 
 // Variables used to generate the HTML page.
@@ -34,8 +34,8 @@ func main() {
 	// Prepare template for execution.
 	tmpl = template.Must(template.ParseFiles("index.html"))
 	data = templateData{
-		Service:      service,
-		Revision:     revision
+		Service:  service,
+		Revision: revision,
 	}
 
 	// Define HTTP server.

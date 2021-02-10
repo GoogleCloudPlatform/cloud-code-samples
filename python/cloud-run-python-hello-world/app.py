@@ -10,29 +10,17 @@ from flask import Flask, render_template
 app = Flask(__name__)
 
 
-def get_metadata(item_name):
-    metadata_url = 'http://metadata.google.internal/computeMetadata/v1/'
-    headers = {'Metadata-Flavor': 'Google'}
-
-    try:
-        r = requests.get(metadata_url + item_name, headers=headers)
-        return r.text
-    except:
-        return 'Unavailable'
-
-
 @app.route('/')
 def hello():
     """Return a friendly HTTP greeting."""
     message = "It's running!"
 
-    project = get_metadata('project/project-id')
+    """Get Cloud Run environment variables."""
     service = os.environ.get('K_SERVICE', 'Unknown service')
     revision = os.environ.get('K_REVISION', 'Unknown revision')
 
     return render_template('index.html',
         message=message,
-        Project=project,
         Service=service,
         Revision=revision)
 

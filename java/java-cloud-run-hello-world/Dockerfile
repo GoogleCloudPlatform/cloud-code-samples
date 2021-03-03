@@ -1,6 +1,6 @@
-# Use the official maven/Java 8 image to create a build artifact.
+# Use the official maven/Java 11 image to create a build artifact.
 # https://hub.docker.com/_/maven
-FROM maven:3-jdk-8-slim AS build-env
+FROM maven:3-jdk-11-slim AS build-env
 
 # Set the working directory to /app
 WORKDIR /app
@@ -12,11 +12,10 @@ COPY src ./src
 # Download dependencies and build a release artifact.
 RUN mvn package -DskipTests
 
-# Use AdoptOpenJDK for base image.
-# It's important to use OpenJDK 8u191 or above that has container support enabled.
-# https://hub.docker.com/r/adoptopenjdk/openjdk8
+# Use OpenJDK for base image.
+# https://hub.docker.com/_/openjdk
 # https://docs.docker.com/develop/develop-images/multistage-build/#use-multi-stage-builds
-FROM adoptopenjdk/openjdk8:alpine-slim
+FROM openjdk:11-slim
 
 # Copy the jar to the production image from the builder stage.
 COPY --from=build-env /app/target/hello-world-*.jar /hello-world.jar

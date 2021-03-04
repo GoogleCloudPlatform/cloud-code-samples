@@ -1,7 +1,7 @@
 body {
 	font-family: 'Roboto', sans-serif;
 	font-display: fallback;
-	background: url('img/cloud_bg.svg');
+	background: url('../img/cloud_bg.svg');
 	background-size: cover;
 	background-position: center;
 	line-height: 1.6;
@@ -22,6 +22,11 @@ h2 {
 h3 {
 	font-size: 20px;
 	margin-bottom: 0px;
+}
+
+em {
+	font-weight: 600;
+	font-style: normal;
 }
 
 .next {
@@ -63,7 +68,7 @@ h3 {
 	color: #1967D2;
 	font-weight: 600;
 	padding: 16px 24px 16px 40px;
-	background: url('img/lightbulb_icon.svg') #E8F0FE ;
+	background: url('../img/lightbulb_icon.svg') #E8F0FE ;
 	background-position: 16px 16px;
 	background-repeat: no-repeat;
 	line-height: 1.6;
@@ -79,12 +84,16 @@ code {
 	font-weight: 500;
 }
 
+.cta {
+	padding-bottom: 52px;
+}
+
 .cta a {
 	color: white;
 	text-decoration: none;
 	background-color: rgb(14, 101, 241);
 	padding: 8px 12px;
-	margin-top: 8px;
+	margin: 8px;
 	min-height: 36px;
 	border-radius: 2px;
 	font-weight: 600;
@@ -113,7 +122,16 @@ code {
 }
 @media (prefers-color-scheme: dark) {
     body {
-        background: black url('img/dark_bg.svg');
+        background: black url('../img/dark_bg.svg');
         color:white;
     }
+	a {
+		color: #8AB4F8;
+	}
+	a:visited {
+		color: #b48af8;
+	}
+	.cta a {
+		color: white;
+	}
 }

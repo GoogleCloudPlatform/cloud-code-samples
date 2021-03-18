@@ -1,5 +1,5 @@
 # Use maven to compile the java application.
-FROM docker.io/maven AS build-env
+FROM maven:3-jdk-11-slim AS build-env
 
 # Set the working directory to /app
 WORKDIR /app
@@ -18,7 +18,7 @@ COPY . ./
 RUN mvn -Dmaven.test.skip=true package
 
 # Build runtime image.
-FROM docker.io/openjdk:8-jdk-alpine
+FROM openjdk:11-jre-slim
 
 # Copy the compiled files over.
 COPY --from=build-env /app/target /app/

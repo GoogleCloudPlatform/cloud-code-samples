@@ -10,6 +10,7 @@ This "Hello World" sample demonstrates how to deploy a simple "Hello World" appl
     2. [Deploy to Cloud Run](#deploy-to-cloud-run)
 * [Next steps](#next-steps)
 * [Sign up for User Research](#sign-up-for-user-research)
+* [Getting support](#getting-support)
 
 ---
 ## Getting Started
@@ -70,3 +71,11 @@ If you’re invited to join a study, you may try out a new product or tell us wh
 [Sign up using this link](https://google.qualtrics.com/jfe/form/SV_4Me7SiMewdvVYhL?reserved=1&utm_source=In-product&Q_Language=en&utm_medium=own_prd&utm_campaign=Q1&productTag=clou&campaignDate=January2021&referral_code=UXbT481079) and answer a few questions about yourself, as this will help our research team match you to studies that are a great fit.
 
 ----
+
+## Getting support
+
+If you encounter any bugs, confusing commands, or unclear documentation, you can file your feedback [directly on GitHub](https://github.com/GoogleCloudPlatform/cloud-code-intellij/issues).
+
+If you'd like to propose a feature idea or have an open-ended discussion about a question you have with the Cloud Code team and the community, you can post on the [Cloud Code GitHub discussions forum](https://github.com/GoogleCloudPlatform/cloud-code-intellij/discussions).
+
+Ask a question about Cloud Code on [Stack Overflow](http://stackoverflow.com/questions/tagged/cloud-code-intellij). Use the tag `cloud-code-intellij` for questions about Cloud Code. This tag not only receives responses from the Stack Overflow community, but also from Google engineers, who monitor the tag and offer unofficial support.

@@ -13,6 +13,7 @@ This "Hello World" sample demonstrates how to deploy a simple "Hello World" appl
 * [Next steps](#next-steps)
 * [Sign up for User Research](#sign-up-for-user-research)
 * [Kubernetes Architecture Diagram](#kubernetes-architecture-diagram)
+* [Getting support](#getting-support)
 
 ---
 ## Getting Started
@@ -101,3 +102,11 @@ If you’re invited to join a study, you may try out a new product or tell us wh
 ![kubernetes diagram](./img/diagram.png)
 
 ----
+
+## Getting support
+
+If you encounter any bugs, confusing commands, or unclear documentation, you can file your feedback [directly on GitHub](https://github.com/GoogleCloudPlatform/cloud-code-intellij/issues).
+
+If you'd like to propose a feature idea or have an open-ended discussion about a question you have with the Cloud Code team and the community, you can post on the [Cloud Code GitHub discussions forum](https://github.com/GoogleCloudPlatform/cloud-code-intellij/discussions).
+
+Ask a question about Cloud Code on [Stack Overflow](http://stackoverflow.com/questions/tagged/cloud-code-intellij). Use the tag `google-cloud-intellij` for questions about Cloud Code. This tag not only receives responses from the Stack Overflow community, but also from Google engineers, who monitor the tag and offer unofficial support.

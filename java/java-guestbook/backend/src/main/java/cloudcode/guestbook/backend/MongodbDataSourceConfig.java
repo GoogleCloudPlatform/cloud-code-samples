@@ -27,9 +27,8 @@ public class MongodbDataSourceConfig extends AbstractMongoClientConfiguration {
      */
     @Override
     public final MongoClient mongoClient() {
-        ConnectionString connectionString = new ConnectionString(
-            "mongodb://" + System.getenv("GUESTBOOK_DB_ADDR")
-            );
+        ConnectionString connectionString =
+                new ConnectionString("mongodb://" + System.getenv("GUESTBOOK_DB_ADDR"));
         return MongoClients.create(connectionString);
     }
 }

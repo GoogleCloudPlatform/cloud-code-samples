@@ -5,13 +5,14 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Run on Kubernetes",
-      "type": "cloudcode.kubernetes",
-      "request": "launch",
-      "skaffoldConfig": "${workspaceFolder}/skaffold.yaml",
-      "watch": true,
-      "cleanUp": true,
-      "portForward": true
+        "name": "Run on Kubernetes",
+        "type": "cloudcode.kubernetes",
+        "request": "launch",
+        "skaffoldConfig": "${workspaceFolder}/skaffold.yaml",
+        "watch": true,
+        "cleanUp": false,
+        "portForward": true,
+        "imageRegistry": "gcr.io/cs201-assignment-4"
     }
-  ]
+]
 }

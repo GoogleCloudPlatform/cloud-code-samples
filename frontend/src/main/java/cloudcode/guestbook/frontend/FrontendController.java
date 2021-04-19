@@ -36,6 +36,20 @@ public class FrontendController {
         model.addAttribute("messages", response);
         return "home";
     }
+    
+    /**
+     * endpoint for the landing page
+     * @param model defines model for html template
+     * @return the name of the html template to render
+     */
+    @GetMapping("/test/")
+    public final String test(final Model model) {
+        RestTemplate restTemplate = new RestTemplate();
+        GuestBookEntry[] response = restTemplate.getForObject(backendUri,
+            GuestBookEntry[].class);
+        model.addAttribute("messages", response);
+        return "home";
+    }
 
     /**
      * endpoint for handling form submission

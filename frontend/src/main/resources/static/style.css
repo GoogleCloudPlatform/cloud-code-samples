@@ -97,6 +97,13 @@ h1 a {
     position: relative;
 }
 
+svg.icn {
+    display: inline;
+    fill: white;
+    height: 1.7rem;
+    width: auto;
+}
+
 @media (min-width: 1200px) {
     .container {
         max-width: 900px;

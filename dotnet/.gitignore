@@ -1,9 +1,0 @@
-*.suo
-*.user
-_ReSharper.*
-*.vscode/
-*.vs/
-bin/
-obj/
-packages
-

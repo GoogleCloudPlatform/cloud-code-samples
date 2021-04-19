@@ -5,16 +5,16 @@ package cloudcode.guestbook.frontend;
  */
 public class GuestBookEntry {
 
-    private String author;
+    private String email;
     private String message;
     private long date;
 
-    public final String getAuthor() {
-        return author;
+    public final String getEmail() {
+        return email;
     }
 
-    public final void setAuthor(String author) {
-        this.author = author;
+    public final void setEmail(String email) {
+        this.email = email;
     }
 
     public final String getMessage() {

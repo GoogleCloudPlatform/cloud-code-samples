@@ -24,12 +24,12 @@
 
     <div class="container posts mt-0">
         <form class="form-inline" method="POST" th:action="@{/post}" th:object="${formmessage}">
-            <label class="sr-only" for="name">Name</label>
+            <label class="sr-only" for="email">Email</label>
             <div class="input-group mb-2 mr-sm-2">
                 <div class="input-group-prepend">
-                    <div class="input-group-text">Your Name</div>
+                    <div class="input-group-text">Email</div>
                 </div>
-                <input type="text" class="form-control" id="author" name="author" required>
+                <input type="email" class="form-control" id="email" name="email" required>
             </div>
             <label class="sr-only" for="message">Message</label>
             <div class="input-group mb-2 mr-sm-2">
@@ -43,7 +43,7 @@
 
         <div class="card my-3 col-12" th:each="m : ${messages}">
             <div class="card-body">
-                <h5 class="card-title" th:text="${m.Author}">Author</h5>
+                <h5 class="card-title" th:text="${m.Email}">Email</h5>
                 <h6 class="card-subtitle mb-2 text-muted" th:text="${T(cloudcode.guestbook.frontend.PrintDuration).print(m.Date)}">Date</h6>
                 <br>
                 <p class="card-text" th:text="${m.Message}">Message</p>

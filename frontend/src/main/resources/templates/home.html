@@ -24,25 +24,20 @@
   </div>
 
   <div class="container posts mt-0">
-    <form class="form-inline" method="POST" th:action="@{/post}" th:object="${formmessage}">
+    <form method="POST" th:action="@{/post}" th:object="${formmessage}">
       <label class="sr-only" for="email">Email</label>
-      <div class="input-group mb-2 mr-sm-2">
-        <div class="input-group-prepend">
-          <div class="input-group-text">Email</div>
-        </div>
+      <div class="mb-2 mr-sm-2">
+        <div>Email</div>
         <input type="email" class="form-control" id="email" name="email" required>
       </div>
       <label class="sr-only" for="username">Username</label>
-      <div class="input-group mb-2 mr-sm-2">
-        <div class="input-group-prepend">
-          <div class="input-group-text">Username</div>
-        </div>
+      <div class="mb-2 mr-sm-2">
+        <div>Username</div>
         <input type="text" class="form-control" id="username" name="username" required>
       </div>
-      <div class="input-group mb-2 mr-sm-2">
-        <div class="input-group-prepend">
-          <div class="input-group-text">Password</div>
-        </div>
+      <label class="sr-only" for="username">Password</label>
+      <div class="mb-2 mr-sm-2">
+        <div>Password</div>
         <input type="password" class="form-control" id="password" name="password" required>
       </div>
       <button type="submit" class="btn btn-primary mb-2">

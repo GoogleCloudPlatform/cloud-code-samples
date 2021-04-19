@@ -31,12 +31,12 @@
                 </div>
                 <input type="email" class="form-control" id="email" name="email" required>
             </div>
-            <label class="sr-only" for="message">Message</label>
+            <label class="sr-only" for="username">Username</label>
             <div class="input-group mb-2 mr-sm-2">
                 <div class="input-group-prepend">
-                    <div class="input-group-text">Message</div>
+                    <div class="input-group-text">Username</div>
                 </div>
-                <input type="text" class="form-control" id="message" name="message" required>
+                <input type="text" class="form-control" id="username" name="username" required>
             </div>
             <button type="submit" class="btn btn-primary mb-2">Post to Guestbook</button>
         </form>
@@ -46,7 +46,7 @@
                 <h5 class="card-title" th:text="${m.Email}">Email</h5>
                 <h6 class="card-subtitle mb-2 text-muted" th:text="${T(cloudcode.guestbook.frontend.PrintDuration).print(m.Date)}">Date</h6>
                 <br>
-                <p class="card-text" th:text="${m.Message}">Message</p>
+                <p class="card-text" th:text="${m.Username}">Username</p>
             </div>
         </div>
         <div class="alert alert-info" role="alert" th:if="${#lists.isEmpty(messages)}">

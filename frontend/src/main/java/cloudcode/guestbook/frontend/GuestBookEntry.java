@@ -6,7 +6,7 @@ package cloudcode.guestbook.frontend;
 public class GuestBookEntry {
 
     private String email;
-    private String message;
+    private String username;
     private long date;
 
     public final String getEmail() {
@@ -17,12 +17,12 @@ public class GuestBookEntry {
         this.email = email;
     }
 
-    public final String getMessage() {
-        return message;
+    public final String getUsername() {
+        return username;
     }
 
-    public final void setMessage(String message) {
-        this.message = message;
+    public final void setUsername(String username) {
+        this.username = username;
     }
 
     public final long getDate() {

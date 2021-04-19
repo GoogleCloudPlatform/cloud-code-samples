@@ -38,8 +38,14 @@
                 </div>
                 <input type="text" class="form-control" id="username" name="username" required>
             </div>
-            <button type="submit" class="btn btn-primary mb-2">Post to Guestbook</button>
-        </form>
+            <div class="input-group mb-2 mr-sm-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">Password</div>
+                </div>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Create Account</button>
+          </form>
 
         <div class="card my-3 col-12" th:each="m : ${messages}">
             <div class="card-body">
@@ -47,6 +53,8 @@
                 <h6 class="card-subtitle mb-2 text-muted" th:text="${T(cloudcode.guestbook.frontend.PrintDuration).print(m.Date)}">Date</h6>
                 <br>
                 <p class="card-text" th:text="${m.Username}">Username</p>
+                <br>
+                <p class="card-text" th:text="${m.Password}">Password</p>
             </div>
         </div>
         <div class="alert alert-info" role="alert" th:if="${#lists.isEmpty(messages)}">

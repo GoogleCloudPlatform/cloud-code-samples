@@ -57,7 +57,7 @@ public class FrontendController {
      * @return redirects back to home page
      * @throws URISyntaxException when there is an issue with the backend uri
      */
-    @RequestMapping(value = "/post", method = RequestMethod.POST)
+    @RequestMapping(value = "/signup", method = RequestMethod.POST)
     public final String post(final GuestBookEntry formMessage)
             throws URISyntaxException {
         URI url = new URI(backendUri);

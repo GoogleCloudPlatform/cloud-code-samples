@@ -38,4 +38,10 @@ public class BackendController {
         message.setDate(System.currentTimeMillis());
         repository.save(message);
     }
+    
+    @PostMapping("/signup")
+    public final void addUser(@RequestBody GuestBookEntry message) {
+        message.setDate(System.currentTimeMillis());
+        repository.save(message);
+    }
 }

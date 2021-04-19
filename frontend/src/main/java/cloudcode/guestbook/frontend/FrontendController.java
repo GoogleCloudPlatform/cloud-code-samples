@@ -22,6 +22,11 @@ public class FrontendController {
     System.getenv("GUESTBOOK_API_ADDR")
   );
 
+  private String signupUri = String.format(
+    "http://%s/signup",
+    System.getenv("GUESTBOOK_API_ADDR")
+  );
+
   /**
    * endpoint for the landing page
    * @param model defines model for html template
@@ -63,7 +68,7 @@ public class FrontendController {
   @RequestMapping(value = "/signup", method = RequestMethod.POST)
   public final String post(final GuestBookEntry formMessage)
     throws URISyntaxException {
-    URI url = new URI(backendUri);
+    URI url = new URI(signupUri);
 
     HttpHeaders httpHeaders = new HttpHeaders();
     httpHeaders.set("Content-Type", "application/json");

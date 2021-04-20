@@ -39,18 +39,10 @@ public class FrontendController {
    * @return the name of the html template to render
    */
   @GetMapping("/")
-  public final String main(
-    final Model model,
-    @RequestParam("username") String username,
-    @RequestParam("password") String password
-  )
-    throws URISyntaxException {
-    URI uri = new URI(
-      String.format("%s?username=%s&password=%s", loginUri, username, password)
-    );
+  public final String main(final Model model) {
     RestTemplate restTemplate = new RestTemplate();
     GuestBookEntry[] response = restTemplate.getForObject(
-      uri,
+      backendUri,
       GuestBookEntry[].class
     );
     model.addAttribute("messages", response);
@@ -63,10 +55,18 @@ public class FrontendController {
    * @return the name of the html template to render
    */
   @GetMapping("/test")
-  public final String test(final Model model) {
+  public final String test(
+    final Model model,
+    @RequestParam("username") String username,
+    @RequestParam("password") String password
+  )
+    throws URISyntaxException {
+    URI uri = new URI(
+      String.format("%s?username=%s&password=%s", loginUri, username, password)
+    );
     RestTemplate restTemplate = new RestTemplate();
     GuestBookEntry[] response = restTemplate.getForObject(
-      backendUri,
+      uri,
       GuestBookEntry[].class
     );
     model.addAttribute("messages", response);

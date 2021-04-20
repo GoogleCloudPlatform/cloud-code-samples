@@ -6,6 +6,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -33,11 +34,13 @@ public class BackendController {
    * @return a list of GuestBookEntry objects
    */
   @GetMapping("/login")
-  public final List<GuestBookEntry> login(@RequestBody GuestBookEntry message) {
-    message.setDate(System.currentTimeMillis());
+  public final List<GuestBookEntry> login(
+    @RequestParam("username") String username,
+    @RequestParam("password") String password
+  ) {
     List<GuestBookEntry> msgList = repository.findByUsernameAndPassword(
-      message.getUsername(),
-      message.getPassword()
+      username,
+      password
     );
     return msgList;
   }

@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 
 /**
@@ -27,16 +28,29 @@ public class FrontendController {
     System.getenv("GUESTBOOK_API_ADDR")
   );
 
+  private String loginUri = String.format(
+    "http://%s/login",
+    System.getenv("GUESTBOOK_API_ADDR")
+  );
+
   /**
    * endpoint for the landing page
    * @param model defines model for html template
    * @return the name of the html template to render
    */
   @GetMapping("/")
-  public final String main(final Model model) {
+  public final String main(
+    final Model model,
+    @RequestParam("username") String username,
+    @RequestParam("password") String password
+  )
+    throws URISyntaxException {
+    URI uri = new URI(
+      String.format("%s?username=%s&password=%s", loginUri, username, password)
+    );
     RestTemplate restTemplate = new RestTemplate();
     GuestBookEntry[] response = restTemplate.getForObject(
-      backendUri,
+      uri,
       GuestBookEntry[].class
     );
     model.addAttribute("messages", response);
@@ -48,7 +62,7 @@ public class FrontendController {
    * @param model defines model for html template
    * @return the name of the html template to render
    */
-  @GetMapping("/test/")
+  @GetMapping("/test")
   public final String test(final Model model) {
     RestTemplate restTemplate = new RestTemplate();
     GuestBookEntry[] response = restTemplate.getForObject(
@@ -56,7 +70,7 @@ public class FrontendController {
       GuestBookEntry[].class
     );
     model.addAttribute("messages", response);
-    return "home";
+    return "test";
   }
 
   /**
@@ -102,6 +116,6 @@ public class FrontendController {
     RestTemplate restTemplate = new RestTemplate();
     restTemplate.postForObject(url, httpEntity, String.class);
 
-    return "redirect:/";
+    return "redirect:/test/";
   }
 }

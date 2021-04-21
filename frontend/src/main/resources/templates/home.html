@@ -19,7 +19,7 @@
     <a class="nav-link active" href="/">Home/Search</a>
     <a class="nav-link" href="#" sec:authorize="isAuthenticated()">Favorites</a>
     <a class="nav-link" href="#" sec:authorize="isAuthenticated()">Portfolio</a>
-    <a class="nav-link" href="#" sec:authorize="isAuthenticated()">Logout</a>
+    <a class="nav-link" href="/login?logout" sec:authorize="isAuthenticated()">Logout</a>
     <a class="nav-link" href="/login" sec:authorize="!isAuthenticated()">Login/Sign Up</a>
   </nav>
   <div class="header">

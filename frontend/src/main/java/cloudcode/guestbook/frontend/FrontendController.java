@@ -41,9 +41,9 @@ public class FrontendController {
   @GetMapping("/")
   public final String main(final Model model) {
     RestTemplate restTemplate = new RestTemplate();
-    GuestBookEntry[] response = restTemplate.getForObject(
+    User[] response = restTemplate.getForObject(
       backendUri,
-      GuestBookEntry[].class
+      User[].class
     );
     model.addAttribute("messages", response);
     return "home";
@@ -65,9 +65,9 @@ public class FrontendController {
       String.format("%s?username=%s&password=%s", loginUri, username, password)
     );
     RestTemplate restTemplate = new RestTemplate();
-    GuestBookEntry[] response = restTemplate.getForObject(
+    User[] response = restTemplate.getForObject(
       uri,
-      GuestBookEntry[].class
+      User[].class
     );
     model.addAttribute("messages", response);
     return "test";
@@ -80,13 +80,13 @@ public class FrontendController {
    * @throws URISyntaxException when there is an issue with the backend uri
    */
   @RequestMapping(value = "/signup", method = RequestMethod.POST)
-  public final String post(final GuestBookEntry formMessage)
+  public final String post(final User formMessage)
     throws URISyntaxException {
     URI url = new URI(signupUri);
 
     HttpHeaders httpHeaders = new HttpHeaders();
     httpHeaders.set("Content-Type", "application/json");
-    HttpEntity<GuestBookEntry> httpEntity = new HttpEntity<GuestBookEntry>(
+    HttpEntity<User> httpEntity = new HttpEntity<User>(
       formMessage,
       httpHeaders
     );
@@ -103,13 +103,13 @@ public class FrontendController {
    * @throws URISyntaxException when there is an issue with the backend uri
    */
   @RequestMapping(value = "/login", method = RequestMethod.POST)
-  public final String login(final GuestBookEntry formMessage)
+  public final String login(final User formMessage)
     throws URISyntaxException {
     URI url = new URI(signupUri);
 
     HttpHeaders httpHeaders = new HttpHeaders();
     httpHeaders.set("Content-Type", "application/json");
-    HttpEntity<GuestBookEntry> httpEntity = new HttpEntity<GuestBookEntry>(
+    HttpEntity<User> httpEntity = new HttpEntity<User>(
       formMessage,
       httpHeaders
     );

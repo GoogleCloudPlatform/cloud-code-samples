@@ -4,11 +4,11 @@ import java.util.List;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 /**
- * represents a custom Mongo repository that stores GuestBookEntry objects
+ * represents a custom Mongo repository that stores User objects
  */
 public interface MessageRepository
-  extends MongoRepository<GuestBookEntry, String> {
-  List<GuestBookEntry> findByUsernameAndPassword(
+  extends MongoRepository<User, String> {
+  List<User> findByUsernameAndPassword(
     String username,
     String password
   );

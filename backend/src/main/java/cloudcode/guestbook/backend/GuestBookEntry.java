@@ -3,7 +3,7 @@ package cloudcode.guestbook.backend;
 /**
  * defines the data associated with a single guest book entry
  */
-public class GuestBookEntry {
+public class User {
 
     private String email;
     private String username;

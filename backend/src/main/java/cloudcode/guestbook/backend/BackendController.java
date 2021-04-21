@@ -51,9 +51,8 @@ public class BackendController {
    * @param message a message object passed in the HTTP POST request
    */
   @PostMapping("/messages")
-  public final void addMessage(@RequestBody User message) {
-    message.setDate(System.currentTimeMillis());
-    repository.save(message);
+  public final void addMessage(@RequestBody User user) {
+    repository.save(user);
   }
 
   @Autowired

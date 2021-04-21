@@ -1,4 +1,4 @@
-package cloudcode.guestbook.backend;
+package cloudcode.guestbook.frontend;
 
 public class SignupResponse {
     public Boolean success;

@@ -33,19 +33,22 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
     throws AuthenticationException {
     String username = authentication.getPrincipal().toString();
     String password = authentication.getCredentials().toString();
+    URI url;
+
     try {
-      UserResponse result = new RestTemplate()
-      .postForObject(
-          new URI(loginUri),
-          new HttpEntity<User>(new User("", username, password)),
-          UserResponse.class
-        );
+      url = new URI(loginUri);
     } catch (URISyntaxException e) {
       throw new AuthenticationServiceException(
         "Could not construct backend URL!"
       );
     }
-    //TODO: call backend
+
+    UserResponse result = new RestTemplate()
+    .postForObject(
+        url,
+        new HttpEntity<User>(new User("", username, password)),
+        UserResponse.class
+      );
     return new UsernamePasswordAuthenticationToken(username, password);
   }
 

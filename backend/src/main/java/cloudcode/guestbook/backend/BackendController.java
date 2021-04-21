@@ -41,15 +41,9 @@ public class BackendController {
       user.getPassword()
     );
     if (userByName == null) {
-      return new UserResponse(
-        false,
-        new UsernameNotFoundException("No Account with Username")
-      );
+      return new UserResponse(false, "No Account with Username");
     } else if (match == null) {
-      return new UserResponse(
-        false,
-        new BadCredentialsException("Incorrect Password")
-      );
+      return new UserResponse(false, "Incorrect Password");
     } else {
       return new UserResponse(true, null);
     }
@@ -70,10 +64,7 @@ public class BackendController {
   @PostMapping("/signup")
   public final UserResponse addUser(@RequestBody User user) {
     if (userService.findUserByEmail(user.getEmail()) != null) {
-      return new UserResponse(
-        false,
-        new BadCredentialsException("Email already registered")
-      );
+      return new UserResponse(false, "Email already registered");
     } else {
       repository.save(user);
       return new UserResponse(true, null);

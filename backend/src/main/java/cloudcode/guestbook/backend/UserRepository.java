@@ -6,10 +6,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 /**
  * represents a custom Mongo repository that stores User objects
  */
-public interface UserRepository
-  extends MongoRepository<User, String> {
-  List<User> findByUsernameAndPassword(
-    String username,
-    String password
-  );
+public interface UserRepository extends MongoRepository<User, String> {
+  List<User> findByUsernameAndPassword(String username, String password);
+  User findByEmail(String email);
 }

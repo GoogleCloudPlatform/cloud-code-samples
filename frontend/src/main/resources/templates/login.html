@@ -1,20 +1,107 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-    <head>
-        <title>Spring Security Example </title>
-    </head>
-    <body>
-        <div th:if="${param.error}">
-            Invalid username and password.
-        </div>
-        <div th:if="${param.logout}">
-            You have been logged out.
-        </div>
-        <form th:action="@{/login}" method="post">
-            <div><label> User Name : <input type="text" name="username"/> </label></div>
-            <div><label> Password: <input type="password" name="password"/> </label></div>
-            <div><input type="submit" value="Sign In"/></div>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Guestbook</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" th:href="@{/css/bootstrap.css}" type="text/css">
+  <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
+  <link rel="icon" th:href="@{/favicon.png}" type="image/x-icon" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand mr-auto" href="#">SalStocks</a>
+    <a class="nav-link" href="#">Home/Search</a>
+    <a class="nav-link" href="#" sec:authorize="isAuthenticated()">Favorites</a>
+    <a class="nav-link" href="#" sec:authorize="isAuthenticated()">Portfolio</a>
+    <a class="nav-link" href="#" sec:authorize="isAuthenticated()">Logout</a>
+    <a class="nav-link" href="#" sec:authorize="!isAuthenticated()">Login/Sign Up</a>
+  </nav>
+  <div class="header">
+    <div class="container">
+      <h1>
+        <a href="/">Welcome!</a>
+      </h1>
+      <a href="#" class="text-muted">View on GitHub</a>
+    </div>
+  </div>
+
+  <div class="container posts mt-0">
+    <div class="row">
+      <div class="col-md-6">
+        <form th:action="@{/login}" method="post" th:object="${formmessage}">
+          <label class="sr-only" for="username">Username</label>
+          <div class="mb-2 mr-sm-2">
+            <div>Username</div>
+            <input type="text" class="form-control" id="login-username" name="username" required>
+          </div>
+          <label class="sr-only" for="username">Password</label>
+          <div class="mb-2 mr-sm-2">
+            <div>Password</div>
+            <input type="password" class="form-control" id="login-password" name="password" required>
+          </div>
+          <button type="submit" class="btn btn-primary mb-2">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="icn">
+              <path
+                d="M21.128 23.006C20.374 23.805 17.94 26 14 26c-3.955 0-6.383-2.192-7.132-2.993a.502.502 0 0 1-.038-.634c.49-.692 1.317-1.181 2.61-1.543 1.43-.4 2.23-.98 2.48-1.66.04-.09-.03-.18-.12-.19-.9-.12-1.88-.53-2.29-.72a.228.228 0 0 1-.13-.3c.17-.49.61-1.74.85-2.96.33-1.69-.81-2.99.35-5.02.26-.44.88-1.5 2.42-1.21 1.33-.85 3.96-.46 4.73 1.88.56 1.57-.24 2.91.04 4.35.24 1.22.68 2.47.85 2.96.05.12-.01.25-.13.3-.41.19-1.39.6-2.29.72-.09.01-.16.1-.12.19.25.68 1.05 1.26 2.48 1.66 1.289.36 2.123.859 2.609 1.54a.501.501 0 0 1-.041.636M20 16.5a5.5 5.5 0 0 1 4.295-5.366.496.496 0 0 0 .321-.71c-2.037-3.873-6.123-6.501-10.822-6.422C7.521 4.108 2.262 9.236 2.01 15.505 1.734 22.358 7.208 28 14 28c4.241 0 7.963-2.204 10.096-5.526a.496.496 0 0 0-.264-.734A5.5 5.5 0 0 1 20 16.5m7.5.5H26v1.5a.5.5 0 1 1-1 0V17h-1.5a.5.5 0 1 1 0-1H25v-1.5a.5.5 0 0 1 1 0V16h1.5a.5.5 0 0 1 0 1m-2-5a4.505 4.505 0 0 0-4.5 4.5c0 2.482 2.019 4.5 4.5 4.5 2.482 0 4.5-2.018 4.5-4.5 0-2.481-2.018-4.5-4.5-4.5"
+                fill-rule="evenodd" />
+            </svg>
+            Sign In
+          </button>
         </form>
-    </body>
+      </div>
+      <div class="col-md-6">
+        <form method="POST" id="signup-form" th:action="@{/signup}" th:object="${formmessage}">
+          <label class="sr-only" for="email">Email</label>
+          <div class="mb-2 mr-sm-2">
+            <div>Email</div>
+            <input type="email" class="form-control" id="signup-email" name="email" required>
+          </div>
+          <label class="sr-only" for="username">Username</label>
+          <div class="mb-2 mr-sm-2">
+            <div>Username</div>
+            <input type="text" class="form-control" id="signup-username" name="username" required>
+          </div>
+          <label class="sr-only" for="username">Password</label>
+          <div class="mb-2 mr-sm-2">
+            <div>Password</div>
+            <input type="password" class="form-control" id="signup-password" name="password" required>
+          </div>
+          <button type="submit" class="btn btn-primary mb-2">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="icn">
+              <path
+                d="M21.128 23.006C20.374 23.805 17.94 26 14 26c-3.955 0-6.383-2.192-7.132-2.993a.502.502 0 0 1-.038-.634c.49-.692 1.317-1.181 2.61-1.543 1.43-.4 2.23-.98 2.48-1.66.04-.09-.03-.18-.12-.19-.9-.12-1.88-.53-2.29-.72a.228.228 0 0 1-.13-.3c.17-.49.61-1.74.85-2.96.33-1.69-.81-2.99.35-5.02.26-.44.88-1.5 2.42-1.21 1.33-.85 3.96-.46 4.73 1.88.56 1.57-.24 2.91.04 4.35.24 1.22.68 2.47.85 2.96.05.12-.01.25-.13.3-.41.19-1.39.6-2.29.72-.09.01-.16.1-.12.19.25.68 1.05 1.26 2.48 1.66 1.289.36 2.123.859 2.609 1.54a.501.501 0 0 1-.041.636M20 16.5a5.5 5.5 0 0 1 4.295-5.366.496.496 0 0 0 .321-.71c-2.037-3.873-6.123-6.501-10.822-6.422C7.521 4.108 2.262 9.236 2.01 15.505 1.734 22.358 7.208 28 14 28c4.241 0 7.963-2.204 10.096-5.526a.496.496 0 0 0-.264-.734A5.5 5.5 0 0 1 20 16.5m7.5.5H26v1.5a.5.5 0 1 1-1 0V17h-1.5a.5.5 0 1 1 0-1H25v-1.5a.5.5 0 0 1 1 0V16h1.5a.5.5 0 0 1 0 1m-2-5a4.505 4.505 0 0 0-4.5 4.5c0 2.482 2.019 4.5 4.5 4.5 2.482 0 4.5-2.018 4.5-4.5 0-2.481-2.018-4.5-4.5-4.5"
+                fill-rule="evenodd" />
+            </svg>
+            Create Account
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="card my-3 col-12" th:each="m : ${messages}">
+      <div class="card-body">
+        <h5 class="card-title" th:text="${m.Email}">Email</h5>
+        <h6 class="card-subtitle mb-2 text-muted"
+          th:text="${T(cloudcode.guestbook.frontend.PrintDuration).print(m.Date)}">Date</h6>
+        <br>
+        <p class="card-text" th:text="${m.Username}">Username</p>
+        <br>
+        <p class="card-text" th:text="${m.Password}">Password</p>
+      </div>
+    </div>
+    <div class="alert alert-info" role="alert" th:if="${#lists.isEmpty(messages)}">
+      No messages are logged to the guestbook yet.
+    </div>
+  </div>
+  <script>
+
+  </script>
+</body>
+
 </html>

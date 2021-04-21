@@ -3,6 +3,7 @@ package cloudcode.guestbook.backend;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -56,7 +57,7 @@ public class BackendController {
   }
 
   @PostMapping("/signup")
-  public final void addUser(@RequestBody User message) {
+  public final void addUser(@RequestBody User message, BindingResult bindingResult) {
     message.setDate(System.currentTimeMillis());
     repository.save(message);
   }

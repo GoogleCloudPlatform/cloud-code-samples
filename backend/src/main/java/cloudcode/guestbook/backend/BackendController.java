@@ -30,20 +30,12 @@ public class BackendController {
     return msgList;
   }
 
-  /**
-   * endpoint for retrieving all guest book entries stored in database
-   * @return a list of User objects
-   */
-  @GetMapping("/login")
-  public final List<User> login(
-    @RequestParam("username") String username,
-    @RequestParam("password") String password
-  ) {
-    List<User> msgList = repository.findByUsernameAndPassword(
-      username,
-      password
-    );
-    return msgList;
+  @PostMapping("/login")
+  public void login(@RequestBody User user){
+      // TODO: fix
+      System.out.print(user.getUsername());
+      System.out.print(user.getPassword());
+    User match = repository.findByUsernameAndPassword(user.getUsername(), user.getPassword());
   }
 
   /**

@@ -1,6 +1,6 @@
 package cloudcode.guestbook.backend;
 
-import javax.naming.AuthenticationException;
+import org.springframework.security.core.AuthenticationException;
 
 public class UserResponse {
 

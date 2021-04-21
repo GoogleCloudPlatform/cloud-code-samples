@@ -6,10 +6,12 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.stereotype.Component;
 
+@Component
 public class CustomAuthenticationProvider implements AuthenticationProvider {
 
-  private static List<User> users = new ArrayList();
+  private static List<User> users = new ArrayList<User>();
 
   public CustomAuthenticationProvider() {
     // Example User

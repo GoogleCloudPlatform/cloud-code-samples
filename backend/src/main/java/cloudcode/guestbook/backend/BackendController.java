@@ -56,9 +56,23 @@ public class BackendController {
     repository.save(message);
   }
 
+  @Autowired
+  private CustomUserDetailsService userService;
+
   @PostMapping("/signup")
-  public final void addUser(@RequestBody User message, BindingResult bindingResult) {
-    message.setDate(System.currentTimeMillis());
-    repository.save(message);
+  public final void addUser(
+    @RequestBody User user,
+    BindingResult bindingResult
+  ) {
+    if (userService.findUserByEmail(user.getEmail()) != null) {
+      bindingResult.rejectValue(
+        "email",
+        "error.user",
+        "There is already a user registered with that email!"
+      );
+    } else {
+      user.setDate(System.currentTimeMillis());
+      repository.save(user);
+    }
   }
 }

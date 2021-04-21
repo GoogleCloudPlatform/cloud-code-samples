@@ -48,6 +48,11 @@ public class FrontendController {
     model.addAttribute("messages", response);
     return "home";
   }
+  
+  @GetMapping("/login")
+  public final String login() {
+    return "login";
+  }
 
   /**
    * endpoint for the landing page

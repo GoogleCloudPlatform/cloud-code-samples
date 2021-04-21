@@ -98,23 +98,4 @@ public class FrontendController {
 
     return "redirect:/";
   }
-
-  /**
-   * endpoint for handling form submission
-   * @param user holds date entered in html form
-   * @return redirects back to home page
-   * @throws URISyntaxException when there is an issue with the backend uri
-   */
-  @RequestMapping(value = "/login", method = RequestMethod.POST)
-  public final String login(final User user) throws URISyntaxException {
-    URI url = new URI(signupUri);
-
-    HttpHeaders httpHeaders = new HttpHeaders();
-    httpHeaders.set("Content-Type", "application/json");
-    HttpEntity<User> httpEntity = new HttpEntity<User>(user, httpHeaders);
-    RestTemplate restTemplate = new RestTemplate();
-    restTemplate.postForObject(url, httpEntity, String.class);
-
-    return "redirect:/test/";
-  }
 }

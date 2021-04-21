@@ -66,7 +66,6 @@ public class BackendController {
         "There is already a user registered with that email"
       );
     } else {
-      user.setDate(System.currentTimeMillis());
       repository.save(user);
       return new SignupResponse(true, null);
     }

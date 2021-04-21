@@ -90,10 +90,10 @@ public class FrontendController {
       httpHeaders
     );
     RestTemplate restTemplate = new RestTemplate();
-    SignupResponse response = restTemplate.postForObject(
+    UserResponse response = restTemplate.postForObject(
       url,
       httpEntity,
-      SignupResponse.class
+      UserResponse.class
     );
 
     return "redirect:/";

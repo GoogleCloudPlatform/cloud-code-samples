@@ -1,6 +1,14 @@
 package cloudcode.guestbook.frontend;
 
-public class SignupResponse {
-    public Boolean success;
-    public String errorMessage;
+import org.springframework.security.core.AuthenticationException;
+
+public class UserResponse {
+
+  public Boolean success;
+  public AuthenticationException exception;
+
+  public UserResponse(boolean success, AuthenticationException exception) {
+    this.success = success;
+    this.exception = exception;
+  }
 }

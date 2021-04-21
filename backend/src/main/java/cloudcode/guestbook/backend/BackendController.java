@@ -51,15 +51,15 @@ public class BackendController {
   private CustomUserDetailsService userService;
 
   @PostMapping("/signup")
-  public final SignupResponse addUser(@RequestBody User user) {
+  public final UserResponse addUser(@RequestBody User user) {
     if (userService.findUserByEmail(user.getEmail()) != null) {
-      return new SignupResponse(
+      return new UserResponse(
         false,
         "There is already a user registered with that email"
       );
     } else {
       repository.save(user);
-      return new SignupResponse(true, null);
+      return new UserResponse(true, null);
     }
   }
 }

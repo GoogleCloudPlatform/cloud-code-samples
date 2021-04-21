@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class BackendController {
 
   @Autowired
-  private MessageRepository repository;
+  private UserRepository repository;
 
   /**
    * endpoint for retrieving all guest book entries stored in database

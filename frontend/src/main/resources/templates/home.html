@@ -97,23 +97,9 @@
     $(document).ready(
       $("#signup-form").submit(function () {
         let user = {};
-        user["email"] = $("#signup-email").val();
-        user["username"] = $("#signup-username").val();
-        user["password"] = $("#signup-password").val();
-        $.ajax({
-          type: "POST",
-          contentType: "application/json",
-          url: "/signup",
-          data: JSON.stringify(user),
-          dataType: "json",
-          success: function (data) {
-            console.log(data);
-          },
-          error: function (error) {
-            console.log("ERROR");
-            console.log(error);
-          }
-        })
+        user["email"]=$("#signup-email").val();
+        user["username"]=$("#signup-username").val();
+        user["password"]=$("#signup-password").val();
         return false;
       })
     );

@@ -16,11 +16,11 @@
 <body>
   <nav class="navbar navbar-expand-lg">
     <a class="navbar-brand mr-auto" href="#">SalStocks</a>
-    <a class="nav-link" href="#">Home/Search</a>
+    <a class="nav-link" href="/">Home/Search</a>
     <a class="nav-link" href="#" sec:authorize="isAuthenticated()">Favorites</a>
     <a class="nav-link" href="#" sec:authorize="isAuthenticated()">Portfolio</a>
     <a class="nav-link" href="#" sec:authorize="isAuthenticated()">Logout</a>
-    <a class="nav-link active" href="#" sec:authorize="!isAuthenticated()">Login/Sign Up</a>
+    <a class="nav-link active" href="/login" sec:authorize="!isAuthenticated()">Login/Sign Up</a>
   </nav>
   <div class="header">
     <div class="container">

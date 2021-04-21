@@ -41,14 +41,11 @@ public class FrontendController {
   @GetMapping("/")
   public final String main(final Model model) {
     RestTemplate restTemplate = new RestTemplate();
-    User[] response = restTemplate.getForObject(
-      backendUri,
-      User[].class
-    );
+    User[] response = restTemplate.getForObject(backendUri, User[].class);
     model.addAttribute("messages", response);
     return "home";
   }
-  
+
   @GetMapping("/login")
   public final String login() {
     return "login";
@@ -70,10 +67,7 @@ public class FrontendController {
       String.format("%s?username=%s&password=%s", loginUri, username, password)
     );
     RestTemplate restTemplate = new RestTemplate();
-    User[] response = restTemplate.getForObject(
-      uri,
-      User[].class
-    );
+    User[] response = restTemplate.getForObject(uri, User[].class);
     model.addAttribute("messages", response);
     return "test";
   }
@@ -96,28 +90,28 @@ public class FrontendController {
       httpHeaders
     );
     RestTemplate restTemplate = new RestTemplate();
-    SignupResponse response = restTemplate.postForObject(url, httpEntity, SignupResponse.class);
+    SignupResponse response = restTemplate.postForObject(
+      url,
+      httpEntity,
+      SignupResponse.class
+    );
 
     return "redirect:/";
   }
 
   /**
    * endpoint for handling form submission
-   * @param formMessage holds date entered in html form
+   * @param user holds date entered in html form
    * @return redirects back to home page
    * @throws URISyntaxException when there is an issue with the backend uri
    */
   @RequestMapping(value = "/login", method = RequestMethod.POST)
-  public final String login(final User formMessage)
-    throws URISyntaxException {
+  public final String login(final User user) throws URISyntaxException {
     URI url = new URI(signupUri);
 
     HttpHeaders httpHeaders = new HttpHeaders();
     httpHeaders.set("Content-Type", "application/json");
-    HttpEntity<User> httpEntity = new HttpEntity<User>(
-      formMessage,
-      httpHeaders
-    );
+    HttpEntity<User> httpEntity = new HttpEntity<User>(user, httpHeaders);
     RestTemplate restTemplate = new RestTemplate();
     restTemplate.postForObject(url, httpEntity, String.class);
 

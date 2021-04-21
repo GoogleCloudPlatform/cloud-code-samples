@@ -31,16 +31,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
   @Override
   protected void configure(final AuthenticationManagerBuilder auth) {
-    auth.authenticationProvider(authenticationProvider());
+    auth.authenticationProvider(authProvider);
   }
+
+  @Autowired
+  private CustomAuthenticationProvider authProvider;
 
   @Bean
   public PasswordEncoder passwordEncoder() {
     return new BCryptPasswordEncoder();
-  }
-
-  @Autowired
-  private AuthenticationProvider authenticationProvider() {
-    return new CustomAuthenticationProvider();
   }
 }

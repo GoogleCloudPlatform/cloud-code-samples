@@ -1,5 +1,6 @@
 package cloudcode.guestbook.frontend;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -30,15 +31,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
   @Override
   protected void configure(final AuthenticationManagerBuilder auth) {
-      auth.authenticationProvider(authenticationProvider());
+      auth.authenticationProvider(authenticationProvider);
   }
+
   @Bean
   public PasswordEncoder passwordEncoder() {
     return new BCryptPasswordEncoder();
   }
 
-  @Bean
-  public AuthenticationProvider authenticationProvider() {
-      return new CustomAuthenticationProvider();
-  }
+  @Autowired
+  private CustomAuthenticationProvider authenticationProvider;
 }

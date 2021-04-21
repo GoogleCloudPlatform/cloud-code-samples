@@ -24,7 +24,6 @@ public class User {
   )
   private String username;
   private String password;
-  private long date;
 
   public final String getEmail() {
     return email;
@@ -48,13 +47,5 @@ public class User {
 
   public final void setPassword(String password) {
     this.password = password;
-  }
-
-  public final long getDate() {
-    return this.date;
-  }
-
-  public final void setDate(long date) {
-    this.date = date;
   }
 }

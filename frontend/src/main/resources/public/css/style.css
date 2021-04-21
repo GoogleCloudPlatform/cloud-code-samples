@@ -103,6 +103,12 @@ nav a {
   color: white;
 }
 
+form.nav-link input {
+    color: white;
+    background-color: transparent;
+    border: none;
+}
+
 .nav-link.active {
   border: 1px solid white;
   border-radius: 0.5rem;

@@ -31,7 +31,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
   @Override
   protected void configure(final AuthenticationManagerBuilder auth) {
-    auth.authenticationProvider(authProvider);
+    auth.authenticationProvider(authProvider).eraseCredentials(false);
   }
 
   @Autowired

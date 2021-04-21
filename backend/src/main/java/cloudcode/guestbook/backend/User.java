@@ -16,14 +16,21 @@ public class User {
     dropDups = true
   )
   private String email;
-  
+
   @Indexed(
     unique = true,
     direction = IndexDirection.DESCENDING,
     dropDups = true
   )
   private String username;
+
   private String password;
+
+  public User(String email, String username, String password) {
+    this.email = email;
+    this.username = username;
+    this.password = password;
+  }
 
   public final String getEmail() {
     return email;

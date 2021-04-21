@@ -60,19 +60,16 @@ public class BackendController {
   private CustomUserDetailsService userService;
 
   @PostMapping("/signup")
-  public final void addUser(
-    @RequestBody User user,
-    BindingResult bindingResult
-  ) {
+  public final SignupResponse addUser(@RequestBody User user) {
     if (userService.findUserByEmail(user.getEmail()) != null) {
-      bindingResult.rejectValue(
-        "email",
-        "error.user",
-        "There is already a user registered with that email!"
+      return new SignupResponse(
+        false,
+        "There is already a user registered with that email"
       );
     } else {
       user.setDate(System.currentTimeMillis());
       repository.save(user);
+      return new SignupResponse(true, null);
     }
   }
 }

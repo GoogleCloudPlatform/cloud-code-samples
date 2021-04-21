@@ -50,7 +50,7 @@
         </form>
       </div>
       <div class="col-md-6">
-        <form method="POST" th:action="@{/signup}" th:object="${formmessage}">
+        <form method="POST" id="signup-form" th:action="@{/signup}" th:object="${formmessage}">
           <label class="sr-only" for="email">Email</label>
           <div class="mb-2 mr-sm-2">
             <div>Email</div>
@@ -93,6 +93,9 @@
       No messages are logged to the guestbook yet.
     </div>
   </div>
+  <script>
+
+  </script>
 </body>
 
 </html>

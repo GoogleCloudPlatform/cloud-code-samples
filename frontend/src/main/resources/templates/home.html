@@ -96,7 +96,10 @@
   <script>
     $(document).ready(
       $("#signup-form").submit(function () {
-        alert("called!");
+        let user = {};
+        user["email"]=$("#signup-email").val();
+        user["username"]=$("#signup-username").val();
+        user["password"]=$("#signup-password").val();
         return false;
       })
     );

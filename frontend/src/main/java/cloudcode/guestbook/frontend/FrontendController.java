@@ -119,7 +119,7 @@ public class FrontendController {
       httpHeaders
     );
     RestTemplate restTemplate = new RestTemplate();
-    restTemplate.postForObject(url, httpEntity, String.class);
+    SignupResponse response = restTemplate.postForObject(url, httpEntity, SignupResponse.class);
 
     return "redirect:/test/";
   }

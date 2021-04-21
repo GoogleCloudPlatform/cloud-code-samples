@@ -108,6 +108,10 @@ nav a {
   border-radius: 0.5rem;
 }
 
+button.fw-btn {
+    width: 100%;
+}
+
 @media (min-width: 1200px) {
   .container {
     max-width: 900px;

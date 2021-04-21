@@ -31,7 +31,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
   @Override
   protected void configure(final AuthenticationManagerBuilder auth) {
-      auth.authenticationProvider(authenticationProvider);
+    auth.authenticationProvider(authenticationProvider());
   }
 
   @Bean
@@ -40,5 +40,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
   }
 
   @Autowired
-  private CustomAuthenticationProvider authenticationProvider;
+  private AuthenticationProvider authenticationProvider() {
+    return new CustomAuthenticationProvider();
+  }
 }

@@ -50,7 +50,7 @@
         </form>
       </div>
       <div class="col-md-6">
-        <form method="POST" id="signup-form" th:action="@{/signup}" th:object="${formmessage}">
+        <form method="POST" id="signup-form">
           <label class="sr-only" for="email">Email</label>
           <div class="mb-2 mr-sm-2">
             <div>Email</div>
@@ -94,7 +94,12 @@
     </div>
   </div>
   <script>
-
+    $(document).ready(
+      $("#signup-form").submit(function () {
+        alert("called!");
+        return false;
+      })
+    );
   </script>
 </body>
 

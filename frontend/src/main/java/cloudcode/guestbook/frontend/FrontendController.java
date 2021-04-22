@@ -25,8 +25,6 @@ import org.springframework.web.servlet.view.RedirectView;
 @Controller
 public class FrontendController {
 
-  
-
   /**
    * endpoint for the login page
    * @return the name of the html template to render

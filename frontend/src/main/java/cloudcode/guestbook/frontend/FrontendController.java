@@ -2,8 +2,19 @@ package cloudcode.guestbook.frontend;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.WebAttributes;
+import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -83,7 +94,11 @@ public class FrontendController {
    * @throws URISyntaxException when there is an issue with the backend uri
    */
   @PostMapping("/signup")
-  public final String post(final Model model, final User user)
+  public final String post(
+    HttpServletRequest request,
+    final Model model,
+    final User user
+  )
     throws URISyntaxException {
     HttpHeaders httpHeaders = new HttpHeaders();
     httpHeaders.set("Content-Type", "application/json");
@@ -94,11 +109,44 @@ public class FrontendController {
         UserResponse.class
       );
     if (response.success) {
+      //TODO: sign in user here...
+
+      //   try {
+      //     request.login(user.getUsername(), user.getPassword());
+      //   } catch (ServletException e) {
+      //     System.err.println("Error while logging in!");
+      //     e.printStackTrace();
+      //     model.addAttribute("errorMessage", "Error: Please Sign In Manually");
+      //     return "login";
+      //   }
+      authenticateUserAndSetSession(user, request);
       return "redirect:/";
     } else {
       model.addAttribute("errorMessage", "Error: " + response.errorMessage);
       return "login";
     }
+  }
+
+  private void authenticateUserAndSetSession(
+    User user,
+    HttpServletRequest request
+  ) {
+    String username = user.getUsername();
+    String password = user.getPassword();
+    UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(
+      username,
+      password
+    );
+
+    // generate session if one doesn't exist
+    request.getSession();
+
+    token.setDetails(new WebAuthenticationDetails(request));
+    Authentication authenticatedUser = authenticationManager.authenticate(
+      token
+    );
+
+    SecurityContextHolder.getContext().setAuthentication(authenticatedUser);
   }
 
   @GetMapping("/login-error")
@@ -120,11 +168,14 @@ public class FrontendController {
   @PostMapping("/tokensignin")
   public final String tokensignin(@RequestBody final User user) {
     // DEBUG
-    System.out.println(user==null);
+    System.out.println(user == null);
     System.out.println(user);
     System.out.println(user.getPassword());
     System.out.println(user.getEmail());
     System.out.println(user.getUsername());
     return "home";
   }
+
+  @Autowired
+  protected AuthenticationManager authenticationManager;
 }

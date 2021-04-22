@@ -35,6 +35,10 @@ public class BackendController {
       user.getUsername(),
       user.getPassword()
     );
+
+    // DEBUG
+    System.out.println("Username: " + user.getUsername() + ", Password: " + user.getPassword());
+
     if (userByName == null) {
       return new UserResponse(false, "No Account with Username");
     } else if (match == null) {

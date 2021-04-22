@@ -112,6 +112,12 @@
       document.getElementById("login-form").submit();
     }());
   </script>
+  <script th:if="${param.logout}">
+    document.onload(
+      gapi.auth2.getAuthInstance().signOut()
+        .then(console.log('User signed out.'))
+    );
+  </script>
 </body>
 
 </html>

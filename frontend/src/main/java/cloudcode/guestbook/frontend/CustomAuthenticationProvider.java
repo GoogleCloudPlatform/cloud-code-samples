@@ -2,8 +2,6 @@ package cloudcode.guestbook.frontend;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.List;
 import org.springframework.http.HttpEntity;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.AuthenticationServiceException;

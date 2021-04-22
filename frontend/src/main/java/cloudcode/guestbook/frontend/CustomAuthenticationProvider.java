@@ -15,11 +15,6 @@ import org.springframework.web.client.RestTemplate;
 @Component
 public class CustomAuthenticationProvider implements AuthenticationProvider {
 
-  private String loginUri = String.format(
-    "http://%s/login",
-    System.getenv("GUESTBOOK_API_ADDR")
-  );
-
   @Override
   public Authentication authenticate(Authentication authentication)
     throws AuthenticationException {
@@ -28,7 +23,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
     URI url;
 
     try {
-      url = new URI(loginUri);
+      url = new URI(BackendURI.LOGIN);
     } catch (URISyntaxException e) {
       throw new AuthenticationServiceException(
         "Could not construct backend URL!"

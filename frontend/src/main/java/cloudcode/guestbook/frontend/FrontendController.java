@@ -4,10 +4,8 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.WebAttributes;
 import org.springframework.stereotype.Controller;
@@ -92,7 +90,4 @@ public class FrontendController {
     System.out.println(user.getUsername());
     return "home";
   }
-
-  @Autowired
-  protected AuthenticationManager authenticationManager;
 }

@@ -22,6 +22,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
 /**
  * defines the REST endpoints managed by the server.
@@ -94,11 +96,7 @@ public class FrontendController {
    * @throws URISyntaxException when there is an issue with the backend uri
    */
   @PostMapping("/signup")
-  public final String post(
-    HttpServletRequest request,
-    final Model model,
-    final User user
-  )
+  public RedirectView post(final User user, RedirectAttributes attributes)
     throws URISyntaxException {
     HttpHeaders httpHeaders = new HttpHeaders();
     httpHeaders.set("Content-Type", "application/json");
@@ -108,30 +106,21 @@ public class FrontendController {
         new HttpEntity<User>(user, httpHeaders),
         UserResponse.class
       );
+
+    RedirectView view = new RedirectView("/login");
     if (response.success) {
       //TODO: sign in user here...
 
-      try {
-        request.login(user.getUsername(), user.getPassword());
-      } catch (ServletException e) {
-        System.err.println("Error while logging in!");
-        e.printStackTrace();
-        model.addAttribute("errorMessage", "Error: Please Sign In Manually");
-        return "login";
-      }
-
-      // DEBUG
-      boolean authed = SecurityContextHolder
-        .getContext()
-        .getAuthentication()
-        .isAuthenticated();
-      System.err.println("Authenticated? " + authed);
-
-      return "redirect:/";
+      attributes.addFlashAttribute("username", user.getUsername());
+      attributes.addFlashAttribute("password", user.getPassword());
+      attributes.addFlashAttribute("autologin", "autologin");
     } else {
-      model.addAttribute("errorMessage", "Error: " + response.errorMessage);
-      return "login";
+      attributes.addFlashAttribute(
+        "errorMessage",
+        "Error: " + response.errorMessage
+      );
     }
+    return view;
   }
 
   @GetMapping("/login-error")

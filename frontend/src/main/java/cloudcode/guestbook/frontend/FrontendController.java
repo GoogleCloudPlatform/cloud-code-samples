@@ -74,19 +74,19 @@ public class FrontendController {
 
   /**
    * endpoint for handling form submission
-   * @param formMessage holds date entered in html form
+   * @param User holds date entered in html form
    * @return redirects back to home page
    * @throws URISyntaxException when there is an issue with the backend uri
    */
   @RequestMapping(value = "/signup", method = RequestMethod.POST)
-  public final String post(final Model model, final User formMessage)
+  public final String post(final Model model, final User user)
     throws URISyntaxException {
     HttpHeaders httpHeaders = new HttpHeaders();
     httpHeaders.set("Content-Type", "application/json");
     UserResponse response = new RestTemplate()
     .postForObject(
         new URI(signupUri),
-        new HttpEntity<User>(formMessage, httpHeaders),
+        new HttpEntity<User>(user, httpHeaders),
         UserResponse.class
       );
     if (response.success) {

@@ -82,8 +82,15 @@ public class FrontendController {
    * @throws URISyntaxException when there is an issue with the backend uri
    */
   @PostMapping("/signup")
-  public final String post(final Model model, final User user)
+  public final String post(
+    final Model model,
+    final User user,
+    @RequestParam String id_token
+  )
     throws URISyntaxException {
+    // DEBUG
+    System.out.println(id_token);
+
     HttpHeaders httpHeaders = new HttpHeaders();
     httpHeaders.set("Content-Type", "application/json");
     UserResponse response = new RestTemplate()
@@ -101,7 +108,9 @@ public class FrontendController {
   }
 
   @PostMapping("/tokensignin")
-  public void tokensignin() {
+  public void tokensignin(@RequestParam String id_token) {
+    // DEBUG
+    System.out.println(id_token);
     System.out.println("HIT TOKEN SIGN IN ENDPOINT");
   }
 }

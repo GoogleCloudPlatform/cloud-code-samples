@@ -48,16 +48,17 @@
     <div class="row">
       <div class="col-md-6">
         <h3>Login</h3>
-        <form th:action="@{/login}" method="post" th:object="${formmessage}">
+        <form th:action="@{/login}" method="post" th:object="${formmessage}" id="login-form">
           <label class="sr-only" for="username">Username</label>
           <div class="mb-2">
             <div>Username</div>
-            <input type="text" class="form-control" id="login-username" name="username" required>
+            <input type="text" class="form-control" id="login-username" name="username" th:value="${username}" required>
           </div>
           <label class="sr-only" for="username">Password</label>
           <div class="mb-2">
             <div>Password</div>
-            <input type="password" class="form-control" id="login-password" name="password" required>
+            <input type="password" class="form-control" id="login-password" name="password" th:value="${password}"
+              required>
           </div>
           <button type="submit" class="btn btn-primary mb-2 fw-btn mt-1">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="icn">
@@ -105,6 +106,14 @@
         </div>
       </div>
     </div>
+  </div>
+  <div th:if="${autologin}">
+    <script>
+      document.onload(function () {
+        document.getElementById("login-form").submit();
+        alert("false");
+      }());
+    </script>
   </div>
 </body>
 

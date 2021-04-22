@@ -2,19 +2,14 @@ package cloudcode.guestbook.frontend;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.WebAttributes;
-import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -109,8 +104,6 @@ public class FrontendController {
 
     RedirectView view = new RedirectView("/login");
     if (response.success) {
-      //TODO: sign in user here...
-
       attributes.addFlashAttribute("username", user.getUsername());
       attributes.addFlashAttribute("password", user.getPassword());
       attributes.addFlashAttribute("autologin", "autologin");

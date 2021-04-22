@@ -58,8 +58,13 @@ public class BackendController {
 
   @PostMapping("/signup")
   public final UserResponse addUser(@RequestBody User user) {
-    if (userService.findUserByEmail(user.getEmail()) != null) {
+    Boolean emailExists = userService.findUserByEmail(user.getEmail()) != null;
+    Boolean usernameExists =
+      userService.findUserByUsername(user.getUsername()) != null;
+    if (emailExists) {
       return new UserResponse(false, "Email already registered");
+    } else if (usernameExists) {
+      return new UserResponse(false, "Username already registered");
     } else {
       repository.save(user);
       return new UserResponse(true, null);

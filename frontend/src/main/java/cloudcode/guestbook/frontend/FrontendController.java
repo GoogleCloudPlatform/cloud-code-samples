@@ -111,42 +111,27 @@ public class FrontendController {
     if (response.success) {
       //TODO: sign in user here...
 
-      //   try {
-      //     request.login(user.getUsername(), user.getPassword());
-      //   } catch (ServletException e) {
-      //     System.err.println("Error while logging in!");
-      //     e.printStackTrace();
-      //     model.addAttribute("errorMessage", "Error: Please Sign In Manually");
-      //     return "login";
-      //   }
-      authenticateUserAndSetSession(user, request);
+      try {
+        request.login(user.getUsername(), user.getPassword());
+      } catch (ServletException e) {
+        System.err.println("Error while logging in!");
+        e.printStackTrace();
+        model.addAttribute("errorMessage", "Error: Please Sign In Manually");
+        return "login";
+      }
+
+      // DEBUG
+      boolean authed = SecurityContextHolder
+        .getContext()
+        .getAuthentication()
+        .isAuthenticated();
+      System.err.println("Authenticated? " + authed);
+
       return "redirect:/";
     } else {
       model.addAttribute("errorMessage", "Error: " + response.errorMessage);
       return "login";
     }
-  }
-
-  private void authenticateUserAndSetSession(
-    User user,
-    HttpServletRequest request
-  ) {
-    String username = user.getUsername();
-    String password = user.getPassword();
-    UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(
-      username,
-      password
-    );
-
-    // generate session if one doesn't exist
-    request.getSession();
-
-    token.setDetails(new WebAuthenticationDetails(request));
-    Authentication authenticatedUser = authenticationManager.authenticate(
-      token
-    );
-
-    SecurityContextHolder.getContext().setAuthentication(authenticatedUser);
   }
 
   @GetMapping("/login-error")

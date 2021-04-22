@@ -28,6 +28,9 @@
     <div th:if="${param.logout}">
       You have been logged out.
     </div>
+    <div id="errorMessage" th:text="${errorMessage}">
+      There was an error. 
+    </div>
     <div class="row">
       <div class="col-md-6">
         <h3>Login</h3>

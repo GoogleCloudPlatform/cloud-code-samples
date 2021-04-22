@@ -45,6 +45,10 @@ public class FrontendController {
     return "home";
   }
 
+  /**
+   * endpoint for the login page
+   * @return the name of the html template to render
+   */
   @GetMapping("/login")
   public final String login() {
     return "login";

@@ -42,19 +42,6 @@ public class FrontendController {
   );
 
   /**
-   * endpoint for the landing page
-   * @param model defines model for html template
-   * @return the name of the html template to render
-   */
-  @GetMapping("/")
-  public final String main(final Model model) {
-    RestTemplate restTemplate = new RestTemplate();
-    User[] response = restTemplate.getForObject(backendUri, User[].class);
-    model.addAttribute("messages", response);
-    return "home";
-  }
-
-  /**
    * endpoint for the login page
    * @return the name of the html template to render
    */

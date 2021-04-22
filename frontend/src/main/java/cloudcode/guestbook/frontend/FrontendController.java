@@ -99,7 +99,7 @@ public class FrontendController {
       return "redirect:/";
     } else {
         model.addAttribute("errorMessage", response.errorMessage);
-      return "redirect:/login";
+      return "login";
     }
   }
 }

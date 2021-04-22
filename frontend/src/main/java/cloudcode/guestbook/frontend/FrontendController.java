@@ -15,7 +15,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
@@ -26,20 +25,7 @@ import org.springframework.web.servlet.view.RedirectView;
 @Controller
 public class FrontendController {
 
-  private String backendUri = String.format(
-    "http://%s/messages",
-    System.getenv("GUESTBOOK_API_ADDR")
-  );
-
-  private String signupUri = String.format(
-    "http://%s/signup",
-    System.getenv("GUESTBOOK_API_ADDR")
-  );
-
-  private String loginUri = String.format(
-    "http://%s/login",
-    System.getenv("GUESTBOOK_API_ADDR")
-  );
+  
 
   /**
    * endpoint for the login page
@@ -63,7 +49,7 @@ public class FrontendController {
     httpHeaders.set("Content-Type", "application/json");
     UserResponse response = new RestTemplate()
     .postForObject(
-        new URI(signupUri),
+        new URI(BackendURI.SIGNUP),
         new HttpEntity<User>(user, httpHeaders),
         UserResponse.class
       );

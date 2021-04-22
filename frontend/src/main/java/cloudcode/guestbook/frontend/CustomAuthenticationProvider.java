@@ -22,13 +22,6 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
     System.getenv("GUESTBOOK_API_ADDR")
   );
 
-  private static List<User> users = new ArrayList<User>();
-
-  public CustomAuthenticationProvider() {
-    // Example User
-    users.add(new User("fake@email.com", "user1", "user1Pass"));
-  }
-
   @Override
   public Authentication authenticate(Authentication authentication)
     throws AuthenticationException {

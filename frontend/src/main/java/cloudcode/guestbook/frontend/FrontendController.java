@@ -82,15 +82,8 @@ public class FrontendController {
    * @throws URISyntaxException when there is an issue with the backend uri
    */
   @PostMapping("/signup")
-  public final String post(
-    final Model model,
-    final User user,
-    @RequestParam String id_token
-  )
+  public final String post(final Model model, final User user)
     throws URISyntaxException {
-    // DEBUG
-    System.out.println(id_token);
-
     HttpHeaders httpHeaders = new HttpHeaders();
     httpHeaders.set("Content-Type", "application/json");
     UserResponse response = new RestTemplate()

@@ -20,8 +20,9 @@
       console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
       
       var id_token = googleUser.getAuthResponse().id_token;
+      console.log('id_token:  ' + id_token);
       var xhr = new XMLHttpRequest();
-      xhr.open('POST', '/tokensignin');
+      xhr.open('POST', `${location.origin}/tokensignin`);
       xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
       xhr.onload = function () {
         console.log('Signed in as: ' + xhr.responseText);

@@ -107,13 +107,11 @@
       </div>
     </div>
   </div>
-  <div th:if="${autologin}">
-    <script>
-      document.onload(function () {
-        document.getElementById("login-form").submit();
-      }());
-    </script>
-  </div>
+  <script th:if="${autologin}">
+    document.onload(function () {
+      document.getElementById("login-form").submit();
+    }());
+  </script>
 </body>
 
 </html>

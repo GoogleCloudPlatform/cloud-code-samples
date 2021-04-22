@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 
@@ -101,10 +102,13 @@ public class FrontendController {
   }
 
   @PostMapping("/tokensignin")
-  public final String tokensignin(@RequestParam String id_token) {
+  public final String tokensignin(@RequestBody final User user) {
     // DEBUG
-    System.out.println(id_token);
-    System.out.println("HIT TOKEN SIGN IN ENDPOINT");
+    System.out.println(user==null);
+    System.out.println(user);
+    System.out.println(user.getPassword());
+    System.out.println(user.getEmail());
+    System.out.println(user.getUsername());
     return "home";
   }
 }

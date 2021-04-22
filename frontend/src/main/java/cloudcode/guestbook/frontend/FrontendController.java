@@ -108,9 +108,10 @@ public class FrontendController {
   }
 
   @PostMapping("/tokensignin")
-  public void tokensignin(@RequestParam String id_token) {
+  public final String tokensignin(@RequestParam String id_token) {
     // DEBUG
     System.out.println(id_token);
     System.out.println("HIT TOKEN SIGN IN ENDPOINT");
+    return "home";
   }
 }

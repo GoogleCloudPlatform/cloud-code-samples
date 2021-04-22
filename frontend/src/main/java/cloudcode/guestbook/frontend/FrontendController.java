@@ -95,4 +95,9 @@ public class FrontendController {
       return "login";
     }
   }
+
+  @PostMapping("/tokensignin")
+  public void tokensignin() {
+    System.out.println("HIT TOKEN SIGN IN ENDPOINT");
+  }
 }

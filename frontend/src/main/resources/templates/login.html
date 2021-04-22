@@ -10,7 +10,7 @@
   <link rel="stylesheet" th:href="@{/css/bootstrap.css}" type="text/css">
   <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
   <link rel="icon" th:href="@{/favicon.png}" type="image/x-icon" />
-  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script src="https://apis.google.com/js/platform.js?onload=onLoadCallback" async defer></script>
   <script>
     function onSignIn(googleUser) {
       var profile = googleUser.getBasicProfile();
@@ -26,6 +26,12 @@
         "password": googleUser.getAuthResponse().id_token
       }));
     }
+  </script>
+  <script th:if="${param.logout}" defer>
+    window.onLoadCallback = function () {
+      gapi.auth2.getAuthInstance().signOut()
+        .then(console.log('User signed out.'))
+    };
   </script>
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
@@ -108,15 +114,10 @@
     </div>
   </div>
   <script th:if="${autologin}">
+    // bottom of page to be 100% sure DOM content is available
     document.onload(function () {
       document.getElementById("login-form").submit();
     }());
-  </script>
-  <script th:if="${param.logout}">
-    document.onload(
-      gapi.auth2.getAuthInstance().signOut()
-        .then(console.log('User signed out.'))
-    );
   </script>
 </body>
 

@@ -122,6 +122,10 @@ button.fw-btn {
     color: red;
 }
 
+.abcRioButton {
+    width: auto !important;
+}
+
 @media (min-width: 1200px) {
   .container {
     max-width: 900px;

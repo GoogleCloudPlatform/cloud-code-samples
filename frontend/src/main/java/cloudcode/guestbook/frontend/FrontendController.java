@@ -98,7 +98,8 @@ public class FrontendController {
     if (response.success) {
       return "redirect:/";
     } else {
-      return "redirect:/login?error=" + response.errorMessage;
+        model.addAttribute("error", response.errorMessage);
+      return "redirect:/login";
     }
   }
 }

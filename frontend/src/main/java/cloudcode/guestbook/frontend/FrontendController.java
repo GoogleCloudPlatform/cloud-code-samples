@@ -95,7 +95,10 @@ public class FrontendController {
       httpEntity,
       UserResponse.class
     );
-
-    return "redirect:/";
+    if (response.success) {
+      return "redirect:/";
+    } else {
+      return "redirect:/login?error=" + response.errorMessage;
+    }
   }
 }

@@ -3,13 +3,23 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="google-signin-client_id" content="974574715204-4ttrkcsmd7i4ltgmon64klu2a0uocjiu.apps.googleusercontent.com">
+  <meta name="google-signin-client_id"
+    content="974574715204-4ttrkcsmd7i4ltgmon64klu2a0uocjiu.apps.googleusercontent.com">
   <title>Guestbook</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" th:href="@{/css/bootstrap.css}" type="text/css">
   <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
   <link rel="icon" th:href="@{/favicon.png}" type="image/x-icon" />
   <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>
+    function onSignIn(googleUser) {
+      var profile = googleUser.getBasicProfile();
+      console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+      console.log('Name: ' + profile.getName());
+      console.log('Image URL: ' + profile.getImageUrl());
+      console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+    }
+  </script>
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
 
@@ -49,7 +59,7 @@
             </svg>
             Sign In
           </button>
-          <div class="g-signin2" data-onsuccess="onSignIn"></div>
+          <div class="g-signin2" data-onsuccess="onSignIn" class="fw-btn"></div>
         </form>
       </div>
       <div class="col-md-6">

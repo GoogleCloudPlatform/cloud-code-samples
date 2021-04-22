@@ -51,27 +51,6 @@ public class FrontendController {
   }
 
   /**
-   * endpoint for the landing page
-   * @param model defines model for html template
-   * @return the name of the html template to render
-   */
-  @GetMapping("/test")
-  public final String test(
-    final Model model,
-    @RequestParam("username") String username,
-    @RequestParam("password") String password
-  )
-    throws URISyntaxException {
-    URI uri = new URI(
-      String.format("%s?username=%s&password=%s", loginUri, username, password)
-    );
-    RestTemplate restTemplate = new RestTemplate();
-    User[] response = restTemplate.getForObject(uri, User[].class);
-    model.addAttribute("messages", response);
-    return "test";
-  }
-
-  /**
    * endpoint for handling form submission
    * @param User holds date entered in html form
    * @return redirects back to home page

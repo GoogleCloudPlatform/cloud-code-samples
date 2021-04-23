@@ -24,7 +24,7 @@ public class BackendController {
      */
     @GetMapping("/messages")
     public final List<GuestBookEntry> getMessages() {
-        Sort byCreation = new Sort(Sort.Direction.DESC, "_id");
+        Sort byCreation = Sort.by(Sort.Direction.DESC, "_id");
         List<GuestBookEntry> msgList = repository.findAll(byCreation);
         return msgList;
     }

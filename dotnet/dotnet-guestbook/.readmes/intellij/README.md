@@ -21,7 +21,6 @@ The Guestbook sample demonstrates how to deploy a Kubernetes application with a 
 ### Run the app locally with minikube
 
 #### Edit run configuration
-
 1. Click the Run/Debug Configurations dropdown on the top taskbar and select 'Edit Configurations'.    
 ![image](./img/edit-configurations.png)
 
@@ -30,11 +29,10 @@ The Guestbook sample demonstrates how to deploy a Kubernetes application with a 
 3. Under **Run > Deployment**, select 'Deploy locally to a minikube cluster'.
 ![image](./img/run-debug-dialog.png)
 
-2. Click 'OK' to save your configuration. 
+4. Click 'OK' to save your configuration. 
 
 
 #### Run the app on minikube
-
 1. Select 'Develop on Kubernetes' from the configuration drop down and click the run icon. Cloud Code runs your app in a local [minikube](ttps://minikube.sigs.k8s.io/docs/start/) cluster.  
 ![image](./img/deploy-config.png)
 

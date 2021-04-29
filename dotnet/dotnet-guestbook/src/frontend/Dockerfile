@@ -17,13 +17,11 @@ WORKDIR /src
 COPY --from=publish /out .
 ENV ASPNETCORE_URLS=http://*:8080
 
-# Installing vsdbg on the container to enable debugging of .NET Core
+# Installing procps on the container to enable debugging of .NET Core
 RUN apt -o Acquire::https::No-Cache=True -o Acquire::http::No-Cache=True update \
     && apt --fix-broken install \
     && apt-get update \
     && apt-get upgrade -y \
     && apt-get install -y --no-install-recommends apt-utils unzip \
-    && apt-get install -y procps \
-    && rm -rf /var/lib/apt/lists/* \
-    && curl -sSL https://aka.ms/getvsdbgsh | bash /dev/stdin -v latest -l /vsdbg
+    && apt-get install -y procps
 ENTRYPOINT ["dotnet", "frontend.dll"]

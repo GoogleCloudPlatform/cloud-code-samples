@@ -5,7 +5,7 @@ This "Hello World" sample demonstrates how to deploy a simple "Hello World" appl
 ### Table of Contents
 * [Getting Started](#getting-started)
     1. [Run the app locally with minikube](#run-the-app-locally-with-minikube)
-        * [Start a minikube cluster](#start-a-minikube-cluster)
+        * [Edit run configuration](#edit-run-configuration)
         * [Run the app on minikube](#run-the-app-on-minikube)
     2. [Run the app remotely with Google Kubernetes Engine](#run-the-app-remotely-with-google-kubernetes-engine)
         * [Set up a GKE cluster](#set-up-a-gke-cluster)
@@ -20,29 +20,26 @@ This "Hello World" sample demonstrates how to deploy a simple "Hello World" appl
 
 ### Run the app locally with minikube
 
-#### Start a minikube cluster
-1. Navigate to the Kubernetes Explorer from the right side panel, or by going to **Tools > Cloud Code > Kubernetes > View Cluster Explorer**. 
+#### Edit run configuration
+1. Click the Run/Debug Configurations dropdown on the top taskbar and select 'Edit Configurations'.    
+![image](./img/edit-configurations.png)
 
-2. If the Cluster Explorer is empty, go to the terminal and run 'minikube start'.  
-![image](./img/k8s-explorer-empty.png)
+2. In the Run/Debug Configurations dialog, select 'Develop on Kubernetes'. This configuration watches for changes, then uses [skaffold](https://skaffold.dev/docs/) to rebuild and rerun your app.
 
-3. Once minikube has started, it will be displayed in the Cluster Explorer. Minikube will be set as the current context by default. To switch contexts, right click on a different cluster in the Cluster Explorer and select 'Set as Current Context'.  
-![image](./img/k8s-explorer-full.png)
+3. Under **Run > Deployment**, select 'Deploy locally to a minikube cluster'.
+![image](./img/run-debug-dialog.png)
+
+4. Click 'OK' to save your configuration. 
 
 
 #### Run the app on minikube
-1. Click the Run/Debug configurations dropdown on the top taskbar and select 'Edit Configurations'. Select 'Develop on Kubernetes'. You may need to specify your [container image repository](https://cloud.google.com/code/docs/intellij/configuring-container-image-settings?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-).  
-![image](./img/image-repo.png)
-
-2. Click 'OK' to save your configuration. 
-
-3. Select 'Develop on Kubernetes' from the configuration drop down and click the run icon. Cloud Code runs your app in a local [minikube](ttps://minikube.sigs.k8s.io/docs/start/) cluster.  
+1. Select 'Develop on Kubernetes' from the configuration drop down and click the run icon. Cloud Code runs your app in a local [minikube](ttps://minikube.sigs.k8s.io/docs/start/) cluster.  
 ![image](./img/deploy-config.png)
 
-4. View the build process in the output window. Once the build has finished, you will receive a notification from the Event Log. Click 'View' to access the local URLs for your deployed services. The URLs remain accessible through the Event Log dialog.  
+2. View the build process in the output window. Once the build has finished, you will receive a notification from the Event Log. Click 'View' to access the local URLs for your deployed services. The URLs remain accessible through the Event Log dialog.  
 ![image](./img/deploy-success.png)
 
-5.  To stop the application, click the stop icon next to the configuration dropdown.
+3. To stop the application, click the stop icon next to the configuration dropdown.
 
 
 ---

@@ -1,2 +1,4 @@
 .dockerignore
 .vscode
+.idea
+.readmes

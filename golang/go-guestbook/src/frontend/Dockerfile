@@ -8,7 +8,7 @@ COPY go.mod go.sum ./
 RUN go mod download
 
 # Copy rest of the application source code
-COPY . ./
+COPY src/frontend ./
 
 # Compile the application to /app/frontend.
 # Skaffold passes in debug-oriented compiler flags
@@ -25,7 +25,7 @@ FROM gcr.io/distroless/base
 ENV GOTRACEBACK=single
 
 WORKDIR /app
-COPY static /app/static
-COPY templates /app/templates
+COPY src/frontend/static /app/static
+COPY src/frontend/templates /app/templates
 COPY --from=build /app/frontend /app/frontend
 ENTRYPOINT ["/app/frontend"]

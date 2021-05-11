@@ -5,15 +5,9 @@ kind: Config
 build:
   artifacts:
   - image: go-guestbook-backend
-    context: .
-    docker:
-      dockerfile: src/backend/Dockerfile
-      noCache: false
+    context: src/backend
   - image: go-guestbook-frontend
-    context: .
-    docker:
-      dockerfile: src/frontend/Dockerfile
-      noCache: false
+    context: src/frontend
   tagPolicy:
     sha256: {}
 deploy:

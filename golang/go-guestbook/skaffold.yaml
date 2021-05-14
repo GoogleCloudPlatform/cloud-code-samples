@@ -15,6 +15,14 @@ deploy:
     manifests:
     - ./kubernetes-manifests/*.service.yaml
     - ./kubernetes-manifests/*.deployment.yaml
+portForward:
+  # Cloud Code automatically port forwards resources,
+  # or users can define explicit port forwards here.
+  # For more info, visit https://skaffold.dev/docs/pipeline-stages/port-forwarding/#UDPF
+  - resourceType: service
+    resourceName: go-guestbook-frontend
+    port: 80
+    localPort: 4503
 profiles:
 - name: cloudbuild
   build:

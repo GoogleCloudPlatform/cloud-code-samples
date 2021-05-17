@@ -3,6 +3,7 @@
 This "Hello World" sample demonstrates how to deploy a simple "Hello World" application to Kubernetes using the Cloud Code extension for Cloud Shell. When you run the application, Cloud Code uses [skaffold](https://skaffold.dev/docs/) under the hood to build an image and deploy the project's Kubernetes manifests. To learn more about Kubernetes, explore the [Kubernetes overview](https://kubernetes.io/docs/concepts/overview/). 
 
 ### Table of Contents
+* [What's in this sample](#whats-in-this-sample)
 * [Getting Started](#getting-started)
     1. [Run the app locally with minikube](#run-the-app-locally-with-minikube)
     2. [Run the app remotely with Google Kubernetes Engine](#run-the-app-remotely-with-google-kubernetes-engine)
@@ -10,7 +11,19 @@ This "Hello World" sample demonstrates how to deploy a simple "Hello World" appl
         * [Deploy app to GKE](#deploy-app-to-gke)
 * [Next steps](#next-steps)
 * [Sign up for user research](#sign-up-for-user-research)
-* [Kubernetes Architecture Diagram](#kubernetes-architecture-diagram)
+
+---
+## What's in this sample
+### Kubernetes architecture
+![Kubernetes Architecture Diagram](./img/dotnet-k8s-diagram.png)
+
+### Directory contents
+
+- `skaffold.yaml` - A schema file that defines skaffold configurations ([skaffold.yaml reference](https://skaffold.dev/docs/references/yaml/))
+- `kubernetes-manifests/` - Contains Kubernetes YAML files for the Guestbook services and deployments, including:
+
+  - `hello.deployment.yaml` - deploys a pod with the 'dotnet-hello-world' container image
+  - `hello.service.yaml` - creates a load balancer and exposes the 'dotnet-hello-world' service on an external IP in the cluster
 
 ---
 ## Getting Started
@@ -80,7 +93,3 @@ If you’re invited to join a study, you may try out a new product or tell us wh
 [Sign up using this link](https://google.qualtrics.com/jfe/form/SV_4Me7SiMewdvVYhL?reserved=1&utm_source=In-product&Q_Language=en&utm_medium=own_prd&utm_campaign=Q1&productTag=clou&campaignDate=January2021&referral_code=UXbT481079) and answer a few questions about yourself, as this will help our research team match you to studies that are a great fit.
 
 ---
-## Kubernetes Architecture Diagram
-![Architecture Diagram](./img/diagram.png)
-
-----

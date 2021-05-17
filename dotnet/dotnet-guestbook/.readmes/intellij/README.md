@@ -3,6 +3,7 @@
 The Guestbook sample demonstrates how to deploy a Kubernetes application with a front end service and a back end service using the [Cloud Code extension for IntelliJ](https://cloud.google.com/code/docs/intellij/install?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-). When you run the application, Cloud Code uses [skaffold](https://skaffold.dev/docs/) under the hood to build an image and deploy the project's Kubernetes manifests. To learn more about Kubernetes, explore the [Kubernetes overview](https://kubernetes.io/docs/concepts/overview/). 
 
 ### Table of Contents
+* [What's in this sample](#what's-in-this-sample)
 * [Getting Started](#getting-started)
     1. [Run the app locally with minikube](#run-the-app-locally-with-minikube)
         * [Edit run configuration](#edit-run-configuration)
@@ -12,8 +13,25 @@ The Guestbook sample demonstrates how to deploy a Kubernetes application with a 
         * [Deploy app to GKE](#deploy-app-to-gke)
 * [Next steps](#next-steps)
 * [Sign up for User Research](#sign-up-for-user-research)
-* [Kubernetes Architecture Diagram](#kubernetes-diagram)
 * [Getting support](#getting-support)
+
+---
+## What's in this sample
+### Kubernetes architecture
+![Kubernetes Architecture Diagram](./img/dotnet-guestbook-k8s-diagram.png)
+
+### Directory contents
+- `src/frontend` - Guestbook frontend service
+- `src/backend` - Guestbook backend service
+- `skaffold.yaml` - A schema file that defines skaffold configurations ([skaffold.yaml reference](https://skaffold.dev/docs/references/yaml/))
+- `kubernetes-manifests/` - Contains Kubernetes YAML files for the Guestbook services and deployments, including:
+
+  - `guestbook-frontend.deployment.yaml` - deploys a pod with the frontend container image
+  - `guestbook-frontend.service.yaml` - creates a load balancer and exposes the frontend service on an external IP in the cluster
+  - `guestbook-backend.deployment.yaml` - deploys a pod with the backend container image
+  - `guestbook-backend.service.yaml` - exposes the backend service on an internal IP in the cluster
+  - `guestbook-mongodb.deployment.yaml` - deploys a pod containing a MongoDB instance
+  - `guestbook-mongodb.service.yaml` - exposes the MongoDB service on an internal IP in the cluster
 
 ---
 ## Getting Started
@@ -91,10 +109,6 @@ The Cloud Code team is inviting our user community to sign-up to participate in 
 If you’re invited to join a study, you may try out a new product or tell us what you think about the products you use every day. At this time, Google is only sending invitations for upcoming remote studies. Once a study is complete, you’ll receive a token of thanks for your participation such as a gift card or some Google swag. 
 
 [Sign up using this link](https://google.qualtrics.com/jfe/form/SV_4Me7SiMewdvVYhL?reserved=1&utm_source=In-product&Q_Language=en&utm_medium=own_prd&utm_campaign=Q1&productTag=clou&campaignDate=January2021&referral_code=UXbT481079) and answer a few questions about yourself, as this will help our research team match you to studies that are a great fit.
-
----
-
-![kubernetes diagram](./img/diagram.png)
 
 ----
 

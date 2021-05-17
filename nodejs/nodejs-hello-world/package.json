@@ -14,7 +14,7 @@
     "handlebars": "^4.7.4"
   },
   "devDependencies": {
-    "eslint": "7.25.0",
+    "eslint": "7.26.0",
     "express-winston": "4.1.0",
     "winston": "3.3.3"
   }

@@ -3,7 +3,7 @@
 The Guestbook sample demonstrates how to deploy a Kubernetes application with a front end service and a back end service using the [Cloud Code extension for IntelliJ](https://cloud.google.com/code/docs/intellij/install?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-). When you run the application, Cloud Code uses [skaffold](https://skaffold.dev/docs/) under the hood to build an image and deploy the project's Kubernetes manifests. To learn more about Kubernetes, explore the [Kubernetes overview](https://kubernetes.io/docs/concepts/overview/). 
 
 ### Table of Contents
-* [What's in this sample](#what's-in-this-sample)
+* [What's in this sample](#whats-in-this-sample)
 * [Getting Started](#getting-started)
     1. [Run the app locally with minikube](#run-the-app-locally-with-minikube)
         * [Edit run configuration](#edit-run-configuration)

@@ -3,6 +3,7 @@
 The Guestbook sample demonstrates how to deploy a Kubernetes application with a front end service and a back end service using the Cloud Code extension for Cloud Shell. When you run the application, Cloud Code uses [skaffold](https://skaffold.dev/docs/) under the hood to build an image and deploy the project's Kubernetes manifests. To learn more about Kubernetes, explore the [Kubernetes overview](https://kubernetes.io/docs/concepts/overview/).
 
 ### Table of Contents
+* [What's in this sample](#whats-in-this-sample)
 * [Getting Started](#getting-started)
     1. [Run the app locally with minikube](#run-the-app-locally-with-minikube)
     2. [Run the app remotely with Google Kubernetes Engine](#run-the-app-remotely-with-google-kubernetes-engine)
@@ -10,10 +11,25 @@ The Guestbook sample demonstrates how to deploy a Kubernetes application with a 
         * [Deploy app to GKE](#deploy-app-to-gke)
 * [Next steps](#next-steps)
 * [Sign up for User Research](#sign-up-for-user-research)
-* [Kubernetes Architecture Diagram](#kubernetes-architecture-diagram)
 
 ---
+## What's in this sample
+### Kubernetes architecture
+![Kubernetes Architecture Diagram](../../img/diagram.png)
 
+### Directory contents
+
+- `skaffold.yaml` - A schema file that defines skaffold configurations ([skaffold.yaml reference](https://skaffold.dev/docs/references/yaml/))
+- `kubernetes-manifests/` - Contains Kubernetes YAML files for the Guestbook services and deployments, including:
+
+  - `guestbook-frontend.deployment.yaml` - deploys a pod with the frontend container image
+  - `guestbook-frontend.service.yaml` - creates a load balancer and exposes the frontend service on an external IP in the cluster
+  - `guestbook-backend.deployment.yaml` - deploys a pod with the backend container image
+  - `guestbook-backend.service.yaml` - exposes the backend service on an internal IP in the cluster
+  - `guestbook-mongodb.deployment.yaml` - deploys a pod containing a MongoDB instance
+  - `guestbook-mongodb.service.yaml` - exposes the MongoDB service on an internal IP in the cluster
+
+---
 ## Getting Started
 
 ### Run the app locally with minikube
@@ -78,9 +94,5 @@ The Cloud Code team is inviting our user community to sign-up to participate in 
 If you’re invited to join a study, you may try out a new product or tell us what you think about the products you use every day. At this time, Google is only sending invitations for upcoming remote studies. Once a study is complete, you’ll receive a token of thanks for your participation such as a gift card or some Google swag. 
 
 [Sign up using this link](https://google.qualtrics.com/jfe/form/SV_4Me7SiMewdvVYhL?reserved=1&utm_source=In-product&Q_Language=en&utm_medium=own_prd&utm_campaign=Q1&productTag=clou&campaignDate=January2021&referral_code=UXbT481079) and answer a few questions about yourself, as this will help our research team match you to studies that are a great fit.
-
----
-## Kubernetes Architecture Diagram
-![Architecture Diagram](./img/diagram.png)
 
 ----

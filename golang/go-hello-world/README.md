@@ -7,10 +7,23 @@
 For details on how to use this sample as a template in Cloud Code, read the documentation for Cloud Code for [VS Code](https://cloud.google.com/code/docs/vscode/quickstart-local-dev?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-) or [IntelliJ](https://cloud.google.com/code/docs/intellij/quickstart-k8s?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-).
 
 ### Table of Contents
+* [What's in this sample](#whats-in-this-sample)
 * [Getting Started with VS Code](#getting-started-with-vs-code)
 * [Getting Started with IntelliJ](#getting-started-with-intellij)
-* [Kubernetes Architecture Diagram](#kubernetes-diagram)
 * [Sign up for User Research](#sign-up-for-user-research)
+
+---
+## What's in this sample
+### Kubernetes architecture
+![Kubernetes Architecture Diagram](./img/diagram.png)
+
+### Directory contents
+
+- `skaffold.yaml` - A schema file that defines skaffold configurations ([skaffold.yaml reference](https://skaffold.dev/docs/references/yaml/))
+- `kubernetes-manifests/` - Contains Kubernetes YAML files for the Guestbook services and deployments, including:
+
+  - `hello.deployment.yaml` - deploys a pod with the 'dotnet-hello-world' container image
+  - `hello.service.yaml` - creates a load balancer and exposes the 'dotnet-hello-world' service on an external IP in the cluster
 
 ---
 ## Getting Started with VS Code
@@ -53,10 +66,6 @@ For details on how to use this sample as a template in Cloud Code, read the docu
 ![image](./img/deploy-success.png)
 
 3. To stop the application, click the stop icon next to the configuration dropdown.
-
----
-## Kubernetes Architecture Diagram
-![Architecture Diagram](./img/diagram.png)
 
 ---
 ## Sign up for User Research

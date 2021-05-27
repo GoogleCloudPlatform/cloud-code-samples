@@ -19,6 +19,7 @@ steps:
     - |
       skaffold run -p cloudbuild -l $BUILD_ID -n $$TEST_NAMESPACE -d $$SKAFFOLD_DEFAULT_REPO
     dir: '/workspace/golang/go-hello-world'
+    timeout: 1200s
 
   - id: 'Get Endpoint'
     name: 'gcr.io/cloud-builders/kubectl'
@@ -37,6 +38,7 @@ steps:
       done
       echo "$(get_externalIP):$(kubectl get service $service --namespace $$TEST_NAMESPACE -o jsonpath='{.spec.ports[0].port}')" > _externalIP
       echo "External IP and port for $service is $(cat _externalIP)"
+    timeout: 1200s
 
   - id: 'Integration tests'
     name: 'gcr.io/cloud-builders/curl'
@@ -61,6 +63,7 @@ steps:
     - '-c'
     - |
       kubectl delete namespace $$TEST_NAMESPACE
+timeout: 2500s
 
 options:
     env:

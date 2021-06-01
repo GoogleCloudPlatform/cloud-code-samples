@@ -24,7 +24,7 @@
     "eslint-plugin-node": "11.1.0",
     "eslint-plugin-prettier": "3.4.0",
     "eslint-plugin-promise": "5.1.0",
-    "gaxios": "4.2.1",
+    "gaxios": "4.3.0",
     "mocha": "8.4.0",
     "prettier": "2.3.0"
   }

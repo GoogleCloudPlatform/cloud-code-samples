@@ -25,8 +25,8 @@ This "Hello World" sample demonstrates how to deploy a simple "Hello World" appl
 - `skaffold.yaml` - A schema file that defines skaffold configurations ([skaffold.yaml reference](https://skaffold.dev/docs/references/yaml/))
 - `kubernetes-manifests/` - Contains Kubernetes YAML files for the Guestbook services and deployments, including:
 
-  - `hello.deployment.yaml` - deploys a pod with the 'dotnet-hello-world' container image
-  - `hello.service.yaml` - creates a load balancer and exposes the 'dotnet-hello-world' service on an external IP in the cluster
+  - `hello.deployment.yaml` - deploys a pod with the 'nodejs-hello-world' container image
+  - `hello.service.yaml` - creates a load balancer and exposes the 'nodejs-hello-world' service on an external IP in the cluster
 
 ---
 ## Getting Started

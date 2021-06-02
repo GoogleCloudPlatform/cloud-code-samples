@@ -23,7 +23,7 @@ This "Hello World" sample demonstrates how to deploy a simple "Hello World" appl
 - `kubernetes-manifests/` - Contains Kubernetes YAML files for the Guestbook services and deployments, including:
 
   - `hello.deployment.yaml` - deploys a pod with the 'java-hello-world' container image
-  - `hello.service.yaml` - creates a load balancer and exposes the 'go-hello-world' service on an external IP in the cluster
+  - `hello.service.yaml` - creates a load balancer and exposes the 'java-hello-world' service on an external IP in the cluster
 
 ---
 ## Getting Started

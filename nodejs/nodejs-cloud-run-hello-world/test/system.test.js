@@ -8,13 +8,9 @@ const token = process.env.TOKEN || '';
 describe('Hello World', () => {
   it('can respond to an HTTP request', async () => {
     console.log(`    - Requesting GET ${url}/...`);
-
-    const header = {};
-    if (token) header['Authorization'] = 'Bearer ' + token;
-
     const res = await request({
       url: url + '/',
-      headers: header,
+      headers: {"Authorization": "Bearer " + token},
       timeout: 5000,
     });
 

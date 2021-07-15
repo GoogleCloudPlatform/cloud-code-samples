@@ -41,10 +41,6 @@ steps:
      --image gcr.io/$PROJECT_ID/$_SERVICE:$COMMIT_SHA \
      --region $_REGION --platform managed --no-allow-unauthenticated \
      --service-account $_SERVICE_ACCOUNT
-    gcloud run services add-iam-policy-binding $_SERVICE-$(cat _RND) \
-     --region $_REGION --platform managed \
-     --member serviceAccount:${_SERVICE_ACCOUNT} \
-     --role roles/run.invoker
   dir: '${_SAMPLE_DIR}'
 
 - id: 'Get Cloud Run URL'

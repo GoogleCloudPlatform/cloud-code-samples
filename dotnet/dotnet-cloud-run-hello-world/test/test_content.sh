@@ -16,13 +16,14 @@
 
 PORT=${PORT:-8080}
 url=${1:-'http://localhost:$PORT'}
+token=${2:-''}
 expected='Congratulations, you successfully deployed a container image to Cloud Run'
 retries=10
 interval=5
 
 for i in $(seq 0 $retries); do
     
-    html="$(curl -si $url)" || html=""
+    html="$(curl -si $url -H 'Authorization: Bearer $token')" || html=""
     
     if echo "$html" | grep -q "$expected"
     then

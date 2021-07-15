@@ -23,7 +23,7 @@ interval=5
 
 for i in $(seq 0 $retries); do
     
-    html="$(curl -si $url -H 'Authorization: Bearer $token')" || html=""
+    html="$(curl -si $url -H "Authorization: Bearer $token")" || html=""
     
     if echo "$html" | grep -q "$expected"
     then

@@ -80,7 +80,7 @@ steps:
   - '-c'
   - |
     set -ex
-    gcloud --quiet container images delete gcr.io/${PROJECT_ID}/${_SERVICE}:${COMMIT_SHA}
+    gcloud --quiet container images delete gcr.io/${PROJECT_ID}/${_SERVICE}:${COMMIT_SHA} --force-delete-tags
     gcloud --quiet run services delete $_SERVICE-$(cat _RND) --region ${_CLOUDSDK_REGION} --platform managed
   dir: '${_SAMPLE_DIR}'
 

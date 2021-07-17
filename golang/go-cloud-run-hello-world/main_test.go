@@ -21,9 +21,20 @@ func TestService(t *testing.T) {
 		url = "http://localhost:" + port
 	}
 
-	resp, err := retry.Get(url + "/")
+	retryClient := retry.NewClient()
+	req, err := retry.NewRequest(http.MethodGet, url+"/", nil)
 	if err != nil {
-		t.Fatalf("retry.Get: %v", err)
+		t.Fatalf("retry.NewRequest: %v", err)
+	}
+
+	token := os.Getenv("TOKEN")
+	if token != "" {
+		req.Header.Set("Authorization", "Bearer "+token)
+	}
+
+	resp, err := retryClient.Do(req)
+	if err != nil {
+		t.Fatalf("retryClient.Do: %v", err)
 	}
 
 	if got := resp.StatusCode; got != http.StatusOK {

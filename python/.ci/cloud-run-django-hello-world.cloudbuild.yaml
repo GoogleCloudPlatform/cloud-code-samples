@@ -29,7 +29,8 @@ steps:
   - |
     gcloud run deploy $_SERVICE-$(cat _RND) \
      --image gcr.io/$PROJECT_ID/$_SERVICE:$COMMIT_SHA \
-     --region $_REGION --platform managed --allow-unauthenticated
+     --region $_REGION --platform managed --no-allow-unauthenticated \
+     --service-account $_SERVICE_ACCOUNT
   dir: '${_SAMPLE_DIR}'
 
 - id: 'Get Cloud Run URL'
@@ -46,6 +47,23 @@ steps:
     echo "Cloud Run URL for $_SERVICE-$(cat _RND) is $(cat _service_url)"
   dir: '${_SAMPLE_DIR}'
 
+- id: 'Get Identity Token'
+  name: 'gcr.io/cloud-builders/gcloud:$_CLOUDSDK_VERSION'
+  entrypoint: '/bin/bash'
+  args:
+  - '-c'
+  - |
+    echo "Getting identity token with service account $_SERVICE_ACCOUNT..."
+    get_id_token() {
+      curl -X POST -H "content-type: application/json" \
+        -H "Authorization: Bearer $(gcloud auth print-access-token)" \
+        -d "{\"audience\": \"$(cat _service_url)\"}" \
+        "https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/${_SERVICE_ACCOUNT}:generateIdToken" | \
+        python3 -c "import sys, json; print(json.load(sys.stdin)['token'])"
+    }
+    echo $(get_id_token) > _id_token
+  dir: '${_SAMPLE_DIR}'
+
 - id: 'Integration Tests'
   name: 'gcr.io/cloud-builders/curl:latest'
   entrypoint: '/bin/bash'
@@ -54,7 +72,7 @@ steps:
   - |
     set -ex
     chmod +x test_content.sh
-    ./test_content.sh $(cat _service_url)
+    ./test_content.sh $(cat _service_url) $(cat _id_token)
   dir: '${_SAMPLE_DIR}'
 
 - id: 'Teardown'

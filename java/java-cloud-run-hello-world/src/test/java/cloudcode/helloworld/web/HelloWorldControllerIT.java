@@ -36,6 +36,8 @@ public class HelloWorldControllerIT {
       url = "http://localhost:" + port;
     }
 
+    String token = System.getenv("TOKEN");
+
     OkHttpClient ok =
         new OkHttpClient.Builder()
             .connectTimeout(20, TimeUnit.SECONDS)
@@ -43,7 +45,7 @@ public class HelloWorldControllerIT {
             .writeTimeout(20, TimeUnit.SECONDS)
             .build();
 
-    Request request = new Request.Builder().url(url + "/").get().build();
+    Request request = new Request.Builder().url(url + "/").header("Authorization", "Bearer " + token).get().build();
 
     String expected = "Congratulations, you successfully deployed a container image to Cloud Run";
     Response response = ok.newCall(request).execute();

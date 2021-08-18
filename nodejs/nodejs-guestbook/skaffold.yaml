@@ -1,5 +1,7 @@
-# To learn more about the skaffold.yaml schema visit
-# https://skaffold.dev/docs/references/yaml/
+# The Guestbook app is configured to use skaffold modules.
+# The frontend and backend services can be activated by name.
+# To learn more about skaffold modules and multi-config support,
+# visit https://skaffold.dev/docs/design/config/
 
 apiVersion: skaffold/v2beta15
 kind: Config

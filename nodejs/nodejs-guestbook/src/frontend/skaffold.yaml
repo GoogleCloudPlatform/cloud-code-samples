@@ -3,8 +3,6 @@ kind: Config
 metadata:
   name: frontend
 build:
-  tagPolicy:
-    sha256: {}
   artifacts:
   - image: nodejs-guestbook-frontend
     context: .

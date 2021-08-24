@@ -1,5 +1,6 @@
 # The Guestbook app is configured to use skaffold modules.
-# The frontend and backend services can be activated by name.
+# The frontend and backend services can be activated by name,
+# allowing each service to be iterated on independently.
 # To learn more about skaffold modules and multi-config support,
 # visit https://skaffold.dev/docs/design/config/
 

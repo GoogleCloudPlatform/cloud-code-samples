@@ -6,22 +6,9 @@
 
 apiVersion: skaffold/v2beta15
 kind: Config
-metadata:
-  name: frontend-svc
 build:
   local:
     concurrency: 0
 requires:
   - path: ./src/frontend
-
----
-
-apiVersion: skaffold/v2beta15
-kind: Config
-metadata:
-  name: backend-svc
-build:
-  local:
-    concurrency: 0
-requires:
   - path: ./src/backend

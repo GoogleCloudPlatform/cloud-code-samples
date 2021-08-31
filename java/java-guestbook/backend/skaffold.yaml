@@ -27,3 +27,4 @@ profiles:
     artifacts:
       - image: java-guestbook-backend
         context: .
+        

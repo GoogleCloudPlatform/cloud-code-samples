@@ -1,20 +1,17 @@
 # To learn more about the skaffold.yaml schema visit
 # https://skaffold.dev/docs/references/yaml/
-apiVersion: skaffold/v2beta4
+apiVersion: skaffold/v2beta18
 kind: Config
 build:
-  tagPolicy:
-    sha256: {}
   # defines where to find the code at build time and where to push the resulting image
   artifacts:
   - image: python-guestbook-frontend
-    context: src/frontend
+    context: .
 # defines the Kubernetes manifests to deploy on each run
 deploy:
   kubectl:
     manifests:
-    - ./kubernetes-manifests/*.service.yaml
-    - ./kubernetes-manifests/*.deployment.yaml
+    - ./kubernetes-manifests/*.yaml
 portForward:
   # Cloud Code automatically port forwards resources,
   # or users can define explicit port forwards here.

@@ -29,7 +29,7 @@ profiles:
 - name: buildpacks
   build:
     artifacts:
-    - image: dotnet-guestbook-backend
+    - image: dotnet-guestbook-frontend
       context: .
       buildpacks:
         builder: "gcr.io/buildpacks/builder:v1"

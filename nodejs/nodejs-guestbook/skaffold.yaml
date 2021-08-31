@@ -4,7 +4,7 @@
 # To learn more about skaffold modules and multi-config support,
 # visit https://skaffold.dev/docs/design/config/
 
-apiVersion: skaffold/v2beta15
+apiVersion: skaffold/v2beta18
 kind: Config
 build:
   local:

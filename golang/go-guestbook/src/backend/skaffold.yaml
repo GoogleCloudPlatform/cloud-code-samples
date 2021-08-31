@@ -9,10 +9,8 @@ build:
 deploy:
   kubectl:
     manifests:
-    - ./kubernetes-manifests/*.service.yaml
-    - ./kubernetes-manifests/*.deployment.yaml
+    - ./kubernetes-manifests/*.yaml
 profiles:
 - name: cloudbuild
   build:
     googleCloudBuild: {}
-

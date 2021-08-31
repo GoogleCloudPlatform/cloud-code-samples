@@ -1,4 +1,4 @@
-apiVersion: skaffold/v2beta15
+apiVersion: skaffold/v2beta18
 kind: Config
 metadata:
   name: frontend
@@ -9,8 +9,7 @@ build:
 deploy:
   kubectl:
     manifests:
-    - ./kubernetes-manifests/guestbook-frontend.service.yaml
-    - ./kubernetes-manifests/guestbook-frontend.deployment.yaml
+    - ./kubernetes-manifests/*.yaml
   statusCheckDeadlineSeconds: 300
 portForward:
   # Cloud Code automatically port forwards resources,

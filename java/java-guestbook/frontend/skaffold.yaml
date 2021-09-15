@@ -2,6 +2,8 @@
 # https://skaffold.dev/docs/references/yaml/
 apiVersion: skaffold/v2beta18
 kind: Config
+metadata:
+  name: frontend
 build:
   # defines where to find the code at build time and where to push the resulting image
   artifacts:

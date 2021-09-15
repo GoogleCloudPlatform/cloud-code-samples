@@ -2,6 +2,8 @@
 # https://skaffold.dev/docs/references/yaml/
 apiVersion: skaffold/v2beta18
 kind: Config
+metadata:
+  name: backend
 build:
   artifacts:
   - image: go-guestbook-backend

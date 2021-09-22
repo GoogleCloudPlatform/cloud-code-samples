@@ -15,7 +15,7 @@ The Guestbook sample demonstrates how to deploy a Kubernetes application with a 
 ---
 ## What's in this sample
 ### Kubernetes architecture
-![Kubernetes Architecture Diagram](./img/dotnet-guestbook-k8s-diagram.png)
+![Kubernetes Architecture Diagram](../../img/dotnet-guestbook-k8s-diagram.png)
 
 ### Directory contents
 - `skaffold.yaml` - A schema file that defines skaffold configurations ([skaffold.yaml reference](https://skaffold.dev/docs/references/yaml/))

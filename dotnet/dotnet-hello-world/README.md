@@ -15,7 +15,7 @@ For details on how to use this sample as a template in Cloud Code, read the docu
 ---
 ## What's in this sample
 ### Kubernetes architecture
-![Kubernetes Architecture Diagram](./img/dotnet-k8s-diagram.png)
+![Kubernetes Architecture Diagram](./img/diagram.png)
 
 ### Directory contents
 

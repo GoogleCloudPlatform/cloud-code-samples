@@ -4,11 +4,15 @@ The Guestbook sample demonstrates how to deploy a Kubernetes application with a 
 
 ### Table of Contents
 * [What's in this sample](#whats-in-this-sample)
+  * [Kubernetes architecture](#kubernetes-architecture)
+  * [Directory contents](#directory-contents)
+  * [Skaffold modules](#skaffold-modules)
 * [Getting Started](#getting-started)
     1. [Run the app locally with minikube](#run-the-app-locally-with-minikube)
     2. [Run the app remotely with Google Kubernetes Engine](#run-the-app-remotely-with-google-kubernetes-engine)
         * [Set up a GKE cluster](#set-up-a-gke-cluster)
         * [Deploy app to GKE](#deploy-app-to-gke)
+    3. [Run individual services with Skaffold modules](#run-individual-services-with-skaffold-modules)
 * [Next steps](#next-steps)
 * [Sign up for User Research](#sign-up-for-user-research)
 
@@ -18,15 +22,24 @@ The Guestbook sample demonstrates how to deploy a Kubernetes application with a 
 ![Kubernetes Architecture Diagram](./img/dotnet-guestbook-k8s-diagram.png)
 
 ### Directory contents
-- `skaffold.yaml` - A schema file that defines skaffold configurations ([skaffold.yaml reference](https://skaffold.dev/docs/references/yaml/))
-- `kubernetes-manifests/` - Contains Kubernetes YAML files for the Guestbook services and deployments, including:
+- `src/frontend/` - Guestbook frontend service, containing the following  files:
+  - `skaffold.yaml` - A schema file that defines the frontend Skaffold module ([skaffold.yaml reference](https://skaffold.dev/docs/references/yaml/))
+  - `kubernetes-manifests/guestbook-frontend.deployment.yaml` - deploys a pod with the frontend container image
+  - `kubernetes-manifests/guestbook-frontend.service.yaml` - creates a load balancer and exposes the frontend service on an external IP in the cluster
 
-  - `guestbook-frontend.deployment.yaml` - deploys a pod with the frontend container image
-  - `guestbook-frontend.service.yaml` - creates a load balancer and exposes the frontend service on an external IP in the cluster
-  - `guestbook-backend.deployment.yaml` - deploys a pod with the backend container image
-  - `guestbook-backend.service.yaml` - exposes the backend service on an internal IP in the cluster
-  - `guestbook-mongodb.deployment.yaml` - deploys a pod containing a MongoDB instance
-  - `guestbook-mongodb.service.yaml` - exposes the MongoDB service on an internal IP in the cluster
+- `src/backend/` - Guestbook backend service, containing the following config files:
+  - `skaffold.yaml` - A schema file that defines the backend Skaffold module ([skaffold.yaml reference](https://skaffold.dev/docs/references/yaml/))
+  - `kubernetes-manifests/guestbook-backend.deployment.yaml` - deploys a pod with the backend container image
+  - `kubernetes-manifests/guestbook-backend.service.yaml` - exposes the backend service on an internal IP in the cluster
+  - `kubernetes-manifests/guestbook-mongodb.deployment.yaml` - deploys a pod containing a MongoDB instance
+  - `kubernetes-manifests/guestbook-mongodb.service.yaml` - exposes the MongoDB service on an internal IP in the cluster
+
+  ### Skaffold modules
+  The Guestbook app uses Skaffold configuration dependencies, or **modules**, to define individual configurations for the frontend and backend services. Each module constitutes a single build-test-deploy pipeline that can be executed in isolation or as a dependency of another module. 
+
+  Cloud Code enables iterative development and debugging on a single module or a subset of many modules, and makes editing the skaffold.yaml file configuration with modules easier. Underlying Skaffold takes care of module dependencies and their order of deployment.
+
+  Guestbook runs both the frontend and backend modules by default. To run a single module, follow the steps in the section [Run individual services with Skaffold modules](#run-individual-services-with-skaffold-modules). 
 
 ---
 ## Getting Started
@@ -69,6 +82,20 @@ The Guestbook sample demonstrates how to deploy a Kubernetes application with a 
 
 3. View the build’s progress in the OUTPUT window. Once the build has finished, you can visit your deployed app by clicking the URL in the OUTPUT window.  
 ![image](./img/kubernetes-guestbook-url.png)
+
+### Run individual services with Skaffold modules
+
+1. Go to **Run** > **Edit configurations** and open the **Build / Deploy** tab.
+
+2. Select skaffold.yaml.
+
+3. Choose **Build and deploy with** and select the frontend module. This tells Cloud Code to deploy only the frontend service, not the backend. 
+
+4. You can now run the frontend module by deploying it to [minikube](#run-the-app-on-minikube) or [GKE](#deploy-app-to-gke). 
+
+You can see how the Guestbook frontend module is defined by checking out the frontend's [skaffold.yaml](../../src/frontend/skaffold.yaml) file.
+
+For more info on how to use Skaffold modules, see the [Skaffold documentation](https://skaffold.dev/docs/design/config/#multiple-configuration-support).
 
 ---
 ## Next steps

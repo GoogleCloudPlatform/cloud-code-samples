@@ -30,6 +30,14 @@ This "Hello World" sample demonstrates how to deploy a simple "Hello World" appl
 
 ### Run the app locally with minikube
 
+#### Set up a minikube cluster
+
+1. Navigate to the **Cloud Code - Kubernetes** explorer using the left side taskbar.
+
+2. Click '+' next to the **Clusters** header to create a new cluster. If prompted, follow the instructions to log in to Google Cloud Platform.  
+
+3. Choose **Minikube** and then click **+ Create a new GKE Cluster**.
+
 1. To run your application, click on the Cloud Code status bar and select ‘Run on Kubernetes’.  
 ![image](./img/status-bar.png) 
 
@@ -46,16 +54,21 @@ This "Hello World" sample demonstrates how to deploy a simple "Hello World" appl
 
 #### Set up a GKE cluster
 
-1. Navigate to the Cloud Code - Kubernetes explorer using the left side taskbar.
+1. Navigate to the **Cloud Code - Kubernetes** explorer using the left side taskbar.
 
-2. In the Google Kubernetes Engine Explorer, click '+' to create a new Google Kubernetes Engine cluster. If prompted, follow the instructions to log in to Google Cloud Platform.  
-![image](./img/empty-gke-explorer.png)
+2. Click '+' next to the **Clusters** header to create a new cluster. If prompted, follow the instructions to log in to Google Cloud Platform.  
 
-3. Configure your new cluster using the GKE wizard and click 'Create Cluster'. Once your GKE cluster has been created, it will be displayed in the Google Kubernetes Engine Explorer.  
-![image](./img/gke-cluster-config.png)
+3. Choose **Google Kubernetes Engine** and then click **+ Create a new GKE Cluster**.
 
-4. Your new cluster will be set as the active cluster by default. To switch clusters, right click on a different cluster in the GKE Explorer and select “Set Active Cluster”.  
-![image](./img/kubernetes-explorer-new-cluster.png)
+4. Choose **Standard** or **Autopilot**. For more information, see [Comparing Autopilot and Standard modes](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-).
+
+5. If prompted, click **Open** to permit Cloud Code to open the Cloud Console.
+
+6. In Cloud Console, choose any configuration options that you want to customize and then click **Create**.
+
+7. After the cluster is created, in VS Code, click **Refresh**.
+
+8. After the name of your new cluster appears in the list, click the cluster name. Your new cluster is added to the configuration and set as the default context.
 
 #### Deploy app to GKE
 

@@ -25,6 +25,7 @@ The Guestbook sample demonstrates how to deploy a Kubernetes application with a 
 ![Kubernetes Architecture Diagram](./img/dotnet-guestbook-k8s-diagram.png)
 
 ### Directory contents
+- `skaffold.yaml` - A schema file that serves as an entry point for all Skaffold modules in the app
 - `src/frontend/` - Guestbook frontend service, containing the following config files:
   - `skaffold.yaml` - A schema file that defines the frontend Skaffold module ([skaffold.yaml reference](https://skaffold.dev/docs/references/yaml/))
   - `kubernetes-manifests/guestbook-frontend.deployment.yaml` - deploys a pod with the frontend container image

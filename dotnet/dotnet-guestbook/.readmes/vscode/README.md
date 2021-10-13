@@ -86,21 +86,27 @@ The Guestbook sample demonstrates how to deploy a Kubernetes application with a 
 
 ### Run individual services with Skaffold modules
 
-1. Click on the Cloud Code status bar and select **Run on Kubernetes**.
+The Guestbook app needs both services deployed to function properly, but for this tutorial we'll deploy only the frontend service to demonstrate running individual modules.
 
-2. If prompted, confirm the current context and image registry.
+1. Open [.vscode/launch.json](../../.vscode/launch.json) and add the following code below the `skaffoldConfig` property:
 
-3. Select the root `skaffold.yaml` file as your skaffold config. 
+```
+      "skaffoldFlags": {
+        "modules": [
+          "frontend"
+        ]
+      },
+```
 
-4. When prompted to select what you want to build and deploy, choose **Select modules**.
+This tells Cloud Code to build and deploy only the frontend module.
 
-5. Next, you can select which Skaffold modules you'd like to run. The Guestbook app needs both services deployed to function properly, but for this tutorial we'll deploy one service to demonstrate running individual modules. Check **frontend** to deploy the frontend module.
+2. Click on the Cloud Code status bar and select **Run on Kubernetes**.
 
-6. When prompted to select a profile, choose **default**.
+3. If prompted, confirm the current context and image registry.
 
-7. View the build's progress in the OUTPUT window. Once the build has finished, you can view the deployed frontend module by clicking on the URL in the OUTPUT window.
+4. View the build's progress in the OUTPUT window. Once the build has finished, you can view the deployed frontend module by clicking on the URL in the OUTPUT window.
 
-8. Now, you can quickly iterate on the frontend service without having to rebuild and deploy the entire app for every change.    
+5. Now, you can quickly iterate on the frontend service without having to rebuild and deploy the entire app for every change.    
   a. Navigate to [frontend/Views/Home/Index.cshtml](../../src/frontend/Views/Home/Index.cshtml).  
   b. Make a change to the file (e.g. "My Guestbook" > "My Frontend Guestbook").  
   c. The frontend service will rebuild and you can see your changes in the deployed frontend service.  

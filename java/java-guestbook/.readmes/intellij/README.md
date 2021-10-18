@@ -107,11 +107,11 @@ The Guestbook sample demonstrates how to deploy a Kubernetes application with a 
 
 2. Select skaffold.yaml.
 
-3. Choose **Build and deploy with** and select the frontend module. This tells Cloud Code to deploy only the frontend service, not the backend. 
+3. Choose **Build and deploy with** and select either the frontend or backend module. This tells Cloud Code to deploy only the selected service. You can select more than one module to deploy.
 
-Note: The Guestbook app needs both services deployed to function properly, but for this tutorial we'll deploy one service to demonstrate running individual modules.
+Note: The complete Guestbook app needs both services deployed to function properly, but for this tutorial we'll deploy one service to demonstrate running individual modules.
 
-4. You can now run the frontend module by deploying it to [minikube](#run-the-app-on-minikube) or [GKE](#deploy-app-to-gke). 
+4. You can now run the selected module by deploying it to [minikube](#run-the-app-on-minikube) or [GKE](#deploy-app-to-gke). 
 
 You can see how the Guestbook frontend module is defined by checking out the frontend's [skaffold.yaml](../../src/frontend/skaffold.yaml) file.
 

@@ -113,7 +113,7 @@ Note: The complete Guestbook app needs both services deployed to function proper
 
 4. You can now run the selected module by deploying it to [minikube](#run-the-app-on-minikube) or [GKE](#deploy-app-to-gke). 
 
-You can see how the Guestbook frontend module is defined by checking out the frontend's [skaffold.yaml](../../src/frontend/skaffold.yaml) file.
+You can see how the Guestbook modules are defined by checking out the frontend's [skaffold.yaml](../../src/frontend/skaffold.yaml) and the backend's [skaffold.yaml](../../src/backend/skaffold.yaml).
 
 For more info on how to use Skaffold modules, see the [Skaffold documentation](https://skaffold.dev/docs/design/config/#multiple-configuration-support).
 

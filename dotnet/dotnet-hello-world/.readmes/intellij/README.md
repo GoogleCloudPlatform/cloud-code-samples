@@ -18,7 +18,7 @@ This "Hello World" sample demonstrates how to deploy a simple "Hello World" appl
 ---
 ## What's in this sample
 ### Kubernetes architecture
-![Kubernetes Architecture Diagram](./img/dotnet-k8s-diagram.png)
+![Kubernetes Architecture Diagram](../../img/diagram.png)
 
 ### Directory contents
 

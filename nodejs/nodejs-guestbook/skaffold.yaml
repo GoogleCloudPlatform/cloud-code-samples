@@ -35,9 +35,9 @@ profiles:
     artifacts:
     - image: nodejs-guestbook-backend
       context: src/backend
-      buildpack:
+      buildpacks:
         builder: "gcr.io/buildpacks/builder:v1"
     - image: nodejs-guestbook-frontend
       context: src/frontend
-      buildpack:
+      buildpacks:
         builder: "gcr.io/buildpacks/builder:v1"

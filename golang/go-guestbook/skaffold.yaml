@@ -1,6 +1,6 @@
 # To learn more about the skaffold.yaml schema visit
 # https://skaffold.dev/docs/references/yaml/
-apiVersion: skaffold/v2beta4
+apiVersion: skaffold/v2beta22
 kind: Config
 build:
   artifacts:

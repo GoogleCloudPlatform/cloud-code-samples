@@ -66,7 +66,7 @@ For details on how to use this sample as a template in Cloud Code, read the docu
 ![image](./img/deploy-config.png)
 
 2. View the build process in the output window. When the deployment is successful, you're notified that new service URLs are available. Click the Service URLs tab to view the URL(s), then click the URL link to open your browser with your running application.  
-![image](./img/deploy-success.png)
+![image](./img/service-urls.png)
 
 3. To stop the application, click the stop icon next to the configuration dropdown.
 

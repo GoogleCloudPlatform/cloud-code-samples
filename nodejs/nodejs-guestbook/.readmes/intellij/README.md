@@ -118,6 +118,23 @@ You can see how the Guestbook modules are defined by checking out the frontend's
 For more info on how to use Skaffold modules, see the [Skaffold documentation](https://skaffold.dev/docs/design/config/#multiple-configuration-support).
 
 ---
+### Run individual services with Skaffold modules
+
+1. Go to **Run** > **Edit configurations** and open the **Build / Deploy** tab.
+
+2. Select skaffold.yaml.
+
+3. Choose **Build and deploy with** and select either the frontend or backend module. This tells Cloud Code to deploy only the selected service. You can select more than one module to deploy.
+
+Note: The complete Guestbook app needs both services deployed to function properly, but for this tutorial we'll deploy one service to demonstrate running individual modules.
+
+4. You can now run the selected module by deploying it to [minikube](#run-the-app-on-minikube) or [GKE](#deploy-app-to-gke). 
+
+You can see how the Guestbook modules are defined by checking out the frontend's [skaffold.yaml](../../src/frontend/skaffold.yaml) and the backend's [skaffold.yaml](../../src/backend/skaffold.yaml).
+
+For more info on how to use Skaffold modules, see the [Skaffold documentation](https://skaffold.dev/docs/design/config/#multiple-configuration-support).
+
+---
 ## Next steps
 * Try [debugging your app](https://cloud.google.com/code/docs/intellij/kubernetes-debugging?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-) using Cloud Code
 * Navigate the [Kubernetes Engine Explorer](https://cloud.google.com/code/docs/intellij/using-the-kubernetes-explorer?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-)

@@ -5,7 +5,7 @@ This "Hello World" sample demonstrates how to deploy a simple "Hello World" appl
 ### Table of Contents
 * [What's in this sample](#whats-in-this-sample)
 * [Getting Started](#getting-started)
-    1. [Set up a Kubernetes cluster](#set-up-a-Kubernetes-cluster)
+    1. [Set up a Kubernetes cluster](#set-up-a-kubernetes-cluster)
         * [Minikube](#minikube) - free local cluster
         * [GKE](#GKE) - Google Kubernetes Engine
     2. [Deploy app to cluster](#deploy-app-to-cluster)
@@ -29,8 +29,6 @@ This "Hello World" sample demonstrates how to deploy a simple "Hello World" appl
 ## Getting Started
 
 ### Set up a Kubernetes cluster
-
-*Note: In order to run a Kubernetes application on Cloud Code, you'll need [Docker](https://docs.docker.com/get-docker/) installed for building and pushing your container images.* 
 
 #### Minikube
  

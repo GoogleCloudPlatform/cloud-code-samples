@@ -1,0 +1,19 @@
+# To learn more about the skaffold.yaml schema visit
+# https://skaffold.dev/docs/references/yaml/
+apiVersion: skaffold/v2beta18
+kind: Config
+metadata:
+  name: backend
+build:
+  artifacts:
+  - image: go-guestbook-backend
+    context: .
+deploy:
+  kubectl:
+    manifests:
+    - ./kubernetes-manifests/*.yaml
+profiles:
+- name: cloudbuild
+  build:
+    googleCloudBuild: {}
+    

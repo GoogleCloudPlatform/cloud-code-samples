@@ -1,0 +1,27 @@
+# To learn more about the skaffold.yaml schema visit
+# https://skaffold.dev/docs/references/yaml/
+apiVersion: skaffold/v2beta18
+kind: Config
+metadata:
+  name: frontend
+build:
+  artifacts:
+  - image: go-guestbook-frontend
+    context: .
+deploy:
+  kubectl:
+    manifests:
+    - ./kubernetes-manifests/*.yaml
+portForward:
+  # Cloud Code automatically port forwards resources,
+  # or users can define explicit port forwards here.
+  # For more info, visit https://skaffold.dev/docs/pipeline-stages/port-forwarding/#UDPF
+  - resourceType: service
+    resourceName: go-guestbook-frontend
+    port: 80
+    localPort: 4503
+profiles:
+- name: cloudbuild
+  build:
+    googleCloudBuild: {}
+    

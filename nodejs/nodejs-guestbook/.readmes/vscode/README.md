@@ -38,7 +38,7 @@ The Guestbook sample demonstrates how to deploy a Kubernetes application with a 
  
  Cloud Code uses [minikube](https://minikube.sigs.k8s.io/docs/) to create a free local cluster.
 
-1. Navigate to the **Clusters explorer** in the Cloud Code - Kubernetes View using the left side Activity bar.
+1. Navigate to the **Clusters** explorer in the Cloud Code - Kubernetes View using the left side Activity bar.
 
 2. Click '+' in the title bar of the Clusters explorer to create a new cluster. If prompted, follow the instructions to log in to Google Cloud Platform.  
 
@@ -48,7 +48,7 @@ The Guestbook sample demonstrates how to deploy a Kubernetes application with a 
 
 #### Google Kubernetes Engine
 
-1. Navigate to the **Clusters explorer** in the Cloud Code - Kubernetes View using the left side Activity bar.
+1. Navigate to the **Clusters** explorer in the Cloud Code - Kubernetes View using the left side Activity bar.
 
 2. Click '+' in the title bar of the Clusters explorer to create a new cluster. If prompted, follow the instructions to log in to Google Cloud Platform.  
 
@@ -64,7 +64,7 @@ The Guestbook sample demonstrates how to deploy a Kubernetes application with a 
 
     You can now select your newly created cluster.
 
-8. The cluster you select will be added to the **Clusters explorer** and set as the default context. You can inspect the cluster's properties, make changes to the cluster's resources, and view logs by clicking the dropdown arrow next to the cluster name in the **Clusters** explorer.
+8. The cluster you select will be added to the **Clusters** explorer and set as the default context. You can inspect the cluster's properties, make changes to the cluster's resources, and view logs by clicking the dropdown arrow next to the cluster name in the **Clusters** explorer.
 
 #### Deploy app to cluster
 

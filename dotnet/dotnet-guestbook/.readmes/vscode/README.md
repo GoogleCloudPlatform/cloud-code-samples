@@ -63,7 +63,7 @@ The Guestbook sample demonstrates how to deploy a Kubernetes application with a 
 
     You can now select your newly created cluster.
 
-8. The cluster you select will be added to the **Clusters** tab in the **Kubernetes Explorer** and set as the default context. You can inspect the cluster's properties, make changes to the cluster's resources, and view logs by clicking the dropdown arrow next to the cluster name in the **Clusters** tab.
+8. The cluster you select will be added to the **Clusters explorer** and set as the default context. You can inspect the cluster's properties, make changes to the cluster's resources, and view logs by clicking the dropdown arrow next to the cluster name in the **Clusters** explorer.
 
 #### Deploy app to cluster
 

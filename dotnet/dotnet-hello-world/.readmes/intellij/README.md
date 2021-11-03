@@ -34,8 +34,8 @@ This "Hello World" sample demonstrates how to deploy a simple "Hello World" appl
 ### Run the app locally with minikube
 
 #### Edit run configuration
-1. Click the Run/Debug Configurations dropdown on the top taskbar and select 'Edit Configurations'.    
-![image](./img/edit-configurations.png)
+1. Click the configuration dropdown on the top taskbar and select 'Edit Configurations'.
+![image](../../img/edit-configurations.png)
 
 2. In the Run/Debug Configurations dialog, select 'Develop on Kubernetes'. This configuration watches for changes, then uses [skaffold](https://skaffold.dev/docs/) to rebuild and rerun your app.
 
@@ -49,11 +49,10 @@ This "Hello World" sample demonstrates how to deploy a simple "Hello World" appl
 1. Select 'Develop on Kubernetes' from the configuration drop down and click the run icon. Cloud Code runs your app in a local [minikube](ttps://minikube.sigs.k8s.io/docs/start/) cluster.  
 ![image](./img/deploy-config.png)
 
-2. View the build process in the output window. Once the build has finished, you will receive a notification from the Event Log. Click 'View' to access the local URLs for your deployed services. The URLs remain accessible through the Event Log dialog.  
-![image](./img/deploy-success.png)
+2. View the build process in the output window. When the deployment is successful, you're notified that new service URLs are available. Click the Service URLs tab to view the URL(s), then click the URL link to open your browser with your running application.  
+![image](../../img/service-urls.png)
 
 3. To stop the application, click the stop icon next to the configuration dropdown.
-
 
 ---
 ### Run the app remotely on Google Kubernetes Engine
@@ -81,8 +80,8 @@ This "Hello World" sample demonstrates how to deploy a simple "Hello World" appl
 1. Select 'Run on Kubernetes' from the configuration drop down and click the 'Run' button.  
 ![image](./img/run-on-k8s.png)
 
-2. View the build process in the output window. Once the build has finished, you will receive a notification from the Event Log. Click 'View' to access the local URLs for your deployed services. The URLs remain accessible through the Event Log dialog.  
-![image](./img/deploy-success.png)
+2. View the build process in the output window. When the deployment is successful, you're notified that new service URLs are available. Click the Service URLs tab to view the URL(s), then click the URL link to open your browser with your running application.  
+![image](../../img/service-urls.png)
 
 ---
 ## Next steps

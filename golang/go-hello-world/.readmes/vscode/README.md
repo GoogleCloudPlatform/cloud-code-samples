@@ -68,8 +68,7 @@ This "Hello World" sample demonstrates how to deploy a simple "Hello World" appl
 
 2. Click the 'Play' icon in the title bar of the **Development Sessions** explorer to run the application. If prompted, confirm the current context and image registry.
 
-3. View the build’s progress in the OUTPUT window. Once the build has finished, you can visit your deployed app by clicking the URL in the OUTPUT window.  
-![image](../../img/kubernetes-url.png)
+3. View the build progress in the **Development Sessions** explorer. Once the build has finished, the URLs for your deployed app will be displayed under **Port Forward URLs**. Click on the 'Open Window' icon next to the service's URL to visit your deployed app.
 
 4.  To stop the application, click the stop icon on the Debug Toolbar.
 

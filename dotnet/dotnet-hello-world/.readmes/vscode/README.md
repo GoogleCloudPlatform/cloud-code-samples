@@ -64,9 +64,9 @@ This "Hello World" sample demonstrates how to deploy a simple "Hello World" appl
 
 #### Deploy app to cluster
 
-1. Open the Command Palette (press Ctrl/Cmd+Shift+P) and then run the **Cloud Code: Run on Kubernetes** command.
+1. Navigate to the **Development Sessions** explorer in the **Cloud Code - Kubernetes** View using the Activity bar on the left side of the IDE.
 
-2. If prompted, confirm the current context and image registry.
+2. Click the 'Play' icon in the title bar of the **Development Sessions** explorer to run the application. If prompted, confirm the current context and image registry.
 
 3. View the build’s progress in the OUTPUT window. Once the build has finished, you can visit your deployed app by clicking the URL in the OUTPUT window.  
 ![image](../../img/kubernetes-url.png)

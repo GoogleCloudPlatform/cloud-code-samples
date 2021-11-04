@@ -62,7 +62,7 @@ This "Hello World" sample demonstrates how to deploy a simple "Hello World" appl
 
 8. The cluster you select will be added to the **Clusters** explorer and set as the default context. You can inspect the cluster's properties, make changes to the cluster's resources, and view logs by clicking the dropdown arrow next to the cluster name in the **Clusters** explorer.
 
-#### Deploy app to cluster
+### Deploy app to cluster
 
 1. Navigate to the **Development Sessions** explorer in the **Cloud Code - Kubernetes** sidebar using the Activity bar on the left side of the IDE.
 

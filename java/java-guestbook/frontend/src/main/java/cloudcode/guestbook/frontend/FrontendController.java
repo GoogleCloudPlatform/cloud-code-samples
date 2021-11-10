@@ -31,9 +31,15 @@ public class FrontendController {
     @GetMapping("/")
     public final String main(final Model model) {
         RestTemplate restTemplate = new RestTemplate();
-        GuestBookEntry[] response = restTemplate.getForObject(backendUri,
+        try {
+            GuestBookEntry[] response = restTemplate.getForObject(backendUri,
             GuestBookEntry[].class);
-        model.addAttribute("messages", response);
+            model.addAttribute("messages", response);
+        } catch(Exception e) {
+            System.out.println("Error retrieving messages from backend.");
+            model.addAttribute("noBackend", true);
+        }
+
         return "home";
     }
 
@@ -53,7 +59,11 @@ public class FrontendController {
         HttpEntity<GuestBookEntry> httpEntity =
             new HttpEntity<GuestBookEntry>(formMessage, httpHeaders);
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.postForObject(url, httpEntity, String.class);
+        try {
+            restTemplate.postForObject(url, httpEntity, String.class);
+        } catch(Exception e) {
+            System.out.println("Error posting message to backend.");
+        }
 
         return "redirect:/";
     }

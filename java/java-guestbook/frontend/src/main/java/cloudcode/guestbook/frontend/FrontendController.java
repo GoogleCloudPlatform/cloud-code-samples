@@ -36,6 +36,7 @@ public class FrontendController {
             GuestBookEntry[].class);
             model.addAttribute("messages", response);
         } catch(Exception e) {
+            e.printStackTrace();
             System.out.println("Error retrieving messages from backend.");
             model.addAttribute("noBackend", true);
         }
@@ -62,6 +63,7 @@ public class FrontendController {
         try {
             restTemplate.postForObject(url, httpEntity, String.class);
         } catch(Exception e) {
+            e.printStackTrace();
             System.out.println("Error posting message to backend.");
         }
 

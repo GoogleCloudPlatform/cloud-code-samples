@@ -41,6 +41,10 @@
             <button type="submit" class="btn btn-primary mb-2">Post to Guestbook</button>
         </form>
 
+        <div class="alert alert-warning" role="alert" th:if="${#bools.isTrue(noBackend)}">
+            Warning: Backend service is not connected. Some features of Guestbook won't work.
+        </div>
+
         <div class="card my-3 col-12" th:each="m : ${messages}">
             <div class="card-body">
                 <h5 class="card-title" th:text="${m.Author}">Author</h5>

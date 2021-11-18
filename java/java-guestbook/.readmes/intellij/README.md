@@ -75,28 +75,28 @@ The Guestbook sample demonstrates how to deploy a Kubernetes application with a 
 
 #### Set up a GKE cluster
 
-1. Navigate to the Kubernetes Explorer from the right side panel, or by going to **Tools > Cloud Code > Kubernetes > View Cluster Explorer**.
+1. Navigate to the Kubernetes Explorer from the right side panel, or by going to **Tools > Cloud Code > Kubernetes > View Cluster Explorer**. 
 
 2. Click **+** to create a new cluster, or go to **Tools > Cloud Code > Kubernetes > Add GKE Cluster**.  
-   ![image](./img/add-cluster.png)
+![image](./img/add-cluster.png)
 
 3. If prompted, log in to your GCP account and select a project.  
-   ![image](./img/gcp-login-prompt.png)
+![image](./img/gcp-login-prompt.png)
 
 4. Click **Create a new GKE cluster**. You will be directed to the Google Cloud Console to create your new cluster.  
-   ![image](./img/gcp-console-new-cluster.png)
+![image](./img/gcp-console-new-cluster.png)
 
 5. Once your GKE cluster has been created, it will be displayed in the Cluster Explorer.  
-   ![image](./img/added-cluster.png)
+![image](./img/added-cluster.png)
 
-6. Your new cluster will be set as the current context by default. To switch contexts, right click on a different cluster in the Cluster Explorer and select **Set as Current Context**.
+6. Your new cluster will be set as the current context by default. To switch contexts, right click on a different cluster in the Cluster Explorer and select **Set as Current Context**. 
 
 #### Deploy app to GKE
 
-1. Select **Develop on Kubernetes** from the configuration dropdown and click the run icon.
+1. Select **Develop on Kubernetes** from the configuration dropdown and click the run icon. 
 
 2. View the build process in the output window. When the deployment is successful, you're notified that new service URLs are available. Click the Service URLs tab to view the URL(s), then click the URL link to open your browser with your running application.  
-   ![image](../../img/service-urls.png)
+![image](../../img/service-urls.png)
 
 3. To stop the application, click the stop icon next to the configuration dropdown.
 

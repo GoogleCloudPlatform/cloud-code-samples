@@ -59,11 +59,11 @@ For details on how to use this sample as a template in Cloud Code, read the docu
 3. Under **Run > Deployment**, select 'Deploy locally to a minikube cluster'.
 ![image](./img/run-debug-dialog.png)
 
-4. Click 'OK' to save your configuration. 
+4. Click **OK** to save your configuration. 
 
 
 #### Run the app on minikube
-1. Select 'Develop on Kubernetes' from the configuration dropdown and click the run icon. Cloud Code runs your app in a local [minikube](ttps://minikube.sigs.k8s.io/docs/start/) cluster.  
+1. Select **Develop on Kubernetes** from the configuration dropdown and click the run icon. Cloud Code runs your app in a local [minikube](ttps://minikube.sigs.k8s.io/docs/start/) cluster.  
 ![image](./img/edit-configurations.png)
 
 

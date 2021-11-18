@@ -75,7 +75,7 @@ For details on how to use this sample as a template in Cloud Code, read the docu
 
 
 #### Run the app on minikube
-1. Select 'Develop on Kubernetes' from the configuration dropdown and click the run icon. Cloud Code runs your app in a local [minikube](ttps://minikube.sigs.k8s.io/docs/start/) cluster.  
+1. Select **Develop on Kubernetes** from the configuration dropdown and click the run icon. Cloud Code runs your app in a local [minikube](ttps://minikube.sigs.k8s.io/docs/start/) cluster.  
 ![image](./img/edit-configurations.png)
 
 

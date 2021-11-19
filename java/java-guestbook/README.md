@@ -32,28 +32,16 @@ For details on how to use this sample as a template in Cloud Code, read the docu
 
 ### Run the app locally with minikube
 
-#### Edit run configuration
-1. Click the configuration dropdown in the top taskbar and then click **Edit Configurations**.
-   ![image](./img/edit-configurations.png)
+1. To run your application, click on the Cloud Code status bar and select ‘Run on Kubernetes’.  
+![image](./img/status-bar.png)
 
-   The **Develop on Kubernetes** configuration watches for changes, then uses [skaffold](https://skaffold.dev/docs/) to rebuild and rerun your app. You can customize your deployment by making changes to this run configuration or by creating a new Cloud Code: Kubernetes run configuration.
+2. Select ‘Run locally using minikube’ when prompted. Cloud Code runs your app in a local [minikube](https://minikube.sigs.k8s.io/docs/start/) cluster.  
+![image](./img/create-k8s-cluster.png)
 
+3. View the build progress in the OUTPUT window. Once the build has finished, click on the front end service's URL in the OUTPUT window to view your live application.  
+![image](./img/kubernetes-guestbook-url.png)
 
-3. Under **Run > Deployment**, select 'Deploy locally to a minikube cluster'.
-   ![image](./img/run-debug-dialog.png)
-
-4. Click **OK** to save your configuration.
-
-
-#### Run the app on minikube
-1. Select **Develop on Kubernetes** from the configuration dropdown and click the run icon. Cloud Code runs your app in a local [minikube](ttps://minikube.sigs.k8s.io/docs/start/) cluster.  
-   ![image](./img/edit-configurations.png)
-
-
-2. View the build process in the output window. When the deployment is successful, you're notified that new service URLs are available. Click the Service URLs tab to view the URL(s), then click the URL link to open your browser with your running application.  
-   ![image](./img/service-urls.png)
-
-3. To stop the application, click the stop icon next to the configuration dropdown.
+4.  To stop the application, click the stop icon on the Debug Toolbar.
 
 ---
 
@@ -62,22 +50,20 @@ For details on how to use this sample as a template in Cloud Code, read the docu
 ### Run the app locally with minikube
 
 #### Edit run configuration
-1. Click the configuration dropdown in the top taskbar and then click **Edit Configurations**.
+1. Click the configuration dropdown on the top taskbar and select 'Edit Configurations'.
 ![image](./img/edit-configurations.png)
 
-   The **Develop on Kubernetes** configuration watches for changes, then uses [skaffold](https://skaffold.dev/docs/) to rebuild and rerun your app. You can customize your deployment by making changes to this run configuration or by creating a new Cloud Code: Kubernetes run configuration.
-
+2. In the Run/Debug Configurations dialog, select 'Develop on Kubernetes'. This configuration watches for changes, then uses [skaffold](https://skaffold.dev/docs/) to rebuild and rerun your app.
 
 3. Under **Run > Deployment**, select 'Deploy locally to a minikube cluster'.
 ![image](./img/run-debug-dialog.png)
 
-4. Click **OK** to save your configuration. 
+4. Click 'OK' to save your configuration. 
 
 
 #### Run the app on minikube
-1. Select **Develop on Kubernetes** from the configuration dropdown and click the run icon. Cloud Code runs your app in a local [minikube](ttps://minikube.sigs.k8s.io/docs/start/) cluster.  
-![image](./img/edit-configurations.png)
-
+1. Select 'Develop on Kubernetes' from the configuration drop down and click the run icon. Cloud Code runs your app in a local [minikube](ttps://minikube.sigs.k8s.io/docs/start/) cluster.  
+![image](./img/deploy-config.png)
 
 2. View the build process in the output window. When the deployment is successful, you're notified that new service URLs are available. Click the Service URLs tab to view the URL(s), then click the URL link to open your browser with your running application.  
 ![image](./img/service-urls.png)

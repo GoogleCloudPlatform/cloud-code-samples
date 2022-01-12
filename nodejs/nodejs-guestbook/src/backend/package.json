@@ -11,7 +11,7 @@
   "dependencies": {
     "body-parser": "1.19.1",
     "express": "4.17.2",
-    "mongodb": "4.2.1",
+    "mongodb": "4.3.0",
     "mongoose": "5.13.14"
   }
 }

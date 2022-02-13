@@ -9,7 +9,7 @@
   "author": "Google Inc.",
   "license": "0BSD",
   "dependencies": {
-    "axios": "0.25.0",
+    "axios": "0.26.0",
     "body-parser": "1.19.1",
     "express": "4.17.2",
     "moment": "2.29.1",

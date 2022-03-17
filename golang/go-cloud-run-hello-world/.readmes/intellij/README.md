@@ -13,19 +13,20 @@ This "Hello World" sample demonstrates how to deploy a simple "Hello World" appl
 * [Getting support](#getting-support)
 
 ---
-## Getting Started
+<h2 id="getting-started"> Getting Started </h2>
 
-### Run the app locally with the Cloud Run Emulator
+<h3 id="run-the-app-locally-with-the-cloud-run-emulator"> Run the app locally with the Cloud Run Emulator</h3>
 
-#### Define run configuration
+<h4 id="define-run-configuration"> Define run configuration</h4>
 
-1. Click the Run/Debug configurations dropdown on the top taskbar and select 'Edit Configurations'.  
+1. Click the Run/Debug configurations dropdown on the top taskbar and select 'Edit Configurations'. 
 ![image](./img/edit-config.png)
 
 2. Select 'Cloud Run: Run Locally' and specify your [builder option](https://cloud.google.com/code/docs/intellij/developing-a-cloud-run-app#defining_your_run_configuration?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-). Cloud Code supports Docker, Jib, and Buildpacks. See the skaffold documentation on [builders](https://skaffold.dev/docs/pipeline-stages/builders/) for more information about build artifact types.  
 ![image](./img/local-build-config.png)
 
-#### Run the application
+<h4 id="run-the-application"> Run the application</h4>
+
 1. Click the Run/Debug configurations dropdown and select 'Cloud Run: Run Locally'. Click the run icon.  
 ![image](./img/config-run-locally.png)
 
@@ -33,8 +34,8 @@ This "Hello World" sample demonstrates how to deploy a simple "Hello World" appl
 ![image](./img/local-success.png)
 
 
-### Deploy to Cloud Run
-#### Define run configuration
+<h3 id="deploy-to-cloud-run"> Deploy to Cloud Run</h3>
+<h4 id="define-run-configuration"> Define run configuration</h4>
 
 1. Click the Run/Debug configurations dropdown on the top taskbar and select 'Edit Configurations'.  
 ![image](./img/edit-config.png)
@@ -42,7 +43,8 @@ This "Hello World" sample demonstrates how to deploy a simple "Hello World" appl
 2. Select 'Cloud Run: Deploy'. Set your Google Cloud project ID, logging into your Google account if prompted. For more information on configuration settings, see [Defining your run configuration](https://cloud.google.com/code/docs/intellij/deploying-a-cloud-run-app#defining_your_run_configuration?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-).  
 ![image](./img/deploy-build-config.png)
 
-#### Run the application
+<h4 id="run-the-application"> Run the application</h4>
+
 1. Click the Run/Debug configurations dropdown and select 'Cloud Run: Deploy'. Click the run icon.  
 ![image](./img/config-deploy.png)
 
@@ -50,7 +52,8 @@ This "Hello World" sample demonstrates how to deploy a simple "Hello World" appl
 ![image](./img/local-success.png)
 
 ---
-## Next steps
+<h2 id="next-steps"> Next steps</h2>
+
 * Try [debugging your app](https://cloud.google.com/code/docs/intellij/debugging-a-cloud-run-app?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-) using Cloud Code
 * Nagivate the [Cloud Run Explorer](https://cloud.google.com/code/docs/intellij/cloud-run-explorer?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-)
 * View [streaming logs](https://cloud.google.com/code/docs/intellij/viewing-cloud-run-logs?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-)
@@ -60,7 +63,7 @@ This "Hello World" sample demonstrates how to deploy a simple "Hello World" appl
 For more Cloud Code tutorials and resources, check out [Awesome Cloud Code](https://github.com/russwolf/awesome-cloudclode)!
 
 ---
-## Sign up for User Research
+<h2 id="sign-up-for-user-research"> Sign up for User Research</h2>
 
 We want to hear your feedback!
 
@@ -72,7 +75,7 @@ If you’re invited to join a study, you may try out a new product or tell us wh
 
 ----
 
-## Getting support
+<h2 id="getting-support"> Getting support</h2>
 
 If you encounter any bugs, confusing commands, or unclear documentation, you can file your feedback [directly on GitHub](https://github.com/GoogleCloudPlatform/cloud-code-intellij/issues).
 

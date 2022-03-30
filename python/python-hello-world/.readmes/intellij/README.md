@@ -16,11 +16,13 @@ This "Hello World" sample demonstrates how to deploy a simple "Hello World" appl
 * [Getting support](#getting-support)
 
 ---
-## What's in this sample
-### Kubernetes architecture
+<h2 id="whats-in-this-sample"> What's in this sample </h2>
+
+<h3 id="kubernetes-architecture"> Kubernetes architecture </h3>
+
 ![Kubernetes Architecture Diagram](../../img/diagram.png)
 
-### Directory contents
+<h3 id="directory-contents"> Directory contents </h3>
 
 - `skaffold.yaml` - A schema file that defines skaffold configurations ([skaffold.yaml reference](https://skaffold.dev/docs/references/yaml/))
 - `kubernetes-manifests/` - Contains Kubernetes YAML files for the Guestbook services and deployments, including:
@@ -29,11 +31,12 @@ This "Hello World" sample demonstrates how to deploy a simple "Hello World" appl
   - `hello.service.yaml` - creates a load balancer and exposes the 'python-hello-world' service on an external IP in the cluster
 
 ---
-## Getting Started
+<h2 id="getting-started"> Getting Started </h2>
 
-### Run the app locally with minikube
+<h3 id="run-the-app-locally-with-minikube"> Run the app locally with minikube </h3>
 
-#### Edit run configuration
+<h4 id="edit-run-configuration"> Edit run configuration </h4>
+
 1. Click the configuration dropdown in the top taskbar and then click **Edit Configurations**.
 ![image](../../img/edit-configurations.png)
 
@@ -45,7 +48,8 @@ This "Hello World" sample demonstrates how to deploy a simple "Hello World" appl
 4. Click **OK** to save your configuration.
 
 
-#### Run the app on minikube
+<h4 id="run-the-app-on-minikube"> Run the app on minikube </h4>
+
 1. Select **Develop on Kubernetes** from the configuration dropdown and click the run icon. Cloud Code runs your app in a local [minikube](ttps://minikube.sigs.k8s.io/docs/start/) cluster.
 
 2. View the build process in the output window. When the deployment is successful, you're notified that new service URLs are available. Click the Service URLs tab to view the URL(s), then click the URL link to open your browser with your running application.  
@@ -54,9 +58,9 @@ This "Hello World" sample demonstrates how to deploy a simple "Hello World" appl
 3. To stop the application, click the stop icon next to the configuration dropdown.
 
 ---
-### Run the app remotely on Google Kubernetes Engine
+<h3 id="run-the-app-remotely-with-google-kubernetes-engine"> Run the app remotely with Google Kubernetes Engine </h3>
 
-#### Set up a GKE cluster
+<h4 id="set-up-a-gke-cluster"> Set up a GKE cluster </h4>
 
 1. Navigate to the Kubernetes Explorer from the right side panel, or by going to **Tools > Cloud Code > Kubernetes > View Cluster Explorer**. 
 
@@ -74,7 +78,7 @@ This "Hello World" sample demonstrates how to deploy a simple "Hello World" appl
 
 6. Your new cluster will be set as the current context by default. To switch contexts, right click on a different cluster in the Cluster Explorer and select **Set as Current Context**. 
 
-#### Deploy app to GKE
+<h4 id="deploy-app-to-gke"> Deploy app to GKE </h4>
 
 1. Select **Develop on Kubernetes** from the configuration dropdown and click the run icon. 
 
@@ -86,7 +90,8 @@ This "Hello World" sample demonstrates how to deploy a simple "Hello World" appl
 
 
 ---
-## Next steps
+<h2 id="next-steps"> Next steps </h2>
+
 * Try [debugging your app](https://cloud.google.com/code/docs/intellij/kubernetes-debugging?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-) using Cloud Code
 * Navigate the [Kubernetes Engine Explorer](https://cloud.google.com/code/docs/intellij/using-the-kubernetes-explorer?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-)
 * Learn how to [edit YAML files](https://cloud.google.com/code/docs/intellij/yaml-editing?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-) to deploy your Kubernetes app
@@ -97,7 +102,7 @@ This "Hello World" sample demonstrates how to deploy a simple "Hello World" appl
 For more Cloud Code tutorials and resources, check out [Awesome Cloud Code](https://github.com/russwolf/awesome-cloudclode)!
 
 ---
-## Sign up for User Research
+<h2 id="sign-up-for-user-research"> Sign up for User Research </h2>
 
 We want to hear your feedback!
 
@@ -109,7 +114,7 @@ If you’re invited to join a study, you may try out a new product or tell us wh
 
 ---
 
-## Getting support
+<h2 id="getting-support"> Getting support </h2>
 
 If you encounter any bugs, confusing commands, or unclear documentation, you can file your feedback [directly on GitHub](https://github.com/GoogleCloudPlatform/cloud-code-intellij/issues).
 

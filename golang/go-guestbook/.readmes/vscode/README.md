@@ -37,8 +37,6 @@ The Guestbook sample demonstrates how to deploy a Kubernetes application with a 
 
 ### Skaffold modules
 
->  Note: This feature is currently only available on the [insiders release](https://cloud.google.com/code/docs/vscode/insiders?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-) of Cloud Code. To get the latest pre-release build of Cloud Code, follow the instructions on [Installing Insiders builds](https://cloud.google.com/code/docs/vscode/insiders#get).
-
   The Guestbook app uses Skaffold configuration dependencies, or **modules**, to define individual configurations for the frontend and backend services. Each module constitutes a single build-test-deploy pipeline that can be executed in isolation or as a dependency of another module. 
 
   Cloud Code enables iterative development and debugging on a single module or a subset of many modules, and makes editing the skaffold.yaml file configuration with modules easier. Underlying Skaffold takes care of module dependencies and their order of deployment.
@@ -95,8 +93,6 @@ The Guestbook sample demonstrates how to deploy a Kubernetes application with a 
 If you created a GKE cluster for this tutorial, be sure to delete your cluster to avoid incurring charges.
 
 ### Run individual services with Skaffold modules
-
->  Note: This feature is currently only available on the [insiders release](https://cloud.google.com/code/docs/vscode/insiders?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-) of Cloud Code. To get the latest pre-release build of Cloud Code, follow the instructions on [Installing Insiders builds](https://cloud.google.com/code/docs/vscode/insiders#get).
 
 The Guestbook app needs both services deployed to function properly, but for this tutorial we'll deploy only the frontend service to demonstrate running individual modules.
 

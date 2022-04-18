@@ -27,8 +27,6 @@ spec:
           httpGet:
             path: /
             port: 8080
-          # tcpSocket: 
-          #   port: 8080
           initialDelaySeconds: 5
           periodSeconds: 10
         env:

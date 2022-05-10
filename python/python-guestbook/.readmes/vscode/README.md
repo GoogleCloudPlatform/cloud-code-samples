@@ -115,7 +115,7 @@ This tells Cloud Code to build and deploy only the frontend module.
 4. View the build's progress in the OUTPUT window. Once the build has finished, you can view the deployed frontend module by clicking on the URL in the OUTPUT window.
 
 5. Now, you can quickly iterate on the frontend service without having to rebuild and deploy the entire app for every change.    
-  a. Navigate to [frontend/Views/Home/Index.cshtml](../../src/frontend/Views/Home/Index.cshtml).  
+  a. Navigate to [frontend/templates/home.html](../../src/frontend/templates/home.html).  
   b. Make a change to the file (e.g. "My Guestbook" > "My Frontend Guestbook").  
   c. The frontend service will rebuild and you can see your changes in the deployed frontend service.  
 

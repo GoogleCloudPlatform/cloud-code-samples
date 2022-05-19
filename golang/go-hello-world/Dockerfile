@@ -1,7 +1,7 @@
 # Go binaries are standalone, so use a multi-stage build to produce smaller images.
 
 # Use base golang image from Docker Hub
-FROM golang:1.17 as build
+FROM golang:1.18 as build
 
 WORKDIR /hello-world
 

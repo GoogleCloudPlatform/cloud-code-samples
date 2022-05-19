@@ -20,11 +20,14 @@ The Guestbook sample demonstrates how to deploy a Kubernetes application with a 
 * [Getting support](#getting-support)
 
 ---
-## What's in this sample
-### Kubernetes architecture
+<h2 id="whats-in-this-sample"> What's in this sample </h2>
+
+<h3 id="kubernetes-architecture"> Kubernetes architecture </h3>
+
 ![Kubernetes Architecture Diagram](../../img/diagram.png)
 
-### Directory contents
+<h3 id="directory-contents"> Directory contents </h3>
+
 - `skaffold.yaml` - A schema file that serves as an entry point for all Skaffold modules in the app
 - `src/frontend/` - Guestbook frontend service, containing the following config files:
   - `skaffold.yaml` - A schema file that defines the frontend Skaffold module ([skaffold.yaml reference](https://skaffold.dev/docs/references/yaml/))
@@ -38,7 +41,8 @@ The Guestbook sample demonstrates how to deploy a Kubernetes application with a 
   - `kubernetes-manifests/guestbook-mongodb.deployment.yaml` - deploys a pod containing a MongoDB instance
   - `kubernetes-manifests/guestbook-mongodb.service.yaml` - exposes the MongoDB service on an internal IP in the cluster
 
-  ### Skaffold modules
+<h3 id="skaffold-modules"> Skaffold modules </h3>
+
   The Guestbook app uses Skaffold configuration dependencies, or **modules**, to define individual configurations for the frontend and backend services. Each module constitutes a single build-test-deploy pipeline that can be executed in isolation or as a dependency of another module. 
 
   Cloud Code enables iterative development and debugging on a single module or a subset of many modules, and makes editing the skaffold.yaml file configuration with modules easier. Underlying Skaffold takes care of module dependencies and their order of deployment.
@@ -46,11 +50,12 @@ The Guestbook sample demonstrates how to deploy a Kubernetes application with a 
   Guestbook runs both the frontend and backend modules by default. To run a single module, follow the steps in the section [Run individual services with Skaffold modules](#run-individual-services-with-skaffold-modules). 
 
 ---
-## Getting Started
+<h2 id="getting-started"> Getting Started </h2>
 
-### Run the app locally with minikube
+<h3 id="run-the-app-locally-with-minikube"> Run the app locally with minikube </h3>
 
-#### Edit run configuration
+<h4 id="edit-run-configuration"> Edit run configuration </h4>
+
 1. Click the configuration dropdown in the top taskbar and then click **Edit Configurations**.
    ![image](../../img/edit-configurations.png)
 
@@ -62,7 +67,8 @@ The Guestbook sample demonstrates how to deploy a Kubernetes application with a 
 4. Click **OK** to save your configuration.
 
 
-#### Run the app on minikube
+<h4 id="run-the-app-on-minikube"> Run the app on minikube </h4>
+
 1. Select **Develop on Kubernetes** from the configuration dropdown and click the run icon. Cloud Code runs your app in a local [minikube](ttps://minikube.sigs.k8s.io/docs/start/) cluster.
 
 2. View the build process in the output window. When the deployment is successful, you're notified that new service URLs are available. Click the Service URLs tab to view the URL(s), then click the URL link to open your browser with your running application.  
@@ -71,9 +77,9 @@ The Guestbook sample demonstrates how to deploy a Kubernetes application with a 
 3. To stop the application, click the stop icon next to the configuration dropdown.
 
 ---
-### Run the app remotely on Google Kubernetes Engine
+<h3 id="run-the-app-remotely-with-google-kubernetes-engine"> Run the app remotely with Google Kubernetes Engine </h3>
 
-#### Set up a GKE cluster
+<h4 id="set-up-a-gke-cluster"> Set up a GKE cluster </h4>
 
 1. Navigate to the Kubernetes Explorer from the right side panel, or by going to **Tools > Cloud Code > Kubernetes > View Cluster Explorer**. 
 
@@ -91,7 +97,7 @@ The Guestbook sample demonstrates how to deploy a Kubernetes application with a 
 
 6. Your new cluster will be set as the current context by default. To switch contexts, right click on a different cluster in the Cluster Explorer and select **Set as Current Context**. 
 
-#### Deploy app to GKE
+<h4 id="deploy-app-to-gke"> Deploy app to GKE </h4>
 
 1. Select **Develop on Kubernetes** from the configuration dropdown and click the run icon. 
 
@@ -102,7 +108,7 @@ The Guestbook sample demonstrates how to deploy a Kubernetes application with a 
 
 
 ---
-### Run individual services with Skaffold modules
+<h3 id="run-individual-services-with-skaffold-modules"> Run individual services with Skaffold modules </h3>
 
 1. Go to **Run** > **Edit configurations** and open the **Build / Deploy** tab.
 
@@ -119,24 +125,8 @@ You can see how the Guestbook modules are defined by checking out the frontend's
 For more info on how to use Skaffold modules, see the [Skaffold documentation](https://skaffold.dev/docs/design/config/#multiple-configuration-support).
 
 ---
-### Run individual services with Skaffold modules
+<h2 id="next-steps"> Next steps </h2>
 
-1. Go to **Run** > **Edit configurations** and open the **Build / Deploy** tab.
-
-2. Select skaffold.yaml.
-
-3. Choose **Build and deploy with** and select either the frontend or backend module. This tells Cloud Code to deploy only the selected service. You can select more than one module to deploy.
-
-Note: The complete Guestbook app needs both services deployed to function properly, but for this tutorial we'll deploy one service to demonstrate running individual modules.
-
-4. You can now run the selected module by deploying it to [minikube](#run-the-app-on-minikube) or [GKE](#deploy-app-to-gke). 
-
-You can see how the Guestbook modules are defined by checking out the frontend's [skaffold.yaml](../../src/frontend/skaffold.yaml) and the backend's [skaffold.yaml](../../src/backend/skaffold.yaml).
-
-For more info on how to use Skaffold modules, see the [Skaffold documentation](https://skaffold.dev/docs/design/config/#multiple-configuration-support).
-
----
-## Next steps
 * Try [debugging your app](https://cloud.google.com/code/docs/intellij/kubernetes-debugging?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-) using Cloud Code
 * Navigate the [Kubernetes Engine Explorer](https://cloud.google.com/code/docs/intellij/using-the-kubernetes-explorer?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-)
 * Learn how to [edit YAML files](https://cloud.google.com/code/docs/intellij/yaml-editing?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-) to deploy your Kubernetes app
@@ -147,7 +137,7 @@ For more info on how to use Skaffold modules, see the [Skaffold documentation](h
 For more Cloud Code tutorials and resources, check out [Awesome Cloud Code](https://github.com/russwolf/awesome-cloudclode)!
 
 ---
-## Sign up for User Research
+<h2 id="sign-up-for-user-research"> Sign up for User Research </h2>
 
 We want to hear your feedback!
 
@@ -159,7 +149,7 @@ If you’re invited to join a study, you may try out a new product or tell us wh
 
 ----
 
-## Getting support
+<h2 id="getting-support"> Getting support </h2>
 
 If you encounter any bugs, confusing commands, or unclear documentation, you can file your feedback [directly on GitHub](https://github.com/GoogleCloudPlatform/cloud-code-intellij/issues).
 

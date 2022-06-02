@@ -1,4 +1,4 @@
-# Use base node 12-slim image from Docker hub
+# Use base node slim image from Docker hub
 FROM node:18.2.0-slim
 
 WORKDIR /backend

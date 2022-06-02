@@ -2,7 +2,7 @@
 # to ensure optimal image build times and sizes
 # End result container image requires .NET runtime,
 # however creating it requires .NET SDK.
-FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
+FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS base
 WORKDIR /src
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build

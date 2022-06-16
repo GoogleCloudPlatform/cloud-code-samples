@@ -18,7 +18,6 @@ const connectToMongoDB = async () => {
     await mongoose.connect(mongoURI, {
         useNewUrlParser: true,
         connectTimeoutMS: 2000,
-        reconnectTries: 5,
         useUnifiedTopology: true
     })
 };

@@ -1,5 +1,5 @@
 # Use base node 12-slim image from Docker hub
-FROM node:17-slim
+FROM node:18-slim
 
 WORKDIR /frontend
 

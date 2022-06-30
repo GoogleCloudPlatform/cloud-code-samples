@@ -1,0 +1,76 @@
+{
+  "folders": [
+    {
+      "name": "nodejs-hello-world",
+      "path": "nodejs/nodejs-hello-world"
+    },
+    {
+      "name": "nodejs-guestbook",
+      "path": "nodejs/nodejs-guestbook"
+    },
+    {
+      "name": "go-hello-world",
+      "path": "golang/go-hello-world"
+    },
+    {
+      "name": "go-guestbook",
+      "path": "golang/go-guestbook"
+    },
+    {
+      "name": "java-hello-world",
+      "path": "java/java-hello-world"
+    },
+    {
+      "name": "java-guestbook",
+      "path": "java/java-guestbook"
+    },
+    {
+      "name": "dotnet-hello-world",
+      "path": "dotnet/dotnet-hello-world"
+    },
+    {
+      "name": "dotnet-guestbook",
+      "path": "dotnet/dotnet-guestbook"
+    },
+    {
+      "name": "python-hello-world",
+      "path": "python/python-hello-world"
+    },
+    {
+      "name": "python-guestbook",
+      "path": "python/python-guestbook"
+    },
+    {
+      "name": "django-python-hello-world",
+      "path": "python/django/python-hello-world"
+    },
+    {
+      "name": "django-python-guestbook",
+      "path": "python/django/python-guestbook"
+    },
+    {
+      "name": "nodejs-cloud-run-hello-world",
+      "path": "nodejs/nodejs-cloud-run-hello-world"
+    },
+    {
+      "name": "go-cloud-run-hello-world",
+      "path": "golang/go-cloud-run-hello-world"
+    },
+    {
+      "name": "java-cloud-run-hello-world",
+      "path": "java/java-cloud-run-hello-world"
+    },
+    {
+      "name": "dotnet-cloud-run-hello-world",
+      "path": "dotnet/dotnet-cloud-run-hello-world"
+    },
+    {
+      "name": "cloud-run-python-hello-world",
+      "path": "python/cloud-run-python-hello-world"
+    },
+    {
+      "name": "cloud-run-django-hello-world",
+      "path": "python/cloud-run-django-hello-world"
+    }
+  ]
+}

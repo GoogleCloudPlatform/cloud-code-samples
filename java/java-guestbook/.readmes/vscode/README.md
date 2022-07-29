@@ -54,6 +54,9 @@ The Guestbook sample demonstrates how to deploy a Kubernetes application with a 
 
 1. Navigate to the **Clusters** explorer in the Cloud Code - Kubernetes sidebar using the left side Activity bar.
 
+> Note: in newer versions of VS Code, the **Clusters** explorer has been replaced with a dedicated **Kubernetes** section.
+
+
 2. Click '+' in the title bar of the Clusters explorer to create a new cluster. If prompted, follow the instructions to log in to Google Cloud Platform.  
 
 3. Choose **Minikube** and then select **minikube**. 
@@ -63,6 +66,8 @@ The Guestbook sample demonstrates how to deploy a Kubernetes application with a 
 #### Google Kubernetes Engine
 
 1. Navigate to the **Clusters** explorer in the Cloud Code - Kubernetes sidebar using the left side Activity bar.
+
+> Note: in newer versions of VS Code, the **Clusters** explorer has been replaced with a dedicated **Kubernetes** section.
 
 2. Click '+' in the title bar of the Clusters explorer to create a new cluster. If prompted, follow the instructions to log in to Google Cloud Platform.  
 

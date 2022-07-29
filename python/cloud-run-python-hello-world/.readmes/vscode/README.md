@@ -34,7 +34,6 @@ This "Hello World" sample demonstrates how to deploy a simple "Hello World" appl
 2. If prompted, login to your Google Cloud account and set your project.
 
 3. Use the Deploy to Cloud Run dialog to configure your deploy settings. For more information on the configuration options available, see [Deploying a Cloud Run app](https://cloud.google.com/code/docs/vscode/deploying-a-cloud-run-app?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-).  
-![image](../../img/deploy-build-config.png)
 
 4. Click 'Deploy'. Cloud Code now builds your image, pushes it to the container registry, and deploys your service to Cloud Run.
 

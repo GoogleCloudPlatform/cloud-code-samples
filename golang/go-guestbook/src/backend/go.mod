@@ -2,7 +2,7 @@ module backend
 
 go 1.19
 
-require go.mongodb.org/mongo-driver v1.10.0
+require go.mongodb.org/mongo-driver v1.10.1
 
 require (
 	github.com/golang/snappy v0.0.1 // indirect

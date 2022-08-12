@@ -18,10 +18,7 @@ COPY --from=publish /out .
 ENV ASPNETCORE_URLS=http://*:8080
 
 # Installing procps on the container to enable debugging of .NET Core
-RUN apt -o Acquire::https::No-Cache=True -o Acquire::http::No-Cache=True update \
-    && apt --fix-broken install \
-    && apt-get update \
-    && apt-get upgrade -y \
-    && apt-get install -y --no-install-recommends apt-utils unzip \
-    && apt-get install -y procps
+RUN apk update --no=cache \
+    && apk add apt-utils unzip \
+    && apk add procps
 ENTRYPOINT ["dotnet", "frontend.dll"]

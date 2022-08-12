@@ -16,7 +16,7 @@ RUN dotnet publish helloworld.csproj -c Debug -o /out
 FROM base AS final
 # Installing procps on the container to enable debugging of .NET Core
 RUN apk update \
-    && apk install unzip procps
+    && apk add unzip procps
 WORKDIR /src
 COPY --from=publish /out .
 ENV ASPNETCORE_URLS=http://*:8080

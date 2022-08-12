@@ -1,5 +1,5 @@
 # Use maven to compile the java application.
-FROM maven:3-jdk-11-slim AS build-env
+FROM maven:3-eclipse-temurin-11-alpine AS build-env
 
 # Set the working directory to /app
 WORKDIR /app

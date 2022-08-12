@@ -8,10 +8,10 @@ The Guestbook sample demonstrates how to deploy a Kubernetes application with a 
   * [Directory contents](#directory-contents)
   * [Skaffold modules](#skaffold-modules)
 * [Getting Started](#getting-started)
-    1. [Run the app locally with minikube](#run-the-app-locally-with-minikube)
-    2. [Run the app remotely with Google Kubernetes Engine](#run-the-app-remotely-with-google-kubernetes-engine)
-        * [Set up a GKE cluster](#set-up-a-gke-cluster)
-        * [Deploy app to GKE](#deploy-app-to-gke)
+    1. [Set up a Kubernetes cluster](#set-up-a-kubernetes-cluster)
+        * [Minikube](#minikube) - free local cluster
+        * [GKE](#GKE) - Google Kubernetes Engine
+    2. [Deploy app to cluster](#deploy-app-to-cluster)
     3. [Run individual services with Skaffold modules](#run-individual-services-with-skaffold-modules)
 * [Next steps](#next-steps)
 * [Sign up for User Research](#sign-up-for-user-research)
@@ -37,8 +37,6 @@ The Guestbook sample demonstrates how to deploy a Kubernetes application with a 
 
 ### Skaffold modules
 
->  Note: This feature is currently only available on the [insiders release](https://cloud.google.com/code/docs/vscode/insiders?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-) of Cloud Code. To get the latest pre-release build of Cloud Code, follow the instructions on [Installing Insiders builds](https://cloud.google.com/code/docs/vscode/insiders#get).
-
   The Guestbook app uses Skaffold configuration dependencies, or **modules**, to define individual configurations for the frontend and backend services. Each module constitutes a single build-test-deploy pipeline that can be executed in isolation or as a dependency of another module. 
 
   Cloud Code enables iterative development and debugging on a single module or a subset of many modules, and makes editing the skaffold.yaml file configuration with modules easier. Underlying Skaffold takes care of module dependencies and their order of deployment.
@@ -48,48 +46,57 @@ The Guestbook sample demonstrates how to deploy a Kubernetes application with a 
 ---
 ## Getting Started
 
-### Run the app locally with minikube
+### Set up a Kubernetes cluster
 
-1. To run your application, click on the Cloud Code status bar and select ‘Run on Kubernetes’.  
-![image](./img/status-bar.png)
+#### Minikube
+ 
+ Cloud Code uses [minikube](https://minikube.sigs.k8s.io/docs/) to create a free local cluster.
 
-2. Select ‘Run locally using minikube’ when prompted. Cloud Code runs your app in a local [minikube](https://minikube.sigs.k8s.io/docs/start/) cluster.  
-![image](./img/create-k8s-cluster.png)
+1. Navigate to the **Clusters** explorer in the Cloud Code - Kubernetes sidebar using the left side Activity bar.
 
-3. View the build progress in the OUTPUT window. Once the build has finished, click on the front end service's URL in the OUTPUT window to view your live application.  
-![image](./img/kubernetes-guestbook-url.png)
+> Note: in newer versions of VS Code, the **Clusters** explorer has been replaced with a dedicated **Kubernetes** section.
+
+2. Click '+' in the title bar of the Clusters explorer to create a new cluster. If prompted, follow the instructions to log in to Google Cloud Platform.  
+
+3. Choose **Minikube** and then select **minikube**. 
+
+2. Select **Start**. Cloud Code will initiate a minikube cluster.
+
+#### Google Kubernetes Engine
+
+1. Navigate to the **Clusters** explorer in the Cloud Code - Kubernetes sidebar using the left side Activity bar.
+
+> Note: in newer versions of VS Code, the **Clusters** explorer has been replaced with a dedicated **Kubernetes** section.
+
+2. Click '+' in the title bar of the Clusters explorer to create a new cluster. If prompted, follow the instructions to log in to Google Cloud Platform.  
+
+3. Choose **Google Kubernetes Engine**. If you have existing clusters associated with your GCP project, you can select one from this dialog. To create a new cluster, click **+ Create a new GKE Cluster** and follow these steps:
+
+    a. Choose **Standard** or **Autopilot**. For more information, see [Comparing Autopilot and Standard modes](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-).
+
+    b. If prompted, click **Open** to permit Cloud Code to open the Cloud Console.
+
+    c. In the Cloud Console, choose any configuration options that you want to customize and then click **Create**.
+
+    d. Once the cluster has finished being created, return to VS Code and click **Refresh**.
+
+    You can now select your newly created cluster.
+
+8. The cluster you select will be added to the **Clusters** explorer and set as the default context. You can inspect the cluster's properties, make changes to the cluster's resources, and view logs by clicking the dropdown arrow next to the cluster name in the **Clusters** explorer.
+
+### Deploy app to cluster
+
+1. Navigate to the **Development Sessions** explorer in the **Cloud Code - Kubernetes** sidebar using the Activity bar on the left side of the IDE.
+
+2. Click the 'Play' icon in the title bar of the **Development Sessions** explorer to run the application. If prompted, confirm the current context and image registry.
+
+3. View the build progress in the **Development Sessions** explorer. Once the build has finished, the URLs for your deployed app will be displayed under **Port Forward URLs**. Click on the 'Open Window' icon next to the frontend service's URL to visit your deployed app.
 
 4.  To stop the application, click the stop icon on the Debug Toolbar.
 
-### Run the app remotely on Google Kubernetes Engine
-
-#### Set up a GKE cluster
-
-1. Navigate to the Cloud Code - Kubernetes explorer using the left side taskbar.
-
-2. In the Google Kubernetes Engine Explorer, click '+' to create a new Google Kubernetes Engine cluster. If prompted, follow the instructions to log in to Google Cloud Platform.  
-![image](./img/kubernetes-explorer.png)
-
-3. Configure your new cluster using the GKE wizard and click 'Create Cluster'. Once your GKE cluster has been created, it will be displayed in the Google Kubernetes Engine Explorer.  
-![image](./img/gke-cluster-config.png)
-
-4. Once your GKE cluster has been created, it will be displayed in the Google Kubernetes Engine Explorer.
-
-5. Your new cluster will be set as the active cluster by default. To switch clusters, right click on a different cluster in the GKE Explorer and select “Set Active Cluster”.  
-![image](./img/kubernetes-explorer-new-cluster.png)
-
-#### Deploy app to GKE
-
-1. Click on the Cloud Code status bar and select ‘Run on Kubernetes’.
-
-2. If prompted, confirm the current context and image registry.
-
-3. View the build’s progress in the OUTPUT window. Once the build has finished, you can visit your deployed app by clicking the URL in the OUTPUT window.  
-![image](./img/kubernetes-guestbook-url.png)
+If you created a GKE cluster for this tutorial, be sure to delete your cluster to avoid incurring charges.
 
 ### Run individual services with Skaffold modules
-
->  Note: This feature is currently only available on the [insiders release](https://cloud.google.com/code/docs/vscode/insiders?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-) of Cloud Code. To get the latest pre-release build of Cloud Code, follow the instructions on [Installing Insiders builds](https://cloud.google.com/code/docs/vscode/insiders#get).
 
 The Guestbook app needs both services deployed to function properly, but for this tutorial we'll deploy only the frontend service to demonstrate running individual modules.
 
@@ -112,7 +119,7 @@ This tells Cloud Code to build and deploy only the frontend module.
 4. View the build's progress in the OUTPUT window. Once the build has finished, you can view the deployed frontend module by clicking on the URL in the OUTPUT window.
 
 5. Now, you can quickly iterate on the frontend service without having to rebuild and deploy the entire app for every change.    
-  a. Navigate to [frontend/Views/Home/Index.cshtml](../../src/frontend/Views/Home/Index.cshtml).  
+  a. Navigate to [frontend/views/home.pug](../../src/frontend/views/home.pug).  
   b. Make a change to the file (e.g. "My Guestbook" > "My Frontend Guestbook").  
   c. The frontend service will rebuild and you can see your changes in the deployed frontend service.  
 

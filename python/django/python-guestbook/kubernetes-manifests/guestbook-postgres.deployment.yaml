@@ -24,7 +24,7 @@ spec:
         tier: db
     spec:
       containers:
-        - image: postgres:9.6
+        - image: postgres:14.4
           name: db
           ports:
             - containerPort: 5432

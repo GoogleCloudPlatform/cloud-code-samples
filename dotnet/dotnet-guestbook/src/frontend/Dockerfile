@@ -1,8 +1,8 @@
-FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS base
+FROM mcr.microsoft.com/dotnet/aspnet:7.0-alpine AS base
 WORKDIR /src
 EXPOSE 80
 
-FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:7.0-alpine AS build
 WORKDIR /src
 COPY . .
 RUN dotnet restore frontend.csproj
@@ -18,10 +18,6 @@ COPY --from=publish /out .
 ENV ASPNETCORE_URLS=http://*:8080
 
 # Installing procps on the container to enable debugging of .NET Core
-RUN apt -o Acquire::https::No-Cache=True -o Acquire::http::No-Cache=True update \
-    && apt --fix-broken install \
-    && apt-get update \
-    && apt-get upgrade -y \
-    && apt-get install -y --no-install-recommends apt-utils unzip \
-    && apt-get install -y procps
+RUN apk update \
+    && apk add unzip procps
 ENTRYPOINT ["dotnet", "frontend.dll"]

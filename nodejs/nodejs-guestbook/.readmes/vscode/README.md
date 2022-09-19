@@ -100,7 +100,11 @@ If you created a GKE cluster for this tutorial, be sure to delete your cluster t
 
 The Guestbook app needs both services deployed to function properly, but for this tutorial we'll deploy only the frontend service to demonstrate running individual modules.
 
-1. Open [.vscode/launch.json](../../.vscode/launch.json) and add the following code below the `skaffoldConfig` property:
+1. First, we need to deploy both services such that the backend will stay up after ending the development session.
+  a. Open [.vscode/launch.json](../../.vscode/launch.json) and change the `cleanUp` property to `false`.
+  b. Follow the steps above in "Deploy app to cluster" to deploy both services. When you click the stop icon to end the debug session, the services will remain deployed. (We'll leave `backend` running and only update `frontend`).
+
+2. Open [.vscode/launch.json](../../.vscode/launch.json) and add the following code below the `skaffoldConfig` property:
 
 ```
       "skaffoldFlags": {
@@ -112,16 +116,16 @@ The Guestbook app needs both services deployed to function properly, but for thi
 
 This tells Cloud Code to build and deploy only the frontend module.
 
-2. Click on the Cloud Code status bar and select **Run on Kubernetes**.
+3. Click on the Cloud Code status bar and select **Run on Kubernetes**.
 
-3. If prompted, confirm the current context and image registry.
+4. If prompted, confirm the current context and image registry.
 
-4. View the build's progress in the OUTPUT window. Once the build has finished, you can view the deployed frontend module by clicking on the URL in the OUTPUT window.
+5. View the build's progress in the OUTPUT window. Once the build has finished, you can view the deployed frontend module by clicking on the URL in the OUTPUT window.
 
-5. Now, you can quickly iterate on the frontend service without having to rebuild and deploy the entire app for every change.    
-  a. Navigate to [frontend/views/home.pug](../../src/frontend/views/home.pug).  
-  b. Make a change to the file (e.g. "My Guestbook" > "My Frontend Guestbook").  
-  c. The frontend service will rebuild and you can see your changes in the deployed frontend service.  
+6. Now, you can quickly iterate on the frontend service without having to rebuild and deploy the entire app for every change.
+  a. Navigate to [frontend/views/home.pug](../../src/frontend/views/home.pug).
+  b. Make a change to the file (e.g. "My Guestbook" > "My Frontend Guestbook").
+  c. The frontend service will rebuild and you can see your changes in the deployed frontend service.
 
 You can see how the Guestbook frontend module is defined by checking out the frontend's [skaffold.yaml](../../src/frontend/skaffold.yaml) file.
 

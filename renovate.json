@@ -3,6 +3,8 @@
     "config:base"
   ],
   "lockFileMaintenance": { 
-    "enabled": true 
-  }
+    "enabled": true
+  },
+  "labels": ["automerge"],
+  "rebaseWhen": "behind-base-branch"
 }

@@ -16,63 +16,66 @@ The Guestbook sample demonstrates how to deploy a Kubernetes application with a 
 * [Getting support](#getting-support)
 
 ---
-## Getting Started
+<h2 id="getting-started"> Getting Started </h2>
 
-### Run the app locally with minikube
+<h3 id="run-the-app-locally-with-minikube"> Run the app locally with minikube </h3>
 
-#### Edit run configuration
-1. Click the configuration dropdown on the top taskbar and select 'Edit Configurations'.
-![image](../../img/edit-configurations.png)
+<h4 id="edit-run-configuration"> Edit run configuration </h4>
 
-2. In the Run/Debug Configurations dialog, select 'Develop on Kubernetes'. This configuration watches for changes, then uses [skaffold](https://skaffold.dev/docs/) to rebuild and rerun your app.
+1. Click the configuration dropdown in the top taskbar and then click **Edit Configurations**.
+   ![image](../../img/edit-configurations.png)
+
+   The **Develop on Kubernetes** configuration watches for changes, then uses [skaffold](https://skaffold.dev/docs/) to rebuild and rerun your app. You can customize your deployment by making changes to this run configuration or by creating a new Cloud Code: Kubernetes run configuration.
 
 3. Under **Run > Deployment**, select 'Deploy locally to a minikube cluster'.
-![image](./img/run-debug-dialog.png)
+   ![image](../../img/run-debug-dialog.png)
 
-4. Click 'OK' to save your configuration. 
+4. Click **OK** to save your configuration.
 
 
-#### Run the app on minikube
-1. Select 'Develop on Kubernetes' from the configuration drop down and click the run icon. Cloud Code runs your app in a local [minikube](ttps://minikube.sigs.k8s.io/docs/start/) cluster.  
-![image](./img/deploy-config.png)
+<h4 id="run-the-app-on-minikube"> Run the app on minikube </h4>
+
+1. Select **Develop on Kubernetes** from the configuration dropdown and click the run icon. Cloud Code runs your app in a local [minikube](ttps://minikube.sigs.k8s.io/docs/start/) cluster.
+
+2. View the build process in the output window. When the deployment is successful, you're notified that new service URLs are available. Click the Service URLs tab to view the URL(s), then click the URL link to open your browser with your running application.  
+   ![image](../../img/service-urls.png)
+
+3. To stop the application, click the stop icon next to the configuration dropdown.
+
+---
+<h3 id="run-the-app-remotely-with-google-kubernetes-engine"> Run the app remotely with Google Kubernetes Engine </h3>
+
+<h4 id="set-up-a-gke-cluster"> Set up a GKE cluster </h4>
+
+1. Navigate to the Kubernetes Explorer from the right side panel, or by going to **Tools > Cloud Code > Kubernetes > View Cluster Explorer**. 
+
+2. Click **+** to create a new cluster, or go to **Tools > Cloud Code > Kubernetes > Add GKE Cluster**.  
+![image](./img/add-cluster.png)
+
+3. If prompted, log in to your GCP account and select a project.  
+![image](./img/gcp-login-prompt.png)
+
+4. Click **Create a new GKE cluster**. You will be directed to the Google Cloud Console to create your new cluster.  
+![image](./img/gcp-console-new-cluster.png)
+
+5. Once your GKE cluster has been created, it will be displayed in the Cluster Explorer.  
+![image](./img/added-cluster.png)
+
+6. Your new cluster will be set as the current context by default. To switch contexts, right click on a different cluster in the Cluster Explorer and select **Set as Current Context**. 
+
+<h4 id="deploy-app-to-gke"> Deploy app to GKE </h4>
+
+1. Select **Develop on Kubernetes** from the configuration dropdown and click the run icon. 
 
 2. View the build process in the output window. When the deployment is successful, you're notified that new service URLs are available. Click the Service URLs tab to view the URL(s), then click the URL link to open your browser with your running application.  
 ![image](../../img/service-urls.png)
 
 3. To stop the application, click the stop icon next to the configuration dropdown.
 
----
-### Run the app remotely on Google Kubernetes Engine
-
-#### Set up a GKE cluster
-
-1. Navigate to the Kubernetes Explorer from the right side panel, or by going to **Tools > Cloud Code > Kubernetes > View Cluster Explorer**. 
-
-2. Click '+' to create a new cluster, or go to **Tools > Cloud Code > Kubernetes > Add GKE Cluster**.  
-![image](./img/add-cluster.png)
-
-3. If prompted, log in to your GCP account and select a project.  
-![image](./img/gcp-login-prompt.png)
-
-4. Click 'Create a new GKE cluster`. You will be directed to the Google Cloud Console to create your new cluster.  
-![image](./img/gcp-console-new-cluster.png)
-
-5. Once your GKE cluster has been created, it will be displayed in the Cluster Explorer.  
-![image](./img/added-cluster.png)
-
-6. Your new cluster will be set as the current context by default. To switch contexts, right click on a different cluster in the Cluster Explorer and select 'Set as Current Context'. 
-
-#### Deploy app to GKE
-
-1. Select 'Run on Kubernetes' from the configuration drop down and click the 'Run' button.  
-![image](./img/run-on-k8s.png)
-
-2. View the build process in the output window. When the deployment is successful, you're notified that new service URLs are available. Click the Service URLs tab to view the URL(s), then click the URL link to open your browser with your running application.  
-![image](../../img/service-urls.png)
-
 
 ---
-## Next steps
+<h2 id="next-steps"> Next steps </h2>
+
 * Try [debugging your app](https://cloud.google.com/code/docs/intellij/kubernetes-debugging?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-) using Cloud Code
 * Navigate the [Kubernetes Engine Explorer](https://cloud.google.com/code/docs/intellij/using-the-kubernetes-explorer?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-)
 * Learn how to [edit YAML files](https://cloud.google.com/code/docs/intellij/yaml-editing?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-) to deploy your Kubernetes app
@@ -83,7 +86,7 @@ The Guestbook sample demonstrates how to deploy a Kubernetes application with a 
 For more Cloud Code tutorials and resources, check out [Awesome Cloud Code](https://github.com/russwolf/awesome-cloudclode)!
 
 ---
-## Sign up for User Research
+<h2 id="sign-up-for-user-research"> Sign up for User Research </h2>
 
 We want to hear your feedback!
 
@@ -99,7 +102,7 @@ If you’re invited to join a study, you may try out a new product or tell us wh
 
 ----
 
-## Getting support
+<h2 id="getting-support"> Getting support </h2>
 
 If you encounter any bugs, confusing commands, or unclear documentation, you can file your feedback [directly on GitHub](https://github.com/GoogleCloudPlatform/cloud-code-intellij/issues).
 

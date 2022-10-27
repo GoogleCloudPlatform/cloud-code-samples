@@ -6,7 +6,7 @@
         "request": "launch",
         "functionName": "function-hello-world",
         "gen": "GEN_2",
-        "entryPoint": "functions.HelloWorld",
+        "entryPoint": "cloudcode.helloworld.HelloWorld",
       }
     ]
 }

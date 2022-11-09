@@ -13,7 +13,7 @@ For details on how to use this sample as a template in Cloud Code, see the [Crea
 * [Sign up for user research](#sign-up-for-user-research)
 
 ## Directory contents
-* `launch.json` - the required configurations for your function
+* `launch.json` - the required Cloud Code configurations
 * `HelloWorld.java` - the Java "Hello World" sample’s code
 
 ## Getting started with VS Code

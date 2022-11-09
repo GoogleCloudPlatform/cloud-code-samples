@@ -13,7 +13,7 @@ For details on how to use this sample as a template in Cloud Code, see the [Crea
 * [Sign up for user research](#sign-up-for-user-research)
 
 ## Directory contents
-* `launch.json` - the required configurations for your function
+* `launch.json` - the required Cloud Code configurations
 * `hello_world.go` - the Go "Hello World" sample’s code
 * `go.mod` - includes the functions framework dependency
 

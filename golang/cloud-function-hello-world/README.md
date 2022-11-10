@@ -4,8 +4,6 @@
 
 "Go: Hello World" is a simple HTTP-triggered Cloud Functions application that contains a sample Go-based script that outputs a sample "Hello World" string.
 
-For details on how to use this sample as a template in Cloud Code, see the [Create and deploy a function](https://cloud.google.com/code/docs/vscode/create-deploy-function) quickstart for VS Code.
-
 ## Table of Contents
 
 * [Directory contents](#directory-contents)
@@ -21,7 +19,28 @@ For details on how to use this sample as a template in Cloud Code, see the [Crea
 
 ### Before you begin
 
-For prerequisite steps, see the [Create and deploy a function](https://cloud.google.com/code/docs/vscode/create-deploy-function#before_you_begin) quickstart.
+1. If you're new to Google Cloud, [create an account](https://console.cloud.google.com/freetrial/signup/tos) to evaluate how our products perform in real-world scenarios. New customers also get $300 in free credits to run, test, and deploy workloads.
+
+1. In the Google Cloud console, on the project selector page, select or [create a Google Cloud project](https://console.cloud.google.com/projectselector2/home/dashboard).
+
+    **Note**: If you don't plan to keep the resources that you create in this procedure, create a project instead of selecting an existing project. After you finish these steps, you can delete the project, removing all resources associated with the project.
+
+1. Make sure that billing is enabled for your Cloud project. Learn how to [check if billing is enabled on a project](https://cloud.google.com/billing/docs/how-to/verify-billing-enabled).
+
+1. [Enable the following APIs](https://pantheon.corp.google.com/projectselector2/apis/enableflow?apiid=cloudfunctions,cloudbuild.googleapis.com,artifactregistry.googleapis.com,run.googleapis.com,logging.googleapis.com,pubsub.googleapis.com&redirect=https:%2F%2Fcloud.google.com%2Ffunctions%2Fdocs%2Fcreate-deploy-nodejs):
+
+    * Cloud Functions
+    * Cloud Build
+    * Artifact Registry
+    * Cloud Run
+    * Logging
+    * Pub/Sub
+    
+1. Install [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git). Git is required for copying samples to your machine.
+
+1. Install the [Cloud Code plugin](https://cloud.google.com/code/docs/vscode/install#installing) if you haven't already.
+
+1. Since Cloud Functions integration is currently a pre-release feature, you'll also need to [install the pre-release build](https://cloud.google.com/code/docs/vscode/insiders#get).
 
 #### Create a function
 

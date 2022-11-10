@@ -1,5 +1,5 @@
 # Use base node 18-alpine image from Docker hub
-FROM node:18.10.0-alpine
+FROM node:18.12.1-alpine
 
 WORKDIR /backend
 

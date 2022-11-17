@@ -3,7 +3,7 @@ module hello-run
 go 1.19
 
 require (
-	cloud.google.com/go v0.104.0
+	cloud.google.com/go v0.107.0
 	github.com/hashicorp/go-retryablehttp v0.7.1
 )
 

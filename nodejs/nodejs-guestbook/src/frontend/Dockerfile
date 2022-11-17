@@ -1,5 +1,5 @@
 # Use base node 18-alpine image from Docker hub
-FROM node:18-alpine
+FROM node:19-alpine
 
 WORKDIR /frontend
 

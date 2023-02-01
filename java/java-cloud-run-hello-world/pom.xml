@@ -22,9 +22,9 @@
   <dependencyManagement>
     <dependencies>
       <dependency>
-        <groupId>org.springframework.cloud</groupId>
+        <groupId>com.google.cloud</groupId>
         <artifactId>spring-cloud-gcp-dependencies</artifactId>
-        <version>1.2.8.RELEASE</version>
+        <version>4.0.0</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -50,7 +50,7 @@
     </dependency>
     <!-- Starter for Stackriver Logging -->
     <dependency>
-      <groupId>org.springframework.cloud</groupId>
+      <groupId>com.google.cloud</groupId>
       <artifactId>spring-cloud-gcp-starter-logging</artifactId>
     </dependency>
     <dependency>

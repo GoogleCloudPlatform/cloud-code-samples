@@ -17,7 +17,7 @@ steps:
     args:
     - '-c'
     - |
-      skaffold run -p cloudbuild -l $BUILD_ID -n $$TEST_NAMESPACE -d $$SKAFFOLD_DEFAULT_REPO
+      skaffold run -p dockerfile -l $BUILD_ID -n $$TEST_NAMESPACE -d $$SKAFFOLD_DEFAULT_REPO
     dir: '/workspace/java/java-hello-world'
     timeout: 1200s
 

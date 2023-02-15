@@ -18,7 +18,7 @@ COPY . ./
 RUN mvn -Dmaven.test.skip=true package
 
 # Build runtime image.
-FROM openjdk:11-jre-slim
+FROM openjdk:11.0.16-jre-slim
 
 # Copy the compiled files over.
 COPY --from=build-env /app/target /app/

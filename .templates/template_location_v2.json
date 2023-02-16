@@ -142,5 +142,41 @@
     "templateName": ".NET: Cloud Run",
     "templateLanguages": ["csharp"],
     "runPlatforms": ["cloudrun"]
+  },
+  {
+    "repoPath": "https://github.com/GoogleCloudPlatform/cloud-code-samples.git",
+    "directoryPath": "nodejs/cloud-function-hello-world",
+    "templatePath": "hello-world",
+    "templateName": "Node.js: Hello World",
+    "templateLanguages": ["nodejs"],
+    "runPlatforms": ["cloudfunctions"],
+    "entryPoint": "helloHttp"
+  },
+  {
+    "repoPath": "https://github.com/GoogleCloudPlatform/cloud-code-samples.git",
+    "directoryPath": "golang/cloud-function-hello-world",
+    "templatePath": "hello-world",
+    "templateName": "Go: Hello World",
+    "templateLanguages": ["go"],
+    "runPlatforms": ["cloudfunctions"],
+    "entryPoint": "HelloGet"
+  },
+  {
+    "repoPath": "https://github.com/GoogleCloudPlatform/cloud-code-samples.git",
+    "directoryPath": "java/cloud-function-hello-world",
+    "templatePath": "hello-world",
+    "templateName": "Java: Hello World",
+    "templateLanguages": ["java"],
+    "runPlatforms": ["cloudfunctions"],
+    "entryPoint": "functions.HelloWorld"
+  },
+  {
+    "repoPath": "https://github.com/GoogleCloudPlatform/cloud-code-samples.git",
+    "directoryPath": "python/cloud-function-hello-world",
+    "templatePath": "hello-world",
+    "templateName": "Python: Hello World",
+    "templateLanguages": ["python"],
+    "runPlatforms": ["cloudfunctions"],
+    "entryPoint": "hello_get"
   }
 ]

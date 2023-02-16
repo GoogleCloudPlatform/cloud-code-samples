@@ -2,7 +2,7 @@
 
 # Cloud Functions Hello World with Cloud Code
 
-"Python: Hello World" is a simple HTTP-triggered Cloud Functions application that contains a sample Python-based script that outputs a sample "Hello World" string.
+"Java: Hello World" is a simple HTTP-triggered Cloud Functions application that contains a sample Java-based script that outputs a sample "Hello World" string.
 
 ## Table of Contents
 
@@ -11,9 +11,8 @@
 * [Sign up for user research](#sign-up-for-user-research)
 
 ## Directory contents
-* `launch.json` - the required configurations for your function
-* `main.py` - the Python "Hello World" sample’s code
-* `requirements.txt` - includes the functions framework dependency
+* `launch.json` - the required Cloud Code configurations
+* `HelloWorld.java` - the Java "Hello World" sample’s code
 
 ## Getting started with VS Code
 
@@ -48,7 +47,7 @@ To create a new function using this sample, follow these steps:
 
 1. Click ![Cloud Code icon](https://cloud.google.com/static/code/docs/vscode/images/cloudcode-icon.png) **Cloud Code** and then expand the **Cloud Functions** section.
 
-1. Click **+ Create function** and select the **Python: Hello World** template.
+1. Click **+ Create function** and select the **Java: Hello World** template.
 
 1. Navigate to the pathway that you'd like to create your new function in, enter a name for the function, and select **Create New Application**.
 

@@ -1,0 +1,13 @@
+# IDE related
+.idea
+.vscode
+
+# Gradle related
+.gradle
+build
+gradle.properties
+
+# Terraform related
+.terraform*
+terraform.*
+

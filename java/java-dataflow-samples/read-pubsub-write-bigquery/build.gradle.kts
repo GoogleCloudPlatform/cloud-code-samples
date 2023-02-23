@@ -9,8 +9,8 @@ version = "0.0.1"
 val mainClassName = "ReadPubsubWriteBigQuery"
 
 val autoValueVersion = "1.10"
-val beamVersion         = "2.45.0"
-val jupiterVersion      = "5.9.0"
+val beamVersion = "2.45.0"
+val jupiterVersion = "5.9.0"
 val mockitoVersion = "5.1.1"
 val slf4jVersion = "1.7.32"
 
@@ -70,15 +70,16 @@ val tempLocation: String? by project
 tasks.named<JavaExec>("run") {
     mainClass.set("${project.group}.$mainClassName")
     args = listOf(
-        "--usePublicIps=$usePublicIps",
-        "--runner=$runner",
-        "--subscription=$subscription",
-        "--dataset=$dataset",
-        "--project=$projectId",
-        "--region=$region",
-        "--network=$network",
-        "--subnetwork=$subnetwork",
-        "--serviceAccount=$serviceAccountEmail",
-        "--tempLocation=$tempLocation",
+            "--usePublicIps=$usePublicIps",
+            "--runner=$runner",
+            "--subscription=$subscription",
+            "--dataset=$dataset",
+            "--project=$projectId",
+            "--region=$region",
+            "--network=$network",
+            "--subnetwork=regions/$region/subnetworks/$subnetwork",
+            "--serviceAccount=$serviceAccountEmail",
+            "--tempLocation=$tempLocation",
+            "--streaming=true",
     )
 }

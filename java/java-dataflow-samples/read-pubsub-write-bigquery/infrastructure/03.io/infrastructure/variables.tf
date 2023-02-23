@@ -18,7 +18,7 @@ variable "network" {
 variable "subnetwork" {
   type        = string
   description = "The Google Cloud custom subnetwork"
-  default     = "data-pipeline"
+  default     = "dataflow-pipeline"
 }
 variable "dataflow_worker_service_account_id" {
   type        = string

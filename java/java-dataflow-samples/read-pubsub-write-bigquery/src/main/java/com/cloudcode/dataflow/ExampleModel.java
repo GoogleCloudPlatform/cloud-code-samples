@@ -9,10 +9,11 @@ import org.apache.beam.vendor.guava.v26_0_jre.com.google.common.base.CaseFormat;
 import org.joda.time.Instant;
 
 /**
- * An Example Java value class based on the Pub/Sub topic projects/pubsub-public-data/topics/taxirides-realtime.
- * This demonstrates the following concepts.
- * 1. Using {@link DefaultSchema} with {@link AutoValueSchema} tells Beam how to determine the fields and data types.
- * 2. Using {@link SchemaCaseFormat} with {@link com.google.common.base.CaseFormat} tells beam how to name fields.
+ * An Example Java value class based on the Pub/Sub topic
+ * projects/pubsub-public-data/topics/taxirides-realtime. This demonstrates the following concepts.
+ * 1. Using {@link DefaultSchema} with {@link AutoValueSchema} tells Beam how to determine the
+ * fields and data types. 2. Using {@link SchemaCaseFormat} with {@link
+ * com.google.common.base.CaseFormat} tells beam how to name fields.
  */
 @DefaultSchema(AutoValueSchema.class)
 @SchemaCaseFormat(CaseFormat.LOWER_UNDERSCORE)

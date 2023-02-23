@@ -13,10 +13,16 @@ import org.apache.beam.sdk.values.PCollectionTuple;
 import org.apache.beam.sdk.values.Row;
 import org.apache.beam.sdk.values.TypeDescriptor;
 
-/** Reads Pub/Sub message JSON strings and converts to a {@link ReadResult} containing the resulting {@link Row} {@link PCollection}. */
+/**
+ * Reads Pub/Sub message JSON strings and converts to a {@link ReadResult} containing the resulting
+ * {@link Row} {@link PCollection}.
+ */
 public class ReadPubsubToRow<UserT> extends PTransform<PBegin, ReadResult> {
 
-  /** Instantiate a {@link ReadPubsubToRow} from a {@link SubscriptionPath} and the user type {@link TypeDescriptor}. */
+  /**
+   * Instantiate a {@link ReadPubsubToRow} from a {@link SubscriptionPath} and the user type {@link
+   * TypeDescriptor}.
+   */
   public static <UserT> ReadPubsubToRow<UserT> of(
       SubscriptionPath subscription, TypeDescriptor<UserT> userType) {
     return new ReadPubsubToRow<>(subscription, userType);

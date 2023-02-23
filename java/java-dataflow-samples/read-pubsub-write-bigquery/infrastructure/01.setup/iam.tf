@@ -9,7 +9,6 @@ resource "google_service_account" "dataflow_worker" {
 resource "google_project_iam_member" "dataflow_worker_service_account_roles" {
   depends_on = [google_project_service.required_services]
   for_each   = toset([
-    "roles/compute.networkUser",
     "roles/dataflow.worker",
   ])
   role    = each.key

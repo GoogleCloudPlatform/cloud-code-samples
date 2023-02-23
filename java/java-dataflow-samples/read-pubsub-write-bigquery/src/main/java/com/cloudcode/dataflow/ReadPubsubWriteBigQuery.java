@@ -11,7 +11,8 @@ import org.apache.beam.sdk.options.PipelineOptionsFactory;
 import org.apache.beam.sdk.values.TypeDescriptor;
 
 /**
- * This pipeline reads JSON encoded strings from Pub/Sub and Writes the processed structured data to BigQuery.
+ * This pipeline reads JSON encoded strings from Pub/Sub and Writes the processed structured data to
+ * BigQuery.
  */
 public class ReadPubsubWriteBigQuery {
   public static void main(String[] args) {

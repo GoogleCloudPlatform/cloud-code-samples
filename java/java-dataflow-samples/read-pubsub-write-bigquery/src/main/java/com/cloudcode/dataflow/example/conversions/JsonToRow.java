@@ -18,9 +18,9 @@ import org.apache.beam.sdk.values.TupleTag;
 import org.apache.beam.sdk.values.TypeDescriptor;
 
 /**
- * {@link JsonToRow} is a {@link PTransform} that converts JSON encoded strings into
- * a {@link PCollectionTuple} containing the {@link PCollection} of converted {@link Row}s and the
- * {@link PCollection} of errors.
+ * {@link JsonToRow} is a {@link PTransform} that converts JSON encoded strings into a {@link
+ * PCollectionTuple} containing the {@link PCollection} of converted {@link Row}s and the {@link
+ * PCollection} of errors.
  */
 public class JsonToRow<UserT> extends PTransform<PCollection<String>, PCollectionTuple> {
 
@@ -32,11 +32,18 @@ public class JsonToRow<UserT> extends PTransform<PCollection<String>, PCollectio
     return new JsonToRow<>(userType);
   }
 
-  /** The {@link TupleTag} that assigns the {@link Row} {@link PCollection} to the resulting {@link PCollectionTuple}. */
+  /**
+   * The {@link TupleTag} that assigns the {@link Row} {@link PCollection} to the resulting {@link
+   * PCollectionTuple}.
+   */
   public static final TupleTag<Row> ROW = new TupleTag<>() {};
 
-  /** The {@link TupleTag} that assigns the String {@link PCollection} of errors to the resulting {@link PCollectionTuple}. */
+  /**
+   * The {@link TupleTag} that assigns the String {@link PCollection} of errors to the resulting
+   * {@link PCollectionTuple}.
+   */
   public static final TupleTag<String> ERROR = new TupleTag<>() {};
+
   private final UserTypeJsonPayloadSerializer<UserT> payloadSerializer;
 
   private JsonToRow(TypeDescriptor<UserT> userType) {

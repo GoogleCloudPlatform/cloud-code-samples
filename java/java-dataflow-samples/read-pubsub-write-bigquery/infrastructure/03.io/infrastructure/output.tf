@@ -3,7 +3,7 @@ output "network" {
 }
 
 output "subnetwork" {
-  value = "regions/${var.region}/subnetworks/${var.subnetwork}"
+  value = data.google_compute_subnetwork.default.name
 }
 
 output "project_id" {

@@ -22,5 +22,7 @@ resource "google_compute_firewall" "default" {
     protocol = "tcp"
   }
 
-  source_tags = ["dataflow"]
+  source_service_accounts = [
+    data.google_service_account.dataflow_worker.email
+  ]
 }

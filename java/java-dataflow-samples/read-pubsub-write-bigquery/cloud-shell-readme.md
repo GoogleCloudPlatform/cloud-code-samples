@@ -9,9 +9,11 @@ In order to apply the terraform code to provision resources, you need to select 
 **It is recommended to go through this walkthrough using a new temporary Google Cloud project, unrelated to any of your
 existing Google Cloud projects.**
 
-Select or create a project to begin.
+### Select or create a project to begin.
 
 <walkthrough-project-setup></walkthrough-project-setup>
+
+### Configure gcloud with the default project
 
 ```sh
 gcloud config set project <walkthrough-project-id/>

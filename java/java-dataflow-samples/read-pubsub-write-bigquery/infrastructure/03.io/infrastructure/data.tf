@@ -19,6 +19,6 @@ data "google_compute_network" "default" {
 
 // Query the Google Cloud Subnetwork
 data "google_compute_subnetwork" "default" {
-  name = var.subnetwork
+  name   = var.subnetwork
   region = var.region
 }

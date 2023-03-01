@@ -2,11 +2,9 @@
 
 This directory contains Infrastructure-as-Code (IaC) to provision dependent resources to execute the Beam pipeline on a
 Dataflow. It is recommended to apply the code in a temporary Google Cloud project isolated from your production
-projects.
-
-# Easy Walkthrough 🏖️
-
-For an easy walkthrough without installing anything on your local machine:
+projects.  It is expected for the user to apply this IaC using
+the open in google cloud shell button found on the
+[java/java-dataflow-samples/read-pubsub-write-bigquery/README](..)
 
 # Requirements
 

@@ -27,7 +27,7 @@ output "sink_bigquery" {
 }
 
 output "storage_bucket" {
-  value = "gs://${google_storage_bucket.temporary.name}"
+  value = google_storage_bucket.temporary.name
 }
 
 output "temp_location" {

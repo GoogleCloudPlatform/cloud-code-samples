@@ -19,8 +19,12 @@ See the README in each folder for a list of provisioned GCP resources
 that result from applying its IaC.
 
 # Usage
+It is expected for the user to apply this IaC using
+the open in google cloud shell button found on the
+[java/java-dataflow-samples/read-pubsub-write-bigquery/README](..).
 
-Each directory follows terraform workflow convention to apply modules.
+Nonetheless, if you would like to execute the terraform on your local machine,
+each directory follows terraform workflow convention to apply modules.
 Module directories are numbered in the recommended order of execution.
 
 For example:

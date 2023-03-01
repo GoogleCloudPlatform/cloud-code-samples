@@ -3,6 +3,9 @@
 This sample demonstrates using [Apache Beam](https://beam.apache.org/) on [Dataflow](https://cloud.google.com/dataflow)
 to convert JSON encoded Pub/Sub subscription message strings into structured data and write that data to a BigQuery.
 
+See [Requirements](#requirements) for everything you need to setup and execute
+this sample.
+
 ## Table of Contents
 * [Important Assumptions](#important-assumptions)
 * [What's in this sample](#whats-in-this-sample)
@@ -21,8 +24,6 @@ Therefore, this sample assumes:
 {  "ride_id": "36a1c3e4-eb3b-451b-81ce-13be8e2f6e6c",  "point_idx": 1042,  "latitude": 40.721470000000004,  "longitude": -73.82676000000001,  "timestamp": "2023-02-08T14:02:34.28351-05:00",  "meter_reading": 23.425806,  "meter_increment": 0.02248158,  "ride_status": "enroute",  "passenger_count": 2}
 ```
 
-See [Prerequisites](#prerequisites) for an opinionated setup
-of your Google Cloud environment to simplify running this sample to adhere to these assumptions.
 
 # What's in this sample
 

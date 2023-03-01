@@ -70,7 +70,11 @@ To run this sample, it requires:
 4. [infrastructure](infrastructure) for a required setup of your Google Cloud environment to run this example.
 Instead of running on your machine, you can run on Cloud Shell by clicking on the button below.
 
+<!--
 [![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.svg)](https://shell.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2FGoogleCloudPlatform%2Fcloud-code-samples&cloudshell_git_branch=v1&cloudshell_print=cloud-shell-readme.txt&cloudshell_workspace=java%2Fjava-dataflow-samples%2Fread-pubsub-write-bigquery)
+-->
+
+[![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.svg)](https://shell.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fdamondouglas%2Fcloud-code-samples&cloudshell_git_branch=read-pubsub-write-bigquery&cloudshell_tutorial=cloud-shell-readme.md&cloudshell_working_dir=java%2Fjava-dataflow-samples%2Fread-pubsub-write-bigquery&show=terminal)
 
 # Getting Started with IntelliJ
 

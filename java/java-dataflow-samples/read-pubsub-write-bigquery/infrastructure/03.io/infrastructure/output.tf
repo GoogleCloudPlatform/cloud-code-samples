@@ -26,6 +26,10 @@ output "sink_bigquery" {
   value = "${google_bigquery_dataset.sink.project}.${google_bigquery_dataset.sink.dataset_id}"
 }
 
+output "storage_bucket" {
+  value = "gs://${google_storage_bucket.temporary.name}"
+}
+
 output "temp_location" {
   value = "gs://${google_storage_bucket.temporary.name}/temp"
 }

@@ -99,12 +99,13 @@ terraform -chdir=$DIR apply -var='project=<walkthrough-project-id/>'
 
 ## 4. That's it 🏖️
 
-Now that you have all the provisioned resources, run the following command to download a `gradle.properties` file
-onto your local machine.  Move this file to the java/java-dataflow-samples/read-pubsub-write-bigquery
+Now that you have all the provisioned resources, run the following command
+to download a `gradle.properties` file to your local machine.
+Move this file to the java/java-dataflow-samples/read-pubsub-write-bigquery
 on your local machine.
 
 ```sh
 DIR=infrastructure/03.io
-terraform -chdir=$DIR output -raw gradle_properties > gradle.properties
+gsutil cp $(terraform -chdir=$DIR output -raw gradle_properties) gradle.properties
 cloudshell download-file gradle.properties
 ```

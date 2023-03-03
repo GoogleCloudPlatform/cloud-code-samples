@@ -66,6 +66,7 @@ val network: String? by project
 val subnetwork: String? by project
 val serviceAccountEmail: String? by project
 val tempLocation: String? by project
+val labels = "{\"cloud-code-sample\": \"${project.name}\"}"
 
 tasks.named<JavaExec>("run") {
     mainClass.set("${project.group}.$mainClassName")
@@ -81,5 +82,6 @@ tasks.named<JavaExec>("run") {
             "--serviceAccount=$serviceAccountEmail",
             "--tempLocation=$tempLocation",
             "--streaming=true",
+            "--labels=$labels",
     )
 }

@@ -69,6 +69,8 @@ To run this sample, it requires:
   and `gcloud auth`
 3. Google Cloud project with billing enabled 
 4. Provisioning of required resources by clicking the button. [![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.svg)](https://shell.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2FGoogleCloudPlatform%2Fcloud-code-samples&cloudshell_git_branch=v1&cloudshell_tutorial=cloud-shell-readme.md&cloudshell_working_dir=java%2Fjava-dataflow-samples%2Fread-pubsub-write-bigquery&show=terminal)
+5. gradle.properties file (See template: [java/java-dataflow-samples/read-pubsub-write-bigquery/infrastructure/03.io
+/gradle.properties.tmpl](infrastructure/03.io/gradle.properties.tmpl)
 
 # Getting Started with IntelliJ
 

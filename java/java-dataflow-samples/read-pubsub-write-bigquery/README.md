@@ -8,10 +8,8 @@ to convert JSON encoded Pub/Sub subscription message strings into structured dat
 To run this sample, it requires:
 
 1. Java 11
-2. [Google Cloud SDK](https://cloud.google.com/sdk); `gcloud init`
-  and `gcloud auth`
-3. Google Cloud project with billing enabled
-4. Provision required resources by clicking the button.
+2. Google Cloud project with billing enabled
+3. Provision required resources by clicking the button.
 
 [![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.svg)](https://shell.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2FGoogleCloudPlatform%2Fcloud-code-samples&cloudshell_git_branch=v1&cloudshell_tutorial=cloud-shell-readme.md&cloudshell_working_dir=java%2Fjava-dataflow-samples%2Fread-pubsub-write-bigquery&show=terminal)
 

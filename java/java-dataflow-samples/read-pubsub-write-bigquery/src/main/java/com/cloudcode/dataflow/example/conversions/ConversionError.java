@@ -4,7 +4,12 @@ import com.google.auto.value.AutoValue;
 import org.apache.beam.sdk.schemas.AutoValueSchema;
 import org.apache.beam.sdk.schemas.annotations.DefaultSchema;
 
-/** A value class for coupling an error and error causing element. */
+/**
+ * A value class for coupling an error and error causing element. This allows us to couple the error
+ * message with the element causing the error. Notice how we annotate with the {@link DefaultSchema}
+ * and {@link AutoValueSchema}. This tells Beam how to construct a {@link
+ * org.apache.beam.sdk.schemas.Schema} using properties of this class.
+ */
 @DefaultSchema(AutoValueSchema.class)
 @AutoValue
 public abstract class ConversionError {

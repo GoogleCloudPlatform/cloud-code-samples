@@ -3,13 +3,24 @@
 This sample demonstrates using [Apache Beam](https://beam.apache.org/) on [Dataflow](https://cloud.google.com/dataflow)
 to convert JSON encoded Pub/Sub subscription message strings into structured data and write that data to a BigQuery.
 
-See [Requirements](#requirements) for everything you need to setup and execute
-this sample.
+# Important Requirements
+
+To run this sample, it requires:
+
+1. Java 11
+2. [Google Cloud SDK](https://cloud.google.com/sdk); `gcloud init`
+  and `gcloud auth`
+3. Google Cloud project with billing enabled
+4. Provision required resources by clicking the button.
+
+[![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.svg)](https://shell.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2FGoogleCloudPlatform%2Fcloud-code-samples&cloudshell_git_branch=v1&cloudshell_tutorial=cloud-shell-readme.md&cloudshell_working_dir=java%2Fjava-dataflow-samples%2Fread-pubsub-write-bigquery&show=terminal)
+
+5. gradle.properties file - The previous requirement will generate this for you. If you would like to generate yourself: See template: [java/java-dataflow-samples/read-pubsub-write-bigquery/infrastructure/03.io
+/gradle.properties.tmpl](infrastructure/03.io/gradle.properties.tmpl)
 
 ## Table of Contents
 * [Important Assumptions](#important-assumptions)
 * [What's in this sample](#whats-in-this-sample)
-* [Requirements](#requirements)
 * [Getting Started with Intellij](#getting-started-with-intellij)
 * [Sign up for User Research](#sign-up-for-user-research)
 
@@ -45,32 +56,7 @@ table.
 
 The figure below diagrams this pipeline.
 
-```mermaid
-graph LR
-    ps_source[Pub/Sub Subscription <br/> <i>Json Encoded Payload</i>]
-    json_to_row_result[Json To Row Result]
-    bq_sink[Big/Query Dataset]
-    log_from_json_errors[Log Errors]
-    log_to_bq_errors[Log Errors]
-    row[Beam Row]
-    ps_source --> json_to_row_result
-    json_to_row_result --> row
-    json_to_row_result --> log_from_json_errors
-    row --> bq_sink
-    bq_sink --> log_to_bq_errors
-```
-
-# Requirements
-
-To run this sample, it requires:
-
-1. Java 11
-2. [Google Cloud SDK](https://cloud.google.com/sdk); `gcloud init`
-  and `gcloud auth`
-3. Google Cloud project with billing enabled 
-4. Provisioning of required resources by clicking the button. [![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.svg)](https://shell.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2FGoogleCloudPlatform%2Fcloud-code-samples&cloudshell_git_branch=v1&cloudshell_tutorial=cloud-shell-readme.md&cloudshell_working_dir=java%2Fjava-dataflow-samples%2Fread-pubsub-write-bigquery&show=terminal)
-5. gradle.properties file (See template: [java/java-dataflow-samples/read-pubsub-write-bigquery/infrastructure/03.io
-/gradle.properties.tmpl](infrastructure/03.io/gradle.properties.tmpl)
+![image](./img/pipeline.png)
 
 # Getting Started with IntelliJ
 

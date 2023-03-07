@@ -56,6 +56,14 @@ The figure below diagrams this pipeline.
 
 ![image](./img/pipeline.png)
 
+## Walk through the code
+
+Comments exist in the code to walk you through the pipeline from when it reads
+a message from Pub/Sub all the way through until it finally writes to BigQuery.
+
+Start your journey at the main method here:
+[ReadPubsubWriteBigQuery.java](src/main/java/com/cloudcode/dataflow/ReadPubsubWriteBigQuery.java)
+
 # Getting Started with IntelliJ
 
 TODO

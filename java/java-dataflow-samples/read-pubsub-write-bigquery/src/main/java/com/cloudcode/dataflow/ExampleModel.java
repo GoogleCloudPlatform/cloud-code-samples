@@ -20,10 +20,6 @@ import org.joda.time.Instant;
 @AutoValue
 public abstract class ExampleModel {
 
-  public static Builder builder() {
-    return new AutoValue_ExampleModel.Builder();
-  }
-
   public abstract String getRideId();
 
   public abstract Integer getPointIdx();

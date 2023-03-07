@@ -14,6 +14,13 @@ import org.joda.time.Instant;
  * 1. Using {@link DefaultSchema} with {@link AutoValueSchema} tells Beam how to determine the
  * fields and data types. 2. Using {@link SchemaCaseFormat} with {@link
  * com.google.common.base.CaseFormat} tells beam how to name fields.
+ *
+ * <p>Feel free to modify or create your own custom class. However, consider the following: 1. This
+ * sample assumes source data comes from Pub/Sub subscription messages as JSON encoded strings 2. If
+ * using a new class, annotate your class with {@link DefaultSchema} 3. If your JSON keys are not
+ * camel case, consider using the {@link SchemaCaseFormat} annotation. This allows you to use Java
+ * conventions to name your properties without having to manually convert to other property naming
+ * conventions such as snake case.
  */
 @DefaultSchema(AutoValueSchema.class)
 @SchemaCaseFormat(CaseFormat.LOWER_UNDERSCORE)

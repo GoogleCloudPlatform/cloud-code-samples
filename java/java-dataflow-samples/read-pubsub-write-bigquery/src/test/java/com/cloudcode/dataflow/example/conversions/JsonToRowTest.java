@@ -16,6 +16,7 @@ import org.apache.beam.sdk.values.PCollection;
 import org.apache.beam.sdk.values.PCollectionTuple;
 import org.junit.jupiter.api.Test;
 
+/** Tests for {@link JsonToRow}. */
 class JsonToRowTest {
 
   private static final Gson GSON = new Gson();

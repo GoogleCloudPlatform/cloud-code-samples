@@ -14,6 +14,7 @@ import org.joda.time.Instant;
 import org.joda.time.format.DateTimeFormatter;
 import org.joda.time.format.ISODateTimeFormat;
 
+/** Convenience class for holding reusable test data. */
 public final class TestData {
 
   public static final TestData DATA = new TestData();

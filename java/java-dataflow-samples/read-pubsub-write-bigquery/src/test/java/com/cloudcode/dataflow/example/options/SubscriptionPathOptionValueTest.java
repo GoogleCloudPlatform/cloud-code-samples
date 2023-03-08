@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.apache.beam.sdk.io.gcp.pubsub.PubsubClient;
 import org.junit.jupiter.api.Test;
 
+/** Tests for {@link SubscriptionPathOptionValue}. */
 class SubscriptionPathOptionValueTest {
 
   @Test

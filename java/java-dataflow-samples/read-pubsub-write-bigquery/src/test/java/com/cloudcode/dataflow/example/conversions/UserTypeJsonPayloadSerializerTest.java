@@ -14,6 +14,7 @@ import org.apache.beam.sdk.values.Row;
 import org.apache.beam.sdk.values.TypeDescriptor;
 import org.junit.jupiter.api.Test;
 
+/** Tests for {@link UserTypeJsonPayloadSerializer}. */
 class UserTypeJsonPayloadSerializerTest {
 
   private static final Gson GSON = new Gson();

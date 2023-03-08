@@ -70,6 +70,7 @@ public abstract class Log implements Serializable {
       switch (spec.getSeverity()) {
         case info:
           logger.info("{}: {}", spec.getPrefix(), element);
+          return;
         case error:
           logger.error("{}: {}", spec.getPrefix(), element);
       }

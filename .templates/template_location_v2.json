@@ -178,5 +178,13 @@
     "templateLanguages": ["python"],
     "runPlatforms": ["cloudfunctions"],
     "entryPoint": "hello_get"
+  },
+  {
+    "repoPath": "https://github.com/GoogleCloudPlatform/cloud-code-samples.git",
+    "directoryPath": "java/java-dataflow-samples/read-pubsub-write-bigquery",
+    "templatePath": "dataflow-read-pubsub-write-bigquery",
+    "templateName": "Dataflow Java: Read Pub/Sub Write BigQuery",
+    "templateLanguages": ["java"],
+    "runPlatforms": ["dataflow"]
   }
 ]

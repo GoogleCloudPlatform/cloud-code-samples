@@ -12,8 +12,7 @@
         "profile": "dockerfile",
         "watch": true,
         "cleanUp": true,
-        "portForward": true,
-        "imageRegistry": "gcr.io/cloud-code-vs-code"
+        "portForward": true
       }
     ]
   }

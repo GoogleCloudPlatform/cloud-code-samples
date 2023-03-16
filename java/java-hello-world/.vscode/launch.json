@@ -9,9 +9,11 @@
         "type": "cloudcode.kubernetes",
         "request": "launch",
         "skaffoldConfig": "${workspaceFolder}/skaffold.yaml",
+        "profile": "dockerfile",
         "watch": true,
         "cleanUp": true,
-        "portForward": true
+        "portForward": true,
+        "imageRegistry": "gcr.io/cloud-code-vs-code"
       }
     ]
   }

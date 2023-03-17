@@ -21,9 +21,9 @@
 
 1. If you're new to Google Cloud, [create an account](https://console.cloud.google.com/freetrial/signup/tos) to evaluate how our products perform in real-world scenarios. New customers also get $300 in free credits to run, test, and deploy workloads.
 
-1. In the Google Cloud console, on the project selector page, select or [create a Google Cloud project](https://console.cloud.google.com/projectselector2/home/dashboard).
+1. If you're testing this out to learn about the feature, [create a new project](https://pantheon.corp.google.com/projectselector2/home/dashboard) so that you can delete the project and all associated resources when you're finished.
 
-    **Note**: If you don't plan to keep the resources that you create in this procedure, create a project instead of selecting an existing project. After you finish these steps, you can delete the project, removing all resources associated with the project.
+   You can also use this template as a starting point to create a new function in a new or existing project.
 
 1. Make sure that billing is enabled for your Cloud project. Learn how to [check if billing is enabled on a project](https://cloud.google.com/billing/docs/how-to/verify-billing-enabled).
 
@@ -69,6 +69,24 @@ To deploy a function, follow these steps:
 The function's deployment may take a few minutes.
 
 If the deployment fails, refer to the **Output** tab for the error message. Clicking the link takes you to the build logs in Google Cloud console and provides more detail about the error.
+
+#### Clean up
+
+To delete only the function you created for this quickstart:
+
+1. In the Cloud Functions explorer, right-click the function name and then select **Open in Cloud Console**.
+
+1. Click **Delete** and then click **Delete**.
+
+To delete your project and the project's associated resources:
+
+1. Go to the [Projects page](https://pantheon.corp.google.com/cloud-resource-manager) in the Google Cloud console.
+
+1. Select the project that you created for this quickstart and then click **Delete**.
+
+1. Type the project ID to confirm and then click **Shut down**.
+
+   This shuts down the project and schedules it for deletion.
 
 ### Sign up for user research
 

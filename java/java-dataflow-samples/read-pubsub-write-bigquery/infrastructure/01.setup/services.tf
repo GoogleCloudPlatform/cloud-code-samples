@@ -1,8 +1,9 @@
 // Provision the required Google Cloud services
 resource "google_project_service" "required_services" {
   for_each = toset([
-    "dataflow",
+    "bigquery",
     "compute",
+    "dataflow",
     "pubsub"
   ])
 

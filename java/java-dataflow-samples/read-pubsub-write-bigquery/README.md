@@ -10,14 +10,18 @@ To run this sample, it requires:
 1. Sign in to the Google Cloud Platform
 (From the Menu select:
 `Tools -> Google Cloud Code -> Sign in to Google Cloud Platform`)
-2. Java 11
-3. Google Cloud project with billing enabled
-4. Provision required resources by clicking the button.
+2. Set Google Cloud SDK configuration to billable project
+(From the Menu select:
+`Tools -> Google Cloud Code -> Tools -> Cloud Code Terminal` and
+run `gcloud config set project <Your Google Cloud Project ID>`)
+3. Java 11
+4. Google Cloud project with billing enabled
+5. Provision required resources by clicking the button.
 
 [![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.svg)](https://shell.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2FGoogleCloudPlatform%2Fcloud-code-samples&cloudshell_git_branch=v1&cloudshell_tutorial=cloud-shell-readme.md&cloudshell_working_dir=java%2Fjava-dataflow-samples%2Fread-pubsub-write-bigquery&show=terminal)
 
-4. gradle.properties file - The previous requirement will generate this for you. If you would like to generate yourself: See template: [java/java-dataflow-samples/read-pubsub-write-bigquery/infrastructure/03.io
-/gradle.properties.tmpl](infrastructure/03.io/gradle.properties.tmpl)
+4. gradle.properties file - The previous requirement will generate this for you. If you would like to generate yourself: See template:
+[infrastructure/03.io/gradle.properties.tmpl](infrastructure/03.io/gradle.properties.tmpl)
 
 ## Table of Contents
 * [Important Assumptions](#important-assumptions)
@@ -71,10 +75,24 @@ Start your journey at the main method here:
 
 The following steps guide you how to use this sample.
 
-## 1. Sign in to the Google Cloud Platform
+## 1. Sign in to the Google Cloud Platform and Configure Billable Project
 
+### 1a. Sign in to Google Cloud Project using the Menu selection
 From the Menu select:
 `Tools -> Google Cloud Code -> Sign in to Google Cloud Platform`.
+
+### 1b. Set Google Cloud SDK configuration to billable project
+
+From the Menu select:
+`Tools -> Google Cloud Code -> Tools -> Cloud Code Terminal`
+
+Execute the following command, where `<Your Google Cloud Project ID>`
+is a billable Google Cloud project to which you have the IAM role
+to provision resources.
+
+```
+gcloud config set project <Your Google Cloud Project ID>
+```
 
 ## 2. Provision required resources
 

@@ -4,6 +4,7 @@ resource "google_project_service" "required_services" {
     "bigquery",
     "compute",
     "dataflow",
+    "iam",
     "pubsub"
   ])
 

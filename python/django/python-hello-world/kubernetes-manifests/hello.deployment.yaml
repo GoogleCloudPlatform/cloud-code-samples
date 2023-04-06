@@ -6,25 +6,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: python-hello-world
+  name: django-python-hello-world
   labels:
-    app: python-hello-world
+    app: django-python-hello-world
     tier: app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: python-hello-world
+      app: django-python-hello-world
       tier: app
   template:
     metadata:
       labels:
-        app: python-hello-world
+        app: django-python-hello-world
         tier: app
     spec:
       containers:
-      - name: python-hello-world
-        image: python-hello-world
+      - name: django-python-hello-world
+        image: django-python-hello-world
         ports:
         - containerPort: 8080
         env:

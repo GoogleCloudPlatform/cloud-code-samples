@@ -1,5 +1,5 @@
 # This Deployment manifest defines:
-# - single-replica deployment of the container image, with label "app: python-hello-world"
+# - single-replica deployment of the container image, with label "app: django-python-hello-world"
 # - Pod exposes port 8080
 # - specify PORT environment variable to the container process
 # Syntax reference https://kubernetes.io/docs/concepts/configuration/overview/

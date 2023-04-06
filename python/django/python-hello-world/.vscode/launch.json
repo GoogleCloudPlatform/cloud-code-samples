@@ -11,17 +11,7 @@
       "skaffoldConfig": "${workspaceFolder}/skaffold.yaml",
       "watch": true,
       "cleanUp": true,
-      "portForward": true,
-      "imageRegistry": "gcr.io/sebastiankrupa-test-gke",
-      "debug": [
-        {
-          "image": "django-python-hello-world",
-          "containerName": "django-python-hello-world",
-          "sourceFileMap": {
-            "${workspaceFolder}/src": "/app"
-          }
-        }
-      ]
+      "portForward": true
     }
   ]
 }

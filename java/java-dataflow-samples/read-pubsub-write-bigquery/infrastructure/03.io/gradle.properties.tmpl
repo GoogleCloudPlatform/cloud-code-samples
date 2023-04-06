@@ -1,0 +1,31 @@
+###############################################################################
+# Gradle Properties for running on Dataflow Runner                            #
+###############################################################################
+# Pub/Sub subscription in the form projects/<project>/subscriptions/<subscription>
+# Source from which data is read.
+subscription=${subscription}
+
+# BigQuery Dataset in the form <project>.<dataset_id> or <project>:<dataset_id>.
+# Sink to which data is written.
+dataset=${dataset}
+
+# Project id. Required when running a Dataflow in the cloud.
+# See https://cloud.google.com/storage/docs/projects for further details.
+projectId=${project_id}
+
+# Compute Engine region of the Dataflow workers.
+region=${region}
+
+# GCE network for launching workers. For more information, see the reference
+# documentation https://cloud.google.com/compute/docs/networking.
+network=${network}
+
+# GCE subnetwork for launching workers. For more information, see the reference
+# documentation https://cloud.google.com/compute/docs/networking.
+subnetwork=${subnetwork}
+
+# Run the job as a specific service account.
+serviceAccountEmail=${service_account_email}
+
+# Location to store temporary files.
+tempLocation=${temp_location}

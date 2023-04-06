@@ -9,6 +9,7 @@
         "type": "cloudcode.kubernetes",
         "request": "launch",
         "skaffoldConfig": "${workspaceFolder}/skaffold.yaml",
+        "profile": "dockerfile",
         "watch": true,
         "cleanUp": true,
         "portForward": true

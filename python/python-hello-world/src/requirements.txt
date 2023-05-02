@@ -1,2 +1,2 @@
-Flask==2.2.2
+Flask==2.3.2
 ptvsd==4.3.2 # Required for debugging.

@@ -1,14 +1,14 @@
 # This Service manifest defines:
-# - a load balancer for pods matching label "app: python-hello-world"
+# - a load balancer for pods matching label "app: django-python-hello-world"
 # - exposing the application to the public Internet (type:LoadBalancer)
 # - routes port 80 of the load balancer to the port 8080 of the Pods.
 # Syntax reference https://kubernetes.io/docs/concepts/configuration/overview/
 apiVersion: v1
 kind: Service
 metadata:
-  name: python-hello-world-external
+  name: django-python-hello-world-external
   labels:
-    app: python-hello-world
+    app: django-python-hello-world
     tier: app
 spec:
   type: LoadBalancer
@@ -17,5 +17,5 @@ spec:
     port: 80
     targetPort: 8080
   selector:
-    app: python-hello-world
+    app: django-python-hello-world
     tier: app

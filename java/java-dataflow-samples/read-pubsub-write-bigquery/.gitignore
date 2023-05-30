@@ -1,0 +1,16 @@
+# IDE related
+.idea
+.vscode
+
+# Gradle related
+gradle/wrapper
+gradlew
+gradlew.bat
+.gradle
+build
+gradle.properties
+
+# Terraform related
+.terraform*
+terraform.*
+

@@ -71,4 +71,4 @@ options:
     - CLOUDSDK_CONTAINER_CLUSTER=staging
     - SKAFFOLD_DEFAULT_REPO=gcr.io/$PROJECT_ID
     - TEST_NAMESPACE=test-$BUILD_ID-django-hello-world
-    - HELLO_WORLD_SERVICE=python-hello-world-external
+    - HELLO_WORLD_SERVICE=django-python-hello-world-external

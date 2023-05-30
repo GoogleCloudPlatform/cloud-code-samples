@@ -1,4 +1,4 @@
 Flask==2.2.2
-requests==2.28.1
+requests==2.31.0
 python-dateutil==2.8.2
 debugpy # Required for debugging

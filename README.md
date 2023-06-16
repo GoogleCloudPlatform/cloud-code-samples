@@ -2,9 +2,8 @@
 
 ## What is Google Cloud Code
 
-Building highly scalable applications with Kubernetes can be hard.
-Google Cloud Code extends your IDE so that you can continuously deploy to a cluster, edit and debug just like you were working with local code.
-Spend less time learning about configuration and management of your app - and spend more time to focus on writing and evolving your code.
+Cloud Code is a set of plugins for popular IDEs that help you to create, deploy, and integrate applications with Google Cloud. 
+You can spend less time learning about configuration and management of your app - and spend more time writing and evolving your code.
 
 ## What's in this repo
 

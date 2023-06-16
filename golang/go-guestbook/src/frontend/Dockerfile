@@ -2,6 +2,7 @@
 FROM golang:1.19 as build
 
 WORKDIR /app
+ENV CGO_ENABLED=0
 
 # Copy the go.mod and go.sum, download the dependencies
 COPY go.mod go.sum ./
@@ -14,7 +15,7 @@ COPY . ./
 # Skaffold passes in debug-oriented compiler flags
 ARG SKAFFOLD_GO_GCFLAGS
 RUN echo "Go gcflags: ${SKAFFOLD_GO_GCFLAGS}"
-RUN CGO_ENABLED=0 go build -gcflags="${SKAFFOLD_GO_GCFLAGS}" -mod=readonly -v -o /app/frontend .
+RUN go build -gcflags="${SKAFFOLD_GO_GCFLAGS}" -mod=readonly -v -o /app/frontend .
 
 # Now create separate deployment image
 FROM gcr.io/distroless/base

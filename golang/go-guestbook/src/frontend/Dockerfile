@@ -2,6 +2,9 @@
 FROM golang:1.19 as build
 
 WORKDIR /app
+
+# Avoid dynamic linking of libc, since we are using a different deployment image
+# that might have a different version of libc.
 ENV CGO_ENABLED=0
 
 # Copy the go.mod and go.sum, download the dependencies
@@ -18,7 +21,7 @@ RUN echo "Go gcflags: ${SKAFFOLD_GO_GCFLAGS}"
 RUN go build -gcflags="${SKAFFOLD_GO_GCFLAGS}" -mod=readonly -v -o /app/frontend .
 
 # Now create separate deployment image
-FROM gcr.io/distroless/base
+FROM gcr.io/distroless/static-debian11
 
 # Definition of this variable is used by 'skaffold debug' to identify a golang binary.
 # Default behavior - a failure prints a stack trace for the current goroutine.

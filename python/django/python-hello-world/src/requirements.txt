@@ -1,4 +1,4 @@
-Django==4.1.4
+Django==4.1.10
 requests==2.31.0
 psycopg2-binary==2.9.5
 debugpy # Required for debugging

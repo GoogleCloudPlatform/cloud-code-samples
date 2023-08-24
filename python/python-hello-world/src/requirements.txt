@@ -1,2 +1,2 @@
-Flask==2.2.2
+Flask==2.3.3
 debugpy # Required for debugging

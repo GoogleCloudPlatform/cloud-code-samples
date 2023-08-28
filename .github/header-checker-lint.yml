@@ -12,12 +12,25 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Trigger presubmit tests for trusted contributors
-# https://github.com/googleapis/repo-automation-bots/tree/main/packages/trusted-contribution
-# Install: https://github.com/apps/trusted-contributions-gcf
+# Presubmit test that ensures that source files contain valid license headers
+# https://github.com/googleapis/repo-automation-bots/tree/main/packages/header-checker-lint
+# Install: https://github.com/apps/license-header-lint-gcf
 
-annotations:
-  - type: comment
-    text: "/gcbrun"
-trustedContributors:
-  - renovate-bot
+allowedCopyrightHolders:
+  - 'Google LLC'
+allowedLicenses:
+  - 'Apache-2.0'
+sourceFileExtensions:
+  - 'yaml'
+  - 'yml'
+  - 'sh'
+  - 'ts'
+  - 'js'
+  - 'java'
+  - 'py'
+  - 'html'
+  - 'txt'
+  - 'Dockerfile'
+  - 'go'
+  - 'tf'
+  - 'proto'

@@ -1,2 +1,70 @@
-# vim
+# Eclipse files
+.project
+.settings/
+.loadpath
+.recommenders
+local.properties
+bin/
+tmp/
+*.tmp
+*.bak
 *.swp
+*~.nib
+.classpath
+.metadata
+.project
+.settings
+
+# OSX
+.DS_Store
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Terraform related
+.terraform*
+terraform.*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# Exclude all .tfvars files, which are likely to contain sensitive data, such as
+# password, private keys, and other secrets. These should not be part of version
+# control as they are data points which are potentially sensitive and subject
+# to change depending on the environment.
+*.tfvars
+*.tfvars.json
+
+# Crash log files
+crash.log
+crash.*.log
+
+# Gradle related
+gradle/wrapper
+gradlew
+gradlew.bat
+.gradle
+build/
+gradle.properties
+
+# Maven related
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.checkstyle
+
+# NPM related
+**/node_modules/**
+npm-debug.log

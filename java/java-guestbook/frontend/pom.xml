@@ -12,7 +12,7 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-parent</artifactId>
-      <version>2.7.6</version>
+      <version>2.7.15</version>
     <relativePath/>
   </parent>
 
@@ -56,7 +56,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
-        <version>3.2.1</version>
+        <version>3.3.0</version>
       </plugin>
     </plugins>
   </build>

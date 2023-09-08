@@ -62,7 +62,6 @@ steps:
   - '-c'
   - |
     set -e
-
     # Testing connection
     chmod +x test_connection.sh
     ./test_connection.sh -r 20 -i 3 -u http://$(cat _externalIP)

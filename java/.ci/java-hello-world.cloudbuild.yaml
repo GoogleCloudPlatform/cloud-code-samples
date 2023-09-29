@@ -46,7 +46,7 @@ steps:
     args:
     - '-c'
     - |
-      set -e 
+      set -e
       # Testing connection
       chmod +x test_connection.sh
       ./test_connection.sh -r 20 -i 3 -u http://$(cat _externalIP)
@@ -68,7 +68,7 @@ timeout: 2500s
 options:
     env:
     - CLOUDSDK_COMPUTE_ZONE=us-central1-a
-    - CLOUDSDK_CONTAINER_CLUSTER=staging
+    - CLOUDSDK_CONTAINER_CLUSTER=test-cluster
     - SKAFFOLD_DEFAULT_REPO=gcr.io/$PROJECT_ID
     - TEST_NAMESPACE=test-$BUILD_ID-java-hello-world
     - HELLO_WORLD_SERVICE=java-hello-world-external

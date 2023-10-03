@@ -71,6 +71,22 @@
     {
       "name": "cloud-run-django-hello-world",
       "path": "python/cloud-run-django-hello-world"
+    },
+    {
+      "name": "cloud-function-nodejs-hello-world",
+      "path": "nodejs/cloud-function-hello-world"
+    },
+    {
+      "name": "cloud-function-golang-hello-world",
+      "path": "golang/cloud-function-hello-world"
+    },
+    {
+      "name": "cloud-function-python-hello-world",
+      "path": "python/cloud-function-hello-world"
+    },
+    {
+      "name": "cloud-function-java-hello-world",
+      "path": "java/cloud-function-hello-world"
     }
   ]
 }

@@ -12,3 +12,7 @@ build:
 requires:
   - path: ./src/frontend
   - path: ./src/backend
+profiles:
+- name: cloudbuild
+  build:
+    googleCloudBuild: {}

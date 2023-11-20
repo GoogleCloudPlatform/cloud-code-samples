@@ -13,6 +13,16 @@
       "watch": true,
       "cleanUp": true,
       "portForward": true
+    },
+    {
+      "name": "Run on Kubernetes - Cloud Build",
+      "type": "cloudcode.kubernetes",
+      "request": "launch",
+      "skaffoldConfig": "${workspaceFolder}/skaffold.yaml",
+      "profile": "cloudbuild",
+      "watch": true,
+      "cleanUp": true,
+      "portForward": true
     }
   ]
 }

@@ -14,6 +14,16 @@
       "portForward": true
     },
     {
+      "name": "Run on Kubernetes - Cloud Build",
+      "profile": "cloudbuild",
+      "type": "cloudcode.kubernetes",
+      "request": "launch",
+      "skaffoldConfig": "${workspaceFolder}/skaffold.yaml",
+      "watch": true,
+      "cleanUp": true,
+      "portForward": true
+    },
+    {
       "name": "Attach to Kubernetes pod",
       "type": "cloudcode.kubernetes",
       "request": "attach",

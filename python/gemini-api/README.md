@@ -17,7 +17,7 @@
 * `requirements.txt` - includes the google generative ai dependency
 
 ## Setting up the API Key
-Before you can use the Gemini API, you must first obtain an API key. If you don't already have one, create a key with one click in MakerSuite.
+Before you can use the Gemini API, you must first obtain an API key. If you don't already have one, create a key with one click in Google AI Studio.
 [Get API](https://makersuite.google.com/app/apikey)
 
 ## Getting started with Cloud Code

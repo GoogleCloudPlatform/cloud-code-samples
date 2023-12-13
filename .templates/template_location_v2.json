@@ -186,5 +186,21 @@
     "templateName": "Dataflow Java: Read Pub/Sub Write BigQuery",
     "templateLanguages": ["java"],
     "runPlatforms": ["dataflow"]
+  },
+  {
+    "repoPath": "https://github.com/GoogleCloudPlatform/cloud-code-samples.git",
+    "directoryPath": "nodejs/gemini-api",
+    "templatePath": "gemini-generate",
+    "templateName": "Gemini API Node.js: Generate text content based on a prompt",
+    "templateLanguages": ["nodejs"],
+    "runPlatforms": ["gemini"]
+  },
+  {
+    "repoPath": "https://github.com/GoogleCloudPlatform/cloud-code-samples.git",
+    "directoryPath": "python/gemini-api",
+    "templatePath": "gemini-generate",
+    "templateName": "Gemini API Python: Generate text content based on a prompt",
+    "templateLanguages": ["python"],
+    "runPlatforms": ["gemini"]
   }
 ]

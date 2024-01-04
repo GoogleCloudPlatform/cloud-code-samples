@@ -16,6 +16,6 @@
   "devDependencies": {
     "eslint": "8.54.0",
     "express-winston": "4.2.0",
-    "winston": "3.10.0"
+    "winston": "3.11.0"
   }
 }

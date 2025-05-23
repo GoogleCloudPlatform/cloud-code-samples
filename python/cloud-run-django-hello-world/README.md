@@ -13,10 +13,10 @@ For details on how to use this sample as a template in Cloud Code, read the docu
 ## Getting Started with VS Code
 
 ### Run the app locally with the Cloud Run Emulator
-1. Click on the Cloud Code status bar and select 'Run on Cloud Run Emulator'.  
+1. In the Cloud Code status bar, click the active project name 'Run on Cloud Run Emulator'.  
 ![image](./img/status-bar.png)
 
-2. Use the Cloud Run Emulator dialog to specify your [builder option](https://cloud.google.com/code/docs/vscode/deploying-a-cloud-run-app#deploying_a_cloud_run_service). Cloud Code supports Docker, Jib, and Buildpacks. See the skaffold documentation on [builders](https://skaffold.dev/docs/pipeline-stages/builders/) for more information about build artifact types.  
+2. Use the Cloud Run Emulator dialog to specify your [builder option](https://cloud.google.com/code/docs/vscode/deploying-a-cloud-run-app#deploying_a_cloud_run_service). Cloud Code supports Docker, Jib, and Buildpacks. See the skaffold documentation on [builders](https://skaffold.dev/docs/builders/) for more information about build artifact types.  
 ![image](./img/build-config.png)
 
 3. Click ‘Run’. Cloud Code begins building your image.
@@ -36,7 +36,7 @@ For details on how to use this sample as a template in Cloud Code, read the docu
 1. Click the Run/Debug configurations dropdown on the top taskbar and select 'Edit Configurations'.  
 ![image](./img/edit-config.png)
 
-2. Select 'Cloud Run: Run Locally' and specify your [builder option](https://cloud.google.com/code/docs/intellij/developing-a-cloud-run-app#defining_your_run_configuration). Cloud Code supports Docker, Jib, and Buildpacks. See the skaffold documentation on [builders](https://skaffold.dev/docs/pipeline-stages/builders/) for more information about build artifact types.  
+2. Select 'Cloud Run: Run Locally' and specify your [builder option](https://cloud.google.com/code/docs/intellij/developing-a-cloud-run-app#defining_your_run_configuration). Cloud Code supports Docker, Jib, and Buildpacks. See the skaffold documentation on [builders](https://skaffold.dev/docs/builders/) for more information about build artifact types.  
 ![image](./img/local-build-config.png)
 
 #### Run the application

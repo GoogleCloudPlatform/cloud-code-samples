@@ -14,7 +14,7 @@ This "Hello World" sample demonstrates how to deploy a simple "Hello World" appl
 ## Getting Started
 
 ### Run the app locally with the Cloud Run Emulator
-1. In the Cloud Code status bar, click the active project name 'Run on Cloud Run Emulator'.  
+1. In the Cloud Code status bar, click on the active project name and select 'Run on Cloud Run Emulator'.  
 ![image](../../img/status-bar.png)
 
 2. Use the Cloud Run Emulator dialog to specify your [builder option](https://cloud.google.com/code/docs/vscode/deploying-a-cloud-run-app#deploying_a_cloud_run_service?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-). Cloud Code supports Docker, Jib, and Buildpacks. See the skaffold documentation on [builders](https://skaffold.dev/docs/builders/) for more information about build artifact types.  

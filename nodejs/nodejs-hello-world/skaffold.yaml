@@ -10,9 +10,12 @@ build:
     image: nodejs-hello-world
 deploy:
   kubectl:
-    manifests:
-    - kubernetes-manifests/**
+    manifests: ["kubernetes-manifests/hello.deployment.yaml", "kubernetes-manifests/hello.service.yaml"]
 profiles:
 - name: cloudbuild
   build:
     googleCloudBuild: {}
+- name: internalpool # This profile is for running clusters with internal IP addresses.
+  deploy:
+    kubectl:
+      manifests: ["kubernetes-manifests/hello.deployment.yaml", "kubernetes-manifests/hello.service.internal.yaml"]

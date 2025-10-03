@@ -1,16 +1,18 @@
 # This Service manifest defines:
-# - a load balancer for pods matching label "app: node-hello-world"
-# - exposing the application to the public Internet (type:LoadBalancer)
+# - a load balancer for pods matching label "app: go-hello-world"
+# - NOT exposing the application to the public Internet (internal load balancer)
 # - routes port 80 of the load balancer to the port 8080 of the Pods.
 # Syntax reference https://kubernetes.io/docs/concepts/configuration/overview/
 apiVersion: v1
 kind: Service
 metadata:
-  name: nodejs-hello-world-external
+  name: go-hello-world-internal
+  annotations:
+    networking.gke.io/load-balancer-type: "Internal"
 spec:
   type: LoadBalancer
   selector:
-    app: nodejs-hello-world
+    app: go-hello-world
   ports:
   - name: http
     port: 80

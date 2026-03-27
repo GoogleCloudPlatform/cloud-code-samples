@@ -11,7 +11,7 @@
   "license": "0BSD",
   "dependencies": {
     "express": "^4.16.4",
-    "handlebars": "^4.7.4"
+    "handlebars": "^4.7.9"
   },
   "devDependencies": {
     "eslint": "8.54.0",
